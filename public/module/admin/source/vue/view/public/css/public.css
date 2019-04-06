@@ -1,0 +1,27 @@
+/**
+ * ******************
+ * 模块全局设置
+ * ******************
+ */
+.module-container {
+    position: relative;
+    padding-top: 0;
+}
+
+.module-container > * {
+    padding: 0 20px;
+}
+
+/**
+ * ******************
+ * 模块内容
+ * ******************
+ */
+.module-container > .module-content {
+    padding-bottom: 20px;
+}
+
+.module-container > .module-content > .in {
+    padding: 20px;
+    background-color: white;
+}

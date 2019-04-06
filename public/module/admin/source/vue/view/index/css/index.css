@@ -1,0 +1,456 @@
+.container {
+
+}
+
+.container > * {
+    height: 100%;
+    min-height: 600px;
+}
+
+.container > .left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #464b56;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 2;
+}
+
+.container > .left > .in {
+    width: 200px;
+}
+
+.container > .right {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding-left: 200px;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+.container > .right > .top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 80px;
+    padding-left: 200px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+.container > .right > .btm {
+    min-width: 1080px;
+    min-height: 100%;
+    background-color: #777d8a;
+}
+
+.container > .right > .btm:before {
+    display: block;
+    visibility: visible;
+    content: '';
+    height: 80px;
+}
+
+
+/*
+ * ****************
+ * 文档左边: top
+ * ****************
+ */
+.container > .left > .in > .top {
+
+}
+
+.container > .left > .in > .top .logo {
+    height: 50px;
+    line-height: 50px;
+    background-color: #525865;
+}
+
+.container > .left > .in > .top .logo .left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    text-align: center;
+}
+
+.container > .left > .in > .top .logo .left .image {
+    width: 28px;
+    height: 28px;
+}
+
+.container > .left > .in > .top .logo .right {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    margin-left: 50px;
+}
+
+.container > .left > .in > .top .user {
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.container > .left > .in > .top .user .top {
+    height: 150px;
+    text-align: center;
+    line-height: 150px;
+}
+
+.container > .left > .in > .top .user .top .image-container {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container > .left > .in > .top .user .top .image-container .image {
+    width: 100%;
+    min-height: 100%;
+    vertical-align: top;
+}
+
+.container > .left > .in > .top .user .btm {
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}
+
+/**
+ * *************
+ * 滑块
+ * *************
+ */
+.container > .left > .in > .top .block {
+    background-color:#3e4448;
+}
+
+.container > .left > .in > .top .block:hover .horizontal .in .line , .container > .left > .in > .top .block:hover .vertical .in .line {
+    background-color:#e7e7e7;
+}
+
+.container > .left > .in > .top .block>*  {
+    height:30px;
+    position:relative;
+    cursor:pointer;
+}
+
+.container > .left > .in > .top .block .horizontal {
+
+}
+
+.container > .left > .in > .top .block .vertical {
+
+}
+
+.container > .left > .in > .top .block .horizontal .in , .container > .left > .in > .top .block .vertical .in {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate3d(-50% , -50% , 0px);
+    -webkit-transform:translate3d(-50% , -50% , 0px);
+    -moz-transform:translate3d(-50% , -50% , 0px);
+    -ms-transform:translate3d(-50% , -50% , 0px);
+    -otransform:translate3d(-50% , -50% , 0px);
+}
+
+.container > .left > .in > .top .block .horizontal .in:after {
+    display:block;
+    content:'';
+    clear:both;
+}
+
+.container > .left > .in > .top .block .horizontal .in .line {
+    float:left;
+    width: 3px;
+    height: 12px;
+    margin-right:3px;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    background-color: #868686;
+}
+
+.container > .left > .in > .top .block .horizontal .in .line:nth-last-of-type(1) {
+    margin-right: 0;
+}
+
+.container > .left > .in > .top .block .vertical {
+    width:50px;
+    margin: 0;
+}
+
+.container > .left > .in > .top .block .vertical .in {
+
+}
+
+.container > .left > .in > .top .block .vertical .in .line {
+    background-color: #868686;
+    margin-bottom:3px;
+    width:12px;
+    height:2px;
+    transition:all 0.3s linear;
+    -webkit-transition:all 0.3s linear;
+    -moz-transition:all 0.3s linear;
+    -ms-transition:all 0.3s linear;
+    -o-transition:all 0.3s linear;
+}
+
+.container > .left > .in > .top .block .vertical .in .line:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+
+/*
+ * ****************
+ * 文档左边: mid
+ * ****************
+ */
+.container > .left > .in > .mid {
+    overflow: hidden;
+    overflow-y: auto;
+    min-height: 300px;
+}
+
+/*
+ * ****************
+ * 文档左边: btm
+ * ****************
+ */
+.container > .left > .in > .btm {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    background-color: #525865;
+}
+
+/**
+ * *****************
+ * 文档右边，全局设置
+ * *****************
+ */
+.container > .right {
+
+}
+
+.container > .right > .top {
+    height: 80px;
+}
+
+.container > .right > .top > .c-top {
+    height: 50px;
+    background-color: #5c626d;
+}
+
+.container > .right > .top > .c-btm {
+    height: 30px;
+}
+
+.container > .right > .btm {
+
+}
+
+
+/**
+ * *********************
+ * 文档右边，顶部上边
+ * *********************
+ */
+.container > .right > .top > .c-top {
+
+}
+
+.container > .right > .top > .c-top:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.container > .right > .top > .c-top > * {
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+.container > .right > .top > .c-top > .left {
+    float: left;
+}
+
+.container > .right > .top > .c-top > .right {
+    float: right;
+}
+
+.container > .right > .top > .c-top > .right {
+
+}
+
+.container > .right > .top > .c-top > .right:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.container > .right > .top > .c-top > .right > * {
+    float: right;
+}
+
+.container > .right > .top > .c-top > .right > .user {
+    position: relative;
+}
+
+.container > .right > .top > .c-top > .right > .user:hover .ctrl {
+    background-color: #797d84;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl {
+    padding: 0 10px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl > * {
+    float: left;
+    height: 50px;
+    padding-right: 10px;
+    line-height: 50px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl > *:nth-last-of-type(1) {
+    padding-right: 0;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl .avatar {
+    text-align: center;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl .avatar .image-container {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl .avatar .image {
+    width: 100%;
+    min-height: 100%;
+    vertical-align: top;
+}
+
+.container > .right > .top > .c-top > .right > .user .ctrl .username {
+    color: white;
+}
+
+.container > .right > .top > .c-top > .right > .user .functions {
+    background-color: #484e58;
+    padding: 10px;
+    position: absolute;
+    bottom: -10px;
+    opacity: 0;
+    right: 0;
+    z-index: 10;
+    width: 160px;
+    transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+}
+
+.container > .right > .top > .c-top > .right > .user .functions .function {
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+}
+
+.container > .right > .top > .c-top > .right > .user .functions .function:hover {
+    background-color: #626a77;
+}
+
+.container > .right > .top > .c-top > .right > .user .functions .function:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.container > .right > .top > .c-top > .right > .user .functions .function > * {
+    height: 100%;
+}
+
+.container > .right > .top > .c-top > .right > .user .functions .function .left {
+    width: 50px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+}
+
+.container > .right > .top > .c-top > .right > .user .functions .function .left .image {
+    width: 28px;
+    height: 28px;
+}
+
+.container > .right > .top > .c-top > .right > .user .functions .function .right {
+    color: white;
+    margin-left: 50px;
+}
+
+/**
+ * **************************
+ * 文档右边：底部
+ * **************************
+ */
+.container > .right > .btm > .dynamic {
+
+}
+
+.container > .right > .btm > .dynamic > .in {
+
+}
