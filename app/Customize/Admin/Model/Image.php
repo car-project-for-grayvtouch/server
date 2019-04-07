@@ -8,27 +8,12 @@
 
 namespace App\Customize\Admin\Model;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
-
-class Image extends Model  implements ModelInterface
+class Image extends Model
 {
-    public function platform()
-    {
-        return $this->belongsTo(Platform::class , 'platform_id' , 'id');
-    }
     public static function single(Model $m = null)
     {
         if (empty($m)) {
             return ;
-        }
-    }
-
-    public static function multiple(Collection $list)
-    {
-        foreach ($list as $v)
-        {
-            self::single($v);
         }
     }
 }

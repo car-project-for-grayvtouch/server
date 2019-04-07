@@ -11,10 +11,8 @@ namespace App\Customize\Admin\Model;
 use function Admin\config;
 use function Admin\get_value;
 use function Admin\res_url;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
 
-class AdminUser extends Model  implements ModelInterface
+class AdminUser extends Model
 {
     protected $table = 'admin_user';
     public $timestamps = false;
@@ -39,14 +37,6 @@ class AdminUser extends Model  implements ModelInterface
         } else {
             unset($m->role);
             $m->role = new class() {};
-        }
-    }
-
-    public static function multiple(Collection $list)
-    {
-        foreach ($list as $v)
-        {
-            self::single($v);
         }
     }
 
@@ -77,13 +67,6 @@ class AdminUser extends Model  implements ModelInterface
     public static function updateByUsername($username = '' , array $param = [])
     {
         return self::where('username' , $username)
-            ->update($param);
-    }
-
-    // 更新数据，通过 id
-    public static function updateById($id , array $param = [])
-    {
-        return self::where('id' , $id)
             ->update($param);
     }
 

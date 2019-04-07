@@ -10,7 +10,9 @@ export default {
         $error ,
         $msg ,
         $info ,
+        $tip ,
         $unknow ,
+        firstLetter ,
         // 通知
         notice (type , title , desc = '') {
             this.$Notice[type]({

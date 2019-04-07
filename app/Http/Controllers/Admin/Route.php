@@ -42,6 +42,7 @@ class Route extends Controller
         $param = request()->post();
         $param['name']  = $param['name'] ?? '';
         $param['en']    = $param['en'] ?? '';
+        $param['route']  = $param['route'] ?? '';
         $param['type']  = $param['type'] ?? '';
         $param['method'] = $param['method'] ?? '';
         $param['hidden'] = $param['hidden'] ?? '';
@@ -66,6 +67,7 @@ class Route extends Controller
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['en']    = $param['en'] ?? '';
+        $param['route']  = $param['route'] ?? '';
         $param['type']  = $param['type'] ?? '';
         $param['method'] = $param['method'] ?? '';
         $param['hidden'] = $param['hidden'] ?? '';

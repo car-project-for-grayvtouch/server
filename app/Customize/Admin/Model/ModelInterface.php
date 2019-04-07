@@ -8,7 +8,6 @@
 
 namespace App\Customize\Admin\Model;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 
 interface ModelInterface

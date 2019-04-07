@@ -91,6 +91,40 @@ Route::prefix('admin')
 
         /**
          * ******************************
+         * 品牌
+         * ******************************
+         */
+        Route::get('brand/brand/{id}' , 'Brand@detail');
+        Route::get('brand/brand' , 'Brand@list');
+        Route::post('brand/brand' , 'Brand@add');
+        Route::patch('brand/brand' , 'Brand@edit');
+        Route::delete('brand/brand' , 'Brand@del');
+        Route::put('brand/image' , 'Brand@image');
+
+        /**
+         * ******************************
+         * 车系分组
+         * ******************************
+         */
+        Route::get('carSeriesGroup/group/{id}' , 'CarSeriesGroup@detail');
+        Route::get('carSeriesGroup/group' , 'CarSeriesGroup@list');
+        Route::post('carSeriesGroup/group' , 'CarSeriesGroup@add');
+        Route::patch('carSeriesGroup/group' , 'CarSeriesGroup@edit');
+        Route::delete('carSeriesGroup/group' , 'CarSeriesGroup@del');
+
+        /**
+         * ******************************
+         * 车系
+         * ******************************
+         */
+        Route::get('carSeries/series/{id}' , 'CarSeries@detail');
+        Route::get('carSeries/series' , 'CarSeries@list');
+        Route::post('carSeries/series' , 'CarSeries@add');
+        Route::patch('carSeries/series' , 'CarSeries@edit');
+        Route::delete('carSeries/series' , 'CarSeries@del');
+
+        /**
+         * ******************************
          * 文件上传
          * ******************************
          */

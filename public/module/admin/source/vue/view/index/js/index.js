@@ -149,7 +149,7 @@ export default {
                 // 次要的图标类型，new || number || switch
                 icon: 'switch' ,
                 // 标识符，展开的项；1. 在元素里面设置 data-focus='y' +
-                id: [3] ,
+                id: [57] ,
                 // 初始状态，spread || shrink
                 status: 'shrink' ,
                 // 层级视觉显示效果
@@ -387,6 +387,14 @@ export default {
                         }
                         // ...预留的内容
                     } ,
+                    // 刷新操作
+                    reload () {
+                        this.location(this.route.route , this.param);
+                    } ,
+                    // todo 后退
+                    prev () {} ,
+                    // todo 前进
+                    next () {} ,
                 } ,
                 components: {
                     'module-nav': moduleNav

@@ -7,6 +7,19 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+/****** 开发阶段：必须！start *******/
+$header = [
+    'Access-Control-Allow-Origin'       => '*' ,
+    'Access-Control-Allow-Methods'      => 'GET,POST,PUT,PATCH,DELETE' ,
+    'Access-Control-Allow-Credentials'  => 'false' ,
+    'Access-Control-Allow-Headers'      => 'Authorization,Content-Type,X-Request-With,Ajax-Request' ,
+];
+foreach ($header as $k => $v)
+{
+    header(sprintf('%s: %s' , $k , $v));
+}
+/****** 开发阶段：必须！end *******/
+
 define('LARAVEL_START', microtime(true));
 
 /*

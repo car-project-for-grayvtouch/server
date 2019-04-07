@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
         // 检查开发环境
         // 如果是 environment = api，直接抛出 json
 //         如果 environment = web，直接渲染出错误页面
-        throw $exception;
-//        return parent::render($request, $exception);
+//        throw $exception;
+        return parent::render($request, $exception);
     }
 }

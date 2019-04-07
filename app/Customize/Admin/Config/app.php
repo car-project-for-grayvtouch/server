@@ -7,7 +7,7 @@
  */
 
 return [
-    'host' => 'http://xq.com/' ,
+    'host' => 'http://car.com/' ,
     // refresh token 保存时常
     'refresh_token_duration_type' => 'short' ,
     // 默认头像

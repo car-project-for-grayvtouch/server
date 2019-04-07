@@ -3,7 +3,7 @@ export default {
     data () {
         return {
             form: {
-                method: 'GET' ,
+                method: 'NONE' ,
                 type: 'view' ,
                 p_id: 0 ,
                 weight: 0 ,
@@ -31,6 +31,7 @@ export default {
             } ,
             api: routeApi ,
             routes: [] ,
+            value: {} ,
         };
     } ,
     created () {
@@ -51,6 +52,7 @@ export default {
     } ,
     mixins: [
         mixins.loading ,
+        mixins.state ,
     ] ,
     methods: {
         initDom () {
@@ -68,10 +70,7 @@ export default {
                 field: 'image' ,
                 success (res , code) {
                     if (G.isFunction(self.callback.small)) {
-                        self.callback.small({
-                            res ,
-                            code
-                        });
+                        self.callback.small(res , code);
                     }
                 }
             });
@@ -84,10 +83,7 @@ export default {
                 field: 'image' ,
                 success (res , code) {
                     if (G.isFunction(self.callback.big)) {
-                        self.callback.big({
-                            res ,
-                            code
-                        });
+                        self.callback.big(res , code);
                     }
                 }
             });
@@ -145,19 +141,17 @@ export default {
             new Promise((resolve , reject) => {
                 // 上传基本数据
                 this.ajax.submit = this.api[this.param.mode](this.form , (res , code) => {
+                    this.error = {};
                     if (code != 200) {
-                        this.pending.submit = false;
-                        this.ins.loading.hide();
+                        this.initialState('loading' , 'submit' , 'submit');
                         if (code == 400) {
                             this.error = res;
                             vScroll(G.firstKey(res));
                             return ;
                         }
-                        if (code == 460) {
-                            // 特殊错误
-                            this.$error(res);
-                            return ;
-                        }
+                        // 特殊错误
+                        this.$error(res);
+                        return ;
                     }
                     this.form.id = res;
                     resolve();
@@ -165,75 +159,78 @@ export default {
                 this.ins.loading.setArgs(this.ajax.submit , 'submit');
             }).then(() => {
                 // 上传小图片
-                return new Promise((resolve , reject) => {
+                return new Promise((resolve) => {
                     if (this.ins.small.empty()) {
-                        resolve();
+                        resolve(false);
                         return ;
                     }
-                    this.ins.small.upload();
                     // 上传图片
-                    this.callback.small = resolve;
+                    this.callback.small = (res , code) => {
+                        if (code != 200) {
+                            this.eNotice(res);
+                            resolve(false);
+                            return ;
+                        }
+                        this.value.small = res;
+                        resolve(true);
+                    };
+                    this.ins.small.upload();
                 });
-            }).then((res) => {
+            }).then((next) => {
                 // 更新小图片
                 return new Promise((resolve) => {
-                    if (G.isUndefined(res)) {
+                    if (!next) {
                         resolve();
                         return ;
                     }
-                    if (res.code != 200) {
-                       this.eNotice(res.res);
-                        resolve();
-                        return ;
-                    }
-                    res = res.res;
                     // 更新
                     this.api.image({
                         id: this.form.id ,
-                        image: res.url ,
+                        image: this.value.small.url ,
                         type: 'small' ,
                     } , (res , code) => {
-                        resolve();
                         if (code != 200) {
                             this.eNotice(res);
                         }
+                        resolve();
                     });
                 });
             }).then(() => {
                 // 上传大图片
                 return new Promise((resolve , reject) => {
                     if (this.ins.big.empty()) {
-                        resolve();
+                        resolve(false);
                         return ;
                     }
-                    this.ins.big.upload();
                     // 上传图片
-                    this.callback.big = resolve;
+                    this.callback.big = (res , code) => {
+                        if (code != 200) {
+                            this.eNotice(res);
+                            resolve(false);
+                            return ;
+                        }
+                        this.value.big = res;
+                        resolve(true);
+                    };
+                    this.ins.big.upload();
                 });
-            }).then((res) => {
+            }).then((next) => {
                 // 更新大图片
                 return new Promise((resolve) => {
-                    if (G.isUndefined(res)) {
+                    if (!next) {
                         resolve();
                         return ;
                     }
-                    if (res.code != 200) {
-                        this.eNotice(res.res);
-                        resolve();
-                        return ;
-                    }
-                    res = res.res;
                     // 更新
                     this.api.image({
                         id: this.form.id ,
-                        image: res.url ,
+                        image: this.value.big.url ,
                         type: 'big' ,
                     } , (res , code) => {
-                        resolve();
                         if (code != 200) {
                             this.eNotice(res);
-                            return ;
                         }
+                        resolve();
                     });
                 });
             }).then(() => {
@@ -249,8 +246,7 @@ export default {
                 });
             }).finally(() => {
                 // 更新状态
-                this.pending.submit = false;
-                this.ins.loading.hide();
+                this.initialState('loading' , 'submit' , 'submit');
             });
         } ,
     }

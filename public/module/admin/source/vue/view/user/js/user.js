@@ -25,6 +25,7 @@ export default {
             } ,
             api: roleApi ,
             routes: [] ,
+            value: {} ,
         };
     } ,
     created () {
@@ -58,21 +59,21 @@ export default {
         } ,
 
         submit () {
-            if (this.pending.submit) {
-                layer.alert('请求中...请耐心等待');
-                return ;
-            }
-            let filter = this.check();
-            if (!filter.status) {
-                this.error[filter.field] = filter.msg;
-                vScroll(filter.field);
-                return ;
-            }
-            this.pending.submit = true;
-            this.ins.loading.show();
-            let self = this;
-
             new Promise((resolve) => {
+                if (this.pending.submit) {
+                    this.$info('请求中...请耐心等待');
+                    return ;
+                }
+                let filter = this.check();
+                if (!filter.status) {
+                    this.error[filter.field] = filter.msg;
+                    vScroll(filter.field);
+                    return ;
+                }
+                this.pending.submit = true;
+                this.ins.loading.show();
+                let self = this;
+
                 // 上传基本数据
                 this.ajax.submit = this.api[this.param.mode](this.form , (res , code) => {
                     if (code != 200) {

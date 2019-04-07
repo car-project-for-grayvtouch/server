@@ -53,6 +53,30 @@ function $unknow() {
     return $error('发生了未知错误');
 }
 
+// 获取拼音首字母
+function firstLetter(str) {
+    let res = pinyinUtil.getFirstLetter(str);
+    return res.length > 0 ?
+        res[0] :
+        '';
+}
+function $tip(msg , dom) {
+    return layer.tips(msg , dom , {
+        tips: [1, '#3595CC'],
+        time: 4 * 1000
+    });
+}
+
+function $close(index)
+{
+    layer.close(index);
+}
+
+function $closeAll()
+{
+    layer.closeAll();
+}
+
 Object.assign(window , {
     forceLogout ,
     isLogin ,
@@ -62,5 +86,7 @@ Object.assign(window , {
     $error ,
     $msg ,
     $info ,
+    $tip ,
     $unknow ,
+    firstLetter ,
 });

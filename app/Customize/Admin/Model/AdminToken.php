@@ -8,8 +8,6 @@
 
 namespace App\Customize\Admin\Model;
 
-use Illuminate\Database\Eloquent\Model;
-
 class AdminToken extends Model
 {
     protected $table = 'admin_token';
@@ -23,13 +21,5 @@ class AdminToken extends Model
     public static function findByRefreshToken($refresh_token)
     {
         return self::where('refresh_token' , $refresh_token)->first();
-    }
-
-
-    // 更新
-    public static function updateById($id , array $param)
-    {
-        return self::where('id' , $id)
-            ->update($param);
     }
 }

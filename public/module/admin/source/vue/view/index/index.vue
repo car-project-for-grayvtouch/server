@@ -39,7 +39,7 @@
                 <div class="mid" ref="infinite-classification">
                     <v-menu></v-menu>
                 </div>
-                <div class="btm" ref="left-btm">兴趣部落</div>
+                <div class="btm" ref="left-btm">{{ $store.state.os.system.name }}</div>
             </div>
         </div>
         <!-- right -->

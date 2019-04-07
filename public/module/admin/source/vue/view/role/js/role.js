@@ -75,6 +75,7 @@ export default {
             new Promise((resolve) => {
                 // 上传基本数据
                 this.ajax.submit = this.api[this.param.mode](this.form , (res , code) => {
+                    this.error = {};
                     if (code != 200) {
                         this.pending.submit = false;
                         this.ins.loading.hide();

@@ -122,7 +122,7 @@ class AdminUserAction extends Action
     public static function list(array $param)
     {
         $order = parse_order($param['order']);
-        $res = AdminUser::list($param , $order , config('applimit'));
+        $res = AdminUser::list($param , $order , config('app.limit'));
         return self::success($res);
     }
 

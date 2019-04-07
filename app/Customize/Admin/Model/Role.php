@@ -8,11 +8,9 @@
 
 namespace App\Customize\Admin\Model;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
 use Core\Lib\Category;
 
-class Role extends Model  implements ModelInterface
+class Role extends Model
 {
     protected $table = 'role';
     public $timestamps = false;
@@ -27,14 +25,6 @@ class Role extends Model  implements ModelInterface
     {
         if (empty($m)) {
             return ;
-        }
-    }
-
-    public static function multiple(Collection $list)
-    {
-        foreach ($list as $v)
-        {
-            self::single($v);
         }
     }
 
@@ -91,20 +81,6 @@ class Role extends Model  implements ModelInterface
             ->paginate($limit);
         self::multiple($res->getCollection());
         return $res;
-    }
-
-    // 更新
-    public static function updateById($id , array $param = [])
-    {
-        return self::where('id' , $id)
-            ->update($param);
-    }
-
-    public static function getAll()
-    {
-        $collection = self::get();
-        self::multiple($collection);
-        return $collection;
     }
 
 }

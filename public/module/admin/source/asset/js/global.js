@@ -1,7 +1,6 @@
 import mixins from './mixinOption.js';
 
-// const host = 'http://www.grayvtouch.top/';
-const host = 'http://xq.com/';
+const host = 'http://car.com/';
 const plugin = `${host}plugin/`;
 const api = `${host}api/admin/`;
 const imageApiForwangEditor = `${api}Image/saveForWangEditor`;

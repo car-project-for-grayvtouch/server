@@ -10,7 +10,7 @@ use function Admin\config;
 
 return [
     'system' => [
-        'name' => '兴趣部落' ,
+        'name' => '汽车后台管理系统' ,
         'version' => '1.0.0' ,
         'logo' => config('app.host') . 'static/image/logo.jpg' ,
     ] ,

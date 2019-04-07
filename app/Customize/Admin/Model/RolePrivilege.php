@@ -8,11 +8,7 @@
 
 namespace App\Customize\Admin\Model;
 
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
-
-class RolePrivilege extends Model  implements ModelInterface
+class RolePrivilege extends Model
 {
     protected $table = 'role_privilege';
     public $timestamps = false;
@@ -21,14 +17,6 @@ class RolePrivilege extends Model  implements ModelInterface
     {
         if (empty($m)) {
             return ;
-        }
-    }
-
-    public static function multiple(Collection $list)
-    {
-        foreach ($list as $v)
-        {
-            self::single($v);
         }
     }
 

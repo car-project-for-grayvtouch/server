@@ -75,6 +75,9 @@ export default {
                     this.$error(res);
                     return ;
                 }
+                // res.unshift(0);
+                // res.unshift(this.all.length);
+                // this.all.splice.apply(this.all , res);
                 this.all = res;
             });
             this.ins.loading.setArgs(this.ajax.list);

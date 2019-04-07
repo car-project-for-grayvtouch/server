@@ -12,6 +12,9 @@ import imageApi from '../../api/image.js';
 import miscApi from '../../api/misc.js';
 import routeApi from '../../api/route.js';
 import roleApi from '../../api/role.js';
+import brandApi from '../../api/Brand.js';
+import carSeriesGroupApi from '../../api/carSeriesGroup.js';
+import carSeriesApi from '../../api/carSeries.js';
 
 Object.assign(window , {
     adminApi ,
@@ -23,4 +26,7 @@ Object.assign(window , {
     miscApi ,
     routeApi ,
     roleApi ,
+    brandApi ,
+    carSeriesGroupApi ,
+    carSeriesApi ,
 });

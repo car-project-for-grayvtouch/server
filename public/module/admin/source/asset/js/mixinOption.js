@@ -5,15 +5,32 @@ export default {
             this.ins.loading = new Loading(this.$refs.loading.$el , {
                 status: 'hide' ,
                 type: 'line-scale' ,
-                close (ins , key) {
+                close (ajax , key) {
                     // 中断请求
-                    if (ins instanceof G.ajax) {
-                        ins.native('abort');
+                    if (this.ajax[ajax] instanceof G.ajax) {
+                        this.ajax[ajax].native('abort');
                     }
                     self.pending[key] = false;
                 }
             });
         } ,
+    } ,
+    state: {
+        methods: {
+            // 初始状态
+            initialState (loading , ajax , pending) {
+                // 中断请求
+                if (this.ajax[ajax] instanceof G.ajax) {
+                    this.ajax[ajax].native('abort');
+                }
+                // 终止请求状态
+                this.pending[pending] = false;
+                // 中断加载层
+                if (this.ins[loading] instanceof Loading) {
+                    this.ins[loading].hide();
+                }
+            } ,
+        }
     } ,
     list: {
         // 该数据近用于复制粘贴使用，无其他作用
@@ -48,7 +65,15 @@ export default {
 
                 // 重置
                 reset () {
-                    this.form = {};
+                    for (let k in this.form)
+                    {
+                        let v = this.form[k];
+                        this.form[k] = G.isString(v) ? '' :
+                            G.isNumber(v) ? 0 :
+                                G.isArray(v) ? [] :
+                                    G.isObject(v) ? {} :
+                                    null;
+                    }
                     this.submit();
                 } ,
                 // 排序
@@ -265,6 +290,44 @@ export default {
                     });
                     this.ins.loading.setArgs(this.ajax.getData);
                 } ,
+            }
+        } ,
+        // 适用于单张图片上传的时候
+        image: {
+            mounted () {
+                let self = this;
+                // 小图上传
+                this.ins.image = new UploadImage(this.$refs['image-container'] , {
+                    pluginUrl: topContext.plugin + 'UploadImage/' ,
+                    mode: 'override' ,
+                    url:  topContext.imageApi ,
+                    field: 'image' ,
+                    success (res , code) {
+                        if (G.isFunction(self.callback.image)) {
+                            self.callback.image(res , code);
+                        }
+                    }
+                });
+            } ,
+        } ,
+        confirm: {
+            methods: {
+                confirm (name , route) {
+                    let self = this;
+                    // 提示成功
+                    this.$success('操作成功' , {
+                        btn: ['继续' + (this.param.mode == 'edit' ? '编辑' : '添加') , name] ,
+                        btn1 (index) {
+                            layer.close(index);
+                            if (self.param.mode == 'edit') {
+                                self.reload();
+                            }
+                        } ,
+                        btn2 () {
+                            self.location(route , null , '_self');
+                        }
+                    });
+                }
             }
         } ,
     } ,

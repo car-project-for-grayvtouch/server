@@ -8,12 +8,9 @@
 
 namespace App\Customize\Admin\Model;
 
-use Exception;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
 use Core\Lib\Category;
 
-class Route extends Model  implements ModelInterface
+class Route extends Model
 {
     protected $table = 'route';
     public $timestamps = false;
@@ -22,14 +19,6 @@ class Route extends Model  implements ModelInterface
     {
         if (empty($m)) {
             return ;
-        }
-    }
-
-    public static function multiple(Collection $list)
-    {
-        foreach ($list as $v)
-        {
-            self::single($v);
         }
     }
 
@@ -68,12 +57,5 @@ class Route extends Model  implements ModelInterface
             $where[] = ['name' , 'like' , "%{$filter['name']}%"];
         }
         return self::where($where)->get()->toArray();
-    }
-
-    // 更新
-    public static function updateById($id , array $param)
-    {
-        return self::where('id' , $id)
-            ->update($param);
     }
 }
