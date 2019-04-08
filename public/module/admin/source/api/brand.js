@@ -1,6 +1,7 @@
 const brand = `${topContext.api}brand/brand`;
 const detail = `${topContext.api}brand/brand/?`;
 const image = `${topContext.api}brand/image`;
+const all = `${topContext.api}brand/all`;
 
 export default {
     // 文章分类列表
@@ -63,6 +64,16 @@ export default {
             url: image ,
             data ,
             method: 'put' ,
+            success ,
+            error
+        });
+    } ,
+
+    // 上传头像
+    all (success , error) {
+        return G.ajax({
+            url: all ,
+            method: 'get' ,
             success ,
             error
         });

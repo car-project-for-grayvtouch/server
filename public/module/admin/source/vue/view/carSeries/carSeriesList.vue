@@ -42,7 +42,7 @@
                                     <i class="run-iconfont run-delete"></i>
                                     删除选中项
                                 </button>
-                                <button type="button" class="run-button run-button-blue" @click="location('/brand/add' , {mode: 'add'})">
+                                <button type="button" class="run-button run-button-blue" @click="location('/carSeries/add' , {mode: 'add'})">
                                     <i class="run-iconfont run-add"></i>
                                     添加
                                 </button>
@@ -55,10 +55,9 @@
                                     <input type="checkbox" @click="selectAllEvent">
                                 </th>
                                 <th class="w-40">ID</th>
-                                <th class="w-130">名称</th>
-                                <th class="w-30">首字母</th>
-                                <th class="w-120">logo</th>
-                                <th class="w-30">热门</th>
+                                <th class="w-120">名称</th>
+                                <th class="w-120">品牌</th>
+                                <th class="w-120">分组</th>
                                 <th class="w-30">
                                     权重
                                     <span class="arrow">
@@ -75,13 +74,12 @@
                                 <td><input type="checkbox" class="c-box"></td>
                                 <td>{{ v.id }}</td>
                                 <td>{{ v.name }}</td>
-                                <td>{{ v.letter }}</td>
-                                <td><img :src="v.logo" class="image"></td>
-                                <td>{{ v.hot_explain }}</td>
+                                <td>{{ v.brand ? v.brand.name : '' }}</td>
+                                <td>{{ v.group ? v.group.name : '' }}</td>
                                 <td>{{ v.weight }}</td>
                                 <td>{{ v.create_time }}</td>
                                 <td>
-                                    <button type="button" class="run-button run-button-blue" @click.stop="location('/brand/edit' , {id: v.id , mode: 'edit'})">
+                                    <button type="button" class="run-button run-button-blue" @click.stop="location('/carSeries/edit' , {id: v.id , mode: 'edit'})">
                                         <i class="run-iconfont run-edit"></i>编辑
                                     </button>
                                     <button type="button" class="run-button run-button-orange" @click="delTarget(v.id)">
@@ -90,7 +88,7 @@
                                 </td>
                             </tr>
                             <tr v-if="data.length == 0">
-                                <td colspan="9">没有相关数据</td>
+                                <td colspan="8">没有相关数据</td>
                             </tr>
                             </tbody>
                         </table>

@@ -149,7 +149,7 @@ export default {
                 // 次要的图标类型，new || number || switch
                 icon: 'switch' ,
                 // 标识符，展开的项；1. 在元素里面设置 data-focus='y' +
-                id: [57] ,
+                id: [63] ,
                 // 初始状态，spread || shrink
                 status: 'shrink' ,
                 // 层级视觉显示效果

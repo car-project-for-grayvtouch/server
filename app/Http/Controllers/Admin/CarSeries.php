@@ -40,7 +40,7 @@ class CarSeries extends Controller
     {
         $param = request()->post();
         $param['name']  = $param['name'] ?? '';
-        $param['brand_id']  = $param['name'] ?? '';
+        $param['brand_id']  = $param['brand_id'] ?? '';
         $param['car_series_group_id']  = $param['car_series_group_id'] ?? '';
         $res = CarSeriesAction::add($param);
         if ($res['code'] != 200) {
@@ -58,7 +58,7 @@ class CarSeries extends Controller
         $param = request()->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
-        $param['brand_id']  = $param['name'] ?? '';
+        $param['brand_id']  = $param['brand_id'] ?? '';
         $param['car_series_group_id']  = $param['car_series_group_id'] ?? '';
         $res = CarSeriesAction::edit($param);
         if ($res['code'] != 200) {

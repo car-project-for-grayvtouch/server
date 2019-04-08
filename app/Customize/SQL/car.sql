@@ -14,7 +14,7 @@ drop table if exists `xq_car_series`;
 create table if not exists `xq_car_series` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '名称' ,
-  car_series_group_id char(1) default '' comment 'xq_car_series_group.id' ,
+  car_series_group_id int unsigned default 0 comment 'xq_car_series_group.id' ,
   brand_id int unsigned default 0 comment 'xq_brand.id' ,
   weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,

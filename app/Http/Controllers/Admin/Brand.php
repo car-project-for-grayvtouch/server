@@ -41,6 +41,8 @@ class Brand extends Controller
         $param = request()->post();
         $param['name']  = $param['name'] ?? '';
         $param['letter']  = $param['letter'] ?? '';
+        $param['hot']  = $param['hot'] ?? '';
+        $param['weight']  = $param['weight'] ?? '';
         $res = BrandAction::add($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -58,6 +60,8 @@ class Brand extends Controller
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['letter']  = $param['letter'] ?? '';
+        $param['hot']  = $param['hot'] ?? '';
+        $param['weight']  = $param['weight'] ?? '';
         $res = BrandAction::edit($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {

@@ -9,6 +9,7 @@
 namespace App\Customize\Admin\Model;
 
 use function Admin\get_value;
+use function Admin\res_url;
 
 class Brand extends Model
 {
@@ -21,6 +22,7 @@ class Brand extends Model
             return ;
         }
         $m->hot_explain = get_value('business.bool' , $m->hot);
+        $m->logo_explain = res_url($m->logo , true);
     }
 
     // 获取数据列表

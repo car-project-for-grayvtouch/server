@@ -1,5 +1,6 @@
 const carSeriesGroup = `${topContext.api}carSeriesGroup/group`;
 const detail = `${topContext.api}carSeriesGroup/group/?`;
+const all = `${topContext.api}carSeriesGroup/all`;
 
 export default {
     list (data , success , error) {
@@ -53,7 +54,7 @@ export default {
 
     all (success , error) {
         return G.ajax({
-            url: carSeriesGroup ,
+            url: all ,
             method: 'get' ,
             success ,
             error

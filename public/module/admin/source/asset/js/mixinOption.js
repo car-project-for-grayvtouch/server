@@ -7,8 +7,8 @@ export default {
                 type: 'line-scale' ,
                 close (ajax , key) {
                     // 中断请求
-                    if (this.ajax[ajax] instanceof G.ajax) {
-                        this.ajax[ajax].native('abort');
+                    if (self.ajax[ajax] instanceof G.ajax) {
+                        self.ajax[ajax].native('abort');
                     }
                     self.pending[key] = false;
                 }
@@ -275,7 +275,7 @@ export default {
     form: {
         get: {
             methods: {
-                getData () {
+                getData (callback) {
                     if (this.param.mode != 'edit') {
                         return ;
                     }
@@ -287,6 +287,9 @@ export default {
                             return ;
                         }
                         this.form = res;
+                        if (G.isFunction(callback)) {
+                            callback();
+                        }
                     });
                     this.ins.loading.setArgs(this.ajax.getData);
                 } ,

@@ -100,6 +100,7 @@ Route::prefix('admin')
         Route::patch('brand/brand' , 'Brand@edit');
         Route::delete('brand/brand' , 'Brand@del');
         Route::put('brand/image' , 'Brand@image');
+        Route::get('brand/all' , 'Brand@all');
 
         /**
          * ******************************
@@ -111,6 +112,7 @@ Route::prefix('admin')
         Route::post('carSeriesGroup/group' , 'CarSeriesGroup@add');
         Route::patch('carSeriesGroup/group' , 'CarSeriesGroup@edit');
         Route::delete('carSeriesGroup/group' , 'CarSeriesGroup@del');
+        Route::get('carSeriesGroup/all' , 'CarSeriesGroup@all');
 
         /**
          * ******************************

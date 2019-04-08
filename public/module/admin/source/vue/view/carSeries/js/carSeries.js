@@ -1,5 +1,5 @@
 export default {
-    name: "v-brand" ,
+    name: "v-car-series" ,
     data () {
         return {
             form: {
@@ -24,6 +24,8 @@ export default {
             data: {} ,
             callback: {} ,
             api: carSeriesApi ,
+            brand: [] ,
+            group: [] ,
         };
     } ,
     created () {
@@ -32,7 +34,7 @@ export default {
     mounted () {
         this.initDom();
         this.initInstance();
-        this.getData();
+        this.initialize();
     } ,
     mixins: [
         mixins.state ,
@@ -47,6 +49,65 @@ export default {
 
         initInstance () {
 
+        } ,
+
+        initialize () {
+            this.ins.loading.show();
+            new Promise((resolve) => {
+                let count = 0;
+                // 获取品牌
+                brandApi.all((res , code) => {
+                    if (code != 200) {
+                        this.eNotice(res);
+                        resolve(false);
+                        return ;
+                    }
+                    this.brand = res;
+                    this.$nextTick(() => {
+                        this.initBrand();
+                    });
+                    count++;
+                    if (count ==2) {
+                        resolve(true);
+                    }
+                });
+                // 获取分组
+                carSeriesGroupApi.all((res , code) => {
+                    if (code != 200) {
+                        this.eNotice(res);
+                        resolve(false);
+                        return ;
+                    }
+                    this.group = res;
+                    count++;
+                    if (count ==2) {
+                        resolve(true);
+                    }
+                });
+            }).then((next) => {
+                if (!next) {
+                    return ;
+                }
+                // 获取数据
+                this.getData(() => {
+                    this.ins.brand.checked(this.form.brand_id);
+                });
+            }).finally(() => {
+                this.ins.loading.hide();
+            })
+        } ,
+
+        initBrand () {
+            let self = this;
+            this.ins.brand = new Brand(this.$refs.brand.$el , {
+                multiple: false ,
+                checked (id) {
+                    self.form.brand_id = id;
+                } ,
+                unchecked () {
+                    self.form.brand_id = '';
+                } ,
+            });
         } ,
 
         // 获取数据

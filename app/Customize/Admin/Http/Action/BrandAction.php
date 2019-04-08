@@ -45,6 +45,8 @@ class BrandAction extends Action
         $param['weight'] = $param['weight'] != '' ? intval($param['weight']) : config('app.weight');
         $id = Brand::insertGetId(array_unit($param , [
             'name' ,
+            'hot' ,
+            'letter' ,
             'weight'
         ]));
         return self::success($id);
@@ -73,7 +75,9 @@ class BrandAction extends Action
         $param['weight'] = $param['weight'] == '' ? $m->weight : $param['weight'];
         Brand::updateById($param['id'] , array_unit($param , [
             'name' ,
-            'weight'
+            'hot' ,
+            'letter' ,
+            'weight' ,
         ]));
         return self::success($param['id']);
     }
