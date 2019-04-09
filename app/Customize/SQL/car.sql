@@ -34,7 +34,7 @@ drop table if exists `xq_car_model`;
 create table if not exists `xq_car_model` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '名称' ,
-  `group` char(1) default '' comment '分组' ,
+  brand_id int unsigned default 0 comment 'xq_brand.id' ,
   car_series_id int unsigned default 0 comment 'xq_car_series.id' ,
   `year` int default 0 comment '年份' ,
   price decimal(13 , 2) unsigned default 0 comment '价格（新车参考价格！），单位：美元' ,
@@ -43,7 +43,7 @@ create table if not exists `xq_car_model` (
   -- 车辆核心配置
   gearbox char(255) default '' comment '变速箱：手动|自动|手自一体|无级变速|双离合|机械自动变速箱|直驱' ,
   `size` char(255) default '' comment '车辆尺寸：长/宽/高' ,
-  deiver_type char(255) default '' comment '驱动方式' ,
+  driver_type char(255) default '' comment '驱动方式' ,
   door_count tinyint default 0 comment '车门数量' ,
   seat_count tinyint default 0 comment '座位数（承载数量）' ,
   high_speed_fuel_consumption decimal(13,2) default 0 comment '高速油耗，单位 GL' ,
@@ -82,7 +82,7 @@ drop table if exists `xq_car_configuration`;
 create table if not exists `xq_car_configuration` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '功能名称' ,
-  image char(1) default '' comment '图片展示' ,
+  image varchar(500) default '' comment '图片展示' ,
   `desc` char(255) default '' comment '功能描述' ,
   weight smallint default 0 comment '权重' ,
   car_configuration_group_id int unsigned default 0 comment 'xq_car_configuration_group.id' ,
@@ -95,13 +95,14 @@ drop table if exists `xq_car_configuration_group`;
 create table if not exists `xq_car_configuration_group` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '功能名称' ,
+  weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '车辆配置分组';
 
 -- 车辆配置-关联表
 drop table if exists `xq_car_model_with_configuration`;
-create table if not exists `xq_car_configuration` (
+create table if not exists `xq_car_model_with_configuration` (
   id int unsigned not null auto_increment ,
   car_model_id int unsigned default 0 comment 'xq_car_model.id' ,
   car_configuration_id int unsigned default 0 comment 'xq_car_configuration.id' ,

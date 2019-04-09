@@ -15,6 +15,14 @@ const carSeries = () => import('../view/carSeries/carSeries.vue');
 const carSeriesList = () => import('../view/carSeries/carSeriesList.vue');
 const carSeriesGroup = () => import('../view/carSeries/carSeriesGroup.vue');
 const carSeriesGroupList = () => import('../view/carSeries/carSeriesGroupList.vue');
+const listForCarConfigurationGroup = () => import('../view/carConfigurationGroup/list.vue');
+const thingForCarConfigurationGroup = () => import('../view/carConfigurationGroup/thing.vue');
+const listForCarConfiguration = () => import('../view/carConfiguration/list.vue');
+const thingForCarConfiguration = () => import('../view/carConfiguration/thing.vue');
+const listForCarType = () => import('../view/carType/list.vue');
+const thingForCarType = () => import('../view/carType/thing.vue');
+const listForCarModel = () => import('../view/carModel/list.vue');
+const thingForCarModel = () => import('../view/carModel/thing.vue');
 
 export default [
     {
@@ -138,5 +146,77 @@ export default [
     {
         path: '/carSeries/add' ,
         component: carSeries
+    } ,
+
+    /**
+     * ***********************
+     * 车辆配置分组
+     * ***********************
+     */
+    {
+        path: '/carConfigurationGroup/list' ,
+        component: listForCarConfigurationGroup
+    } ,
+    {
+        path: '/carConfigurationGroup/edit' ,
+        component: thingForCarConfigurationGroup
+    } ,
+    {
+        path: '/carConfigurationGroup/add' ,
+        component: thingForCarConfigurationGroup
+    } ,
+
+    /**
+     * ***********************
+     * 车辆配置
+     * ***********************
+     */
+    {
+        path: '/carConfiguration/list' ,
+        component: listForCarConfiguration
+    } ,
+    {
+        path: '/carConfiguration/edit' ,
+        component: thingForCarConfiguration
+    } ,
+    {
+        path: '/carConfiguration/add' ,
+        component: thingForCarConfiguration
+    } ,
+
+    /**
+     * ***********************
+     * 车辆分类
+     * ***********************
+     */
+    {
+        path: '/carType/list' ,
+        component: listForCarType
+    } ,
+    {
+        path: '/carType/edit' ,
+        component: thingForCarType
+    } ,
+    {
+        path: '/carType/add' ,
+        component: thingForCarType
+    } ,
+
+    /**
+     * ***********************
+     * 车辆型号
+     * ***********************
+     */
+    {
+        path: '/carModel/list' ,
+        component: listForCarModel
+    } ,
+    {
+        path: '/carModel/edit' ,
+        component: thingForCarModel
+    } ,
+    {
+        path: '/carModel/add' ,
+        component: thingForCarModel
     } ,
 ];

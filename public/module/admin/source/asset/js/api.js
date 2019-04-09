@@ -15,6 +15,10 @@ import roleApi from '../../api/role.js';
 import brandApi from '../../api/Brand.js';
 import carSeriesGroupApi from '../../api/carSeriesGroup.js';
 import carSeriesApi from '../../api/carSeries.js';
+import carConfigurationGroupApi from '../../api/carConfigurationGroup.js';
+import carConfigurationApi from '../../api/carConfiguration.js';
+import carTypeApi from '../../api/carType.js';
+import carModelApi from '../../api/carModel.js';
 
 Object.assign(window , {
     adminApi ,
@@ -29,4 +33,8 @@ Object.assign(window , {
     brandApi ,
     carSeriesGroupApi ,
     carSeriesApi ,
+    carConfigurationGroupApi ,
+    carConfigurationApi ,
+    carTypeApi ,
+    carModelApi ,
 });

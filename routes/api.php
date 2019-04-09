@@ -40,6 +40,14 @@ Route::prefix('admin')
 
         /**
          * ******************************
+         * 文件上传
+         * ******************************
+         */
+        Route::post('file/image' , 'File@image');
+        Route::post('file/file' , 'File@file');
+
+        /**
+         * ******************************
          * 用户
          * ******************************
          */
@@ -127,10 +135,51 @@ Route::prefix('admin')
 
         /**
          * ******************************
-         * 文件上传
+         * 车辆配置
          * ******************************
          */
-        Route::post('file/image' , 'File@image');
-        Route::post('file/file' , 'File@file');
+        Route::get('/carConfiguration/carConfiguration/{id}' , 'CarConfiguration@detail');
+        Route::get('carConfiguration/carConfiguration' , 'CarConfiguration@list');
+        Route::post('carConfiguration/carConfiguration' , 'CarConfiguration@add');
+        Route::patch('carConfiguration/carConfiguration' , 'CarConfiguration@edit');
+        Route::delete('carConfiguration/carConfiguration' , 'CarConfiguration@del');
+        Route::put('carConfiguration/image' , 'CarConfiguration@image');
+        Route::get('carConfiguration/all' , 'CarConfiguration@all');
+
+        /**
+         * ******************************
+         * 车辆配置分组
+         * ******************************
+         */
+        Route::get('carConfigurationGroup/group/{id}' , 'CarConfigurationGroup@detail');
+        Route::get('carConfigurationGroup/group' , 'CarConfigurationGroup@list');
+        Route::post('carConfigurationGroup/group' , 'CarConfigurationGroup@add');
+        Route::patch('carConfigurationGroup/group' , 'CarConfigurationGroup@edit');
+        Route::delete('carConfigurationGroup/group' , 'CarConfigurationGroup@del');
+        Route::get('carConfigurationGroup/all' , 'CarConfigurationGroup@all');
+
+        /**
+         * ******************************
+         * 车辆类型-轿车/SUV
+         * ******************************
+         */
+        Route::get('carType/carType/{id}' , 'CarType@detail');
+        Route::get('carType/carType' , 'CarType@list');
+        Route::post('carType/carType' , 'CarType@add');
+        Route::patch('carType/carType' , 'CarType@edit');
+        Route::delete('carType/carType' , 'CarType@del');
+        Route::get('carType/all' , 'CarType@all');
+
+        /**
+         * ******************************
+         * 车型管理
+         * ******************************
+         */
+        Route::get('carModel/carModel/{id}' , 'CarModel@detail');
+        Route::get('carModel/carModel' , 'CarModel@list');
+        Route::post('carModel/carModel' , 'CarModel@add');
+        Route::patch('carModel/carModel' , 'CarModel@edit');
+        Route::delete('carModel/carModel' , 'CarModel@del');
+        Route::get('carModel/all' , 'CarModel@all');
 
     });

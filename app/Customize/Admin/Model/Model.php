@@ -37,8 +37,15 @@ class Model extends BaseModel implements ModelInterface
 
     public static function getAll()
     {
-        $res = parent::all();
+        $res = static::all();
         static::multiple($res);
+        return $res;
+    }
+
+    public static function findById($id)
+    {
+        $res = static::find($id);
+        static::single($res);
         return $res;
     }
 }
