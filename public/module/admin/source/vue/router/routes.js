@@ -23,6 +23,12 @@ const listForCarType = () => import('../view/carType/list.vue');
 const thingForCarType = () => import('../view/carType/thing.vue');
 const listForCarModel = () => import('../view/carModel/list.vue');
 const thingForCarModel = () => import('../view/carModel/thing.vue');
+const listForDectionModule = () => import('../view/detectionModule/list.vue');
+const thingForDectionModule = () => import('../view/detectionModule/thing.vue');
+const listForDectionGroup = () => import('../view/DetectionGroup/list.vue');
+const thingForDectionGroup = () => import('../view/DetectionGroup/thing.vue');
+const listForDectionPos = () => import('../view/DetectionPos/list.vue');
+const thingForDectionPos = () => import('../view/DetectionPos/thing.vue');
 
 export default [
     {
@@ -218,5 +224,59 @@ export default [
     {
         path: '/carModel/add' ,
         component: thingForCarModel
+    } ,
+
+    /**
+     * ***********************
+     * 质量检测-模块
+     * ***********************
+     */
+    {
+        path: '/detectionModule/list' ,
+        component: listForDectionModule
+    } ,
+    {
+        path: '/detectionModule/edit' ,
+        component: thingForDectionModule
+    } ,
+    {
+        path: '/detectionModule/add' ,
+        component: thingForDectionModule
+    } ,
+
+    /**
+     * ***********************
+     * 质量检测-位置分组
+     * ***********************
+     */
+    {
+        path: '/detectionGroup/list' ,
+        component: listForDectionGroup
+    } ,
+    {
+        path: '/detectionGroup/edit' ,
+        component: thingForDectionGroup
+    } ,
+    {
+        path: '/detectionGroup/add' ,
+        component: thingForDectionGroup
+    } ,
+
+    /**
+     * ***********************
+     * 质量检测-位置分组
+     * ***********************
+     */
+    {
+        path: '/detectionPos/list' ,
+        component: listForDectionPos
+    } ,
+    {
+        path: '/detectionPos/edit' ,
+        component: thingForDectionPos
+    } ,
+    {
+        path: '/detectionPos/add' ,
+        component: thingForDectionPos
     } ,
 ];

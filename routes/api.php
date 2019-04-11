@@ -132,6 +132,7 @@ Route::prefix('admin')
         Route::post('carSeries/series' , 'CarSeries@add');
         Route::patch('carSeries/series' , 'CarSeries@edit');
         Route::delete('carSeries/series' , 'CarSeries@del');
+        Route::get('carSeries/all' , 'CarSeries@all');
 
         /**
          * ******************************
@@ -145,6 +146,7 @@ Route::prefix('admin')
         Route::delete('carConfiguration/carConfiguration' , 'CarConfiguration@del');
         Route::put('carConfiguration/image' , 'CarConfiguration@image');
         Route::get('carConfiguration/all' , 'CarConfiguration@all');
+        Route::get('carConfiguration/group' , 'CarConfiguration@group');
 
         /**
          * ******************************
@@ -182,4 +184,51 @@ Route::prefix('admin')
         Route::delete('carModel/carModel' , 'CarModel@del');
         Route::get('carModel/all' , 'CarModel@all');
 
+        /**
+         * ******************************
+         * 质量检测-检测模块
+         * ******************************
+         */
+        Route::get('detectionModule/module/{id}' , 'DetectionModule@detail');
+        Route::get('detectionModule/module' , 'DetectionModule@list');
+        Route::post('detectionModule/module' , 'DetectionModule@add');
+        Route::patch('detectionModule/module' , 'DetectionModule@edit');
+        Route::delete('detectionModule/module' , 'DetectionModule@del');
+        Route::get('detectionModule/all' , 'DetectionModule@all');
+
+        /**
+         * ******************************
+         * 质量检测-检测项
+         * ******************************
+         */
+        Route::get('detectionGroup/group/{id}' , 'DetectionGroup@detail');
+        Route::get('detectionGroup/group' , 'DetectionGroup@list');
+        Route::post('detectionGroup/group' , 'DetectionGroup@add');
+        Route::patch('detectionGroup/group' , 'DetectionGroup@edit');
+        Route::delete('detectionGroup/group' , 'DetectionGroup@del');
+        Route::get('detectionGroup/all' , 'DetectionGroup@all');
+
+        /**
+         * ******************************
+         * 质量检测-检测位置
+         * ******************************
+         */
+        Route::get('detectionPos/pos/{id}' , 'DetectionPos@detail');
+        Route::get('detectionPos/pos' , 'DetectionPos@list');
+        Route::post('detectionPos/pos' , 'DetectionPos@add');
+        Route::patch('detectionPos/pos' , 'DetectionPos@edit');
+        Route::delete('detectionPos/pos' , 'DetectionPos@del');
+        Route::get('detectionPos/all' , 'DetectionPos@all');
+
+        /**
+         * ******************************
+         * 质量检测-检测项
+         * ******************************
+         */
+        Route::get('detectionItem/item/{id}' , 'DetectionItem@detail');
+        Route::get('detectionItem/item' , 'DetectionItem@list');
+        Route::post('detectionItem/item' , 'DetectionItem@add');
+        Route::patch('detectionItem/item' , 'DetectionItem@edit');
+        Route::delete('detectionItem/item' , 'DetectionItem@del');
+        Route::get('detectionItem/all' , 'DetectionItem@all');
     });

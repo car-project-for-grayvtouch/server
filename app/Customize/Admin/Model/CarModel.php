@@ -13,6 +13,21 @@ class CarModel extends Model
     protected $table = 'car_model';
     public $timestamps = false;
 
+    public function configuration()
+    {
+        return $this->belongsToMany(CarConfiguration::class , 'car_model_with_configuration' , 'car_model_id' , 'car_configuration_id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class , 'brand_id' , 'id');
+    }
+
+    public function series()
+    {
+        return $this->belongsTo(CarSeries::class , 'car_series_id' , 'id');
+    }
+
     // 获取数据列表
     public static function list(array $filter = [] , array $order = [] , int $limit = 20)
     {
@@ -28,10 +43,25 @@ class CarModel extends Model
         if ($filter['name'] != '') {
             $where[] = ['name' , 'like' , "%{$filter['name']}%"];
         }
-        $res = self::where($where)
+        $res = self::with([
+                'brand' => function($query){
+                    // 这里可以做一些过滤
+                } ,
+                'series' => function($query){
+                    // 这里可以做一些过滤
+                } ,
+            ])
+            ->where($where)
             ->orderBy($order['field'] , $order['value'])
             ->paginate($limit);
         self::multiple($res->getCollection());
+        return $res;
+    }
+
+    public static function findById($id)
+    {
+        $res = self::with('configuration')->find($id);
+        static::single($res);
         return $res;
     }
 }

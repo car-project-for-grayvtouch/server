@@ -109,9 +109,9 @@ class CarSeriesAction extends Action
         return self::success($res);
     }
 
-    public static function all()
+    public static function all(array $param)
     {
-        $res = CarSeries::getAll();
+        $res = CarSeries::getAll($param);
         return self::success($res);
     }
 }

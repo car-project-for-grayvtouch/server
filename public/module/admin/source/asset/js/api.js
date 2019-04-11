@@ -19,6 +19,10 @@ import carConfigurationGroupApi from '../../api/carConfigurationGroup.js';
 import carConfigurationApi from '../../api/carConfiguration.js';
 import carTypeApi from '../../api/carType.js';
 import carModelApi from '../../api/carModel.js';
+import detectionModuleApi from '../../api/detectionModule.js';
+import detectionGroupApi from '../../api/detectionGroup.js';
+import detectionPosApi from '../../api/detectionPos.js';
+import detectionItemApi from '../../api/detectionItem.js';
 
 Object.assign(window , {
     adminApi ,
@@ -37,4 +41,8 @@ Object.assign(window , {
     carConfigurationApi ,
     carTypeApi ,
     carModelApi ,
+    detectionModuleApi ,
+    detectionGroupApi ,
+    detectionPosApi ,
+    detectionItemApi ,
 });

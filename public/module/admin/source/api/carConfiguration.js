@@ -2,6 +2,7 @@ const main = `${topContext.api}carConfiguration/carConfiguration`;
 const detail = `${topContext.api}carConfiguration/carConfiguration/?`;
 const image = `${topContext.api}carConfiguration/image`;
 const all = `${topContext.api}carConfiguration/all`;
+const group = `${topContext.api}carConfiguration/group`;
 
 export default {
     // 文章分类列表
@@ -73,6 +74,16 @@ export default {
     all (success , error) {
         return G.ajax({
             url: all ,
+            method: 'get' ,
+            success ,
+            error
+        });
+    } ,
+
+    // 分组数据
+    group (success , error) {
+        return G.ajax({
+            url: group ,
             method: 'get' ,
             success ,
             error

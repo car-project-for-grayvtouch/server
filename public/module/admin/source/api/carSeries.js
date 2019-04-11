@@ -1,8 +1,8 @@
 const carSeries = `${topContext.api}carSeries/series`;
 const detail = `${topContext.api}carSeries/series/?`;
+const all = `${topContext.api}carSeries/all`;
 
 export default {
-    // 文章分类列表
     list (data , success , error) {
         return G.ajax({
             url: carSeries ,
@@ -13,7 +13,6 @@ export default {
         });
     } ,
 
-    // 详情
     detail (id , success , error) {
         return G.ajax({
             url: detail.replace('?' , id) ,
@@ -23,7 +22,6 @@ export default {
         });
     } ,
 
-    // 修改
     edit (data , success , error) {
         return G.ajax({
             url: carSeries ,
@@ -34,7 +32,6 @@ export default {
         });
     } ,
 
-    // 添加
     add (data , success , error) {
         return G.ajax({
             url: carSeries ,
@@ -45,7 +42,6 @@ export default {
         });
     } ,
 
-    // 删除
     del (data , success , error) {
         return G.ajax({
             url: carSeries ,
@@ -56,10 +52,10 @@ export default {
         });
     } ,
 
-    // 删除
-    all (success , error) {
+    all (data , success , error) {
         return G.ajax({
-            url: carSeries ,
+            url: all ,
+            data ,
             method: 'get' ,
             success ,
             error

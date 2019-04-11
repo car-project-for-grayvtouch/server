@@ -30,32 +30,7 @@
                     ];
                 }
             } ,
-            type: {
-                type: [String,Number] ,
-                default: 1
-            } ,
-            menu: {
-                type: String ,
-                default: 'one'
-            }
         } ,
-        mounted () {
-            var self = this;
-            this.ins.menuSwitch = new MenuSwitch(this.$el , {
-                // 默认展示的界面
-                id: this.menu ,
-                // 菜单展示风格
-                type: this.type ,
-                // 项点击后回调
-                click (id) {
-
-                } ,
-                // 切换后回调
-                switch (id) {
-                    self.$emit('switch' , id);
-                }
-            });
-        }
     }
 </script>
 

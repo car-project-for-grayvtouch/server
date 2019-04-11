@@ -18,7 +18,6 @@ use function Admin\form_error;
 
 class CarSeries extends Controller
 {
-    // 列表
     public function list()
     {
         $param = request()->query();
@@ -35,13 +34,13 @@ class CarSeries extends Controller
         return success($res['data']);
     }
 
-    // 添加
     public function add()
     {
         $param = request()->post();
         $param['name']  = $param['name'] ?? '';
         $param['brand_id']  = $param['brand_id'] ?? '';
         $param['car_series_group_id']  = $param['car_series_group_id'] ?? '';
+        $param['weight']  = $param['weight'] ?? '';
         $res = CarSeriesAction::add($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -60,6 +59,7 @@ class CarSeries extends Controller
         $param['name']  = $param['name'] ?? '';
         $param['brand_id']  = $param['brand_id'] ?? '';
         $param['car_series_group_id']  = $param['car_series_group_id'] ?? '';
+        $param['weight']  = $param['weight'] ?? '';
         $res = CarSeriesAction::edit($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -70,7 +70,6 @@ class CarSeries extends Controller
         return success($res['data']);
     }
 
-    // 删除
     public function del()
     {
         $param = request()->post();
@@ -85,7 +84,6 @@ class CarSeries extends Controller
         return success($res['data']);
     }
 
-    // 详情
     public function detail($id)
     {
         $res = CarSeriesAction::detail($id);
@@ -98,10 +96,11 @@ class CarSeries extends Controller
         return success($res['data']);
     }
 
-    // 获取所有的角色
     public function all()
     {
-        $res = CarSeriesAction::all();
+        $param = request()->query();
+        $param['brand_id'] = $param['brand_id'] ?? '';
+        $res = CarSeriesAction::all($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

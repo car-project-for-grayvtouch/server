@@ -166,7 +166,7 @@ create table if not exists `xq_report_for_module` (
   id int unsigned not null auto_increment ,
   report_id int unsigned default 0 comment 'xq_report.id' ,
   result varchar(1000) default '' comment '综合检测结果' ,
-  module_name char(255) default '' comment '模块名称' ,
+  module_name char(255) default '' comment '模块名称，xq_detection_module.name' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-模块';
@@ -177,16 +177,17 @@ create table if not exists `xq_report_for_pos` (
   id int unsigned not null auto_increment ,
   report_for_module_id int unsigned default 0 comment 'report_for_module.id' ,
   group_name char(255) default '' comment '分组名称，xq_detection_group.name，从 xq_detection_pos.group_id 找到对应的记录，获取其名称' ,
-  pos char(255) default '' comment '检测位置' ,
+  pos char(255) default '' comment '检测位置 xq_detection_pos.name' ,
+  has_map enum('y' , 'n') default 'n' comment '是否有图片进行部位映射' ,
+  map_name char(255) default '' comment '映射名称，仅在 has_map = y 的情况下有效，map_name 请对应图中名称' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-检测部位';
 
 drop table if exists `xq_report_for_item`;
-create table if not exists `xq_report_for_pos` (
+create table if not exists `xq_report_for_item` (
   id int unsigned not null auto_increment ,
   report_for_pos_id int unsigned default 0 comment 'xq_report_for_pos.id' ,
-  group_name char(255) default '' comment '分组名称' ,
   name char(255) default '' comment '检测项名称' ,
   value char(255) default '' comment '检测结果' ,
   `desc` char(255) default '' comment '结果描述' ,
@@ -195,7 +196,7 @@ create table if not exists `xq_report_for_pos` (
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-检测部位-具体的检测项';
 
 drop table if exists `xq_service`;
-create table if not exists `xq_car` (
+create table if not exists `xq_service` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '服务名称' ,
   image varchar(500) default '' comment '展示图片' ,
@@ -274,6 +275,7 @@ drop table if exists `xq_detection_module`;
 create table if not exists `xq_detection_module` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '模块名称' ,
+  weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-检测模块';
@@ -282,6 +284,7 @@ drop table if exists `xq_detection_group`;
 create table if not exists `xq_detection_group` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '分组名称' ,
+  weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-检测项分组';
@@ -290,7 +293,8 @@ drop table if exists `xq_detection_pos`;
 create table if not exists `xq_detection_pos` (
   id int unsigned not null auto_increment ,
   detection_group_id int unsigned default 0 comment 'xq_detection_group.id' ,
-  pos char(255) default '' comment '检测位置' ,
+  name char(255) default '' comment '检测位置' ,
+  weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-检测位置（部位）';
@@ -301,6 +305,7 @@ create table if not exists `xq_detection_item` (
   detection_pos_id int unsigned default 0 comment 'xq_detection_pos.id' ,
   name char(255) default '' comment '检测项' ,
   `option` varchar(500) default '{"normal":"正常","exception": "异常"}' comment '检测项的可选项,json 字符串' ,
+  weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-检测项';

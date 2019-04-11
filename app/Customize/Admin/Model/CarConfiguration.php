@@ -55,4 +55,41 @@ class CarConfiguration extends Model
         self::multiple($res->getCollection());
         return $res;
     }
+
+    // 获取分组后的数据
+    public static function groupData()
+    {
+        $res = self::with('group')
+            ->orderBy('weight' , 'desc')
+            ->orderBy('id' , 'asc')
+            ->get();
+        $group = [];
+        $exists = function($group_id) use(&$group){
+            foreach ($group as $v)
+            {
+                if ($v['group_id'] == $group_id) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        foreach ($res as $v)
+        {
+            if (!$exists($v->car_configuration_group_id)) {
+                $group[] = [
+                    'group_id' => $v->car_configuration_group_id ,
+                    'name' => empty($v->group) ? '' : $v->group->name ,
+                    'data' => [$v]
+                ];
+            } else {
+                foreach ($group as &$v1)
+                {
+                    if ($v1['group_id'] == $v->car_configuration_group_id) {
+                        $v1['data'][] = $v;
+                    }
+                }
+            }
+        }
+        return $group;
+    }
 }

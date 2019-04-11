@@ -1,0 +1,23 @@
+.module-container {
+
+}
+
+.module-container .module-content {
+
+}
+
+.module-container .module-content > .in {
+
+}
+
+.module-container .module-content > .in > form {
+
+}
+
+.module-container .module-content > .in > form > * {
+    margin-bottom: 12px;
+}
+
+.module-container .module-content > .in > form > *:nth-last-of-type(1) {
+    margin-bottom: 0;
+}

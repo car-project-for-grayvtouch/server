@@ -56,6 +56,8 @@
                                 </th>
                                 <th class="w-40">ID</th>
                                 <th class="w-130">名称</th>
+                                <th class="w-100">品牌</th>
+                                <th class="w-100">车系</th>
                                 <th class="w-30">
                                     权重
                                     <span class="arrow">
@@ -72,6 +74,8 @@
                                 <td><input type="checkbox" class="c-box"></td>
                                 <td>{{ v.id }}</td>
                                 <td>{{ v.name }}</td>
+                                <td>{{ v.brand ? v.brand.name : '' }}</td>
+                                <td>{{ v.series ? v.series.name : '' }}</td>
                                 <td>{{ v.weight }}</td>
                                 <td>{{ v.create_time }}</td>
                                 <td>
@@ -84,7 +88,7 @@
                                 </td>
                             </tr>
                             <tr v-if="data.length == 0">
-                                <td colspan="6">没有相关数据</td>
+                                <td colspan="8">没有相关数据</td>
                             </tr>
                             </tbody>
                         </table>

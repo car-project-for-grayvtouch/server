@@ -78,9 +78,6 @@ class CarModelAction extends Action
                 'price' => '价格格式错误'
             ]);
         }
-        if ($param['configuration'] == '') {
-            return self::error('相关车辆配置尚未选择' , 460);
-        }
         $param['configuration'] = json_decode($param['configuration'] , true);
         $param['weight'] = $param['weight'] != '' ? intval($param['weight']) : config('app.weight');
         try {
@@ -97,7 +94,7 @@ class CarModelAction extends Action
                 'driver_type' ,
                 'door_count' ,
                 'seat_count' ,
-                'high_speed_fuel_consumptiom' ,
+                'high_speed_fuel_consumption' ,
                 'city_fuel_consumption' ,
                 'engine' ,
                 'company' ,
@@ -187,9 +184,6 @@ class CarModelAction extends Action
                 'price' => '价格格式错误'
             ]);
         }
-        if ($param['configuration'] == '') {
-            return self::error('相关车辆配置尚未选择' , 460);
-        }
         $param['configuration'] = json_decode($param['configuration'] , true);
         $param['weight'] = $param['weight'] == '' ? $m->weight : $param['weight'];
         try {
@@ -206,7 +200,7 @@ class CarModelAction extends Action
                 'driver_type' ,
                 'door_count' ,
                 'seat_count' ,
-                'high_speed_fuel_consumptiom' ,
+                'high_speed_fuel_consumption' ,
                 'city_fuel_consumption' ,
                 'engine' ,
                 'company' ,

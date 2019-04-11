@@ -277,6 +277,9 @@ export default {
             methods: {
                 getData (callback) {
                     if (this.param.mode != 'edit') {
+                        if (G.isFunction(callback)) {
+                            callback();
+                        }
                         return ;
                     }
                     this.ins.loading.show();
@@ -323,7 +326,7 @@ export default {
                         btn1 (index) {
                             layer.close(index);
                             if (self.param.mode == 'edit') {
-                                self.reload();
+                                // self.reload();
                             }
                         } ,
                         btn2 () {
@@ -331,6 +334,38 @@ export default {
                         }
                     });
                 }
+            }
+        } ,
+        menuSwitch: {
+            methods: {
+                initMenuSwitch () {
+                    var self = this;
+                    // 菜单切换
+                    this.ins.menuSwitch = new MenuSwitch(this.$refs['menu-switch'].$el , {
+                        // 默认展示的界面
+                        id: this.menu ,
+                        // 菜单展示风格
+                        type: this.type ,
+                        // 项点击后回调
+                        click (id) {
+
+                        } ,
+                        // 切换后回调
+                        switch (id) {
+                            self.switchMenu(id);
+                        }
+                    });
+                } ,
+                switchMenu (id) {
+                    this.dom.optionSet.each((dom) => {
+                        dom = G(dom);
+                        if (dom.data('id') == id) {
+                            dom.removeClass('hide');
+                        } else {
+                            dom.addClass('hide');
+                        }
+                    });
+                } ,
             }
         } ,
     } ,

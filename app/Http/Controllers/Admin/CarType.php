@@ -40,6 +40,7 @@ class CarType extends Controller
     {
         $param = request()->post();
         $param['name']  = $param['name'] ?? '';
+        $param['weight']  = $param['weight'] ?? '';
         $res = CarTypeAction::add($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -56,6 +57,7 @@ class CarType extends Controller
         $param = request()->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
+        $param['weight']  = $param['weight'] ?? '';
         $res = CarTypeAction::edit($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {

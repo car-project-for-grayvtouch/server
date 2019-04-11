@@ -60,4 +60,16 @@ class CarSeries extends Model
         self::multiple($res->getCollection());
         return $res;
     }
+
+    public static function getAll(array $param = [])
+    {
+        $param['brand_id'] = $param['brand_id'] ?? '';
+        $where = [];
+        if ($param['brand_id'] != '') {
+            $where[] = ['brand_id' , '=' , $param['brand_id']];
+        }
+        $res = static::where($where)->get();
+        self::multiple($res);
+        return $res;
+    }
 }

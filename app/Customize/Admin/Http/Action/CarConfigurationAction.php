@@ -134,4 +134,10 @@ class CarConfigurationAction extends Action
         ]));
         return self::success();
     }
+
+    public static function group()
+    {
+        $res = CarConfiguration::groupData();
+        return self::success($res);
+    }
 }

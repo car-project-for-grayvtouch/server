@@ -18,7 +18,6 @@ use function Admin\form_error;
 
 class CarConfiguration extends Controller
 {
-    // 列表
     public function list()
     {
         $param = request()->query();
@@ -35,7 +34,6 @@ class CarConfiguration extends Controller
         return success($res['data']);
     }
 
-    // 添加
     public function add()
     {
         $param = request()->post();
@@ -53,7 +51,6 @@ class CarConfiguration extends Controller
         return success($res['data']);
     }
 
-    // 编辑
     public function edit()
     {
         $param = request()->post();
@@ -72,7 +69,6 @@ class CarConfiguration extends Controller
         return success($res['data']);
     }
 
-    // 删除
     public function del()
     {
         $param = request()->post();
@@ -87,7 +83,6 @@ class CarConfiguration extends Controller
         return success($res['data']);
     }
 
-    // 详情
     public function detail($id)
     {
         $res = CarConfigurationAction::detail($id);
@@ -100,7 +95,6 @@ class CarConfiguration extends Controller
         return success($res['data']);
     }
 
-    // 获取所有的角色
     public function all()
     {
         $res = CarConfigurationAction::all();
@@ -119,6 +113,18 @@ class CarConfiguration extends Controller
         $param['id'] = $param['id'] ?? '';
         $param['image'] = $param['image'] ?? '';
         $res = CarConfigurationAction::image($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    public function group()
+    {
+        $res = CarConfigurationAction::group();
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

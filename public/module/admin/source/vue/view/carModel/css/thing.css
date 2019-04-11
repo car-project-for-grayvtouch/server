@@ -1,0 +1,42 @@
+
+/**
+ * **********************
+ * 车辆配置
+ * **********************
+ */
+.configuration {
+
+}
+
+.configuration > .group {
+
+}
+
+.configuration > .group > .list {
+
+}
+
+.configuration > .group > .list:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.configuration > .group > .list .item {
+    float: left;
+    width: 320px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+
+.configuration > .group > .list .item {
+
+}
+
+.configuration > .group > .list .item > * {
+    display: inline-block;
+}
+
+.configuration > .group > .list .item > .left {
+    width: 150px;
+}
