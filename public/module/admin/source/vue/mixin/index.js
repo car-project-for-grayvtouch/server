@@ -13,6 +13,7 @@ export default {
         $tip ,
         $unknow ,
         firstLetter ,
+        determine ,
         // 通知
         notice (type , title , desc = '') {
             this.$Notice[type]({

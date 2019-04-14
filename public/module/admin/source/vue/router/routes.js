@@ -29,6 +29,10 @@ const listForDectionGroup = () => import('../view/DetectionGroup/list.vue');
 const thingForDectionGroup = () => import('../view/DetectionGroup/thing.vue');
 const listForDectionPos = () => import('../view/DetectionPos/list.vue');
 const thingForDectionPos = () => import('../view/DetectionPos/thing.vue');
+const listForDectionItem = () => import('../view/DetectionItem/list.vue');
+const thingForDectionItem = () => import('../view/DetectionItem/thing.vue');
+const listForService = () => import('../view/service/list.vue');
+const thingForService = () => import('../view/service/thing.vue');
 
 export default [
     {
@@ -278,5 +282,41 @@ export default [
     {
         path: '/detectionPos/add' ,
         component: thingForDectionPos
+    } ,
+
+    /**
+     * ***********************
+     * 质量检测-检测项
+     * ***********************
+     */
+    {
+        path: '/detectionItem/list' ,
+        component: listForDectionItem
+    } ,
+    {
+        path: '/detectionItem/edit' ,
+        component: thingForDectionItem
+    } ,
+    {
+        path: '/detectionItem/add' ,
+        component: thingForDectionItem
+    } ,
+
+    /**
+     * ***********************
+     * 车辆服务
+     * ***********************
+     */
+    {
+        path: '/service/list' ,
+        component: listForService
+    } ,
+    {
+        path: '/service/edit' ,
+        component: thingForService
+    } ,
+    {
+        path: '/service/add' ,
+        component: thingForService
     } ,
 ];

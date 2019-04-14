@@ -102,4 +102,26 @@ class DetectionModuleAction extends Action
         $res = DetectionModule::getAll();
         return self::success($res);
     }
+
+    public static function image(array $param)
+    {
+        $validator = Validator::make($param , [
+            'id' => 'required' ,
+            'image' => 'required' ,
+        ] , [
+            'id.required' => 'id 尚未提供' ,
+            'image.required' => 'image 尚未提供' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        $m = DetectionModule::find($param['id']);
+        if (empty($m)) {
+            return self::error('未找到 id 对应记录' , 404);
+        }
+        DetectionModule::updateById($param['id'] , array_unit($param , [
+            'image'
+        ]));
+        return self::success();
+    }
 }

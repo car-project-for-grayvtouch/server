@@ -33,5 +33,10 @@ window.business = {
     // 车辆相关
     car: {
        gearbox: ['手动' , '自动' , '手自一体' , '无级变速' , '双离合' , '机械自动变速箱' , '直驱'] ,
-    }
+    } ,
+    // 检测项
+    detection: {
+        normal: '正常' ,
+        exception: '异常' ,
+    } ,
 };

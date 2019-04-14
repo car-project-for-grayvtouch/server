@@ -16,14 +16,18 @@ export default {
             dom: {} ,
             ins: {
                 loading: null ,
+                image: null ,
             },
             pending: {
                 submit: null ,
             } ,
             data: {} ,
             callback: {
+                image: null
             } ,
             api: detectionModuleApi ,
+            // 图片
+            image: {} ,
         };
     } ,
     created () {
@@ -37,6 +41,7 @@ export default {
     mixins: [
         mixins.state ,
         mixins.loading ,
+        mixins.form.image ,
         mixins.form.get ,
         mixins.form.confirm ,
     ] ,
@@ -74,7 +79,6 @@ export default {
                 this.pending.submit = true;
                 this.ins.loading.show();
                 this.ajax.submit = this.api[this.param.mode](this.form , (res , code) => {
-                    this.error = {};
                     if (code != 200) {
                         this.initialState('loading' , 'submit' , 'submit');
                         if (code == 400) {
@@ -89,6 +93,42 @@ export default {
                     resolve();
                 });
                 this.ins.loading.setArgs(this.ajax.submit , 'submit');
+            }).then(() => {
+                // 上传图片
+                return new Promise((resolve) => {
+                    if (this.ins.image.empty()) {
+                        resolve(false);
+                        return ;
+                    }
+                    this.callback.image = (res , code) => {
+                        if (code != 200) {
+                            this.eNotice(res);
+                            resolve(false);
+                            return ;
+                        }
+                        this.image = res;
+                        resolve(true);
+                    };
+                    this.ins.image.upload();
+                });
+            }).then((next) => {
+                // 更新图片
+                return new Promise((resolve) => {
+                    if (!next) {
+                        resolve(true);
+                        return ;
+                    }
+                    this.api.image({
+                        id: this.form.id ,
+                        image: this.image.url ,
+                    } , (res , code) => {
+                        resolve();
+                        if (code != 200) {
+                            this.eNotice(res);
+                            return ;
+                        }
+                    });
+                });
             }).then(() => {
                 this.confirm('检测模块' , '/detectionModule/list');
             }).finally(() => {

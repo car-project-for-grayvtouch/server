@@ -1,0 +1,78 @@
+/*
+ * ******************
+ * 模块控制器
+ * ******************
+ */
+.module-container {
+
+}
+
+.module-container .module-content {
+
+}
+
+.module-container .module-content > .in {
+
+}
+
+.module-container .module-content > .in > form {
+
+}
+
+.module-container .module-content > .in > form:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.module-container .module-content > .in > form > * {
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+.module-container .module-content > .in > form .preview {
+
+}
+
+.module-container .module-content > .in > form .preview > .in {
+    position: relative;
+}
+
+.module-container .module-content > .in > form .preview > .in .image {
+    max-width: 100%;
+}
+
+.module-container .module-content > .in > form .preview > .in .empty {
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/**
+ * **********************************
+ * 输入表单
+ * **********************************
+ */
+.input-tb {
+
+}
+
+.input-tb tbody tr td .line {
+    margin-bottom: 12px;
+}
+
+.input-tb tbody tr td .line:nth-last-of-type(1) {
+    /*margin-bottom: 0;*/
+}
+
+.input-tb tbody tr td .line .form-text {
+    min-width: auto;
+    width: 130px;
+}

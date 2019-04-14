@@ -109,4 +109,19 @@ class DetectionModule extends Controller
         return success($res['data']);
     }
 
+    public function image()
+    {
+        $param = request()->post();
+        $param['id'] = $param['id'] ?? '';
+        $param['image'] = $param['image'] ?? '';
+        $res = DetectionModuleAction::image($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
 }

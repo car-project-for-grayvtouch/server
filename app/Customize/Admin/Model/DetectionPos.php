@@ -31,7 +31,10 @@ class DetectionPos extends Model
         $res = self::with([
                 'group' => function($query){
 
-                }
+                } ,
+                'module' => function(){
+
+                } ,
             ])
             ->where($where)
             ->orderBy($order['field'] , $order['value'])
@@ -43,5 +46,10 @@ class DetectionPos extends Model
     public function group()
     {
         return $this->belongsTo(DetectionGroup::class , 'detection_group_id' , 'id');
+    }
+
+    public function module()
+    {
+        return $this->belongsTo(DetectionModule::class , 'detection_module_id' , 'id');
     }
 }

@@ -31,8 +31,10 @@ class DetectionPosAction extends Action
     {
         $validator = Validator::make($param , [
             'name' => 'required' ,
+            'detection_module_id' => 'required' ,
         ] , [
-            'name.required' => 'name 尚未提供' ,
+            'name.required' => '必须' ,
+            'detection_module_id.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
@@ -41,6 +43,7 @@ class DetectionPosAction extends Action
         $param['weight'] = $param['weight'] != '' ? intval($param['weight']) : config('app.weight');
         $id = DetectionPos::insertGetId(array_unit($param , [
             'name' ,
+            'detection_module_id' ,
             'detection_group_id' ,
             'weight'
         ]));
@@ -51,8 +54,10 @@ class DetectionPosAction extends Action
     {
         $validator = Validator::make($param , [
             'name' => 'required' ,
+            'detection_module_id' => 'required' ,
         ] , [
             'name.required' => 'name 尚未提供' ,
+            'detection_module_id.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
@@ -68,6 +73,7 @@ class DetectionPosAction extends Action
         $param['weight'] = $param['weight'] == '' ? $m->weight : $param['weight'];
         DetectionPos::updateById($param['id'] , array_unit($param , [
             'name' ,
+            'detection_module_id' ,
             'detection_group_id' ,
             'weight'
         ]));

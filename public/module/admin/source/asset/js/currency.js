@@ -77,6 +77,12 @@ function $closeAll()
     layer.closeAll();
 }
 
+function determine(count , total , callback) {
+    if (count == total) {
+        callback();
+    }
+}
+
 Object.assign(window , {
     forceLogout ,
     isLogin ,
@@ -89,4 +95,5 @@ Object.assign(window , {
     $tip ,
     $unknow ,
     firstLetter ,
+    determine ,
 });

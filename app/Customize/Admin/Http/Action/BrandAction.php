@@ -121,8 +121,8 @@ class BrandAction extends Action
             'id' => 'required' ,
             'image' => 'required' ,
         ] , [
-            'id.required' => 'username 尚未提供' ,
-            'image.required' => 'username 尚未提供' ,
+            'id.required' => 'id 尚未提供' ,
+            'image.required' => 'image 尚未提供' ,
         ]);
         if ($validator->fails()) {
             return self::error(get_form_error($validator));

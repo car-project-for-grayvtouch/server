@@ -56,6 +56,7 @@
                                 </th>
                                 <th class="w-40">ID</th>
                                 <th class="w-130">名称</th>
+                                <th class="w-130">映射图片</th>
                                 <th class="w-30">
                                     权重
                                     <span class="arrow">
@@ -72,6 +73,7 @@
                                 <td><input type="checkbox" class="c-box"></td>
                                 <td>{{ v.id }}</td>
                                 <td>{{ v.name }}</td>
+                                <td><img :src="v.image" class="image"></td>
                                 <td>{{ v.weight }}</td>
                                 <td>{{ v.create_time }}</td>
                                 <td>
@@ -84,7 +86,7 @@
                                 </td>
                             </tr>
                             <tr v-if="data.length == 0">
-                                <td colspan="6">没有相关数据</td>
+                                <td colspan="7">没有相关数据</td>
                             </tr>
                             </tbody>
                         </table>

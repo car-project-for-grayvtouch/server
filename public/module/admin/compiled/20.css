@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-8d7dd9f8] {
+.module-container[data-v-4ff2d16e] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-8d7dd9f8] {
+.module-container > *[data-v-4ff2d16e] {
     padding: 0 20px;
 }
 
@@ -24,13 +24,47 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-8d7dd9f8] {
+.module-container > .module-content[data-v-4ff2d16e] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-8d7dd9f8] {
+.module-container > .module-content > .in[data-v-4ff2d16e] {
     padding: 20px;
     background-color: white;
 }
-
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZ2xvYmFsLmNzcyIsIndlYnBhY2s6Ly8vcHVibGljLmNzcz9lNWJlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7O0VBSUU7QUFDRjtJQUNJLFVBQVU7QUFDZCxDO0FDUEE7Ozs7RUFJRTtBQUNGO0lBQ0ksa0JBQWtCO0lBQ2xCLGNBQWM7QUFDbEI7QUFDQTtJQUNJLGVBQWU7QUFDbkI7O0FBRUE7Ozs7RUFJRTtBQUNGO0lBQ0ksb0JBQW9CO0FBQ3hCO0FBQ0E7SUFDSSxhQUFhO0lBQ2IsdUJBQXVCO0FBQzNCLEMiLCJmaWxlIjoiMjAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXHJcbiAqICoqKioqKioqKioqKioqKioqKioqKipcclxuICog6Ieq5Yqo5Yqg6L295bGC57qn6K6+572uXHJcbiAqICoqKioqKioqKioqKioqKioqKioqKipcclxuICovXG4ubW9kdWxlLWNvbnRhaW5lciAuTG9hZGluZyB7XHJcbiAgICB6LWluZGV4OiA5O1xufSIsIi8qKlxyXG4gKiAqKioqKioqKioqKioqKioqKipcclxuICog5qih5Z2X5YWo5bGA6K6+572uXHJcbiAqICoqKioqKioqKioqKioqKioqKlxyXG4gKi9cbi5tb2R1bGUtY29udGFpbmVyW2RhdGEtdi04ZDdkZDlmOF0ge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgcGFkZGluZy10b3A6IDA7XG59XG4ubW9kdWxlLWNvbnRhaW5lciA+ICpbZGF0YS12LThkN2RkOWY4XSB7XHJcbiAgICBwYWRkaW5nOiAwIDIwcHg7XG59XHJcblxyXG4vKipcclxuICogKioqKioqKioqKioqKioqKioqXHJcbiAqIOaooeWdl+WGheWuuVxyXG4gKiAqKioqKioqKioqKioqKioqKipcclxuICovXG4ubW9kdWxlLWNvbnRhaW5lciA+IC5tb2R1bGUtY29udGVudFtkYXRhLXYtOGQ3ZGQ5ZjhdIHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuLm1vZHVsZS1jb250YWluZXIgPiAubW9kdWxlLWNvbnRlbnQgPiAuaW5bZGF0YS12LThkN2RkOWY4XSB7XHJcbiAgICBwYWRkaW5nOiAyMHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59Il0sInNvdXJjZVJvb3QiOiIifQ==*/
+.module-container[data-v-4ff2d16e] {
+}
+.module-container .module-content[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in > form[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in > form[data-v-4ff2d16e]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.module-container .module-content > .in > form > *[data-v-4ff2d16e] {
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.module-container .module-content > .in > form .preview[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in > form .preview > .in[data-v-4ff2d16e] {
+    position: relative;
+}
+.module-container .module-content > .in > form .preview > .in .image[data-v-4ff2d16e] {
+    max-width: 100%;
+}
+.module-container .module-content > .in > form .preview > .in .empty[data-v-4ff2d16e] {
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-weight: bold;
+}

@@ -4,6 +4,7 @@ export default {
         return {
             form: {
                 name: '' ,
+                detection_module_id: '' ,
                 detection_group_id: 0 ,
                 weight: 0 ,
             } ,
@@ -24,6 +25,8 @@ export default {
             } ,
             api: detectionPosApi ,
             group: [] ,
+            module: [] ,
+            preview: '' ,
         };
     } ,
     created () {
@@ -51,8 +54,19 @@ export default {
 
         initialize () {
             new Promise((resolve) => {
+                let count = 0;
+                let total = 2;
+                // 获取模块
+                detectionModuleApi.all((res , code) => {
+                    if (code != 200) {
+                        this.eNotice(res);
+                        resolve(false);
+                        return ;
+                    }
+                    this.module = res;
+                    this.determine(++count , total , resolve.bind(null , true));
+                });
                 // 获取分组
-                this.ins.loading.show();
                 detectionGroupApi.all((res , code) => {
                     if (code != 200) {
                         this.eNotice(res);
@@ -60,22 +74,32 @@ export default {
                         return ;
                     }
                     this.group = res;
-                    resolve(true);
+                    this.determine(++count , total , resolve.bind(null , true));
                 });
             }).then((next) => {
-                return new Promise((resolve) => {
-                    if (!next) {
-                        resolve();
-                        return ;
-                    }
-                    this.getData(() => {
-                        resolve();
-                    });
+                if (!next) {
+                    return ;
+                }
+                this.getData(() => {
+                    this.setPreview(this.form.detection_module_id);
                 });
-            }).finally(() => {
-                this.ins.loading.hide();
             });
         } ,
+
+        setPreview (value) {
+            let i = 0;
+            let cur = null;
+            for (; i < this.module.length; ++i)
+            {
+                cur = this.module[i];
+                if (cur.id == value) {
+                    this.preview = cur.image;
+                    return ;
+                }
+            }
+            this.preview = '';
+        } ,
+
         // 获取数据
         check (data) {
             return {
@@ -122,5 +146,5 @@ export default {
                 this.initialState('loading' , 'submit' , 'submit');
             });
         } ,
-    }
+    } ,
 }

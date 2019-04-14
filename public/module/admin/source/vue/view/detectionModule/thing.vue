@@ -15,6 +15,44 @@
                                 <span class="msg">{{ error.name }}</span>
                             </td>
                         </tr>
+                        <tr id="image" :class="getClass(error.image)">
+                            <td>检测项映射图片</td>
+                            <td ref="image-container">
+                                <div class='upload-image'>
+                                    <div class='select-images'>
+                                        <div class="upload-show">
+                                            <div class="image-line"><img src="" class="image upload-image-btn" /><span class="selected-count hide">10</span></div>
+                                            <div class="text-line">请选择要上传的图片</div>
+                                            <div class="clear-selected" title="清空已选择的图片"><img src="" class="image" /></div>
+                                            <input type='file' name='upload_images' multiple="multiple" class='upload-images-input'  />
+                                        </div>
+                                        <div class="tip">这边是提示内容</div>
+                                    </div>
+                                    <!-- 预置显示图片 -->
+                                    <div class="init-show-image-list">
+                                        <img :src="form.image" v-if="param.mode == 'edit' && form.image" class="init-show-image" />
+                                    </div>
+                                    <div class='preview-images hide'></div>
+                                    <!-- 待上传列表 -->
+                                    <div class="upload-image-list hide">
+                                        <div class="upload-title">待上传列表</div>
+                                        <div class="image-list">
+                                            <div class="list-content list-title">
+                                                <div class="item div-preview">图片预览</div>
+                                                <div class="item div-type">类型</div>
+                                                <div class="item div-size">大小</div>
+                                                <div class="item div-speed">速度</div>
+                                                <div class="item div-status">状态</div>
+                                                <div class="item div-opr">操作</div>
+                                            </div>
+                                            <div class="list-content list-body"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.image }}</span>
+                            </td>
+                        </tr>
                         <tr id="weight" :class="getClass(error.weight)">
                             <td>权重</td>
                             <td>

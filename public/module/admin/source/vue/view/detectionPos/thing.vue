@@ -11,8 +11,19 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.name">
                                 <span class="necessary">*</span>
-                                <span class="tip"></span>
+                                <span class="tip">如果有映射图，建议命名：[序号]名称；例如：[1]左A柱</span>
                                 <span class="msg">{{ error.name }}</span>
+                            </td>
+                        </tr>
+                        <tr id="detection_module_id" :class="getClass(error.detection_module_id)">
+                            <td>检测模块</td>
+                            <td>
+                                <i-select v-model="form.detection_module_id" style="width: 300px;" @on-change="setPreview">
+                                    <i-option v-for="v in module" :key="v.id" :value="v.id">{{ v.name }}</i-option>
+                                </i-select>
+                                <span class="necessary">*</span>
+                                <span class="tip"></span>
+                                <span class="msg">{{ error.detection_module_id }}</span>
                             </td>
                         </tr>
                         <tr id="detection_group_id" :class="getClass(error.detection_group_id)">
@@ -42,6 +53,12 @@
                         </tr>
                         </tbody>
                     </table>
+                    <div class="preview">
+                        <div class="in">
+                            <img :src="preview" class="image" v-if="preview">
+                            <div v-else class="empty">暂无模块映射图，请前往检测模块处添加（可选）</div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,6 +1,7 @@
 const main = `${topContext.api}detectionModule/module`;
 const detail = `${topContext.api}detectionModule/module/?`;
 const all = `${topContext.api}detectionModule/all`;
+const image = `${topContext.api}detectionModule/image`;
 
 export default {
     list (data , success , error) {
@@ -56,6 +57,16 @@ export default {
         return G.ajax({
             url: all ,
             method: 'get' ,
+            success ,
+            error
+        });
+    } ,
+
+    image (data , success , error) {
+        return G.ajax({
+            url: image ,
+            method: 'patch' ,
+            data ,
             success ,
             error
         });

@@ -40,6 +40,7 @@ class DetectionPos extends Controller
     {
         $param = request()->post();
         $param['name']  = $param['name'] ?? '';
+        $param['detection_module_id ']  = $param['detection_module_id '] ?? '';
         $param['detection_group_id ']  = $param['detection_group_id '] ?? '';
         $param['weight']  = $param['weight'] ?? '';
         $res = DetectionPosAction::add($param);
@@ -58,6 +59,7 @@ class DetectionPos extends Controller
         $param = request()->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
+        $param['detection_module_id ']  = $param['detection_module_id '] ?? '';
         $param['detection_group_id ']  = $param['detection_group_id '] ?? '';
         $param['weight']  = $param['weight'] ?? '';
         $res = DetectionPosAction::edit($param);

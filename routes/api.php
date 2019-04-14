@@ -195,6 +195,7 @@ Route::prefix('admin')
         Route::patch('detectionModule/module' , 'DetectionModule@edit');
         Route::delete('detectionModule/module' , 'DetectionModule@del');
         Route::get('detectionModule/all' , 'DetectionModule@all');
+        Route::patch('detectionModule/image' , 'DetectionModule@image');
 
         /**
          * ******************************
@@ -231,4 +232,18 @@ Route::prefix('admin')
         Route::patch('detectionItem/item' , 'DetectionItem@edit');
         Route::delete('detectionItem/item' , 'DetectionItem@del');
         Route::get('detectionItem/all' , 'DetectionItem@all');
+
+
+        /**
+         * ******************************
+         * 车辆服务
+         * ******************************
+         */
+        Route::get('service/service/{id}' , 'Service@detail');
+        Route::get('service/service' , 'Service@list');
+        Route::post('service/service' , 'Service@add');
+        Route::patch('service/service' , 'Service@edit');
+        Route::delete('service/service' , 'Service@del');
+        Route::put('service/image' , 'Service@image');
+        Route::get('service/all' , 'Service@all');
     });

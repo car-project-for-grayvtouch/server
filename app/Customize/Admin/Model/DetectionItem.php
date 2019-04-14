@@ -28,10 +28,34 @@ class DetectionItem extends Model
         if ($filter['name'] != '') {
             $where[] = ['name' , 'like' , "%{$filter['name']}%"];
         }
-        $res = self::where($where)
+        $res = self::with([
+                'position' => function($query){
+
+                } ,
+            ])
+            ->where($where)
             ->orderBy($order['field'] , $order['value'])
             ->paginate($limit);
         self::multiple($res->getCollection());
+        foreach ($res as &$v)
+        {
+            if (empty($v->position)) {
+                continue ;
+            }
+            $v->module = DetectionModule::findById($v->position->detection_module_id);
+        }
         return $res;
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(DetectionPOs::class , 'detection_pos_id' , 'id');
+    }
+
+    public static function single(Model $m = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
     }
 }

@@ -56,7 +56,8 @@
                                 </th>
                                 <th class="w-40">ID</th>
                                 <th class="w-130">名称</th>
-                                <th class="w-130">位置分组</th>
+                                <th class="w-130">检测模块【ID】</th>
+                                <th class="w-130">位置分组【ID】</th>
                                 <th class="w-30">
                                     权重
                                     <span class="arrow">
@@ -73,7 +74,8 @@
                                 <td><input type="checkbox" class="c-box"></td>
                                 <td>{{ v.id }}</td>
                                 <td>{{ v.name }}</td>
-                                <td>{{ v.group ? v.group.name : '' }}</td>
+                                <td>{{ v.module ? `${v.module.name}【${v.module.id}】` : '' }}</td>
+                                <td>{{ v.group ? `${v.group.name}【${v.group.id}】` : '' }}</td>
                                 <td>{{ v.weight }}</td>
                                 <td>{{ v.create_time }}</td>
                                 <td>
@@ -86,7 +88,7 @@
                                 </td>
                             </tr>
                             <tr v-if="data.length == 0">
-                                <td colspan="6">没有相关数据</td>
+                                <td colspan="7">没有相关数据</td>
                             </tr>
                             </tbody>
                         </table>

@@ -31,25 +31,30 @@ class DetectionItemAction extends Action
     {
         $validator = Validator::make($param , [
             'name' => 'required' ,
-            'detection_item_id' => 'required' ,
+            'detection_pos_id' => 'required' ,
             'option' => 'required' ,
         ] , [
             'name.required' => '必须' ,
-            'detection_item_id.required' => '必须' ,
+            'detection_pos_id.required' => '必须' ,
             'option.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
         }
+        if (empty($param['detection_pos_id'])) {
+            return self::error([
+                'detection_pos_id' => '必须' ,
+            ]);
+        }
         if (empty(json_decode($param['option']))) {
             return self::error([
-                'option' => 'option 尚未提供' ,
+                'option' => '必须' ,
             ]);
         }
         $param['weight'] = $param['weight'] != '' ? intval($param['weight']) : config('app.weight');
         $id = DetectionItem::insertGetId(array_unit($param , [
             'name' ,
-            'detection_item_id' ,
+            'detection_pos_id' ,
             'option' ,
             'weight'
         ]));
@@ -60,15 +65,20 @@ class DetectionItemAction extends Action
     {
         $validator = Validator::make($param , [
             'name' => 'required' ,
-            'detection_item_id' => 'required' ,
+            'detection_pos_id' => 'required' ,
             'option' => 'required' ,
         ] , [
             'name.required' => '必须' ,
-            'detection_item_id.required' => '必须' ,
+            'detection_pos_id.required' => '必须' ,
             'option.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
+        }
+        if (empty($param['detection_pos_id'])) {
+            return self::error([
+                'detection_pos_id' => '必须' ,
+            ]);
         }
         if (empty($param['id'])) {
             return self::error('id 尚未提供');
@@ -79,13 +89,13 @@ class DetectionItemAction extends Action
         }
         if (empty(json_decode($param['option']))) {
             return self::error([
-                'option' => 'option 尚未提供' ,
+                'option' => '必须' ,
             ]);
         }
         $param['weight'] = $param['weight'] == '' ? $m->weight : $param['weight'];
         DetectionItem::updateById($param['id'] , array_unit($param , [
             'name' ,
-            'detection_item_id' ,
+            'detection_pos_id' ,
             'option' ,
             'weight'
         ]));
