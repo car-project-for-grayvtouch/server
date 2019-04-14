@@ -5,7 +5,7 @@ if (G.isNull(count)) {
 }
 count = parseInt(count);
 if (isLogin()) {
-    if (count <= 2) {
+    if (false) {
         // 提示版本更新
         layer.alert(`
         <h4 style='font-weight:bold; text-align: center;margin-bottom: 5px;'>版本升级 1.0.3 -> 1.0.4</h4>
