@@ -4,21 +4,21 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1
+class ComposerStaticInit9e7d78ec6f93e5cb02d4e1fc215f07e5
 {
     public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '5e8fe2a5ffaded85af682684fe3bbf5a' => __DIR__ . '/..' . '/mews/captcha/src/helpers.php',
@@ -132,8 +132,8 @@ class ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -367,9 +367,27 @@ class ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Customize\\Admin\\Http\\Action\\Action' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/Action.php',
+        'App\\Customize\\Admin\\Http\\Action\\AdminUserAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/AdminUserAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\BrandAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/BrandAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\CarConfigurationAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/CarConfigurationAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\CarConfigurationGroupAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/CarConfigurationGroupAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\CarModelAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/CarModelAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\CarSeriesAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/CarSeriesAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\CarSeriesGroupAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/CarSeriesGroupAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\CarTypeAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/CarTypeAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\DetectionGroupAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/DetectionGroupAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\DetectionItemAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/DetectionItemAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\DetectionModuleAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/DetectionModuleAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\DetectionPosAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/DetectionPosAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\OAuthAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/OAuthAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\RoleAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/RoleAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\RouteAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/RouteAction.php',
+        'App\\Customize\\Admin\\Http\\Action\\ServiceAction' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Action/ServiceAction.php',
         'App\\Customize\\Admin\\Http\\Middleware\\Customize' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Middleware/Customize.php',
         'App\\Customize\\Admin\\Http\\Middleware\\Loader' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Middleware/Loader.php',
         'App\\Customize\\Admin\\Http\\Middleware\\PrivAuth' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Middleware/PrivAuth.php',
+        'App\\Customize\\Admin\\Http\\Middleware\\Throwable' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Middleware/Throwable.php',
         'App\\Customize\\Admin\\Http\\Middleware\\UserAuth' => __DIR__ . '/../..' . '/app/Customize/Admin/Http/Middleware/UserAuth.php',
         'App\\Customize\\Admin\\Model\\AdminLandLog' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/AdminLandLog.php',
         'App\\Customize\\Admin\\Model\\AdminToken' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/AdminToken.php',
@@ -377,27 +395,53 @@ class ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1
         'App\\Customize\\Admin\\Model\\Article' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/Article.php',
         'App\\Customize\\Admin\\Model\\ArticleContent' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/ArticleContent.php',
         'App\\Customize\\Admin\\Model\\ArticleType' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/ArticleType.php',
+        'App\\Customize\\Admin\\Model\\Brand' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/Brand.php',
+        'App\\Customize\\Admin\\Model\\CarConfiguration' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/CarConfiguration.php',
+        'App\\Customize\\Admin\\Model\\CarConfigurationGroup' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/CarConfigurationGroup.php',
+        'App\\Customize\\Admin\\Model\\CarModel' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/CarModel.php',
+        'App\\Customize\\Admin\\Model\\CarModelWithConfiguration' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/CarModelWithConfiguration.php',
+        'App\\Customize\\Admin\\Model\\CarSeries' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/CarSeries.php',
+        'App\\Customize\\Admin\\Model\\CarSeriesGroup' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/CarSeriesGroup.php',
+        'App\\Customize\\Admin\\Model\\CarType' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/CarType.php',
+        'App\\Customize\\Admin\\Model\\DetectionGroup' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/DetectionGroup.php',
+        'App\\Customize\\Admin\\Model\\DetectionItem' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/DetectionItem.php',
+        'App\\Customize\\Admin\\Model\\DetectionModule' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/DetectionModule.php',
+        'App\\Customize\\Admin\\Model\\DetectionPos' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/DetectionPos.php',
         'App\\Customize\\Admin\\Model\\Image' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/Image.php',
+        'App\\Customize\\Admin\\Model\\Model' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/Model.php',
         'App\\Customize\\Admin\\Model\\ModelInterface' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/ModelInterface.php',
         'App\\Customize\\Admin\\Model\\Role' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/Role.php',
+        'App\\Customize\\Admin\\Model\\RolePrivilege' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/RolePrivilege.php',
         'App\\Customize\\Admin\\Model\\Route' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/Route.php',
+        'App\\Customize\\Admin\\Model\\Service' => __DIR__ . '/../..' . '/app/Customize/Admin/Model/Service.php',
         'App\\Customize\\Admin\\Util\\File' => __DIR__ . '/../..' . '/app/Customize/Admin/Util/File.php',
+        'App\\Customize\\Admin\\Util\\Misc' => __DIR__ . '/../..' . '/app/Customize/Admin/Util/Misc.php',
         'App\\Customize\\Admin\\Util\\OAuth' => __DIR__ . '/../..' . '/app/Customize/Admin/Util/OAuth.php',
-        'App\\Customize\\Admin\\Util\\UserForOAuth' => __DIR__ . '/../..' . '/app/Customize/Admin/Util/UserForOAuth.php',
-        'App\\Customize\\Admin\\V1\\Util\\AdminUser' => __DIR__ . '/../..' . '/app/Customize/Admin/Util/AdminUser.php',
-        'App\\Customize\\Admin\\V1\\Util\\Misc' => __DIR__ . '/../..' . '/app/Customize/Admin/Util/Misc.php',
         'App\\Customize\\Util\\VerifyCode' => __DIR__ . '/../..' . '/app/Customize/Util/VerifyCode.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\AdminUser' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminUser.php',
         'App\\Http\\Controllers\\Admin\\Article' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Article.php',
         'App\\Http\\Controllers\\Admin\\ArticleType' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ArticleType.php',
+        'App\\Http\\Controllers\\Admin\\Brand' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Brand.php',
+        'App\\Http\\Controllers\\Admin\\CarConfiguration' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CarConfiguration.php',
+        'App\\Http\\Controllers\\Admin\\CarConfigurationGroup' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CarConfigurationGroup.php',
+        'App\\Http\\Controllers\\Admin\\CarModel' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CarModel.php',
+        'App\\Http\\Controllers\\Admin\\CarSeries' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CarSeries.php',
+        'App\\Http\\Controllers\\Admin\\CarSeriesGroup' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CarSeriesGroup.php',
+        'App\\Http\\Controllers\\Admin\\CarType' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CarType.php',
         'App\\Http\\Controllers\\Admin\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Controller.php',
+        'App\\Http\\Controllers\\Admin\\DetectionGroup' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DetectionGroup.php',
+        'App\\Http\\Controllers\\Admin\\DetectionItem' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DetectionItem.php',
+        'App\\Http\\Controllers\\Admin\\DetectionModule' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DetectionModule.php',
+        'App\\Http\\Controllers\\Admin\\DetectionPos' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DetectionPos.php',
         'App\\Http\\Controllers\\Admin\\File' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/File.php',
         'App\\Http\\Controllers\\Admin\\Image' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Image.php',
         'App\\Http\\Controllers\\Admin\\Misc' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Misc.php',
         'App\\Http\\Controllers\\Admin\\OAuth' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/OAuth.php',
         'App\\Http\\Controllers\\Admin\\Role' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Role.php',
+        'App\\Http\\Controllers\\Admin\\Root' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Root.php',
         'App\\Http\\Controllers\\Admin\\Route' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Route.php',
+        'App\\Http\\Controllers\\Admin\\Service' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Service.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Cors' => __DIR__ . '/../..' . '/app/Http/Middleware/Cors.php',
@@ -3956,11 +4000,11 @@ class ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit7d11100079ff39333b1295a05b0c0fd1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9e7d78ec6f93e5cb02d4e1fc215f07e5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9e7d78ec6f93e5cb02d4e1fc215f07e5::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit9e7d78ec6f93e5cb02d4e1fc215f07e5::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit9e7d78ec6f93e5cb02d4e1fc215f07e5::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit9e7d78ec6f93e5cb02d4e1fc215f07e5::$classMap;
 
         }, null, ClassLoader::class);
     }
