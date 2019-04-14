@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
-    exit('<h2 style="position: fixed;left: 50%; top: 50%; transform: translate(-50% , -50%);">欢迎访问 <b style="color: green">陈学龙</b> 的个人网站！</h2>');
+//    exit('<h2 style="position: fixed;left: 50%; top: 50%; transform: translate(-50% , -50%);">欢迎访问 <b style="color: green">陈学龙</b> 的个人网站！</h2>');
+    header('Location: /module/admin/compiled/app.html');
 });
