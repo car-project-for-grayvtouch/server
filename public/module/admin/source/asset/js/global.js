@@ -1,6 +1,6 @@
 import mixins from './mixinOption.js';
 
-const host = 'http://car.com/';
+const host = '/';
 const plugin = `${host}plugin/`;
 const api = `${host}api/admin/`;
 const imageApiForwangEditor = `${api}Image/saveForWangEditor`;
