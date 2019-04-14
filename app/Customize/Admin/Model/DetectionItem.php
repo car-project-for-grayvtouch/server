@@ -49,7 +49,7 @@ class DetectionItem extends Model
 
     public function position()
     {
-        return $this->belongsTo(DetectionPOs::class , 'detection_pos_id' , 'id');
+        return $this->belongsTo(DetectionPos::class , 'detection_pos_id' , 'id');
     }
 
     public static function single(Model $m = null)
