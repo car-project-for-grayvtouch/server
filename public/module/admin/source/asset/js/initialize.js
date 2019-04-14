@@ -65,10 +65,6 @@ G.ajax.responded = function(res , code){
         });
         return false;
     }
-    if (code == 403) {
-        $error(res);
-        return false;
-    }
     if (code == 500) {
         $error('服务器发生内部错误，请稍后再试');
         return false;

@@ -3,7 +3,7 @@
         <v-loading ref="loading"></v-loading>
         <form class="form" @submit.prevent="submit">
             <div class="top">
-                <div class="image-container"><img :src="$store.state.topContext.host + '/static/image/avatar.jpg'" class="image"></div>
+                <div class="image-container"><img src="/static/image/logo.jpg" class="image"></div>
             </div>
             <div class="btm">
                 <div class="line field">

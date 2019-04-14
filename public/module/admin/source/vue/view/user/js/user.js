@@ -84,11 +84,8 @@ export default {
                             vScroll(G.firstKey(res));
                             return ;
                         }
-                        if (code == 460) {
-                            // 特殊错误
-                            this.$error(res);
-                            return ;
-                        }
+                        this.$error(res);
+                        return ;
                     }
                     this.form.id = res;
                     resolve();

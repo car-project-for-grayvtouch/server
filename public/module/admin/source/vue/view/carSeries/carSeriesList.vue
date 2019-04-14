@@ -56,8 +56,8 @@
                                 </th>
                                 <th class="w-40">ID</th>
                                 <th class="w-120">名称</th>
-                                <th class="w-120">品牌</th>
-                                <th class="w-120">分组</th>
+                                <th class="w-120">品牌【ID】</th>
+                                <th class="w-120">分组【ID】</th>
                                 <th class="w-30">
                                     权重
                                     <span class="arrow">
@@ -74,8 +74,8 @@
                                 <td><input type="checkbox" class="c-box"></td>
                                 <td>{{ v.id }}</td>
                                 <td>{{ v.name }}</td>
-                                <td>{{ v.brand ? v.brand.name : '' }}</td>
-                                <td>{{ v.group ? v.group.name : '' }}</td>
+                                <td>{{ v.brand ? `${v.brand.name}【${v.brand.id}】` : '' }}</td>
+                                <td>{{ v.group ? `${v.group.name}【${v.group.id}】` : '' }}</td>
                                 <td>{{ v.weight }}</td>
                                 <td>{{ v.create_time }}</td>
                                 <td>

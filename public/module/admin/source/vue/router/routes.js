@@ -33,6 +33,8 @@ const listForDectionItem = () => import('../view/DetectionItem/list.vue');
 const thingForDectionItem = () => import('../view/DetectionItem/thing.vue');
 const listForService = () => import('../view/service/list.vue');
 const thingForService = () => import('../view/service/thing.vue');
+const listForCar = () => import('../view/car/list.vue');
+const thingForCar = () => import('../view/car/thing.vue');
 
 export default [
     {
@@ -318,5 +320,23 @@ export default [
     {
         path: '/service/add' ,
         component: thingForService
+    } ,
+
+    /**
+     * ***********************
+     * 车辆管理
+     * ***********************
+     */
+    {
+        path: '/car/list' ,
+        component: listForCar
+    } ,
+    {
+        path: '/car/edit' ,
+        component: thingForCar
+    } ,
+    {
+        path: '/car/add' ,
+        component: thingForCar
     } ,
 ];

@@ -17,7 +17,7 @@
                             </div>
                             <div class="option">
                                 <div class="field">名称：</div>
-                                <div class="value"><input type="text" v-model="form.name" class="form-text"></div>
+                                <div class="value"><input type="text" v-model="form.username" class="form-text"></div>
                             </div>
                             <div class="option">
                                 <div class="field"></div>
@@ -38,10 +38,10 @@
                         <div class="run-title">
                             <div class="left">数据列表</div>
                             <div class="right">
-                                <button type="button" class="run-button run-button-orange" @click="delSelected">
-                                    <i class="run-iconfont run-delete"></i>
-                                    删除选中项
-                                </button>
+                                <!--<button type="button" class="run-button run-button-orange" @click="delSelected">-->
+                                    <!--<i class="run-iconfont run-delete"></i>-->
+                                    <!--删除选中项-->
+                                <!--</button>-->
                                 <button type="button" class="run-button run-button-blue" @click="location('/admin/add' , {mode: 'add'})">
                                     <i class="run-iconfont run-add"></i>
                                     添加
@@ -97,13 +97,13 @@
                                     <button type="button" class="run-button run-button-blue" @click.stop="location('/admin/edit' , {id: v.id , mode: 'edit'})">
                                         <i class="run-iconfont run-edit"></i>编辑
                                     </button>
-                                    <button type="button" class="run-button run-button-orange" @click="delTarget(v.id)">
-                                        <i class="run-iconfont run-delete"></i>删除
-                                    </button>
+                                    <!--<button type="button" class="run-button run-button-orange" @click="delTarget(v.id)">-->
+                                        <!--<i class="run-iconfont run-delete"></i>删除-->
+                                    <!--</button>-->
                                 </td>
                             </tr>
                             <tr v-if="data.length == 0">
-                                <td colspan="6">没有相关数据</td>
+                                <td colspan="7">没有相关数据</td>
                             </tr>
                             </tbody>
                         </table>

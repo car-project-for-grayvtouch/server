@@ -4,7 +4,7 @@ export default {
         return {
             form: {
                 id: '' ,
-                name: '' ,
+                username: '' ,
                 order: '' ,
             } ,
             ins: {

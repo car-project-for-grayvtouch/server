@@ -123,15 +123,16 @@ create table if not exists `xq_car_type` (
 drop table if exists `xq_car`;
 create table if not exists `xq_car` (
   id int unsigned not null auto_increment ,
+  title char(255) default 0 comment '标题' ,
   brand_id int unsigned default 0 comment 'xq_brand.id' ,
-  car_serires_id int unsigned default 0 comment 'xq_car_series.id' ,
+  car_series_id int unsigned default 0 comment 'xq_car_series.id' ,
   car_model_id int unsigned default 0 comment 'xq_car_model.id' ,
   price decimal(13,2) unsigned default 0 comment '当前价格，单位：美元' ,
   mileage decimal(13,2) unsigned default 0 comment '行驶里程，单位：英里' ,
   transfer_record tinyint unsigned default 0 comment '过户记录（次数）' ,
   color char(255) default '' comment '车辆颜色' ,
+  thumb varchar(500) default '' comment '封面' ,
   view_count int unsigned default 0 comment '浏览次数' ,
-  test_time datetime default current_timestamp comment '检测时间（对应检测报告）' ,
   sale_point enum('affordable' , 'new' , 'luxury' , 'none') default 'none' comment '销售亮点：affordable-经济实惠；new-准新车；luxury-豪华车' ,
   create_time datetime default current_timestamp ,
   update_time datetime default current_timestamp on update current_timestamp ,
@@ -199,6 +200,7 @@ create table if not exists `xq_service` (
   id int unsigned not null auto_increment ,
   name char(255) default '' comment '服务名称' ,
   image varchar(500) default '' comment '展示图片' ,
+  weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '服务';

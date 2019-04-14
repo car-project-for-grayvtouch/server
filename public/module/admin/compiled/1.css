@@ -46,6 +46,21 @@
     margin-bottom: 0;
 }
 
+
+/**
+ * ********************
+ * 选项切换中需要用到
+ * ********************
+ */
+.module-container .module-content > .in > form .options > *[data-v-57dba74f] {
+}
+.module-container .module-content > .in > form .options > * > *[data-v-57dba74f] {
+    margin-bottom: 20px;
+}
+.module-container .module-content > .in > form .options > * > *[data-v-57dba74f]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+
 /**
  * **********************
  * 车辆配置

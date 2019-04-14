@@ -155,6 +155,12 @@ class AdminUserAction extends Action
         if (empty($m)) {
             return self::error('未找到 id 对应记录' , 404);
         }
+        if ($m->is_root == 'y') {
+            // 检查是否是 root 用户
+            if ($m->id != user()->id) {
+                return self::error('您没有权限操作 root 用户' , 403);
+            }
+        }
         if (isset($param['password']) && !empty($param['password']) && !check_len($param['password'] , 6 , 'gte')) {
             return self::error([
                 'password' => '密码格式错误' ,

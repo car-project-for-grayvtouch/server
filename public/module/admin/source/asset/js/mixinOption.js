@@ -137,7 +137,7 @@ export default {
                         return ;
                     }
                     this.ins.loading.show();
-                    this.ajax.del = this.api.del({
+                    this.ajax.del = this.api[G.isString(this.delAction) ? this.delAction : 'del']({
                         id_list: G.jsonEncode(idList)
                     } , (res , code) => {
                         this.pending.del = false;

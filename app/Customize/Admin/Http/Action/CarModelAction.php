@@ -263,9 +263,9 @@ class CarModelAction extends Action
         return self::success($res);
     }
 
-    public static function all()
+    public static function all(array $param)
     {
-        $res = CarModel::getAll();
+        $res = CarModel::getAll($param);
         return self::success($res);
     }
 }

@@ -24,6 +24,7 @@ import detectionGroupApi from '../../api/detectionGroup.js';
 import detectionPosApi from '../../api/detectionPos.js';
 import detectionItemApi from '../../api/detectionItem.js';
 import serviceApi from '../../api/service.js';
+import carApi from '../../api/car.js';
 
 Object.assign(window , {
     adminApi ,
@@ -47,4 +48,5 @@ Object.assign(window , {
     detectionPosApi ,
     detectionItemApi ,
     serviceApi ,
+    carApi ,
 });

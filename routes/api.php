@@ -246,4 +246,19 @@ Route::prefix('admin')
         Route::delete('service/service' , 'Service@del');
         Route::put('service/image' , 'Service@image');
         Route::get('service/all' , 'Service@all');
+
+        /**
+         * ******************************
+         * 车辆管理
+         * ******************************
+         */
+        Route::get('car/car/{id}' , 'Car@detail');
+        Route::get('car/car' , 'Car@list');
+        Route::post('car/car' , 'Car@add');
+        Route::put('car/car' , 'Car@edit');
+        Route::delete('car/car' , 'Car@del');
+        Route::get('car/all' , 'Car@all');
+        Route::patch('car/image' , 'Car@image');
+        Route::delete('car/image' , 'Car@delImage');
+        Route::patch('car/thumb' , 'Car@thumb');
     });

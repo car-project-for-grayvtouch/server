@@ -164,7 +164,9 @@ class CarModel extends Controller
     // 获取所有的角色
     public function all()
     {
-        $res = CarModelAction::all();
+        $param = request()->query();
+        $param['car_series_id'] = $param['car_series_id'] ?? '';
+        $res = CarModelAction::all($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

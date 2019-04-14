@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-4193df58] {
+.module-container[data-v-4ff2d16e] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-4193df58] {
+.module-container > *[data-v-4ff2d16e] {
     padding: 0 20px;
 }
 
@@ -24,11 +24,47 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-4193df58] {
+.module-container > .module-content[data-v-4ff2d16e] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-4193df58] {
+.module-container > .module-content > .in[data-v-4ff2d16e] {
     padding: 20px;
     background-color: white;
 }
-
+.module-container[data-v-4ff2d16e] {
+}
+.module-container .module-content[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in > form[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in > form[data-v-4ff2d16e]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.module-container .module-content > .in > form > *[data-v-4ff2d16e] {
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.module-container .module-content > .in > form .preview[data-v-4ff2d16e] {
+}
+.module-container .module-content > .in > form .preview > .in[data-v-4ff2d16e] {
+    position: relative;
+}
+.module-container .module-content > .in > form .preview > .in .image[data-v-4ff2d16e] {
+    max-width: 100%;
+}
+.module-container .module-content > .in > form .preview > .in .empty[data-v-4ff2d16e] {
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-weight: bold;
+}

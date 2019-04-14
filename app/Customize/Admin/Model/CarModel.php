@@ -64,4 +64,16 @@ class CarModel extends Model
         static::single($res);
         return $res;
     }
+
+    public static function getAll(array $param = [])
+    {
+        $where = [];
+        $param['car_series_id'] = $param['car_series_id'] ?? '';
+        if ($param['car_series_id'] != '') {
+            $where[] = ['car_series_id' , '=' , $param['car_series_id']];
+        }
+        $res = self::where($where)->get();
+        static::multiple($res);
+        return $res;
+    }
 }

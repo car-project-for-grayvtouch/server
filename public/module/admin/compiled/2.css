@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-0e415cc8] {
+.module-container[data-v-10fcbcf0] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-0e415cc8] {
+.module-container > *[data-v-10fcbcf0] {
     padding: 0 20px;
 }
 
@@ -24,28 +24,85 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-0e415cc8] {
+.module-container > .module-content[data-v-10fcbcf0] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-0e415cc8] {
+.module-container > .module-content > .in[data-v-10fcbcf0] {
     padding: 20px;
     background-color: white;
 }
-.module-container > .module-content > .in > *[data-v-0e415cc8] {
+.module-container[data-v-10fcbcf0] {
+}
+.module-container .module-content[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in > form[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in > form > *[data-v-10fcbcf0] {
     margin-bottom: 12px;
 }
-.module-container > .module-content > .in > *[data-v-0e415cc8]:nth-last-of-type(1) {
+.module-container .module-content > .in > form > *[data-v-10fcbcf0]:nth-last-of-type(1) {
     margin-bottom: 0;
-}
-.module-container > .module-content > .in > .list[data-v-0e415cc8] {
-}
-.module-container > .module-content > .in > .list > *[data-v-0e415cc8] {
-    margin-bottom: 12px;
-}
-.module-container > .module-content > .in > .list > *[data-v-0e415cc8]:nth-last-of-type(1) {
-    margin-bottom: 0;
-}
-.module-container > .module-content > .in > .list > .page[data-v-0e415cc8] {
-    text-align: center;
 }
 
+
+/**
+ * ********************
+ * 选项切换中需要用到
+ * ********************
+ */
+.module-container .module-content > .in > form .options > *[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in > form .options > * > *[data-v-10fcbcf0] {
+    margin-bottom: 20px;
+}
+.module-container .module-content > .in > form .options > * > *[data-v-10fcbcf0]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.option.service[data-v-10fcbcf0] {
+}
+.option.service[data-v-10fcbcf0] {
+}
+.option.service[data-v-10fcbcf0]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.option.service > .item[data-v-10fcbcf0] {
+    width: 320px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.option.service > .item[data-v-10fcbcf0]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.option.service > .item > *[data-v-10fcbcf0] {
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.option.service > .item > .left[data-v-10fcbcf0] {
+    width: 40px;
+    height: 100%;
+}
+.option.service > .item > .left .image[data-v-10fcbcf0] {
+    width: 100%;
+    max-height: 100%;
+}
+.option.service > .item > .right[data-v-10fcbcf0] {
+    padding-left: 12px;
+}

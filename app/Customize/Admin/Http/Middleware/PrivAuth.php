@@ -33,7 +33,7 @@ class PrivAuth
     public function handle($request , Closure $next)
     {
         if (!$this->auth($request)) {
-            return error('禁止访问' , 403);
+            return error('您无权限操作！' , 403);
         }
         return $next($request);
     }

@@ -37,6 +37,7 @@ class Model extends BaseModel implements ModelInterface
 
     public static function getAll()
     {
+
         $res = static::all();
         static::multiple($res);
         return $res;

@@ -52,10 +52,11 @@ export default {
         });
     } ,
 
-    all (success , error) {
+    all (data , success , error) {
         return G.ajax({
             url: all ,
             method: 'get' ,
+            data ,
             success ,
             error
         });

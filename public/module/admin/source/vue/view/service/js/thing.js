@@ -139,7 +139,7 @@ export default {
                     });
                 });
             }).then(() => {
-                this.confirm('品牌列表' , '/brand/list');
+                this.confirm('服务列表' , '/service/list');
             }).finally(() => {
                 this.initialState('loading' , 'submit' , 'submit');
             });
