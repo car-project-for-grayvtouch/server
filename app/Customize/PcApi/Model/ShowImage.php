@@ -8,6 +8,8 @@
 
 namespace App\Customize\PcApi\Model;
 
+use function PcApi\res_url;
+
 class ShowImage extends Model
 {
     protected $table = 'show_image';
@@ -22,5 +24,13 @@ class ShowImage extends Model
             ->get();
         self::multiple($res);
         return $res;
+    }
+
+    public static function single(Model $m = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
+        $m->path = res_url($m->path);
     }
 }

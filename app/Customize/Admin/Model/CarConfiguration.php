@@ -8,7 +8,6 @@
 
 namespace App\Customize\Admin\Model;
 
-use function Admin\get_value;
 use function Admin\res_url;
 
 class CarConfiguration extends Model
@@ -26,7 +25,7 @@ class CarConfiguration extends Model
         if (empty($m)) {
             return ;
         }
-        $m->image_explain = res_url($m->image , true);
+        $m->image_explain = res_url($m->image);
     }
 
     // 获取数据列表

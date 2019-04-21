@@ -8,6 +8,8 @@
 
 return [
     'host' => 'http://car.com/' ,
+    // 域名切记不要带 /
+    'res_host' => '' ,
     // refresh token 保存时常
     'refresh_token_duration_type' => 'short' ,
     // 默认头像
@@ -18,8 +20,6 @@ return [
     'weight' => 0 ,
     // 测试 key
     'debug' => 'abc123' ,
-    // 图片默认保存路径
-    'image_dir' => __DIR__ . '/../../../../public/upload/image/' ,
-    // 文件默认保存路径
-    'file_dir' => __DIR__ . '/../../../../public/upload/file/' ,
+    // 上传文件路径
+    'upload_dir' => realpath(__DIR__ . '/../../../../public/upload/') ,
 ];

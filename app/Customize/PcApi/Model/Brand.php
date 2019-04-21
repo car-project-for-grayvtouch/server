@@ -9,8 +9,18 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function PcApi\res_url;
+
 class Brand extends Model
 {
     protected $table = 'brand';
     public $timestamps = false;
+
+    public static function single(Model $m = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
+        $m->logo = res_url($m->logo);
+    }
 }

@@ -8,9 +8,6 @@
 
 namespace App\Customize\Admin\Model;
 
-use function Admin\get_value;
-use function Admin\res_url;
-
 class Service extends Model
 {
     protected $table = 'service';

@@ -29,7 +29,7 @@ class AdminUser extends Model
             return ;
         }
         // 用户头像
-        $m->avatar_explain = empty($m->avatar) ? config('app.avatar') : res_url($m->avatar , true);
+        $m->avatar_explain = empty($m->avatar) ? config('app.avatar') : res_url($m->avatar);
         $m->is_root_explain = get_value('business.bool' , $m->is_root);
         $m->last_ip_explain = long2ip($m->last_ip);
         if (isset($m->role)) {

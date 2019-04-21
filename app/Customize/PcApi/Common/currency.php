@@ -85,36 +85,27 @@ function get_form_error($validator)
     }
     return $error[0];
 }
-
 // 生成 url
-function res_url($path = '' , bool $host = false)
+function res_url($path = '')
 {
-    $realpath = realpath($path);
-    if ($realpath) {
-        $realpath = format_path($realpath);
-        $dir = public_path();
-        $dir = format_path($dir);
-        $path = str_replace($dir , '' , $realpath);
-    }
-    $path = mb_substr($path , 0 , 1) == '/' ? mb_substr($path , 1) : $path;
-    if (!$host) {
-        return '/' . $path;
-    }
-    $prefix = config('app.host');
-    return $prefix . $path;
+    $res = config('app.res_host');
+    return sprintf('%s%s' , $res , $path);
 }
 
 // 生成资源路径
-function res_path($relative_path = '')
+function res_path($path = '')
 {
-    if (empty($relative_path)) {
-        return '';
-    }
-    $dir = public_path();
-    $dir = format_path($dir);
-    $relative_path = format_path($relative_path);
-    $relative_path = mb_substr($relative_path , 0 , 1) == '/' ? $relative_path : '/' . $relative_path;
-    return $dir . $relative_path;
+    $path = realpath($path);
+    $upload_dir = config('app.upload_dir');
+    $upload_dir = addcslashes($upload_dir , '/');
+    return preg_replace("/^{$upload_dir}/" , '' , $path);
+}
+
+// 资源的绝对路径
+function res_realpath($path = '')
+{
+    $upload_dir = config('app.upload_dir');
+    return sprintf('%s%s' , $upload_dir , $path);
 }
 
 // 解析 order

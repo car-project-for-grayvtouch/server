@@ -22,7 +22,7 @@ class Brand extends Model
             return ;
         }
         $m->hot_explain = get_value('business.bool' , $m->hot);
-        $m->logo_explain = res_url($m->logo , true);
+        $m->logo_explain = res_url($m->logo);
     }
 
     // 获取数据列表

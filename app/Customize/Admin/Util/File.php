@@ -8,11 +8,11 @@
 
 namespace App\Customize\Admin\Util;
 
+use function Admin\res_path;
 use Core\Lib\UploadFile;
 use Core\Lib\UploadImage;
 
 use function Admin\config;
-use function Admin\res_url;
 
 class File
 {
@@ -32,7 +32,7 @@ class File
             return $this->response('不支持的文件类型，请上传图片' , 400);
         }
         $res = $this->image->save($image);
-        $res['url'] = res_url($res['path']);
+        $res['url'] = res_path($res['path']);
         return $this->response($res);
     }
 
@@ -43,7 +43,7 @@ class File
             return $this->response('不支持的文件类型，请上传图片' , 400);
         }
         $res = $this->file->save($file);
-        $res['url'] = res_url($res['path']);
+        $res['url'] = res_path($res['path']);
         return $this->response($res);
     }
 
