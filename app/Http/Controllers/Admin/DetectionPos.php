@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Validator;
 
+
 use App\Customize\Admin\Http\Action\DetectionPosAction;
 
 use function Admin\success;
@@ -21,7 +22,7 @@ class DetectionPos extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -38,10 +39,11 @@ class DetectionPos extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['detection_module_id ']  = $param['detection_module_id '] ?? '';
         $param['detection_group_id ']  = $param['detection_group_id '] ?? '';
+        $param['map_value']  = $param['map_value'] ?? '';
         $param['weight']  = $param['weight'] ?? '';
         $res = DetectionPosAction::add($param);
         if ($res['code'] != 200) {
@@ -56,11 +58,12 @@ class DetectionPos extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['detection_module_id ']  = $param['detection_module_id '] ?? '';
         $param['detection_group_id ']  = $param['detection_group_id '] ?? '';
+        $param['map_value ']  = $param['map_value '] ?? '';
         $param['weight']  = $param['weight'] ?? '';
         $res = DetectionPosAction::edit($param);
         if ($res['code'] != 200) {
@@ -75,7 +78,7 @@ class DetectionPos extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = DetectionPosAction::del($param);
         if ($res['code'] != 200) {

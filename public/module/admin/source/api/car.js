@@ -3,6 +3,8 @@ const detail = `${topContext.api}car/car/?`;
 const all = `${topContext.api}car/all`;
 const image = `${topContext.api}car/image`;
 const thumb = `${topContext.api}car/thumb`;
+const rule = `${topContext.api}car/rule`;
+const report = `${topContext.api}car/report`;
 
 export default {
     list (data , success , error) {
@@ -87,6 +89,35 @@ export default {
         return G.ajax({
             url: image ,
             method: 'delete' ,
+            data ,
+            success ,
+            error ,
+        });
+    } ,
+
+    rule (success , error) {
+        return G.ajax({
+            url: rule ,
+            method: 'get' ,
+            success ,
+            error ,
+        });
+    } ,
+
+    getReport (data , success , error) {
+        return G.ajax({
+            url: report ,
+            method: 'get' ,
+            data ,
+            success ,
+            error ,
+        });
+    } ,
+
+    report (data , success , error) {
+        return G.ajax({
+            url: report ,
+            method: 'post' ,
             data ,
             success ,
             error ,

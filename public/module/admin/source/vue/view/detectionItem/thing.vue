@@ -19,7 +19,7 @@
                             <td>检测位置</td>
                             <td>
                                 <i-select v-model="form.detection_pos_id" style="width: 300px;" @on-change="setPreview">
-                                    <i-option v-for="v in position" :key="v.id" :value="v.id">{{ v.name }}</i-option>
+                                    <i-option v-for="v in position" :key="v.id" :value="v.id">{{ v.group ? `${v.name}【分组：${v.group.name}】` : v.name }}</i-option>
                                 </i-select>
                                 <span class="necessary">*</span>
                                 <span class="tip"></span>
@@ -41,6 +41,24 @@
                                 <span class="necessary"></span>
                                 <span class="tip">选项必须存在！如非必要请勿改动</span>
                                 <span class="msg">{{ error.option }}</span>
+                            </td>
+                        </tr>
+                        <tr id="value" :class="getClass(error.value)">
+                            <td>映射值</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.value">
+                                <span class="necessary"></span>
+                                <span class="tip">选项默认值，请填写 key！默认：normal</span>
+                                <span class="msg">{{ error.value }}</span>
+                            </td>
+                        </tr>
+                        <tr id="map_value" :class="getClass(error.map_value)">
+                            <td>映射值</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.map_value">
+                                <span class="necessary"></span>
+                                <span class="tip">如果有映射图，则该选项能很好的做映射</span>
+                                <span class="msg">{{ error.map_value }}</span>
                             </td>
                         </tr>
                         <tr id="weight" :class="getClass(error.weight)">

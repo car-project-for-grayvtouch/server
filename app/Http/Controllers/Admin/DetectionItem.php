@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Validator;
 
+
 use App\Customize\Admin\Http\Action\DetectionItemAction;
 
 use function Admin\success;
@@ -21,7 +22,7 @@ class DetectionItem extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -38,11 +39,13 @@ class DetectionItem extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['detection_pos_id ']  = $param['detection_pos_id '] ?? '';
         $param['option ']  = $param['option '] ?? '';
         $param['weight']  = $param['weight'] ?? '';
+        $param['map_value']  = $param['map_value'] ?? '';
+        $param['value']  = $param['value'] ?? '';
         $res = DetectionItemAction::add($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -56,12 +59,14 @@ class DetectionItem extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['detection_pos_id ']  = $param['detection_pos_id '] ?? '';
         $param['option ']  = $param['option '] ?? '';
         $param['weight']  = $param['weight'] ?? '';
+        $param['map_value']  = $param['map_value'] ?? '';
+        $param['value']  = $param['value'] ?? '';
         $res = DetectionItemAction::edit($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -75,7 +80,7 @@ class DetectionItem extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = DetectionItemAction::del($param);
         if ($res['code'] != 200) {

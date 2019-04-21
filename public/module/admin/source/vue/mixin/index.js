@@ -36,6 +36,9 @@ export default {
         eNotice (title , desc = '') {
             this.notice('error' , title , desc);
         } ,
+        toLink (url) {
+            window.open(url , '_blank');
+        } ,
     } ,
     components: {
 

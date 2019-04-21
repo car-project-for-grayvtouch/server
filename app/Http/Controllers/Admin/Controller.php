@@ -15,12 +15,17 @@ use App\Customize\Admin\Http\Middleware\PrivAuth;
 use App\Customize\Admin\Http\Middleware\UserAuth;
 use App\Http\Controllers\Controller as BaseController;
 
+use Illuminate\Http\Request;
+
 use ReflectionClass;
 
 class Controller extends BaseController
 {
-    public function __construct()
+    protected $request = null;
+
+    public function __construct(Request $request)
     {
+        $this->request = $request;
         // 检查父类是否有构造函数
         // 如果存在则调用
         $parent = new ReflectionClass(parent::class);

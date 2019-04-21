@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Validator;
 
+
 use App\Customize\Admin\Http\Action\CarSeriesAction;
 
 use function Admin\success;
@@ -20,7 +21,7 @@ class CarSeries extends Controller
 {
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -36,7 +37,7 @@ class CarSeries extends Controller
 
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['brand_id']  = $param['brand_id'] ?? '';
         $param['car_series_group_id']  = $param['car_series_group_id'] ?? '';
@@ -54,7 +55,7 @@ class CarSeries extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['brand_id']  = $param['brand_id'] ?? '';
@@ -72,7 +73,7 @@ class CarSeries extends Controller
 
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = CarSeriesAction::del($param);
         if ($res['code'] != 200) {
@@ -98,7 +99,7 @@ class CarSeries extends Controller
 
     public function all()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['brand_id'] = $param['brand_id'] ?? '';
         $res = CarSeriesAction::all($param);
         if ($res['code'] != 200) {

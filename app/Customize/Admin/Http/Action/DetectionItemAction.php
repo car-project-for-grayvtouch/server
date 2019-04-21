@@ -56,7 +56,9 @@ class DetectionItemAction extends Action
             'name' ,
             'detection_pos_id' ,
             'option' ,
-            'weight'
+            'weight' ,
+            'map_value' ,
+            'value' ,
         ]));
         return self::success($id);
     }
@@ -97,7 +99,9 @@ class DetectionItemAction extends Action
             'name' ,
             'detection_pos_id' ,
             'option' ,
-            'weight'
+            'weight' ,
+            'map_value' ,
+            'value' ,
         ]));
         return self::success($param['id']);
     }

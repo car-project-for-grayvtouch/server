@@ -9,8 +9,13 @@
 namespace App\Customize\Admin\Http\Action;
 
 
+use function Admin\user;
 use App\Customize\Admin\Model\CarImage;
 use App\Customize\Admin\Model\CarService;
+use App\Customize\Admin\Model\Report;
+use App\Customize\Admin\Model\ReportForItem;
+use App\Customize\Admin\Model\ReportForModule;
+use App\Customize\Admin\Model\ReportForPos;
 use Exception;
 use function extra\array_unit;
 use function Admin\config;
@@ -291,5 +296,139 @@ class CarAction extends Action
         }
         $res = CarImage::destroy($id_list);
         return self::success($res);
+    }
+
+    public static function rule()
+    {
+        $res = Car::rule();
+        return self::success($res);
+    }
+
+    public static function getReport(array $param)
+    {
+        $validator = Validator::make($param , [
+            'id' => 'required' ,
+        ] , [
+            'id.required' => 'id 尚未提供' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        // 检查报告是否存在
+        $report = Report::findByCarId($param['id']);
+        if (empty($report)) {
+            return self::error('未找到车辆 id 对应的报告' , 404);
+        }
+        $res = Car::report($report->id);
+        return self::success($res);
+    }
+
+    // 车辆检测报告
+    public static function report(array $param)
+    {
+        $validator = Validator::make($param , [
+            'id' => 'required' ,
+            'report' => 'required' ,
+        ] , [
+            'id.required' => 'id 尚未提供' ,
+            'report' => 'report 尚未提供' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        // 检查 report 的数据结构是否正确
+        $param['report'] = json_decode($param['report'] , true);
+        if (empty($param['report'])) {
+            return self::error('report 尚未提供');
+        }
+        try {
+            DB::beginTransaction();
+            /**
+             * *****************************
+             * 创建报告
+             * *****************************
+             */
+            $report = Report::findByCarId($param['id']);
+            if (empty($report)) {
+                // 添加报告
+                Report::insertGetId([
+                    'car_id' => $param['id'] ,
+                    'user_id' => user()->id ,
+                ]);
+                $report = Report::findByCarId($param['id']);
+            } else {
+                // 更新
+                Report::updateById($report['id'] , [
+                    'update_time' => date('Y-m-d H:i:s')
+                ]);
+            }
+            /**
+             * ***************************
+             * 删除检测结果
+             * ***************************
+             */
+            $module = ReportForModule::getByReportId($report->id);
+            foreach ($module as $v)
+            {
+                $pos = ReportForPos::getByReportForModuleId($v->id);
+                foreach ($pos as $v1)
+                {
+                    ReportForItem::delByReportForPosId($v1->id);
+                }
+                ReportForPos::delByReportForModuleId($report->id);
+            }
+            ReportForModule::delByReportId($report->id);
+
+            /**
+             * ******************
+             * 创建检测结果
+             * ******************
+             */
+            foreach ($param['report'] as $v)
+            {
+                $v['report_id'] = $report->id;
+                $v['detection_module_id'] = $v['id'];
+                // 检测模块
+                $module_id = ReportForModule::insertGetId(array_unit($v , [
+                    'report_id' ,
+                    'detection_module_id' ,
+                    'name' ,
+                    'result' ,
+                ]));
+                // 检测位置
+                foreach ($v['position'] as $v1)
+                {
+                    $v1['report_for_module_id'] = $module_id;
+                    $v1['detection_pos_id'] = $v1['id'];
+                    $v1['detection_group_id'] = isset($v1['group']) ? $v1['group']['id'] ?? '' : '';
+                    $v1['group'] = isset($v1['group']) ? $v1['group']['name'] ?? '' : '';
+                    $pos_id = ReportForPos::insertGetId(array_unit($v1 , [
+                        'report_for_module_id' ,
+                        'detection_pos_id' ,
+                        'detection_group_id' ,
+                        'group' ,
+                        'name' ,
+                    ]));
+                    // 检测项
+                    foreach ($v1['item'] as $v2)
+                    {
+                        $v2['report_for_pos_id'] = $pos_id;
+                        $v2['detection_item_id'] = $v2['id'];
+                        ReportForItem::insertGetId(array_unit($v2 , [
+                            'report_for_pos_id' ,
+                            'detection_item_id' ,
+                            'name' ,
+                            'value' ,
+                            'desc'
+                        ]));
+                    }
+                }
+            }
+            DB::commit();
+            return self::success();
+        } catch(Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
     }
 }

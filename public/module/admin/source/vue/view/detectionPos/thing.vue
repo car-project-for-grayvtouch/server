@@ -11,7 +11,7 @@
                             <td>
                                 <input type="text" class="form-text" v-model="form.name">
                                 <span class="necessary">*</span>
-                                <span class="tip">如果有映射图，建议命名：[序号]名称；例如：[1]左A柱</span>
+                                <span class="tip"></span>
                                 <span class="msg">{{ error.name }}</span>
                             </td>
                         </tr>
@@ -35,6 +35,15 @@
                                 <span class="necessary">*</span>
                                 <span class="tip"></span>
                                 <span class="msg">{{ error.detection_group_id }}</span>
+                            </td>
+                        </tr>
+                        <tr id="map_value" :class="getClass(error.map_value)">
+                            <td>映射值</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.map_value">
+                                <span class="necessary"></span>
+                                <span class="tip">如果有映射图，则该选项能很好的做映射</span>
+                                <span class="msg">{{ error.map_value }}</span>
                             </td>
                         </tr>
                         <tr id="weight" :class="getClass(error.weight)">

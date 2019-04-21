@@ -77,4 +77,38 @@ class Car extends Model
         static::single($res);
         return $res;
     }
+
+    // 获取检测报告项目
+    public static function report($id)
+    {
+        $module = ReportForModule::getByReportId($id);
+        foreach ($module as $v)
+        {
+            $v->position = ReportForPos::getByReportForModuleId($v->id);
+            foreach ($v->position as $v1)
+            {
+                $v1->item = ReportForItem::getByReportForPosId($v1->id);
+            }
+        }
+        return $module;
+    }
+
+    // 报告选项
+    public static function rule()
+    {
+        // 获取 module
+        $module = DetectionModule::getAll();
+        // 获取检测位置
+        foreach ($module as $v)
+        {
+            // 获取检测位置
+            $v->position = DetectionPos::getByModuleId($v->id);
+            foreach ($v->position as $v1)
+            {
+                // 获取检测项
+                $v1->item = DetectionItem::getByPosId($v1->id);
+            }
+        }
+        return $module;
+    }
 }

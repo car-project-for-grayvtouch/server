@@ -1,0 +1,153 @@
+.module {
+    position: relative;
+}
+
+.module > .content {
+}
+
+.module > .preview {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+    border: 2px solid #ccc;
+    padding: 10px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.module > .preview .function {
+    padding-bottom: 15px;
+}
+
+.module > .preview .con {
+    width: 500px;
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: white;
+    transition: all 0.3s linear;
+}
+
+.module > .preview .con .image {
+    width: 100%;
+    height: auto;
+}
+
+.module > .content > * {
+    margin-bottom: 12px;
+}
+
+.module > .content > *:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+
+.module > .content > .top {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.module > .content > .top:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.module > .content > .top > * {
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+.module > .content > .top .left {
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+.module > .content > .btm{
+
+}
+
+.module > .content > .btm> .item {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.module > .content > .btm> .item:nth-last-of-type(1) {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.module > .content > .btm> .item > .pos {
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.module > .content > .btm> .item .list {
+
+}
+
+.module > .content > .btm> .item .list .line {
+    border-bottom: 1px solid #ccc;
+    height: 35px;
+    line-height: 34px;
+}
+
+.module > .content > .btm> .item .list .line:nth-last-of-type(1) {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.module > .content > .btm> .item .list .line:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.module > .content > .btm> .item .list .line > * {
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+.module > .content > .btm> .item .list .line > *:nth-last-of-type(1) {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.module > .content > .btm> .item .list .line .name {
+    width: 160px;
+}
+
+.module > .content > .btm> .item .list .line .value {
+    padding-right: 30px;
+}
+
+/**
+ * ***************
+ * 模块检测结果
+ * ***************
+ */
+.form-textarea {
+    width: 400px;
+    height: 80px;
+    padding: 8px;
+}
+
+.form-text {
+    width: 400px;
+    box-sizing: border-box;
+    height: 30px;
+}

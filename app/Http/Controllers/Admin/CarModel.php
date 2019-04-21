@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Validator;
 
+
 use App\Customize\Admin\Http\Action\CarModelAction;
 
 use function Admin\success;
@@ -21,7 +22,7 @@ class CarModel extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -38,7 +39,7 @@ class CarModel extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['brand_id']  = $param['brand_id'] ?? '';
         $param['car_series_id']  = $param['car_series_id'] ?? '';
@@ -86,9 +87,9 @@ class CarModel extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['brand_id']  = $param['brand_id'] ?? '';
         $param['car_series_id']  = $param['car_series_id'] ?? '';
@@ -136,7 +137,7 @@ class CarModel extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = CarModelAction::del($param);
         if ($res['code'] != 200) {
@@ -164,7 +165,7 @@ class CarModel extends Controller
     // 获取所有的角色
     public function all()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['car_series_id'] = $param['car_series_id'] ?? '';
         $res = CarModelAction::all($param);
         if ($res['code'] != 200) {

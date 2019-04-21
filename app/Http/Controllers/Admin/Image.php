@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Customize\Admin\Util\File;
 use Validator;
 use App\Customize\Admin\Model\Image as ImageModel;
@@ -50,7 +51,7 @@ class Image extends Controller
 
     public function list()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $data['id'] = $data['id'] ?? '';
         $data['order'] = isset($data['order']) && !empty($data['order']) ? $data['order'] : 'create_time|desc';
         // 排序
@@ -70,7 +71,7 @@ class Image extends Controller
     // 分类详情
     public function detail()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id' => 'require' ,
         ] , [
@@ -86,7 +87,7 @@ class Image extends Controller
     // 编辑
     public function edit()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id' => 'require' ,
             'pos' => 'require' ,
@@ -119,7 +120,7 @@ class Image extends Controller
     // 新增
     public function add()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'pos' => 'require' ,
         ] , [
@@ -148,7 +149,7 @@ class Image extends Controller
     // 保存图片
     public function saveImage()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id' => 'require' ,
         ] , [
@@ -172,7 +173,7 @@ class Image extends Controller
     // 删除
     public function del()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id_list' => 'require' ,
         ] , [

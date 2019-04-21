@@ -15,12 +15,13 @@ use function Admin\form_error;
 use App\Customize\Admin\Http\Action\AdminUserAction;
 use Illuminate\Validation\Validator;
 
+
 class AdminUser extends Controller
 {
     // 登录
     public function login()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['username'] = $param['username'] ?? '';
         $param['password'] = $param['password'] ?? '';
         $param['verify_code'] = $param['verify_code'] ?? '';
@@ -57,7 +58,7 @@ class AdminUser extends Controller
     // 获取登录用户所需要的相关信息
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']        = $param['id'] ?? '';
         $param['username']  = $param['username'] ?? '';
         $param['sex']       = $param['sex'] ?? '';
@@ -81,7 +82,7 @@ class AdminUser extends Controller
 
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']        = $param['id'] ?? '';
         $param['username']  = $param['username'] ?? '';
         $param['password']  = $param['password'] ?? '';
@@ -99,7 +100,7 @@ class AdminUser extends Controller
 
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['username']  = $param['username'] ?? '';
         $param['password']  = $param['password'] ?? '';
         $param['phone']     = $param['phone'] ?? '';
@@ -116,7 +117,7 @@ class AdminUser extends Controller
 
     public function avatar()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']  = $param['id'] ?? '';
         $param['image']  = $param['image'] ?? '';
         $res = AdminUserAction::avatar($param);

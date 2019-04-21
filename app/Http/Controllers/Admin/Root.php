@@ -13,6 +13,7 @@ use Validator;
 use DB;
 use Hash;
 
+
 use App\Customize\Admin\Model\AdminUser;
 
 use function Admin\form_error;
@@ -72,7 +73,7 @@ class Root extends Controller
     // 修改密码
     public function password()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $validator = Validator::make($param , [
             'username' => 'required' ,
             'password' => 'required' ,

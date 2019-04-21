@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Validator;
 
+
 use App\Customize\Admin\Http\Action\CarSeriesGroupAction;
 
 use function Admin\success;
@@ -21,7 +22,7 @@ class CarSeriesGroup extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -38,7 +39,7 @@ class CarSeriesGroup extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['weight']  = $param['weight'] ?? '';
         $res = CarSeriesGroupAction::add($param);
@@ -54,7 +55,7 @@ class CarSeriesGroup extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['weight']  = $param['weight'] ?? '';
@@ -71,7 +72,7 @@ class CarSeriesGroup extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = CarSeriesGroupAction::del($param);
         if ($res['code'] != 200) {

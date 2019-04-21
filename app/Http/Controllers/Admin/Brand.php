@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use Illuminate\Validation\Validator;
 
 use App\Customize\Admin\Http\Action\BrandAction;
@@ -21,7 +22,7 @@ class Brand extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -38,7 +39,7 @@ class Brand extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['letter']  = $param['letter'] ?? '';
         $param['hot']  = $param['hot'] ?? '';
@@ -56,7 +57,7 @@ class Brand extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['letter']  = $param['letter'] ?? '';
@@ -75,7 +76,7 @@ class Brand extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = BrandAction::del($param);
         if ($res['code'] != 200) {
@@ -115,7 +116,7 @@ class Brand extends Controller
 
     public function image()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id'] = $param['id'] ?? '';
         $param['image'] = $param['image'] ?? '';
         $res = BrandAction::image($param);

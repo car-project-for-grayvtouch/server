@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Customize\Admin\Http\Action\OAuthAction;
 
 use function Admin\success;
@@ -18,7 +19,7 @@ class OAuth extends Controller
     // 更新 token
     public function refreshToken()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['refresh_token'] = $param['refresh_token'] ?? '';
 
         $res = OAuthAction::refreshToken($param);

@@ -76,7 +76,7 @@
                                     <button type="button" class="run-button run-button-blue" @click.stop="location('/car/edit' , {id: v.id , mode: 'edit'})">
                                         <i class="run-iconfont run-edit"></i>编辑
                                     </button>
-                                    <button type="button" class="run-button run-button-yellow" @click.stop="$info('开发中...暂未开放')">质检报告</button>
+                                    <v-button color="yellow" @click="location('/car/report' , {id: v.id , mode: 'report'})">质检报告</v-button>
                                     <button type="button" class="run-button run-button-orange" @click="delTarget(v.id)">
                                         <i class="run-iconfont run-delete"></i>删除
                                     </button>

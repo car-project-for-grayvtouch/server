@@ -45,6 +45,7 @@ class DetectionPosAction extends Action
             'name' ,
             'detection_module_id' ,
             'detection_group_id' ,
+            'map_value' ,
             'weight'
         ]));
         return self::success($id);
@@ -75,6 +76,7 @@ class DetectionPosAction extends Action
             'name' ,
             'detection_module_id' ,
             'detection_group_id' ,
+            'map_value' ,
             'weight'
         ]));
         return self::success($param['id']);

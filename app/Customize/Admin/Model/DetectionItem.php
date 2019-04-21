@@ -43,6 +43,7 @@ class DetectionItem extends Model
                 continue ;
             }
             $v->module = DetectionModule::findById($v->position->detection_module_id);
+            $v->position->group = DetectionGroup::findById($v->position->detection_group_id);
         }
         return $res;
     }
@@ -57,5 +58,13 @@ class DetectionItem extends Model
         if (empty($m)) {
             return ;
         }
+    }
+
+    public static function getByPosId($detection_pos_id)
+    {
+        $res = self::where('detection_pos_id' , $detection_pos_id)
+            ->get();
+        self::multiple($res);
+        return $res;
     }
 }

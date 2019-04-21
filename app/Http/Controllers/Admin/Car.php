@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use Illuminate\Validation\Validator;
 
 use App\Customize\Admin\Http\Action\CarAction;
@@ -21,7 +22,7 @@ class Car extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -38,7 +39,7 @@ class Car extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['title']          = $param['title'] ?? '';
         $param['brand_id']      = $param['brand_id'] ?? '';
         $param['car_series_id'] = $param['car_series_id'] ?? '';
@@ -62,7 +63,7 @@ class Car extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['title']          = $param['title'] ?? '';
         $param['brand_id']      = $param['brand_id'] ?? '';
@@ -87,7 +88,7 @@ class Car extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = CarAction::del($param);
         if ($res['code'] != 200) {
@@ -101,7 +102,7 @@ class Car extends Controller
 
     public function delImage()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = CarAction::delImage($param);
         if ($res['code'] != 200) {
@@ -128,7 +129,7 @@ class Car extends Controller
 
     public function thumb()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id'] = $param['id'] ?? '';
         $param['image'] = $param['image'] ?? '';
         $res = CarAction::thumb($param);
@@ -143,7 +144,7 @@ class Car extends Controller
 
     public function image()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id'] = $param['id'] ?? '';
         $param['image'] = $param['image'] ?? '';
         $res = CarAction::image($param);
@@ -169,4 +170,46 @@ class Car extends Controller
         return success($res['data']);
     }
 
+    // 获取检测规则
+    public function rule()
+    {
+        $res = CarAction::rule();
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 获取检测规则
+    public function getReport()
+    {
+        $param = $this->request->post();
+        $param['id'] = $param['id'] ?? '';
+        $res = CarAction::getReport($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 车辆检测报告
+    public function report()
+    {
+        $param = $this->request->post();
+        $param['report'] = $param['report'] ?? '';
+        $res = CarAction::report($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
 }

@@ -35,6 +35,7 @@ const listForService = () => import('../view/service/list.vue');
 const thingForService = () => import('../view/service/thing.vue');
 const listForCar = () => import('../view/car/list.vue');
 const thingForCar = () => import('../view/car/thing.vue');
+const reportForCar = () => import('../view/car/report.vue');
 
 export default [
     {
@@ -338,5 +339,9 @@ export default [
     {
         path: '/car/add' ,
         component: thingForCar
+    } ,
+    {
+        path: '/car/report' ,
+        component: reportForCar
     } ,
 ];

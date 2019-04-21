@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Validator;
 
+
 use App\Customize\Admin\Http\Action\CarConfigurationAction;
 
 use function Admin\success;
@@ -20,7 +21,7 @@ class CarConfiguration extends Controller
 {
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -36,7 +37,7 @@ class CarConfiguration extends Controller
 
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['car_configuration_group_id']  = $param['car_configuration_group_id'] ?? '';
         $param['desc']  = $param['desc'] ?? '';
@@ -53,7 +54,7 @@ class CarConfiguration extends Controller
 
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['car_configuration_group_id']  = $param['car_configuration_group_id'] ?? '';
@@ -71,7 +72,7 @@ class CarConfiguration extends Controller
 
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = CarConfigurationAction::del($param);
         if ($res['code'] != 200) {
@@ -109,7 +110,7 @@ class CarConfiguration extends Controller
 
     public function image()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id'] = $param['id'] ?? '';
         $param['image'] = $param['image'] ?? '';
         $res = CarConfigurationAction::image($param);

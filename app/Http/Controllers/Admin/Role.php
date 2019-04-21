@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Validator;
 
+
 use App\Customize\Admin\Http\Action\RoleAction;
 
 use function Admin\success;
@@ -21,7 +22,7 @@ class Role extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['order'] = $param['order'] ?? 'id|desc';
@@ -38,7 +39,7 @@ class Role extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $res = RoleAction::add($param);
         if ($res['code'] != 200) {
@@ -53,7 +54,7 @@ class Role extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $res = RoleAction::edit($param);
@@ -69,7 +70,7 @@ class Role extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = RoleAction::del($param);
         if ($res['code'] != 200) {
@@ -110,7 +111,7 @@ class Role extends Controller
     // 分配权限
     public function auth()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id'] = $param['id'] ?? '';
         $param['route'] = $param['route'] ?? '';
         $res = RoleAction::auth($param);

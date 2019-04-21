@@ -18,7 +18,7 @@ class ArticleType extends Controller
 {
     public function list()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $data['id'] = $data['id'] ?? '';
         $data['order'] = isset($data['order']) && !empty($data['order']) ? $data['order'] : 'create_time|desc';
         // 排序
@@ -46,7 +46,7 @@ class ArticleType extends Controller
     // 分类详情
     public function detail()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $validator = Validator::make($param , [
             'id' => 'require' ,
         ] , [
@@ -62,7 +62,7 @@ class ArticleType extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $validator = Validator::make($param , [
             'id' => 'require' ,
             'name' => 'require' ,
@@ -95,7 +95,7 @@ class ArticleType extends Controller
     // 新增
     public function add()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'name' => 'require' ,
             'p_id' => 'require' ,
@@ -124,7 +124,7 @@ class ArticleType extends Controller
     // 删除文章分类
     public function del()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id_list' => 'require' ,
         ] , [

@@ -6,6 +6,7 @@ export default {
                 name: '' ,
                 detection_pos_id: 0 ,
                 weight: 0 ,
+                value: 'normal' ,
             } ,
             error: {} ,
             ajax: {

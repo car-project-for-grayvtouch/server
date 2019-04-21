@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Customize\Admin\Http\Action\RouteAction;
 
 use function Admin\success;
@@ -21,7 +22,7 @@ class Route extends Controller
     // 列表
     public function list()
     {
-        $param = request()->query();
+        $param = $this->request->query();
 //        print_r($param);
         $param['id']    = $param['id'] ?? '';
         $param['p_id']  = $param['p_id'] ?? '';
@@ -39,7 +40,7 @@ class Route extends Controller
     // 添加
     public function add()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['name']  = $param['name'] ?? '';
         $param['en']    = $param['en'] ?? '';
         $param['route']  = $param['route'] ?? '';
@@ -63,7 +64,7 @@ class Route extends Controller
     // 编辑
     public function edit()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['name']  = $param['name'] ?? '';
         $param['en']    = $param['en'] ?? '';
@@ -88,7 +89,7 @@ class Route extends Controller
     // 更新图标
     public function saveImage()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id']    = $param['id'] ?? '';
         $param['image'] = $param['image'] ?? '';
         $param['type'] = $param['type'] ?? '';
@@ -105,7 +106,7 @@ class Route extends Controller
     // 删除
     public function del()
     {
-        $param = request()->post();
+        $param = $this->request->post();
         $param['id_list'] = $param['id_list'] ?? '';
         $res = RouteAction::del($param);
         if ($res['code'] != 200) {

@@ -20,7 +20,7 @@ class Article extends Controller
 {
     public function list()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $data['id'] = $data['id'] ?? '';
         $data['order'] = isset($data['order']) && !empty($data['order']) ? $data['order'] : 'create_time|desc';
         // 排序
@@ -44,7 +44,7 @@ class Article extends Controller
     // 分类详情
     public function detail()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id' => 'require' ,
         ] , [
@@ -61,7 +61,7 @@ class Article extends Controller
     // 编辑
     public function edit()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'title' => 'require' ,
             'article_type_id' => 'require' ,
@@ -115,7 +115,7 @@ class Article extends Controller
     // 新增
     public function add()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'title' => 'require' ,
             'article_type_id' => 'require' ,
@@ -163,7 +163,7 @@ class Article extends Controller
     // 删除
     public function del()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id_list' => 'require' ,
         ] , [
@@ -192,7 +192,7 @@ class Article extends Controller
     // 保存图片
     public function saveImage()
     {
-        $data = request()->post();
+        $data = $this->request->post();
         $validator = Validator::make($param , [
             'id' => 'require' ,
             'image' => 'require' ,
@@ -218,7 +218,7 @@ class Article extends Controller
     {
         $url        = 'http://v.juhe.cn/toutiao/index';
         $app_key    = 'f455253376508bc628217cead552c7cc';
-        $data       = request()->post();
+        $data       = $this->request->post();
         $validator = Validator::make($param , [
             'type' => 'require' ,
         ] , [

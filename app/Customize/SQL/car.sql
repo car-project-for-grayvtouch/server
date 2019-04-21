@@ -154,11 +154,13 @@ create table if not exists `xq_car_image` (
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '车辆表';
 
 drop table if exists `xq_report`;
-create table if not exists `xq_test_report` (
+drop table if exists `xq_test_report`;
+create table if not exists `xq_report` (
   id int unsigned not null auto_increment ,
   car_id int unsigned default 0 comment 'xq_car.id' ,
   user_id int unsigned default 0 comment '操作人员' ,
   create_time datetime default current_timestamp ,
+  update_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告';
 
@@ -166,8 +168,9 @@ drop table if exists `xq_report_for_module`;
 create table if not exists `xq_report_for_module` (
   id int unsigned not null auto_increment ,
   report_id int unsigned default 0 comment 'xq_report.id' ,
+  detection_module_id int unsigned default 0 comment 'xq_detection_module.id' ,
+  name char(255) default '' comment 'xq_detection_module.name' ,
   result varchar(1000) default '' comment '综合检测结果' ,
-  module_name char(255) default '' comment '模块名称，xq_detection_module.name' ,
   version char(255) default '1.0.0' comment '检测报告版本，检测报告内容随时可能发生变化，为了兼容各个版本，故而加了版本字段！方便前端区分' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
@@ -178,8 +181,10 @@ drop table if exists `xq_report_for_pos`;
 create table if not exists `xq_report_for_pos` (
   id int unsigned not null auto_increment ,
   report_for_module_id int unsigned default 0 comment 'report_for_module.id' ,
-  group_name char(255) default '' comment '分组名称，xq_detection_group.name，从 xq_detection_pos.group_id 找到对应的记录，获取其名称' ,
-  pos char(255) default '' comment '检测位置 xq_detection_pos.name' ,
+  detection_group_id char(255) default 0 comment 'xq_detection_group.id' ,
+  detection_pos_id int unsigned default 0 comment 'xq_detection_pos.id' ,
+  `group` char(255) default '' comment 'xq_detection_group.name' ,
+  name char(255) default '' comment '检测位置 xq_detection_pos.name' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '检测报告-检测部位';
@@ -188,6 +193,7 @@ drop table if exists `xq_report_for_item`;
 create table if not exists `xq_report_for_item` (
   id int unsigned not null auto_increment ,
   report_for_pos_id int unsigned default 0 comment 'xq_report_for_pos.id' ,
+  detection_item_id int unsigned default 0 comment 'xq_detection_item.id' ,
   name char(255) default '' comment '检测项名称' ,
   value char(255) default '' comment '检测结果' ,
   `desc` char(255) default '' comment '结果描述' ,
@@ -296,7 +302,8 @@ create table if not exists `xq_detection_pos` (
   id int unsigned not null auto_increment ,
   detection_module_id int unsigned default 0 comment 'xq_detection_module.id' ,
   detection_group_id int unsigned default 0 comment 'xq_detection_group.id' ,
-  name char(255) default '' comment '检测位置' ,
+  name char(255) default '' comment '检测位置名称' ,
+  map_value char(255) default '' comment '映射值' ,
   weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
@@ -304,10 +311,12 @@ create table if not exists `xq_detection_pos` (
 
 drop table if exists `xq_detection_item`;
 create table if not exists `xq_detection_item` (
-  id int unsigned not null autoincrement ,
+  id int unsigned not null auto_increment ,
   detection_pos_id int unsigned default 0 comment 'xq_detection_pos.id' ,
   name char(255) default '' comment '检测项' ,
   `option` varchar(500) default '[{key: "normal",value: "正常"},{key: "exception": value: "异常"}]' comment '检测项的可选项,json 字符串' ,
+  `value` char(255) default '' comment '默认值' ,
+  map_value char(255) default '' comment '映射值' ,
   weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
@@ -369,6 +378,14 @@ insert into xq_car_configuration (name , car_configuration_group_id) values
 ('空气过滤系统' , 3) ,
 ('免提电话' , 3) ,
 ('卫星电话' , 3) ,
-('蓝牙链接' , 3) ,
+('蓝牙链接' , 3)
 ('导航系统' , 3) ,
 ('实时路况信息' , 3);
+
+-- todo 以下
+-- 热搜品牌
+-- 用户表
+-- 车辆收藏
+-- 寄卖申请
+-- 求推荐（买车申请）
+-- 买车申请（分期购车）
