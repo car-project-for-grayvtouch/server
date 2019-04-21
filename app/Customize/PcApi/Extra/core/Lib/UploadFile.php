@@ -103,7 +103,8 @@ class UploadFile {
         $fname     = get_filename($file['name']);
         $extension = get_extension($file['name']);
         if (!$save_origin) {
-            $fname = 'upload-' . date('Y-m-d H-i-s' , time()) . '-' . md5_file($file['tmp_name']) . '.' . $extension;
+
+            $fname = 'upload-' . date('Y-m-d|H-i-s' , time()) . '-' . md5_file($file['tmp_name']) . '.' . $extension;
         }
         // 根据日期创建文件夹，对文件进行分类
         $date   = date('Y-m-d' , time());
