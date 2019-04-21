@@ -11,6 +11,6 @@ Route::prefix('pc')
     ->group(function(){
         // 统一用 post
         Route::post('/ShowImage/home' , 'ShowImage@home');
-        Route::any('/Brand/all' , 'Brand@all');
+        Route::post('/Brand/all' , 'Brand@all');
     });
 
