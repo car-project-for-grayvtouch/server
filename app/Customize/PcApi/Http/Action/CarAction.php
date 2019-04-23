@@ -20,6 +20,7 @@ class CarAction extends Action
     // 车辆列表
     public static function listForHome(array $param)
     {
+        return self::success('很好');
         $validator = Validator::make($param , [
             'type' => 'required' ,
         ] , [
