@@ -9,18 +9,21 @@
 namespace App\Customize\PcApi\Http\Action;
 
 use App\Customize\PcApi\Model\Car;
+use App\Customize\PcApi\Model\CollectionForCar;
+use App\Customize\PcApi\Model\SearchLog;
+use Exception;
 use function PcApi\get_form_error;
+use function PcApi\user;
 use Validator;
 use DB;
 
-use function extra\config;
+use function PcApi\config;
 
 class CarAction extends Action
 {
     // 车辆列表
     public static function listForHome(array $param)
     {
-        return self::success('很好');
         $validator = Validator::make($param , [
             'type' => 'required' ,
         ] , [
@@ -36,19 +39,33 @@ class CarAction extends Action
             DB::beginTransaction();
             // 获取数据
             $res = Car::listForHome($param);
-            array_walk($res , function($m){
+            foreach ($res as $v)
+            {
                 $user = user();
                 // 是否收藏了该记录
                 if (empty($user)) {
-                    $m->collected = 'n';
+                    $v->collected = 'n';
+                } else {
+                    // 检查当前登录用户是否收藏了该车辆
+                    $v->collected = CollectionForCar::isCollected($user->id , $v->id) ? 'y' : 'n';
                 }
-                // 检查当前登录用户是否收藏了该车辆
-                $m->collected = CarCollection::isCollected($user->id);
-            });
+            }
             // 记录搜索记录
-//            if ($res[]) {
-//                //
-//            }
+            if (in_array($param['type'] , config('business.sale_point_for_search_log'))) {
+                $log = SearchLog::findWithLockByTypeAndValue('sale_point' , $param['type']);
+                if (empty($log)) {
+                    // 插入
+                    SearchLog::insert([
+                        'type' => 'sale_point' ,
+                        'value' => $param['type'] ,
+                        'count' => 1
+                    ]);
+                } else {
+                    SearchLog::updateByTypeAndValue('sale_point' , $param['type'] , [
+                        'count' => ++$log->count
+                    ]);
+                }
+            }
             DB::commit();
             return self::success($res);
         } catch(Exception $e) {

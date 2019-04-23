@@ -25,4 +25,6 @@ return [
         // 销售亮点
         'sale_point' ,
     ] ,
+    // 需要保存搜索记录的 搜索类型
+    'sale_point_for_search_log' => ['affordable' , 'new' , 'luxury'] ,
 ];

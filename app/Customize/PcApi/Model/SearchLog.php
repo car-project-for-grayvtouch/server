@@ -8,6 +8,7 @@
 
 namespace App\Customize\PcApi\Model;
 
+
 class SearchLog extends Model
 {
     protected $table = 'search_log';
@@ -37,6 +38,39 @@ class SearchLog extends Model
             ->limit($limit)
             ->get();
         self::multiple($res);
+        return $res;
+    }
+
+    // 更新日志
+    public static function updateByTypeAndValue($type , $value , array $data = [])
+    {
+        return self::where([
+            ['type' , '=' , $type] ,
+            ['value' , '=' , $value]
+        ])->update($data);
+    }
+
+    // 获取记录：不加锁
+    public static function findByTypeAndValue($type , $value)
+    {
+        $res = self::where([
+            ['type' , '=' , $type] ,
+            ['value' , '=' , $value]
+        ])->first();
+        self::single($res);
+        return $res;
+    }
+
+    // 获取记录：加锁
+    public static function findWithLockByTypeAndValue($type , $value)
+    {
+        $res = self::where([
+                ['type' , '=' , $type] ,
+                ['value' , '=' , $value]
+            ])
+            ->lockForUpdate()
+            ->first();
+        self::single($res);
         return $res;
     }
 }

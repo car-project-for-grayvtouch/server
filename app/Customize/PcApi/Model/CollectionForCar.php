@@ -14,4 +14,12 @@ class CollectionForCar extends Model
     protected $table = 'collection_for_car';
     public $timestamps = false;
 
+    public static function isCollected($user_id , $car_id)
+    {
+        return (bool) self::where([
+                ['user_id' , '=' , $user_id] ,
+                ['car_id' , '=' , $car_id]
+            ])
+            ->count();
+    }
 }

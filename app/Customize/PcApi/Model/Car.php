@@ -39,7 +39,7 @@ class Car extends Model
             ->get()
             ->each(function($m){
                 self::single($m);
-                Brand::single($m->brnad);
+                Brand::single($m->brand);
                 CarSeries::single($m->series);
                 CarModel::single($m->model);
             });
