@@ -10,6 +10,7 @@ namespace PcApi;
 
 use function core\format_path;
 use function extra\config as config_function;
+use ReflectionException;
 use function response as response_function;
 
 use Exception;
@@ -56,7 +57,11 @@ function response($data , $code)
 // 当前登录用户
 function user()
 {
-    return app()->make('user');
+    try {
+        return app()->make('user');
+    } catch(ReflectionException $e) {
+        return null;
+    }
 }
 
 // 格式化 validator 表单验证的错误信息
@@ -124,3 +129,4 @@ function parse_order($order = 'id|desc' , $delimiter = '|')
     ];
     return $res;
 }
+

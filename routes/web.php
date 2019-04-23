@@ -14,3 +14,8 @@
 Route::get('/', function () {
     echo '<script>window.location.href=\'module/admin/compiled/app.html\';</script>';
 });
+
+
+Route::get('/test' , function(){
+     var_dump(app()->make('test'));
+});

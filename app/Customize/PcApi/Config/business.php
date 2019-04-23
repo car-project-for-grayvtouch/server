@@ -11,10 +11,18 @@ return [
         'y' => '是' ,
         'n' => '否'
     ] ,
-    'route' => [
-        'method' => ['GET' , 'POST' , 'PUT' , 'PATCH' , 'DELETE' , 'NONE'] ,
-        // api-接口
-        // view-前端视图
-        'type' => ['api' , 'view'] ,
+    // 搜索类型
+    // affordable-经济实惠；new-准新车；luxury-豪华车 newAndHot
+    'search_type' => ['newAndHot' , 'affordable' , 'new' , 'luxury'] ,
+    // 搜索记录类型
+    'search_log' => [
+        // 品牌
+        'brand' ,
+        // 车系
+        'series' ,
+        // 关键字
+        'keyword' ,
+        // 销售亮点
+        'sale_point' ,
     ] ,
 ];
