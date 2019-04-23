@@ -13,5 +13,6 @@ Route::prefix('pc')
         Route::post('/ShowImage/home' , 'ShowImage@home');
         Route::post('/Brand/all' , 'Brand@all');
         Route::post('/SearchLog/hot' , 'SearchLog@hot');
+        Route::post('/Car/listForHome' , 'Car@listForHome');
     });
 
