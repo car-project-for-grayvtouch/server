@@ -16,7 +16,7 @@ use DB;
 class CarAction extends Action
 {
     // 车辆列表
-    public function listForHome(array $param)
+    public static function listForHome(array $param)
     {
         $validator = Validator::make($param , [
             'type' => 'required' ,
