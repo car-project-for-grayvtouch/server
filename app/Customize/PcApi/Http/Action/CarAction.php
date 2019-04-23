@@ -13,6 +13,8 @@ use function PcApi\get_form_error;
 use Validator;
 use DB;
 
+use function extra\config;
+
 class CarAction extends Action
 {
     // 车辆列表
