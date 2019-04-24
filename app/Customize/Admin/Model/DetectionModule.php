@@ -8,6 +8,8 @@
 
 namespace App\Customize\Admin\Model;
 
+use function Admin\res_url;
+
 class DetectionModule extends Model
 {
     protected $table = 'detection_module';
@@ -33,5 +35,13 @@ class DetectionModule extends Model
             ->paginate($limit);
         self::multiple($res->getCollection());
         return $res;
+    }
+
+    public static function single(Model $m = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
+        $m->image_explain = res_url($m->image);
     }
 }

@@ -102,7 +102,7 @@ class BrandAction extends Action
 
     public static function detail($id)
     {
-        $res = Brand::find($id);
+        $res = Brand::findById($id);
         if (empty($res)) {
             return self::error("未找到 id 对应记录");
         }

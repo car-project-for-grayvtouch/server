@@ -27,4 +27,6 @@ return [
     ] ,
     // 需要保存搜索记录的 搜索类型
     'sale_point_for_search_log' => ['affordable' , 'new' , 'luxury'] ,
+    // 可以评论的状态，车辆已经销售
+    'sold_status' => ['sold'] ,
 ];

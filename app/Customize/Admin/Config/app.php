@@ -7,9 +7,9 @@
  */
 
 return [
-    'host' => 'http://car.com/' ,
+    'host' => '' ,
     // 域名切记不要带 /
-    'res_host' => '' ,
+    'res_host' => '/upload' ,
     // refresh token 保存时常
     'refresh_token_duration_type' => 'short' ,
     // 默认头像

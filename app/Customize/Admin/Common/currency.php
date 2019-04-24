@@ -92,6 +92,9 @@ function get_form_error($validator)
 // 生成 url
 function res_url($path = '')
 {
+    if (empty($path)) {
+        return $path;
+    }
     $res = config('app.res_host');
     return sprintf('%s%s' , $res , $path);
 }
@@ -99,15 +102,24 @@ function res_url($path = '')
 // 生成资源路径
 function res_path($path = '')
 {
+    if (empty($path)) {
+        return $path;
+    }
     $path = realpath($path);
+    $path = format_path($path);
     $upload_dir = config('app.upload_dir');
-    $upload_dir = addcslashes($upload_dir , '/');
-    return preg_replace("/^{$upload_dir}/" , '' , $path);
+    $upload_dir = format_path($upload_dir);
+    $upload_dir = addcslashes($upload_dir , '/\\');
+    $path = preg_replace("/^{$upload_dir}/" , '' , $path);
+    return $path;
 }
 
 // 资源的绝对路径
 function res_realpath($path = '')
 {
+    if (empty($path)) {
+        return $path;
+    }
     $upload_dir = config('app.upload_dir');
     return sprintf('%s%s' , $upload_dir , $path);
 }

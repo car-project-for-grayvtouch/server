@@ -8,11 +8,11 @@
 
 namespace App\Customize\Admin\Util;
 
-use function Admin\res_path;
+use function PcApi\res_path;
 use Core\Lib\UploadFile;
 use Core\Lib\UploadImage;
 
-use function Admin\config;
+use function PcApi\config;
 
 class File
 {
@@ -21,9 +21,8 @@ class File
 
     function __construct()
     {
-        $dir = config('app.upload_dir');
-        $this->image = new UploadImage($dir);
-        $this->file = new UploadFile($dir);
+        $this->image = new UploadImage(config('app.upload_dir'));
+        $this->file = new UploadFile(config('app.upload_dir'));
     }
 
     // 保存图片

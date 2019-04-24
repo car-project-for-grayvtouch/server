@@ -46,6 +46,7 @@ create table if not exists `xq_article` (
   is_third enum('y' , 'n') default 'n' comment '是否第三方抓取：y-是 n-否' ,
   unique_id char(255) default '' comment '第三方 记录id' ,
   hidden enum('y' , 'n') default 'n' comment '是否隐藏：n-否 y-是' ,
+  is_link enum('y' , 'n') default 'n' comment '是否是外链：y-是 n-否' ,
   create_time datetime default current_timestamp ,
   update_time datetime default current_timestamp on update current_timestamp ,
   primary key `id` (`id`)
@@ -78,9 +79,12 @@ insert into xq_platform (id , name) values
 (6 , 'app');
 
 insert into `xq_show_image` (platform_id , position , name , mime , path) values
-(1 , 'home' , '' , '' , '/upload/01.jpg') ,
-(1 , 'home' , '' , '' , '/upload/02.jpg') ,
-(1 , 'home' , '' , '' , '/upload/03.jpg') ,
-(1 , 'home' , '' , '' , '/upload/04.jpg') ,
-(1 , 'home' , '' , '' , '/upload/05.jpg') ,
-(1 , 'home' , '' , '' , '/upload/06.jpg');
+(1 , 'home' , '' , '' , '/01.jpg') ,
+(1 , 'home' , '' , '' , '/02.jpg') ,
+(1 , 'home' , '' , '' , '/03.jpg') ,
+(1 , 'home' , '' , '' , '/04.jpg') ,
+(1 , 'home' , '' , '' , '/05.jpg') ,
+(1 , 'home' , '' , '' , '/06.jpg');
+
+insert into `xq_article_type` (id , name , p_id) values
+(1 , '媒体声音' , 0);

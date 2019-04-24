@@ -73,8 +73,11 @@ class Car extends Model
 
     public static function findById($id)
     {
-        $res = self::with(['image' , 'service'])->find($id);
+        $res = self::with(['image' , 'service'])
+            ->find($id);
         static::single($res);
+        CarImage::multiple($res->image);
+        Service::multiple($res->service);
         return $res;
     }
 

@@ -7,9 +7,9 @@
  */
 
 return [
-    'host' => 'http://car.com/' ,
+    'host' => 'http://car.com' ,
     // 域名切记不要带 /
-    'res_host' => 'http://admin.championcargroup.com' ,
+    'res_host' => 'http://admin.championcargroup.com/upload' ,
     // refresh token 保存时常
     'refresh_token_duration_type' => 'short' ,
     // 默认头像
@@ -22,4 +22,8 @@ return [
     'debug' => 'abc123' ,
     // 上传文件路径
     'upload_dir' => realpath(__DIR__ . '/../../../../public/upload/') ,
+    // 10 天内免登陆
+    'long_for_login' => 10 * 24 * 3600 ,
+    // 1 天内免登陆
+    'short_for_login' => 1 * 24 * 3600 ,
 ];

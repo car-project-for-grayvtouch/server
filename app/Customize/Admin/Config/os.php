@@ -12,7 +12,7 @@ return [
     'system' => [
         'name' => '汽车后台管理系统' ,
         'version' => '1.0.0' ,
-        'logo' => config('app.host') . 'static/image/logo.jpg' ,
+        'logo' => config('app.host') . '/static/image/logo.jpg' ,
     ] ,
     'developer' => [
         'cn' => '陈学龙' ,

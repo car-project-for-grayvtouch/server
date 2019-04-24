@@ -14,14 +14,8 @@ use function PcApi\res_url;
 
 class User extends Model
 {
-    protected $table = 'admin_user';
+    protected $table = 'user';
     public $timestamps = false;
-
-    // 用户关联角色
-    public function role()
-    {
-        return $this->belongsTo(Role::class , 'role_id' , 'id');
-    }
 
     public static function single(Model $m = null)
     {

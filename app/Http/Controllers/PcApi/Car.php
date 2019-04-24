@@ -21,11 +21,23 @@ class Car extends Controller
     public function listForHome()
     {
         $param = $this->request->post();
-
         // affordable-经济实惠；new-准新车；luxury-豪华车 newAndHot
         // 默认：最新最热
         $param['type'] = $param['type'] ?? 'newAndHot';
         $res = CarAction::listForHome($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 首页-车辆精选评论
+    public function featuredComment()
+    {
+        $res = CarAction::featuredComment();
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

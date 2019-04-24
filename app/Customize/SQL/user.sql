@@ -80,11 +80,17 @@ create table if not exists `xq_car_comment` (
   id int unsigned not null auto_increment ,
   user_id int unsigned default 0 comment 'xq_user.id' ,
   car_id int unsigned default 0 comment 'xq_car.id' ,
+  type enum('main' , 'append') default 'main' comment 'main-主要 append-附加' ,
   content varchar(1000) default '' comment '评论内容' ,
   hidden enum('y' , 'n') default 'n' comment '是否隐藏' ,
+  commendation int unsigned default 0 comment '赞数' ,
+  product_score decimal(13,2) default 0 comment '商品评分' ,
+  p_id int unsigned default 0 comment '上级评论id: xq_car_comment.id' ,
+  is_supplier enum('y' , 'n') default 'n' comment '是否是商家：y-是 n-否' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
-) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '车辆评论-仅允许已购买的人评论';
+) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '车辆评论-主体/追加评论-仅允许对已购买车辆进行评论且每辆车仅允许评论一条';
+
 
 drop table if exists `xq_car_comment_image`;
 create table if not exists `xq_car_comment_image` (
@@ -103,8 +109,6 @@ create table if not exists `xq_user_token` (
   token char(64) default '' ,
   user_id int unsigned default 0 comment 'xq_user.id' ,
   token_expire datetime default current_timestamp comment 'token 过期时间' ,
-  refresh_token char(64) comment '刷新 token 的令牌，永不过期' ,
-  refresh_token_expire datetime default current_timestamp comment 'refresh_token 过期时间' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment 'oauth 2.0 password 模式';

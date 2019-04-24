@@ -8,8 +8,17 @@
 
 namespace App\Customize\Admin\Model;
 
+use function Admin\res_url;
+
 class CarImage extends Model
 {
     protected $table = 'car_image';
     public $timestamps = false;
+
+    public static function single(Model $m = null){
+        if (empty($m)) {
+            return ;
+        }
+        $m->url_explain = res_url($m->url);
+    }
 }
