@@ -12,6 +12,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface ModelInterface
 {
-    static function single(Model $m = null);
+    static function single($m = null);
     static function multiple(Collection $list);
 }

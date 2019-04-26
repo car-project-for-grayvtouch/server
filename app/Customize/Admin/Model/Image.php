@@ -10,7 +10,7 @@ namespace App\Customize\Admin\Model;
 
 class Image extends Model
 {
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

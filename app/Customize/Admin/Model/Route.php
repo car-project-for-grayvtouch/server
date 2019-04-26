@@ -15,7 +15,7 @@ class Route extends Model
     protected $table = 'route';
     public $timestamps = false;
 
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

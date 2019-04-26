@@ -132,6 +132,7 @@ create table if not exists `xq_car` (
   transfer_record tinyint unsigned default 0 comment '过户记录（次数）' ,
   color char(255) default '' comment '车辆颜色' ,
   thumb varchar(500) default '' comment '封面' ,
+  age tinyint default 0 comment '车龄' ,
   view_count int unsigned default 0 comment '浏览次数' ,
   sale_point enum('affordable' , 'new' , 'luxury' , 'none') default 'none' comment '销售亮点：affordable-经济实惠；new-准新车；luxury-豪华车' ,
   status char(255) default 'sale' comment '车辆状态：sale-销售中 sold-已销售，完整的车辆状态，后续可以再扩展' ,

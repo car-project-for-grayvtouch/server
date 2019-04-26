@@ -21,7 +21,7 @@ class Role extends Model
         return $this->belongsToMany(Route::class , 'role_privilege' , 'role_id' , 'route_id');
     }
 
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

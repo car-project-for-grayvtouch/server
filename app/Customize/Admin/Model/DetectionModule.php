@@ -37,7 +37,7 @@ class DetectionModule extends Model
         return $res;
     }
 
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

@@ -53,7 +53,7 @@ class DetectionItem extends Model
         return $this->belongsTo(DetectionPos::class , 'detection_pos_id' , 'id');
     }
 
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

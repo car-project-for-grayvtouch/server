@@ -23,6 +23,7 @@ Route::prefix('pc')
         // 车辆
         Route::post('/Car/listForHome' , 'Car@listForHome');
         Route::post('/Car/featuredComment' , 'Car@featuredComment');
+        Route::post('/Car/list' , 'Car@list');
 
         // 用户
         Route::post('Login/login' , 'Login@login');
@@ -30,5 +31,13 @@ Route::prefix('pc')
 
         // 文章
         Route::post('Article/listForHome' , 'Article@listForHome');
+
+        // 车系
+        Route::post('/CarSeries/all' , 'CarSeries@all');
+
+        // 车辆类型
+        Route::post('/CarType/all' , 'CarType@all');
+
+
     });
 

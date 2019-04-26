@@ -46,4 +46,27 @@ class Car extends Controller
         }
         return success($res['data']);
     }
+
+    // 首页-车辆列表
+    public function list()
+    {
+        $param                  = $this->request->query();
+        $param['brand_id']      = $param['brand_id'] ?? '';
+        $param['car_series_id'] = $param['car_series_id'] ?? '';
+        $param['car_type_id']   = $param['car_type_id'] ?? '';
+        $param['price']         = $param['price'] ?? '';
+        $param['mileage']       = $param['mileage'] ?? '';
+        $param['age']           = $param['age'] ?? '';
+        $param['gearbox']       = $param['gearbox'] ?? '';
+        $param['color']         = $param['color'] ?? '';
+        $param['sort']          = $param['sort'] ?? '';
+        $res = CarAction::list($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
 }

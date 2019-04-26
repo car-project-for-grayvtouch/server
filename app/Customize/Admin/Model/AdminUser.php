@@ -23,7 +23,7 @@ class AdminUser extends Model
         return $this->belongsTo(Role::class , 'role_id' , 'id');
     }
 
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

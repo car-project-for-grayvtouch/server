@@ -47,6 +47,7 @@ create table if not exists `xq_article` (
   unique_id char(255) default '' comment '第三方 记录id' ,
   hidden enum('y' , 'n') default 'n' comment '是否隐藏：n-否 y-是' ,
   is_link enum('y' , 'n') default 'n' comment '是否是外链：y-是 n-否' ,
+  link varchar(1000) default '' comment '外链地址' ,
   create_time datetime default current_timestamp ,
   update_time datetime default current_timestamp on update current_timestamp ,
   primary key `id` (`id`)

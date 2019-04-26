@@ -14,6 +14,7 @@ use App\Customize\PcApi\Model\CollectionForCar;
 use App\Customize\PcApi\Model\SearchLog;
 use Exception;
 use function PcApi\get_form_error;
+use function PcApi\parse_order;
 use function PcApi\user;
 use Validator;
 use DB;
@@ -22,7 +23,36 @@ use function PcApi\config;
 
 class CarAction extends Action
 {
-    // 车辆列表
+    // 工具函数：检查用户是否收藏了该车辆
+    public static function u_collected($car_id)
+    {
+        $user = user();
+        // 是否收藏了该记录
+        if (empty($user)) {
+            return 'n';
+        }
+        return CollectionForCar::isCollected($user->id , $car_id) ? 'y' : 'n';
+    }
+
+    // 记录搜索日志
+    public static function u_searchLog($type , $value)
+    {
+        $log = SearchLog::findByTypeAndValue($type , $value);
+        if (empty($log)) {
+            // 插入
+            SearchLog::insert([
+                'type' => $type ,
+                'value' => $value ,
+                'count' => 1
+            ]);
+            return ;
+        }
+        SearchLog::updateByTypeAndValue($type , $value , [
+            'count' => ++$log->count
+        ]);
+    }
+
+    // 工具函数：车辆列表
     public static function listForHome(array $param)
     {
         $validator = Validator::make($param , [
@@ -42,30 +72,11 @@ class CarAction extends Action
             $res = Car::listForHome($param);
             foreach ($res as $v)
             {
-                $user = user();
-                // 是否收藏了该记录
-                if (empty($user)) {
-                    $v->collected = 'n';
-                } else {
-                    // 检查当前登录用户是否收藏了该车辆
-                    $v->collected = CollectionForCar::isCollected($user->id , $v->id) ? 'y' : 'n';
-                }
+                $v->collected = self::u_collected($v->id);
             }
             // 记录搜索记录
             if (in_array($param['type'] , config('business.sale_point_for_search_log'))) {
-                $log = SearchLog::findWithLockByTypeAndValue('sale_point' , $param['type']);
-                if (empty($log)) {
-                    // 插入
-                    SearchLog::insert([
-                        'type' => 'sale_point' ,
-                        'value' => $param['type'] ,
-                        'count' => 1
-                    ]);
-                } else {
-                    SearchLog::updateByTypeAndValue('sale_point' , $param['type'] , [
-                        'count' => ++$log->count
-                    ]);
-                }
+                self::u_searchLog('sale_point' , $param['type']);
             }
             DB::commit();
             return self::success($res);
@@ -82,5 +93,34 @@ class CarAction extends Action
         $limit = 20;
         $res = CarComment::featuredComment($limit);
         return self::success($res);
+    }
+
+    // 车辆-买车页面
+    public static function list(array $param)
+    {
+        $sort = $param['sort'] == '' ? 'update_time|desc' : $param['sort'];
+        $sort = parse_order($sort , '|');
+        $limit = config('app.limit');
+        try {
+            DB::beginTransaction();
+            $res = Car::list($param , $sort , $limit);
+            foreach ($res as $v)
+            {
+                // 是否收藏
+                $v->collected = self::u_collected($v->id);
+                if (!empty($param['brand_id'])) {
+                    // 记录搜索日志
+                    self::u_searchLog('brand' , $param['brand_id']);
+                }
+                if (!empty($param['brand_id'])) {
+                    self::u_searchLog('brand' , $param['brand_id']);
+                }
+            }
+            DB::commit();
+            return self::success($res);
+        } catch(Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
     }
 }

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ArticleType extends Model  implements ModelInterface
 {
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

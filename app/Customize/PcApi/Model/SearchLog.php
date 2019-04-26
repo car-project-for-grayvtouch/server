@@ -14,7 +14,7 @@ class SearchLog extends Model
     protected $table = 'search_log';
     public $timestamps = false;
 
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;

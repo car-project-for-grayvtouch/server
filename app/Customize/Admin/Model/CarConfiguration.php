@@ -20,7 +20,7 @@ class CarConfiguration extends Model
         return $this->belongsTo(CarConfigurationGroup::class , 'car_configuration_group_id' , 'id');
     }
 
-    public static function single(Model $m = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
