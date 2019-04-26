@@ -30,7 +30,7 @@
                                     </div>
                                     <!-- 预置显示图片 -->
                                     <div class="init-show-image-list">
-                                        <img :src="form.image" v-if="param.mode == 'edit' && form.image" class="init-show-image" />
+                                        <img :src="form.image_explain" v-if="param.mode == 'edit' && form.image_explain" class="init-show-image" />
                                     </div>
                                     <div class='preview-images hide'></div>
                                     <!-- 待上传列表 -->

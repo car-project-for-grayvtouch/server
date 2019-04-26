@@ -73,7 +73,7 @@
                                 <td><input type="checkbox" class="c-box"></td>
                                 <td>{{ v.id }}</td>
                                 <td>{{ v.name }}</td>
-                                <td><img :src="v.image" class="image"></td>
+                                <td><img :src="v.image_explain" class="image"></td>
                                 <td>{{ v.weight }}</td>
                                 <td>{{ v.create_time }}</td>
                                 <td>

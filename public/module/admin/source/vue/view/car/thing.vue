@@ -225,7 +225,7 @@
                                     <tr v-for="v in form.image" :key="v.id" :data-id="v.id" @click="selectEvent">
                                         <td><input type="checkbox" class="c-box"></td>
                                         <td>{{ v.id }}</td>
-                                        <td><img :src="v.url" class="image"></td>
+                                        <td><img :src="v.url_explain" class="image"></td>
                                         <td>{{ v.mime }}</td>
                                         <td>{{ v.size }}</td>
                                         <td>{{ v.create_time }}</td>

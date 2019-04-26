@@ -25,7 +25,7 @@
                                 <span class="msg">{{ error.letter }}</span>
                             </td>
                         </tr>
-                        <tr id="logo" :class="getClass(error.logo)">
+                        <tr id="logo" :class="getClass(error.logo_explain)">
                             <td>logo</td>
                             <td ref="image-container">
                                 <div class='upload-image'>
@@ -40,7 +40,7 @@
                                     </div>
                                     <!-- 预置显示图片 -->
                                     <div class="init-show-image-list">
-                                        <img :src="form.logo" v-if="param.mode == 'edit' && form.logo" class="init-show-image" />
+                                        <img :src="form.logo_explain" v-if="param.mode == 'edit' && form.logo_explain" class="init-show-image" />
                                     </div>
                                     <div class='preview-images hide'></div>
                                     <!-- 待上传列表 -->

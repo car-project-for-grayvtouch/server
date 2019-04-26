@@ -76,7 +76,7 @@
                                 <td>{{ v.id }}</td>
                                 <td>{{ v.name }}</td>
                                 <td>{{ v.letter }}</td>
-                                <td><img :src="v.logo" class="image"></td>
+                                <td><img :src="v.logo_explain" class="image"></td>
                                 <td>{{ v.hot_explain }}</td>
                                 <td>{{ v.weight }}</td>
                                 <td>{{ v.create_time }}</td>
