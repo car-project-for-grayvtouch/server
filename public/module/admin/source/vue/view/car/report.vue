@@ -40,7 +40,7 @@
                                     <v-button color="blue" @click="opacity=0.5">透明度：50%</v-button>
                                     <v-button color="blue" @click="opacity=1">透明度：100%</v-button>
                                 </div>
-                                <div class="con" @click="toLink(module.image)" :style="`opacity: ${opacity};`"><img :src="module.image" class="image"></div>
+                                <div class="con" @click="toLink(module.image_explain)" :style="`opacity: ${opacity};`"><img :src="module.image_explain" class="image"></div>
                             </div>
 
                         </div>
