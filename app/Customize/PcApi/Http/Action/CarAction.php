@@ -10,6 +10,7 @@ namespace App\Customize\PcApi\Http\Action;
 
 use App\Customize\PcApi\Model\Car;
 use App\Customize\PcApi\Model\CarComment;
+use App\Customize\PcApi\Model\CarConfiguration;
 use App\Customize\PcApi\Model\CollectionForCar;
 use App\Customize\PcApi\Model\SearchLog;
 use Exception;
@@ -145,7 +146,9 @@ class CarAction extends Action
         if (empty($car)) {
             return self::error('未找到 id = ' . $param['id'] . '对应车辆');
         }
+        // 用户是否收藏
         $car->collected = self::u_collected($car->id);
-        return self::success($car);
+        $configuration = CarConfiguration::groupData();
+        return self::success(compact('car' , 'configuration'));
     }
 }

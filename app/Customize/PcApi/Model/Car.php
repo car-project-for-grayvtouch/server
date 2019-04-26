@@ -9,6 +9,7 @@
 namespace App\Customize\PcApi\Model;
 
 
+use App\Customize\Admin\Model\CarModelWithConfiguration;
 use Exception;
 use function PcApi\res_url;
 use function PcApi\config;
@@ -262,6 +263,7 @@ class Car extends Model
         }
         if (!empty($res->model)) {
             $res->model->car_type = CarType::findById($res->model->car_type_id);
+            $res->model->configuration = CarModel::getConfiguration($res->model->id);
         }
         // 检测报告
 
