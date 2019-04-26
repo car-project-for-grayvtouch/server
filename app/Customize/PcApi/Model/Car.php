@@ -85,10 +85,18 @@ class Car extends Model
         return $this->belongsTo(CarModel::class , 'car_model_id' , 'id');
     }
 
+    // 车款
+    public function service()
+    {
+        return $this->belongsToMany(Service::class , 'car_service', 'car_id' , 'service_id');
+    }
+
     // 车辆列表
     public static function list(array $param = [] , array $sort = ['field' => 'update_time' , 'value' => 'desc'] , int $limit = 20)
     {
-        $param['brand_id']  = $param['brand_id'] ?? '';
+        $param['keyword']       = $param['keyword'] ?? '';
+        $param['sale_point']    = $param['sale_point'] ?? '';
+        $param['brand_id']      = $param['brand_id'] ?? '';
         $param['car_series_id'] = $param['car_series_id'] ?? '';
         $param['car_type_id']   = $param['car_type_id'] ?? '';
         $param['price']         = $param['price'] ?? '';
@@ -112,8 +120,11 @@ class Car extends Model
         if ($param['gearbox'] != '') {
             $where[] = ['cm.gearbox' , '=' , $param['gearbox']];
         }
-        if ($param['gearbox'] != '') {
-            $where[] = ['cm.gearbox' , '=' , $param['gearbox']];
+        if ($param['sale_point'] != '') {
+            $where[] = ['c.sale_point' , '=' , $param['sale_point']];
+        }
+        if ($param['keyword'] != '') {
+            $where[] = ['c.title' , 'like' , "%{$param['keyword']}%"];
         }
         if ($param['color'] != '') {
             $car_filter = config('business.car_filter');
@@ -234,6 +245,50 @@ class Car extends Model
             $v->model = CarModel::findById($v->car_model_id);
         }
         return $res;
+    }
+
+    public static function findById($id)
+    {
+        $res = self::with([
+                'brand' ,
+                'series' ,
+                'model' ,
+                'image' ,
+                'service' ,
+            ])
+            ->find($id);
+        if (empty($res)) {
+            return ;
+        }
+        if (!empty($res->model)) {
+            $res->model->car_type = CarType::findById($res->model->car_type_id);
+        }
+        // 检测报告
+
+        self::single($res);
+        Brand::single($res->brand);
+        CarSeries::single($res->series);
+        CarModel::single($res->model);
+        CarImage::multiple($res->image);
+        Service::multiple($res->service);
+        $res->report = self::report($res->id);
+        return $res;
+    }
+
+    // 获取检测报告
+    public static function report($id)
+    {
+        $report = Report::findByCarId($id);
+        $report->module = ReportForModule::getByReportId($report->id);
+        foreach ($report->module as $v)
+        {
+            $v->position = ReportForPos::getByReportForModuleId($v->id);
+            foreach ($v->position as $v1)
+            {
+                $v1->item = ReportForItem::getByReportForPosId($v1->id);
+            }
+        }
+        return $report;
     }
 
 }

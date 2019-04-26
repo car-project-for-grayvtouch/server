@@ -50,7 +50,9 @@ class Car extends Controller
     // 首页-车辆列表
     public function list()
     {
-        $param                  = $this->request->query();
+        $param                  = $this->request->post();
+        $param['sale_point']      = $param['sale_point'] ?? '';
+        $param['keyword']      = $param['keyword'] ?? '';
         $param['brand_id']      = $param['brand_id'] ?? '';
         $param['car_series_id'] = $param['car_series_id'] ?? '';
         $param['car_type_id']   = $param['car_type_id'] ?? '';
@@ -61,6 +63,20 @@ class Car extends Controller
         $param['color']         = $param['color'] ?? '';
         $param['sort']          = $param['sort'] ?? '';
         $res = CarAction::list($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    public function detail()
+    {
+        $param = $this->request->post();
+        $param['id'] = $param['id'] ?? '';
+        $res = CarAction::detail($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

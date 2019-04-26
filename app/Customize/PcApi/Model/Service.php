@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: grayVTouch
- * Date: 2019/4/22
- * Time: 16:44
+ * Date: 2019/4/26
+ * Time: 23:44
  */
 
 namespace App\Customize\PcApi\Model;
@@ -12,9 +12,9 @@ namespace App\Customize\PcApi\Model;
 use Exception;
 use function PcApi\res_url;
 
-class CarImage extends Model
+class Service extends Model
 {
-    protected $table = 'car_image';
+    protected $table = 'service';
     public $timestamps = false;
 
     public static function single($m = null)
@@ -25,8 +25,6 @@ class CarImage extends Model
         if (!is_object($m)) {
             throw new Exception('参数 1 错误');
         }
-        unset($m->path);
-        $m->url = res_url($m->url);
+        $m->image = res_url($m->image);
     }
-
 }

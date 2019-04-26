@@ -24,6 +24,7 @@ Route::prefix('pc')
         Route::post('/Car/listForHome' , 'Car@listForHome');
         Route::post('/Car/featuredComment' , 'Car@featuredComment');
         Route::post('/Car/list' , 'Car@list');
+        Route::post('/Car/detail' , 'Car@detail');
 
         // 用户
         Route::post('Login/login' , 'Login@login');

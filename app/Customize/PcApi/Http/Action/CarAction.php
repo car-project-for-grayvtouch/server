@@ -112,8 +112,14 @@ class CarAction extends Action
                     // 记录搜索日志
                     self::u_searchLog('brand' , $param['brand_id']);
                 }
-                if (!empty($param['brand_id'])) {
-                    self::u_searchLog('brand' , $param['brand_id']);
+                if (!empty($param['car_series_id'])) {
+                    self::u_searchLog('series' , $param['car_series_id']);
+                }
+                if (!empty($param['keyword'])) {
+                    self::u_searchLog('keyword' , $param['keyword']);
+                }
+                if (!empty($param['sale_point']) && in_array($param['sale_point'] , config('business.sale_point_for_search_log'))) {
+                    self::u_searchLog('sale_point' , $param['sale_point']);
                 }
             }
             DB::commit();
@@ -122,5 +128,24 @@ class CarAction extends Action
             DB::rollback();
             throw $e;
         }
+    }
+
+    // 车辆-详情页
+    public static function detail(array $param)
+    {
+        $validator = Validator::make($param , [
+            'id' => 'required' ,
+        ] , [
+            'id.required' => 'id 必须提供' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        $car = Car::findById($param['id']);
+        if (empty($car)) {
+            return self::error('未找到 id = ' . $param['id'] . '对应车辆');
+        }
+        $car->collected = self::u_collected($car->id);
+        return self::success($car);
     }
 }
