@@ -51,5 +51,8 @@ Route::prefix('pc')
 
         // 杂类
         Route::post('/Misc/verifyCode' , 'Misc@verifyCode');
+
+        // 用户
+        Route::post('User/info' , 'User@info');
     });
 
