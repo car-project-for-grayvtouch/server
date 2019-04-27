@@ -25,6 +25,6 @@ class CarCommentImage extends Model
         if (!is_object($m)) {
             throw new Exception('不支持的类型');
         }
-        $m->path = res_url($m->path);
+        $m->url = res_url($m->path);
     }
 }
