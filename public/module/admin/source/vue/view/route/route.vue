@@ -70,7 +70,7 @@
                                     </div>
                                     <!-- 预置显示图片 -->
                                     <div class="init-show-image-list">
-                                        <img :src="form.s_ico" v-if="param.mode == 'edit' && form.s_ico" class="init-show-image" />
+                                        <img :src="form.s_ico_explain" v-if="param.mode == 'edit' && form.s_ico_explain" class="init-show-image" />
                                     </div>
                                     <div class='preview-images hide'></div>
                                     <!-- 待上传列表 -->
@@ -108,7 +108,7 @@
                                     </div>
                                     <!-- 预置显示图片 -->
                                     <div class="init-show-image-list">
-                                        <img :src="form.b_ico" v-if="param.mode == 'edit' && form.b_ico" class="init-show-image" />
+                                        <img :src="form.b_ico_explain" v-if="param.mode == 'edit' && form.b_ico_explain" class="init-show-image" />
                                     </div>
                                     <div class='preview-images hide'></div>
                                     <!-- 待上传列表 -->

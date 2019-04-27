@@ -121,7 +121,7 @@ export default {
                             this.eNotice(res);
                             return ;
                         }
-                        this.preview = res.image;
+                        this.preview = res.image_explain;
                     });
                     return ;
                 }

@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-4818ab98] {
+.module-container[data-v-01f5038c] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-4818ab98] {
+.module-container > *[data-v-01f5038c] {
     padding: 0 20px;
 }
 
@@ -24,11 +24,70 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-4818ab98] {
+.module-container > .module-content[data-v-01f5038c] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-4818ab98] {
+.module-container > .module-content > .in[data-v-01f5038c] {
     padding: 20px;
     background-color: white;
 }
+/*
+ * ******************
+ * 模块控制器
+ * ******************
+ */
+.module-container[data-v-01f5038c] {
+}
+.module-container .module-content[data-v-01f5038c] {
+}
+.module-container .module-content > .in[data-v-01f5038c] {
+}
+.module-container .module-content > .in > form[data-v-01f5038c] {
+}
+.module-container .module-content > .in > form[data-v-01f5038c]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.module-container .module-content > .in > form > *[data-v-01f5038c] {
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.module-container .module-content > .in > form .preview[data-v-01f5038c] {
+}
+.module-container .module-content > .in > form .preview > .in[data-v-01f5038c] {
+    position: relative;
+}
+.module-container .module-content > .in > form .preview > .in .image[data-v-01f5038c] {
+    max-width: 100%;
+}
+.module-container .module-content > .in > form .preview > .in .empty[data-v-01f5038c] {
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-weight: bold;
+}
 
+/**
+ * **********************************
+ * 输入表单
+ * **********************************
+ */
+.input-tb[data-v-01f5038c] {
+}
+.input-tb tbody tr td .line[data-v-01f5038c] {
+    margin-bottom: 12px;
+}
+.input-tb tbody tr td .line[data-v-01f5038c]:nth-last-of-type(1) {
+    /*margin-bottom: 0;*/
+}
+.input-tb tbody tr td .line .form-text[data-v-01f5038c] {
+    min-width: auto;
+    width: 130px;
+}

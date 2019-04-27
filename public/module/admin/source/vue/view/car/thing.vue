@@ -66,7 +66,7 @@
                                             </div>
                                             <!-- 预置显示图片 -->
                                             <div class="init-show-image-list">
-                                                <img :src="form.thumb" v-if="param.mode == 'edit' && form.thumb" class="init-show-image" />
+                                                <img :src="form.thumb_explain" v-if="param.mode == 'edit' && form.thumb_explain" class="init-show-image" />
                                             </div>
                                             <div class='preview-images hide'></div>
                                             <!-- 待上传列表 -->
@@ -237,7 +237,7 @@
                                         </td>
                                     </tr>
                                     <tr v-if="form.image.length == 0">
-                                        <td colspan="8">没有相关数据</td>
+                                        <td colspan="7">没有相关数据</td>
                                     </tr>
                                     </tbody>
                                 </table>

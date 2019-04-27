@@ -93,7 +93,7 @@ export default {
             {
                 cur = this.module[i];
                 if (cur.id == value) {
-                    this.preview = cur.image;
+                    this.preview = cur.image_explain;
                     return ;
                 }
             }
