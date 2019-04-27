@@ -35,7 +35,7 @@ function check_len($str , $len , $sign = 'eq'){
 
 // 检查手机号码
 function check_phone($phone){
-    return (bool) (preg_match('/^[1][3-8]\d{9}$/u' , $phone) || preg_match('/^\d+\-\d+(\-[0-9\-]+)?$/' , $phone));
+    return (bool) (preg_match('/^[1][3-8]\d{9}$/u' , $phone) || preg_match('/^\d+\-\d+$/' , $phone));
 }
 
 // 检查价格
@@ -59,12 +59,7 @@ function check_date($date){
 
 // 检查数字
 function check_num($num , $len = 0){
-    if ($len === 0) {
-        return (bool) preg_match("/^\d+$/" , $num);
-    }
-
     $reg = "/^\d+(\.\d{0,{$len}})?$/";
-
     return (bool) preg_match($reg , $num);
 }
 
@@ -87,6 +82,11 @@ function regexp_check(string $reg = '' , string $str = '')
     $reg = addslashes($reg);
     $reg = addcslashes($reg , '/[]()-');
     return (bool) preg_match("/{$reg}/" , $str);
+}
+
+function check_num_len($num , $len)
+{
+    return is_numeric($num) && mb_strlen($num) == $len;
 }
 
 // 获取给定数组中给定键名对应单元
