@@ -1019,7 +1019,10 @@ var render = function() {
       _c("div", { staticClass: "icon" }, [
         _vm.data.floor > 1 ? _c("span", { staticClass: "text" }) : _vm._e(),
         _vm._v(" "),
-        _c("img", { staticClass: "image", attrs: { src: _vm.data.s_ico } })
+        _c("img", {
+          staticClass: "image",
+          attrs: { src: _vm.data.s_ico_explain }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "explain" }, [
@@ -1133,7 +1136,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { ref: "module-nav", staticClass: "module-nav" }, [
     _c("div", { staticClass: "left" }, [
-      _c("img", { staticClass: "image", attrs: { src: _vm.topRoute.b_ico } }),
+      _c("img", {
+        staticClass: "image",
+        attrs: { src: _vm.topRoute.b_ico_explain }
+      }),
       _vm._v(" "),
       _c("span", { staticClass: "cn" }, [_vm._v(_vm._s(_vm.topRoute.name))]),
       _vm._v(" "),

@@ -3,7 +3,7 @@
         <div class="function">
             <div class="icon">
                 <span class="text" v-if="data.floor > 1"></span>
-                <img :src="data.s_ico" class="image">
+                <img :src="data.s_ico_explain" class="image">
             </div>
             <div class="explain">
                 <div class="in">

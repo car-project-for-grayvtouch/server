@@ -1,7 +1,7 @@
 <template>
     <div class="module-nav" ref="module-nav">
         <div class="left">
-            <img :src="topRoute.b_ico" class="image">
+            <img :src="topRoute.b_ico_explain" class="image">
             <span class="cn">{{ topRoute.name }}</span>
             <span class="delimiter">/</span>
             <span class="en">{{ topRoute.en }}</span>
