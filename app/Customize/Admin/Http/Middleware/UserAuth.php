@@ -20,8 +20,6 @@ use function Admin\error;
 use function extra\regexp_check;
 use function Admin\config;
 
-use Illuminate\Database\Eloquent\Model;
-
 class UserAuth
 {
     // 定义排除验证的路由
@@ -81,9 +79,7 @@ class UserAuth
             return false;
         }
         // 获取用户信息
-        $user = AdminUser::with('role')
-                    ->find($token->user_id);
-        AdminUser::single($user);
+        $user = AdminUser::findById($token->user_id);
         $user->token = $token;
         if (is_null($user->role)) {
             unset($user->role);

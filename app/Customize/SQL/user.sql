@@ -103,6 +103,7 @@ create table if not exists `xq_car_comment_image` (
   name char(255) default '' comment '图片名称' ,
   size int unsigned default 0 comment '图片大小' ,
   mime char(255) default '' comment '媒体类型' ,
+  path varchar(500) default '' comment '评论图片' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '车辆评论图片';

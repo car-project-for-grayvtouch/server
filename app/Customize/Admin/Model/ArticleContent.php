@@ -8,23 +8,14 @@
 
 namespace App\Customize\Admin\Model;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
-
-class ArticleContent extends Model  implements ModelInterface
+class ArticleContent extends Model
 {
+    protected $table = 'article_content';
+    public $timestamps = false;
     public static function single($m = null)
     {
         if (empty($m)) {
             return ;
-        }
-    }
-
-    public static function multiple(Collection $list)
-    {
-        foreach ($list as $v)
-        {
-            self::single($v);
         }
     }
 }

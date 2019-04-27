@@ -8,6 +8,9 @@
 
 namespace App\Customize\Admin\Model;
 
+use function Admin\res_url;
+use Exception;
+
 class Car extends Model
 {
     protected $table = 'car';
@@ -36,6 +39,17 @@ class Car extends Model
     public function service()
     {
         return $this->belongsToMany(Service::class , 'car_service' ,  'car_id' , 'service_id');
+    }
+
+    public static function single($m = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
+        if (!is_object($m)) {
+            throw new Exception('参数 1 类型错误');
+        }
+        $m->thumb_explain = res_url($m->thumb);
     }
 
     // 获取数据列表

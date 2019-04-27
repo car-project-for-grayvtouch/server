@@ -32,12 +32,6 @@ class AdminUser extends Model
         $m->avatar_explain = empty($m->avatar) ? config('app.avatar') : res_url($m->avatar);
         $m->is_root_explain = get_value('business.bool' , $m->is_root);
         $m->last_ip_explain = long2ip($m->last_ip);
-        if (isset($m->role)) {
-            Role::single($m->role);
-        } else {
-            unset($m->role);
-            $m->role = new class() {};
-        }
     }
 
     // 获取用户
@@ -52,8 +46,10 @@ class AdminUser extends Model
     // 获取用户
     public static function findById($id = '')
     {
-        $m = self::find($id);
+        $m = self::with('role')
+            ->find($id);
         self::single($m);
+        Role::single($m->role);
         return $m;
     }
 

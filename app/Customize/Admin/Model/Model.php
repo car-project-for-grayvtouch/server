@@ -8,12 +8,13 @@
 
 namespace App\Customize\Admin\Model;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model as BaseModel;
-use Illuminate\Database\Eloquent\Collection;
+use Traversable;
 
 class Model extends BaseModel implements ModelInterface
 {
-    public static function multiple(Collection $list)
+    public static function multiple(Traversable $list)
     {
         foreach ($list as $v)
         {
@@ -25,6 +26,9 @@ class Model extends BaseModel implements ModelInterface
     {
         if (empty($m)) {
             return ;
+        }
+        if (!is_object($m)) {
+            throw new Exception('参数 1 类型错误');
         }
     }
 

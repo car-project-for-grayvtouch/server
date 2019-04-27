@@ -27,7 +27,12 @@ class CarComment extends Model
             ->groupBy('car_id')
             ->orderBy('commendation' , 'desc')
             ->limit($limit)
-            ->get();
+            ->get()
+            ->each(function($v){
+                self::single($v);
+                CarCommentImage::single($v);
+                User::single($v);
+            });
         return $res;
     }
 

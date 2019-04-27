@@ -8,10 +8,10 @@
 
 namespace App\Customize\Admin\Model;
 
-use Illuminate\Database\Eloquent\Collection;
+use Traversable;
 
 interface ModelInterface
 {
     static function single($m = null);
-    static function multiple(Collection $list);
+    static function multiple(Traversable $list);
 }

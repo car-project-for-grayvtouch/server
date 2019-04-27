@@ -9,6 +9,8 @@
 namespace App\Customize\Admin\Model;
 
 use Core\Lib\Category;
+use Exception;
+use function Admin\res_url;
 
 class Route extends Model
 {
@@ -20,6 +22,11 @@ class Route extends Model
         if (empty($m)) {
             return ;
         }
+        if (!is_object($m)) {
+            throw new Exception('参数 1 类型错误');
+        }
+        $m->s_ico_explain = res_url($m->s_ico);
+        $m->b_ico_explain = res_url($m->b_ico);
     }
 
     // 获取所有相关路由，排除 隐藏/未启用
@@ -32,6 +39,9 @@ class Route extends Model
                 ->orderBy('weight' , 'desc')
                 ->orderBy('id' , 'asc')
                 ->get()
+                ->each(function($v){
+                    self::single($v);
+                })
                 ->toArray();
         $res = Category::childrens($id , $data , [
             'id'    => 'id' ,
@@ -56,6 +66,11 @@ class Route extends Model
         if ($filter['name'] != '') {
             $where[] = ['name' , 'like' , "%{$filter['name']}%"];
         }
-        return self::where($where)->get()->toArray();
+        return self::where($where)
+            ->get()
+            ->each(function($v){
+                self::single($v);
+            })
+            ->toArray();
     }
 }

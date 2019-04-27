@@ -15,7 +15,7 @@ class CarImage extends Model
     protected $table = 'car_image';
     public $timestamps = false;
 
-    public static function sinngle($m = null){
+    public static function single($m = null){
         if (empty($m)) {
             return ;
         }

@@ -12,7 +12,7 @@ use App\Customize\Admin\Http\Middleware\Customize;
 use App\Customize\Admin\Http\Middleware\Throwable;
 use App\Customize\Admin\Http\Middleware\Loader;
 use App\Customize\Admin\Http\Middleware\PrivAuth;
-use App\Customize\Admin\Http\Middleware\UserAuth;
+
 use App\Http\Controllers\Controller as BaseController;
 
 use Illuminate\Http\Request;

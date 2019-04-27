@@ -33,10 +33,8 @@ class File extends Controller
     public function file()
     {
         $file = isset($_FILES['file']) ? $_FILES['file'] : [];
-
-        $file_ins = new FileUtil();
-        $res = $file_ins->file($file);
-        $res['url'] = res_url($res['path']);
+        $_file = new FileUtil();
+        $res = $_file->file($file);
         if ($res['code'] != 200) {
             return error($res['data'] , $res['code']);
         }

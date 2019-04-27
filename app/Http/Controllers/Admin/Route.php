@@ -23,7 +23,6 @@ class Route extends Controller
     public function list()
     {
         $param = $this->request->query();
-//        print_r($param);
         $param['id']    = $param['id'] ?? '';
         $param['p_id']  = $param['p_id'] ?? '';
         $param['name']  = $param['name'] ?? '';

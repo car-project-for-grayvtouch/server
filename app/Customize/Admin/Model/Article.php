@@ -8,11 +8,10 @@
 
 namespace App\Customize\Admin\Model;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
-
-class Article extends Model  implements ModelInterface
+class Article extends Model
 {
+    protected $table = 'article';
+    public $timestamps = false;
     // 文章分类
     public function articleType()
     {
@@ -29,14 +28,6 @@ class Article extends Model  implements ModelInterface
     {
         if (empty($m)) {
             return ;
-        }
-    }
-
-    public static function multiple(Collection $list)
-    {
-        foreach ($list as $v)
-        {
-            self::single($v);
         }
     }
 
