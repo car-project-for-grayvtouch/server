@@ -20,7 +20,11 @@ class CarComment extends Model
     public static function featuredComment(int $limit = 10)
     {
         $sold_status = config('business.sold_status');
-        $res = self::with(['image' , 'user'])
+        $res = self::with([
+                'image' ,
+                'user' ,
+                'car'
+            ])
             ->where([
                 ['is_supplier' , '=' , 'n'] ,
             ])
