@@ -31,7 +31,7 @@ class CarComment extends Model
             ->each(function($v){
                 self::single($v);
                 CarCommentImage::single($v->image);
-                User::single($v);
+                User::single($v->user);
             });
         return $res;
     }
