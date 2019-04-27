@@ -26,6 +26,12 @@ return [
         // 销售亮点
         'sale_point' ,
     ] ,
+    // 职位
+    'profession' => [
+        'student'   => '学生' ,
+        'work'      => '工作' ,
+    ] ,
+
     // 需要保存搜索记录的 搜索类型
     'sale_point_for_search_log' => ['affordable' , 'new' , 'luxury'] ,
     // 可以评论的状态，车辆已经销售

@@ -262,18 +262,19 @@ class Car extends Model
             return ;
         }
         if (!empty($res->model)) {
+            // 车辆类型
             $res->model->car_type = CarType::findById($res->model->car_type_id);
+            // 车辆配置
             $res->model->configuration = CarModel::getConfiguration($res->model->id);
         }
         // 检测报告
-
+        $res->report = self::report($res->id);
         self::single($res);
         Brand::single($res->brand);
         CarSeries::single($res->series);
         CarModel::single($res->model);
         CarImage::multiple($res->image);
         Service::multiple($res->service);
-        $res->report = self::report($res->id);
         return $res;
     }
 

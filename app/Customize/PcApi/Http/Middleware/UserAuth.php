@@ -15,12 +15,10 @@ use App\Customize\PcApi\Model\UserToken;
 use App\Customize\PcApi\Model\User;
 
 use function PcApi\error;
-use function extra\regexp_check;
 use function PcApi\config;
 
 class UserAuth
 {
-
     public function handle($request , Closure $next)
     {
         // 验证 token
@@ -48,35 +46,9 @@ class UserAuth
             return false;
         }
         // 获取用户信息
-        $user = User::with('role')
-                    ->find($token->user_id);
-        User::single($user);
+        $user = User::findById($token->user_id);
         $user->token = $token;
-        if (is_null($user->role)) {
-            unset($user->role);
-            $user->role = new class() {
-                public $priv = null;
-            };
-        }
-        if ($user->is_root == 'y') {
-            // 超级管理员
-            $user->role->priv = Route::route(0 , false , true);
-        } else {
-            $user->role->priv = Role::priv($user->role_id ,true , false);
-        }
         app()->instance('user' , $user);
         return true;
-    }
-
-    // 检查是否排除路径
-    public function isExclude($method , $path)
-    {
-        foreach ($this->exclude as $v)
-        {
-            if ($v['method'] == $method && regexp_check($path , $v['path'])) {
-                return true;
-            }
-        }
-        return false;
     }
 }

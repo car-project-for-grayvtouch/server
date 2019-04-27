@@ -85,4 +85,17 @@ class Car extends Controller
         }
         return success($res['data']);
     }
+
+    // 用户累计向我们平台提交的推荐车辆的申请数
+    public function countForRecommendationApplication()
+    {
+        $res = CarAction::countForRecommendationApplication();
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
 }
