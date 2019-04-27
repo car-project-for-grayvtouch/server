@@ -36,6 +36,7 @@ class CarComment extends Model
                 self::single($v);
                 CarCommentImage::multiple($v->image);
                 User::single($v->user);
+                Car::single($v->car);
             });
         return $res;
     }
