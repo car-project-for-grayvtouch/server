@@ -30,7 +30,7 @@ class CarComment extends Model
             ->get()
             ->each(function($v){
                 self::single($v);
-                CarCommentImage::single($v->image);
+                CarCommentImage::multiple($v->image);
                 User::single($v->user);
             });
         return $res;
