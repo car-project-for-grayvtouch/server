@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 use App\Customize\Admin\Http\Middleware\Customize;
 use App\Customize\Admin\Http\Middleware\Throwable;
 use App\Customize\Admin\Http\Middleware\Loader;
+use App\Customize\Admin\Http\Middleware\UserAuth;
 use App\Customize\Admin\Http\Middleware\PrivAuth;
 
 use App\Http\Controllers\Controller as BaseController;
