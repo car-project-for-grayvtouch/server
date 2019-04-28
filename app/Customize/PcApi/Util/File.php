@@ -8,11 +8,13 @@
 
 namespace App\Customize\PcApi\Util;
 
-use function PcApi\res_path;
+
 use Core\Lib\UploadFile;
 use Core\Lib\UploadImage;
 
+use function PcApi\res_path;
 use function PcApi\config;
+use function PcApi\res_url;
 
 class File
 {
@@ -32,7 +34,8 @@ class File
             return $this->response('不支持的文件类型，请上传图片' , 400);
         }
         $res = $this->image->save($image);
-        $res['url'] = res_path($res['path']);
+        $res['path'] = res_path($res['path']);
+        $res['url'] = res_url($res['path']);
         return $this->response($res);
     }
 
@@ -43,7 +46,7 @@ class File
             return $this->response('不支持的文件类型，请上传图片' , 400);
         }
         $res = $this->file->save($file);
-        $res['url'] = res_path($res['path']);
+        $res['url'] = res_url($res['path']);
         return $this->response($res);
     }
 
