@@ -49,7 +49,7 @@ class CarSeries extends Model
             $where[] = ['brand_id' , '=' , $brand_id];
         }
         $build = self::with('group')
-            ->where('brand_id' , $brand_id);
+            ->where($where);
         if (empty($brand_id)) {
             $build->limit(10);
         }
