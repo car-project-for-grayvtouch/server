@@ -102,7 +102,7 @@ function res_path($path = '')
 {
     $path = realpath($path);
     $upload_dir = config('app.upload_dir');
-    $upload_dir = addcslashes($upload_dir , '/');
+    $upload_dir = addcslashes($upload_dir , '/\\');
     return preg_replace("/^{$upload_dir}/" , '' , $path);
 }
 
