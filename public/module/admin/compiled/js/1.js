@@ -1,1 +1,2259 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{364:function(t,s,e){"use strict";e.r(s);var a=function(){var t=this,s=t.$createElement,e=t._self._c||s;return e("div",{staticClass:"module-container"},[e("module-nav",{attrs:{topRoute:t.topRoute,pos:t.pos}}),t._v(" "),e("div",{staticClass:"module-content"},[e("div",{staticClass:"in"},[e("v-menu-switch",{ref:"menu-switch",attrs:{data:t.navMenu}}),t._v(" "),e("form",{on:{submit:function(s){return s.preventDefault(),t.submit(s)}}},[e("div",{ref:"options",staticClass:"options"},[e("div",{staticClass:"option base hide",attrs:{"data-id":"base"}},[e("table",{staticClass:"input-tb"},[e("tbody",[e("tr",{class:t.getClass(t.error.name),attrs:{id:"name"}},[e("td",[t._v("名称")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.name,expression:"form.name"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.name},on:{input:function(s){s.target.composing||t.$set(t.form,"name",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"},[t._v("*")]),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.name))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.brand_id),attrs:{id:"brand_id"}},[e("td",[t._v("品牌")]),t._v(" "),e("td",[e("v-brand",{ref:"brand",attrs:{brand:t.brand}}),t._v(" "),e("span",{staticClass:"necessary"},[t._v("*")]),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.brand_id))])],1)]),t._v(" "),e("tr",{class:t.getClass(t.error.car_series_id),attrs:{id:"car_series_id"}},[e("td",[t._v("车系")]),t._v(" "),e("td",[e("i-select",{staticStyle:{width:"300px"},model:{value:t.form.car_series_id,callback:function(s){t.$set(t.form,"car_series_id",s)},expression:"form.car_series_id"}},t._l(t.carSeries,function(s){return e("i-option",{key:s.id,attrs:{value:s.id}},[t._v(t._s(s.name))])}),1),t._v(" "),e("span",{staticClass:"necessary"},[t._v("*")]),t._v(" "),e("span",{staticClass:"tip"},[t._v("请选择品牌后在选择车系！如果没有搜索到结果，请添加车系！")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.car_series_id))])],1)]),t._v(" "),e("tr",{class:t.getClass(t.error.car_type_id),attrs:{id:"car_type_id"}},[e("td",[t._v("车辆类型")]),t._v(" "),e("td",[e("i-select",{staticStyle:{width:"300px"},model:{value:t.form.car_type_id,callback:function(s){t.$set(t.form,"car_type_id",s)},expression:"form.car_type_id"}},t._l(t.carType,function(s){return e("i-option",{key:s.id,attrs:{value:s.id}},[t._v(t._s(s.name))])}),1),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("如果没有搜索到结果，请添加车辆类型")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.car_type_id))])],1)]),t._v(" "),e("tr",{class:t.getClass(t.error.year),attrs:{id:"year"}},[e("td",[t._v("年份")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.year,expression:"form.year"}],staticClass:"form-text",attrs:{type:"number",step:"0"},domProps:{value:t.form.year},on:{input:function(s){s.target.composing||t.$set(t.form,"year",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"},[t._v("*")]),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：当前年份，仅允许输入整数，长度 4 位")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.year))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.price),attrs:{id:"price"}},[e("td",[t._v("价格")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.price,expression:"form.price"}],staticClass:"form-text",attrs:{type:"number",step:"0.01"},domProps:{value:t.form.price},on:{input:function(s){s.target.composing||t.$set(t.form,"price",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"},[t._v("*")]),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0.00，单位，美元；仅允许最多两位小数")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.price))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.gearbox),attrs:{id:"gearbox"}},[e("td",[t._v("变速箱")]),t._v(" "),e("td",[e("i-select",{staticStyle:{width:"300px"},model:{value:t.form.gearbox,callback:function(s){t.$set(t.form,"gearbox",s)},expression:"form.gearbox"}},t._l(t.$store.state.business.car.gearbox,function(s){return e("i-option",{key:s,attrs:{value:s}},[t._v(t._s(s))])}),1),t._v(" "),e("span",{staticClass:"necessary"},[t._v("*")]),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：手动")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.gearbox))])],1)]),t._v(" "),e("tr",{class:t.getClass(t.error.size),attrs:{id:"size"}},[e("td",[t._v("车辆尺寸")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.size,expression:"form.size"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.size},on:{input:function(s){s.target.composing||t.$set(t.form,"size",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("长/宽/高")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.size))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.driver_type),attrs:{id:"driver_type"}},[e("td",[t._v("驱动方式")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.driver_type,expression:"form.driver_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.driver_type},on:{input:function(s){s.target.composing||t.$set(t.form,"driver_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.driver_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.door_count),attrs:{id:"door_count"}},[e("td",[t._v("车门数量")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.door_count,expression:"form.door_count"}],staticClass:"form-text",attrs:{type:"number",step:"0"},domProps:{value:t.form.door_count},on:{input:function(s){s.target.composing||t.$set(t.form,"door_count",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.door_count))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.seat_count),attrs:{id:"seat_count"}},[e("td",[t._v("座位数")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.seat_count,expression:"form.seat_count"}],staticClass:"form-text",attrs:{type:"number",step:"0"},domProps:{value:t.form.seat_count},on:{input:function(s){s.target.composing||t.$set(t.form,"seat_count",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.seat_count))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.high_speed_fuel_consumption),attrs:{id:"high_speed_fuel_consumption"}},[e("td",[t._v("高速油耗（GL）")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.high_speed_fuel_consumption,expression:"form.high_speed_fuel_consumption"}],staticClass:"form-text",attrs:{type:"number",step:"0"},domProps:{value:t.form.high_speed_fuel_consumption},on:{input:function(s){s.target.composing||t.$set(t.form,"high_speed_fuel_consumption",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0，单位：GL")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.high_speed_fuel_consumption))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.city_fuel_consumption),attrs:{id:"city_fuel_consumption"}},[e("td",[t._v("城市油耗（GL）")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.city_fuel_consumption,expression:"form.city_fuel_consumption"}],staticClass:"form-text",attrs:{type:"number",step:"0"},domProps:{value:t.form.city_fuel_consumption},on:{input:function(s){s.target.composing||t.$set(t.form,"city_fuel_consumption",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0，单位：GL")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.city_fuel_consumption))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.engine),attrs:{id:"engine"}},[e("td",[t._v("发动机")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.engine,expression:"form.engine"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.engine},on:{input:function(s){s.target.composing||t.$set(t.form,"engine",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.engine))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.company),attrs:{id:"company"}},[e("td",[t._v("厂商")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.company,expression:"form.company"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.company},on:{input:function(s){s.target.composing||t.$set(t.form,"company",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.company))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.level),attrs:{id:"level"}},[e("td",[t._v("级别")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.level,expression:"form.level"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.level},on:{input:function(s){s.target.composing||t.$set(t.form,"level",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.level))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.wheelbase),attrs:{id:"wheelbase"}},[e("td",[t._v("轴距（inch）")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.wheelbase,expression:"form.wheelbase"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.wheelbase},on:{input:function(s){s.target.composing||t.$set(t.form,"wheelbase",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.wheelbase))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.displacement),attrs:{id:"displacement"}},[e("td",[t._v("排量（L）")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.displacement,expression:"form.displacement"}],staticClass:"form-text",attrs:{type:"number",step:"0.01"},domProps:{value:t.form.displacement},on:{input:function(s){s.target.composing||t.$set(t.form,"displacement",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0.00；单位：L；仅允许最多两位小数")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.displacement))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.intake_type),attrs:{id:"intake_type"}},[e("td",[t._v("进气类型")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.intake_type,expression:"form.intake_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.intake_type},on:{input:function(s){s.target.composing||t.$set(t.form,"intake_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.intake_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.cylinder_count),attrs:{id:"cylinder_count"}},[e("td",[t._v("汽缸数辆")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.cylinder_count,expression:"form.cylinder_count"}],staticClass:"form-text",attrs:{type:"number",step:"0"},domProps:{value:t.form.cylinder_count},on:{input:function(s){s.target.composing||t.$set(t.form,"cylinder_count",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.cylinder_count))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.maximum_horsepower),attrs:{id:"maximum_horsepower"}},[e("td",[t._v("最大马力（Ps）")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.maximum_horsepower,expression:"form.maximum_horsepower"}],staticClass:"form-text",attrs:{type:"number",step:"0.01"},domProps:{value:t.form.maximum_horsepower},on:{input:function(s){s.target.composing||t.$set(t.form,"maximum_horsepower",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0.00，单位：Ps")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.maximum_horsepower))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.maximum_torque),attrs:{id:"maximum_torque"}},[e("td",[t._v("最大扭矩（N*m）")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.maximum_torque,expression:"form.maximum_torque"}],staticClass:"form-text",attrs:{type:"number",step:"0.01"},domProps:{value:t.form.maximum_torque},on:{input:function(s){s.target.composing||t.$set(t.form,"maximum_torque",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0.00")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.maximum_torque))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.fuel_type),attrs:{id:"fuel_type"}},[e("td",[t._v("燃料类型")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.fuel_type,expression:"form.fuel_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.fuel_type},on:{input:function(s){s.target.composing||t.$set(t.form,"fuel_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.fuel_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.engine_anti_theft_system),attrs:{id:"engine_anti_theft_system"}},[e("td",[t._v("发动机防盗系统")]),t._v(" "),e("td",[e("RadioGroup",{model:{value:t.form.engine_anti_theft_system,callback:function(s){t.$set(t.form,"engine_anti_theft_system",s)},expression:"form.engine_anti_theft_system"}},t._l(t.$store.state.business.bool_str,function(s,a){return e("Radio",{key:a,attrs:{label:a}},[t._v(t._s(s))])}),1),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.engine_anti_theft_system))])],1)]),t._v(" "),e("tr",{class:t.getClass(t.error.assist_type),attrs:{id:"assist_type"}},[e("td",[t._v("助力类型")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.assist_type,expression:"form.assist_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.assist_type},on:{input:function(s){s.target.composing||t.$set(t.form,"assist_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.assist_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.front_suspension_type),attrs:{id:"front_suspension_type"}},[e("td",[t._v("前悬挂类型")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.front_suspension_type,expression:"form.front_suspension_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.front_suspension_type},on:{input:function(s){s.target.composing||t.$set(t.form,"front_suspension_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.front_suspension_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.back_suspension_type),attrs:{id:"back_suspension_type"}},[e("td",[t._v("后悬挂类型")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.back_suspension_type,expression:"form.back_suspension_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.back_suspension_type},on:{input:function(s){s.target.composing||t.$set(t.form,"back_suspension_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.back_suspension_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.front_brake_type),attrs:{id:"front_brake_type"}},[e("td",[t._v("前制动类型")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.front_brake_type,expression:"form.front_brake_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.front_brake_type},on:{input:function(s){s.target.composing||t.$set(t.form,"front_brake_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.front_brake_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.back_brake_type),attrs:{id:"back_brake_type"}},[e("td",[t._v("后制动类型")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.back_brake_type,expression:"form.back_brake_type"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.back_brake_type},on:{input:function(s){s.target.composing||t.$set(t.form,"back_brake_type",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.back_brake_type))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.tire_desc),attrs:{id:"tire_desc"}},[e("td",[t._v("轮胎描述")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.tire_desc,expression:"form.tire_desc"}],staticClass:"form-text",attrs:{type:"text"},domProps:{value:t.form.tire_desc},on:{input:function(s){s.target.composing||t.$set(t.form,"tire_desc",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"}),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.tire_desc))])])]),t._v(" "),e("tr",{class:t.getClass(t.error.weight),attrs:{id:"weight"}},[e("td",[t._v("权重")]),t._v(" "),e("td",[e("input",{directives:[{name:"model",rawName:"v-model",value:t.form.weight,expression:"form.weight"}],staticClass:"form-text",attrs:{type:"number",step:"0"},domProps:{value:t.form.weight},on:{input:function(s){s.target.composing||t.$set(t.form,"weight",s.target.value)}}}),t._v(" "),e("span",{staticClass:"necessary"}),t._v(" "),e("span",{staticClass:"tip"},[t._v("默认：0，仅允许输入整数")]),t._v(" "),e("span",{staticClass:"msg"},[t._v(t._s(t.error.weight))])])])])])]),t._v(" "),e("div",{staticClass:"option configuration hide",attrs:{"data-id":"configuration"}},t._l(t.configuration,function(s){return e("div",{key:s.id,staticClass:"group"},[e("div",{staticClass:"run-title-3"},[e("div",{staticClass:"left"},[t._v(t._s(s.name))]),t._v(" "),e("div",{staticClass:"right"})]),t._v(" "),e("div",{staticClass:"list"},t._l(s.data,function(s){return e("div",{staticClass:"item"},[e("div",{staticClass:"left"},[t._v(t._s(s.name))]),t._v(" "),e("div",{staticClass:"right"},[e("RadioGroup",{on:{"on-change":t.configurationChangeEvent},model:{value:s.checked,callback:function(e){t.$set(s,"checked",e)},expression:"v1.checked"}},t._l(t.$store.state.business.bool_str,function(s,a){return e("Radio",{key:a,attrs:{label:a}},[t._v(t._s(s))])}),1)],1)])}),0)])}),0)]),t._v(" "),t._m(0)])],1)]),t._v(" "),e("v-loading",{ref:"loading"})],1)};a._withStripped=!0;var r=e(529),i=e.n(r),n={name:"v-car-model",data:function(){return{form:{name:"",year:(new Date).getFullYear(),price:"0.00",door_count:0,seat_count:0,high_speed_fuel_consumption:0,city_fuel_consumption:0,displacement:"0.00",cylinder_count:0,weight:0,maximum_horsepower:"0.00",maximum_torque:"0.00",engine_anti_theft_system:"n",gearbox:"手动"},error:{},ajax:{get:null,submit:null},dom:{},ins:{loading:null},pending:{submit:null},data:{},callback:{},api:carModelApi,navMenu:[{id:"base",name:"基本信息"},{id:"configuration",name:"车型配置"}],menu:"base",type:1,brand:[],carSeries:[],carType:[],comp:{},configuration:[]}},created:function(){},mounted:function(){this.initDom(),this.initComp(),this.initialize()},mixins:[mixins.state,mixins.loading,mixins.form.get,mixins.form.confirm,mixins.form.menuSwitch],methods:{initDom:function(){this.dom.options=G(this.$refs.options),this.dom.optionSet=this.dom.options.children(null,!1,!0)},initComp:function(){this.comp.brand=this.$refs.brand},initInstance:function(){var t=this;this.initMenuSwitch(),this.ins.brand=new Brand(this.comp.brand.$el,{multiple:!1,checked:function(s){t.form.brand_id=s,t.getCarSeries(s)},unchecked:function(){t.form.brand_id="",t.carSeries=[]}})},initialize:function(){var t=this;new Promise(function(s){var e=0;t.ins.loading.show(),brandApi.all(function(a,r){if(200!=r)return s(!1),void t.eNotice(a);t.brand=a,3==++e&&s(!0)}),carTypeApi.all(function(a,r){if(200!=r)return s(!1),void t.eNotice(a);t.carType=a,3==++e&&s(!0)}),carConfigurationApi.group(function(a,r){if(200!=r)return s(!1),void t.eNotice(a);a.forEach(function(t){t.data.forEach(function(t){t.checked="n"})}),t.configuration=a,3==++e&&s(!0)})}).then(function(s){s&&t.$nextTick(function(){t.initInstance(),t.getData(function(){t.form._configuration=i()(t.form.configuration),t.configuration.forEach(function(s){s.data.forEach(function(s){for(var e=0;e<t.form._configuration.length;++e){var a=t.form._configuration[e];if(s.id==a.id)return void(s.checked="y")}s.checked="n"})}),t.ins.brand.checked(t.form.brand_id)})})}).finally(function(){t.ins.loading.hide()})},getCarSeries:function(t){var s=this;this.ajax.carSeries instanceof G.ajax&&this.ajax.carSeries.native("abort"),this.ajax.carSeries=carSeriesApi.all({brand_id:t},function(t,e){200==e?s.carSeries=t:s.eNotice(t)})},hasConfiguration:function(){},configurationChangeEvent:function(){},check:function(t){return{status:!0,field:"",msg:""}},getConfiguration:function(){var t=this;this.form.configuration=[],this.configuration.forEach(function(s){s.data.forEach(function(s){"y"==s.checked&&t.form.configuration.push(s.id)})}),this.form.configuration=G.jsonEncode(this.form.configuration)},submit:function(){var t=this;new Promise(function(s){if(t.pending.submit)t.$info("请求中...请耐心等待");else{var e=t.check();if(!e.status)return t.error[e.field]=e.msg,void vScroll(e.field);t.getConfiguration(),t.pending.submit=!0,t.ins.loading.show(),t.ajax.submit=t.api[t.param.mode](t.form,function(e,a){if(t.error={},200!=a)return t.initialState("loading","submit","submit"),400==a?(t.error=e,void vScroll(G.firstKey(e))):void t.$error(e);t.form.id=e,s()}),t.ins.loading.setArgs(t.ajax.submit,"submit")}}).then(function(){t.confirm("车辆型号","/carModel/list")}).finally(function(){t.initialState("loading","submit","submit")})}}},o=(e(379),e(533),e(534),e(535),e(14)),c=Object(o.a)(n,a,[function(){var t=this.$createElement,s=this._self._c||t;return s("div",{staticClass:"submit"},[s("button",{staticClass:"run-button run-button-submit",attrs:{type:"submit"}},[this._v("提交")])])}],!1,null,"57dba74f",null);c.options.__file="source/vue/view/carModel/thing.vue";s.default=c.exports},378:function(t,s,e){},379:function(t,s,e){"use strict";var a=e(378);e.n(a).a},435:function(t,s,e){},436:function(t,s,e){},437:function(t,s,e){},529:function(t,s,e){var a=e(530),r=e(531),i=e(532);t.exports=function(t){return a(t)||r(t)||i()}},530:function(t,s){t.exports=function(t){if(Array.isArray(t)){for(var s=0,e=new Array(t.length);s<t.length;s++)e[s]=t[s];return e}}},531:function(t,s){t.exports=function(t){if(Symbol.iterator in Object(t)||"[object Arguments]"===Object.prototype.toString.call(t))return Array.from(t)}},532:function(t,s){t.exports=function(){throw new TypeError("Invalid attempt to spread non-iterable instance")}},533:function(t,s,e){"use strict";var a=e(435);e.n(a).a},534:function(t,s,e){"use strict";var a=e(436);e.n(a).a},535:function(t,s,e){"use strict";var a=e(437);e.n(a).a}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
+
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+
+module.exports = _arrayWithoutHoles;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+module.exports = _nonIterableSpread;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js");
+
+var iterableToArray = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime/helpers/iterableToArray.js");
+
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./source/vue/view/carModel/js/thing.js?vue&type=script&lang=js&":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--0!./source/vue/view/carModel/js/thing.js?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "v-car-model",
+  data: function data() {
+    return {
+      form: {
+        name: '',
+        year: new Date().getFullYear(),
+        price: '0.00',
+        door_count: 0,
+        seat_count: 0,
+        high_speed_fuel_consumption: 0,
+        city_fuel_consumption: 0,
+        displacement: '0.00',
+        cylinder_count: 0,
+        weight: 0,
+        maximum_horsepower: '0.00',
+        maximum_torque: '0.00',
+        engine_anti_theft_system: 'n',
+        gearbox: '手动'
+      },
+      error: {},
+      ajax: {
+        get: null,
+        submit: null
+      },
+      dom: {},
+      ins: {
+        loading: null
+      },
+      pending: {
+        submit: null
+      },
+      data: {},
+      callback: {},
+      api: carModelApi,
+      navMenu: [{
+        id: 'base',
+        name: '基本信息'
+      }, {
+        id: 'configuration',
+        name: '车型配置'
+      }],
+      menu: 'base',
+      type: 1,
+      brand: [],
+      carSeries: [],
+      carType: [],
+      comp: {},
+      configuration: []
+    };
+  },
+  created: function created() {},
+  mounted: function mounted() {
+    this.initDom();
+    this.initComp();
+    this.initialize();
+  },
+  mixins: [mixins.state, mixins.loading, mixins.form.get, mixins.form.confirm, mixins.form.menuSwitch],
+  methods: {
+    initDom: function initDom() {
+      this.dom.options = G(this.$refs.options);
+      this.dom.optionSet = this.dom.options.children(null, false, true);
+    },
+    initComp: function initComp() {
+      this.comp.brand = this.$refs.brand;
+    },
+    initInstance: function initInstance() {
+      var self = this; // 初始菜单
+
+      this.initMenuSwitch(); // 品牌
+
+      this.ins.brand = new Brand(this.comp.brand.$el, {
+        // 多选模式
+        multiple: false,
+        // 选中
+        checked: function checked(id) {
+          self.form.brand_id = id;
+          self.getCarSeries(id);
+        },
+        // 未选中
+        unchecked: function unchecked() {
+          self.form.brand_id = '';
+          self.carSeries = [];
+        }
+      });
+    },
+    initialize: function initialize() {
+      var _this = this;
+
+      new Promise(function (resolve) {
+        var count = 0;
+
+        _this.ins.loading.show(); // 获取品牌
+
+
+        brandApi.all(function (res, code) {
+          if (code != 200) {
+            resolve(false);
+
+            _this.eNotice(res);
+
+            return;
+          }
+
+          _this.brand = res;
+          count++;
+
+          if (count == 3) {
+            resolve(true);
+          }
+        }); // 获取车辆类型
+
+        carTypeApi.all(function (res, code) {
+          if (code != 200) {
+            resolve(false);
+
+            _this.eNotice(res);
+
+            return;
+          }
+
+          _this.carType = res;
+          count++;
+
+          if (count == 3) {
+            resolve(true);
+          }
+        }); // 获取车辆配置
+
+        carConfigurationApi.group(function (res, code) {
+          if (code != 200) {
+            resolve(false);
+
+            _this.eNotice(res);
+
+            return;
+          }
+
+          res.forEach(function (v) {
+            v.data.forEach(function (v1) {
+              v1.checked = 'n';
+            });
+          });
+          _this.configuration = res;
+          count++;
+
+          if (count == 3) {
+            resolve(true);
+          }
+        });
+      }).then(function (next) {
+        if (!next) {
+          return;
+        }
+
+        _this.$nextTick(function () {
+          // 数据获取之后初始化
+          _this.initInstance();
+
+          _this.getData(function () {
+            _this.form._configuration = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(_this.form.configuration); // 车辆配置处理
+
+            _this.configuration.forEach(function (v) {
+              v.data.forEach(function (v1) {
+                for (var i = 0; i < _this.form._configuration.length; ++i) {
+                  var cur = _this.form._configuration[i];
+
+                  if (v1.id == cur.id) {
+                    v1.checked = 'y';
+                    return;
+                  }
+                }
+
+                v1.checked = 'n';
+              });
+            });
+
+            _this.ins.brand.checked(_this.form.brand_id);
+          });
+        });
+      }).finally(function () {
+        _this.ins.loading.hide();
+      });
+    },
+    // 获取车系
+    getCarSeries: function getCarSeries(brand_id) {
+      var _this2 = this;
+
+      if (this.ajax.carSeries instanceof G.ajax) {
+        this.ajax.carSeries.native('abort');
+      } // 获取车系
+
+
+      this.ajax.carSeries = carSeriesApi.all({
+        brand_id: brand_id
+      }, function (res, code) {
+        if (code != 200) {
+          _this2.eNotice(res);
+
+          return;
+        }
+
+        _this2.carSeries = res;
+      });
+    },
+    hasConfiguration: function hasConfiguration() {},
+    configurationChangeEvent: function configurationChangeEvent() {},
+    // 获取数据
+    check: function check(data) {
+      return {
+        status: true,
+        field: '',
+        msg: ''
+      };
+    },
+    // 获取车辆配置
+    getConfiguration: function getConfiguration() {
+      var _this3 = this;
+
+      this.form.configuration = [];
+      this.configuration.forEach(function (v) {
+        v.data.forEach(function (v2) {
+          if (v2.checked == 'y') {
+            _this3.form.configuration.push(v2.id);
+          }
+        });
+      });
+      this.form.configuration = G.jsonEncode(this.form.configuration);
+    },
+    submit: function submit() {
+      var _this4 = this;
+
+      new Promise(function (resolve) {
+        // 上传基本数据
+        if (_this4.pending.submit) {
+          _this4.$info('请求中...请耐心等待');
+
+          return;
+        }
+
+        var filter = _this4.check();
+
+        if (!filter.status) {
+          _this4.error[filter.field] = filter.msg;
+          vScroll(filter.field);
+          return;
+        }
+
+        _this4.getConfiguration();
+
+        _this4.pending.submit = true;
+
+        _this4.ins.loading.show();
+
+        _this4.ajax.submit = _this4.api[_this4.param.mode](_this4.form, function (res, code) {
+          _this4.error = {};
+
+          if (code != 200) {
+            _this4.initialState('loading', 'submit', 'submit');
+
+            if (code == 400) {
+              _this4.error = res;
+              vScroll(G.firstKey(res));
+              return;
+            }
+
+            _this4.$error(res);
+
+            return;
+          }
+
+          _this4.form.id = res;
+          resolve();
+        });
+
+        _this4.ins.loading.setArgs(_this4.ajax.submit, 'submit');
+      }).then(function () {
+        _this4.confirm('车辆型号', '/carModel/list');
+      }).finally(function () {
+        _this4.initialState('loading', 'submit', 'submit');
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/carModel/css/thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/carModel/css/thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/global.css?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/global.css?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ref--1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./source/vue/view/carModel/thing.vue?vue&type=template&id=57dba74f&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./source/vue/view/carModel/thing.vue?vue&type=template&id=57dba74f&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "module-container" },
+    [
+      _c("module-nav", { attrs: { topRoute: _vm.topRoute, pos: _vm.pos } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "module-content" }, [
+        _c(
+          "div",
+          { staticClass: "in" },
+          [
+            _c("v-menu-switch", {
+              ref: "menu-switch",
+              attrs: { data: _vm.navMenu }
+            }),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.submit($event)
+                  }
+                }
+              },
+              [
+                _c("div", { ref: "options", staticClass: "options" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "option base hide",
+                      attrs: { "data-id": "base" }
+                    },
+                    [
+                      _c("table", { staticClass: "input-tb" }, [
+                        _c("tbody", [
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.name),
+                              attrs: { id: "name" }
+                            },
+                            [
+                              _c("td", [_vm._v("名称")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.name,
+                                      expression: "form.name"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }, [
+                                  _vm._v("*")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.name))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.brand_id),
+                              attrs: { id: "brand_id" }
+                            },
+                            [
+                              _c("td", [_vm._v("品牌")]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c("v-brand", {
+                                    ref: "brand",
+                                    attrs: { brand: _vm.brand }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "necessary" }, [
+                                    _vm._v("*")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "tip" }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "msg" }, [
+                                    _vm._v(_vm._s(_vm.error.brand_id))
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.car_series_id),
+                              attrs: { id: "car_series_id" }
+                            },
+                            [
+                              _c("td", [_vm._v("车系")]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c(
+                                    "i-select",
+                                    {
+                                      staticStyle: { width: "300px" },
+                                      model: {
+                                        value: _vm.form.car_series_id,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "car_series_id",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "form.car_series_id"
+                                      }
+                                    },
+                                    _vm._l(_vm.carSeries, function(v) {
+                                      return _c(
+                                        "i-option",
+                                        { key: v.id, attrs: { value: v.id } },
+                                        [_vm._v(_vm._s(v.name))]
+                                      )
+                                    }),
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "necessary" }, [
+                                    _vm._v("*")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "tip" }, [
+                                    _vm._v(
+                                      "请选择品牌后在选择车系！如果没有搜索到结果，请添加车系！"
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "msg" }, [
+                                    _vm._v(_vm._s(_vm.error.car_series_id))
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.car_type_id),
+                              attrs: { id: "car_type_id" }
+                            },
+                            [
+                              _c("td", [_vm._v("车辆类型")]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c(
+                                    "i-select",
+                                    {
+                                      staticStyle: { width: "300px" },
+                                      model: {
+                                        value: _vm.form.car_type_id,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "car_type_id", $$v)
+                                        },
+                                        expression: "form.car_type_id"
+                                      }
+                                    },
+                                    _vm._l(_vm.carType, function(v) {
+                                      return _c(
+                                        "i-option",
+                                        { key: v.id, attrs: { value: v.id } },
+                                        [_vm._v(_vm._s(v.name))]
+                                      )
+                                    }),
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "necessary" }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "tip" }, [
+                                    _vm._v("如果没有搜索到结果，请添加车辆类型")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "msg" }, [
+                                    _vm._v(_vm._s(_vm.error.car_type_id))
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.year),
+                              attrs: { id: "year" }
+                            },
+                            [
+                              _c("td", [_vm._v("年份")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.year,
+                                      expression: "form.year"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0" },
+                                  domProps: { value: _vm.form.year },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "year",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }, [
+                                  _vm._v("*")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v(
+                                    "默认：当前年份，仅允许输入整数，长度 4 位"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.year))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.price),
+                              attrs: { id: "price" }
+                            },
+                            [
+                              _c("td", [_vm._v("价格")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.price,
+                                      expression: "form.price"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0.01" },
+                                  domProps: { value: _vm.form.price },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "price",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }, [
+                                  _vm._v("*")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v(
+                                    "默认：0.00，单位，美元；仅允许最多两位小数"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.price))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.gearbox),
+                              attrs: { id: "gearbox" }
+                            },
+                            [
+                              _c("td", [_vm._v("变速箱")]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c(
+                                    "i-select",
+                                    {
+                                      staticStyle: { width: "300px" },
+                                      model: {
+                                        value: _vm.form.gearbox,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.form, "gearbox", $$v)
+                                        },
+                                        expression: "form.gearbox"
+                                      }
+                                    },
+                                    _vm._l(
+                                      _vm.$store.state.business.car.gearbox,
+                                      function(v) {
+                                        return _c(
+                                          "i-option",
+                                          { key: v, attrs: { value: v } },
+                                          [_vm._v(_vm._s(v))]
+                                        )
+                                      }
+                                    ),
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "necessary" }, [
+                                    _vm._v("*")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "tip" }, [
+                                    _vm._v("默认：手动")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "msg" }, [
+                                    _vm._v(_vm._s(_vm.error.gearbox))
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.size),
+                              attrs: { id: "size" }
+                            },
+                            [
+                              _c("td", [_vm._v("车辆尺寸")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.size,
+                                      expression: "form.size"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.size },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "size",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("长/宽/高")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.size))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.driver_type),
+                              attrs: { id: "driver_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("驱动方式")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.driver_type,
+                                      expression: "form.driver_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.driver_type },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "driver_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.driver_type))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.door_count),
+                              attrs: { id: "door_count" }
+                            },
+                            [
+                              _c("td", [_vm._v("车门数量")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.door_count,
+                                      expression: "form.door_count"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0" },
+                                  domProps: { value: _vm.form.door_count },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "door_count",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.door_count))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.seat_count),
+                              attrs: { id: "seat_count" }
+                            },
+                            [
+                              _c("td", [_vm._v("座位数")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.seat_count,
+                                      expression: "form.seat_count"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0" },
+                                  domProps: { value: _vm.form.seat_count },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "seat_count",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.seat_count))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(
+                                _vm.error.high_speed_fuel_consumption
+                              ),
+                              attrs: { id: "high_speed_fuel_consumption" }
+                            },
+                            [
+                              _c("td", [_vm._v("高速油耗（GL）")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.form.high_speed_fuel_consumption,
+                                      expression:
+                                        "form.high_speed_fuel_consumption"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0" },
+                                  domProps: {
+                                    value: _vm.form.high_speed_fuel_consumption
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "high_speed_fuel_consumption",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0，单位：GL")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.error.high_speed_fuel_consumption
+                                    )
+                                  )
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(
+                                _vm.error.city_fuel_consumption
+                              ),
+                              attrs: { id: "city_fuel_consumption" }
+                            },
+                            [
+                              _c("td", [_vm._v("城市油耗（GL）")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.city_fuel_consumption,
+                                      expression: "form.city_fuel_consumption"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0" },
+                                  domProps: {
+                                    value: _vm.form.city_fuel_consumption
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "city_fuel_consumption",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0，单位：GL")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.error.city_fuel_consumption)
+                                  )
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.engine),
+                              attrs: { id: "engine" }
+                            },
+                            [
+                              _c("td", [_vm._v("发动机")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.engine,
+                                      expression: "form.engine"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.engine },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "engine",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.engine))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.company),
+                              attrs: { id: "company" }
+                            },
+                            [
+                              _c("td", [_vm._v("厂商")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.company,
+                                      expression: "form.company"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.company },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "company",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.company))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.level),
+                              attrs: { id: "level" }
+                            },
+                            [
+                              _c("td", [_vm._v("级别")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.level,
+                                      expression: "form.level"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.level },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "level",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.level))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.wheelbase),
+                              attrs: { id: "wheelbase" }
+                            },
+                            [
+                              _c("td", [_vm._v("轴距（inch）")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.wheelbase,
+                                      expression: "form.wheelbase"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.wheelbase },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "wheelbase",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.wheelbase))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.displacement),
+                              attrs: { id: "displacement" }
+                            },
+                            [
+                              _c("td", [_vm._v("排量（L）")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.displacement,
+                                      expression: "form.displacement"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0.01" },
+                                  domProps: { value: _vm.form.displacement },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "displacement",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v(
+                                    "默认：0.00；单位：L；仅允许最多两位小数"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.displacement))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.intake_type),
+                              attrs: { id: "intake_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("进气类型")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.intake_type,
+                                      expression: "form.intake_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.intake_type },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "intake_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.intake_type))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.cylinder_count),
+                              attrs: { id: "cylinder_count" }
+                            },
+                            [
+                              _c("td", [_vm._v("汽缸数辆")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.cylinder_count,
+                                      expression: "form.cylinder_count"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0" },
+                                  domProps: { value: _vm.form.cylinder_count },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "cylinder_count",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.cylinder_count))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.maximum_horsepower),
+                              attrs: { id: "maximum_horsepower" }
+                            },
+                            [
+                              _c("td", [_vm._v("最大马力（Ps）")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.maximum_horsepower,
+                                      expression: "form.maximum_horsepower"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0.01" },
+                                  domProps: {
+                                    value: _vm.form.maximum_horsepower
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "maximum_horsepower",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0.00，单位：Ps")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.maximum_horsepower))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.maximum_torque),
+                              attrs: { id: "maximum_torque" }
+                            },
+                            [
+                              _c("td", [_vm._v("最大扭矩（N*m）")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.maximum_torque,
+                                      expression: "form.maximum_torque"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0.01" },
+                                  domProps: { value: _vm.form.maximum_torque },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "maximum_torque",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.maximum_torque))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.fuel_type),
+                              attrs: { id: "fuel_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("燃料类型")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.fuel_type,
+                                      expression: "form.fuel_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.fuel_type },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "fuel_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.fuel_type))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(
+                                _vm.error.engine_anti_theft_system
+                              ),
+                              attrs: { id: "engine_anti_theft_system" }
+                            },
+                            [
+                              _c("td", [_vm._v("发动机防盗系统")]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                [
+                                  _c(
+                                    "RadioGroup",
+                                    {
+                                      model: {
+                                        value:
+                                          _vm.form.engine_anti_theft_system,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.form,
+                                            "engine_anti_theft_system",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "form.engine_anti_theft_system"
+                                      }
+                                    },
+                                    _vm._l(
+                                      _vm.$store.state.business.bool_str,
+                                      function(v, k) {
+                                        return _c(
+                                          "Radio",
+                                          { key: k, attrs: { label: k } },
+                                          [_vm._v(_vm._s(v))]
+                                        )
+                                      }
+                                    ),
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "necessary" }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "tip" }),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "msg" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.error.engine_anti_theft_system)
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.assist_type),
+                              attrs: { id: "assist_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("助力类型")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.assist_type,
+                                      expression: "form.assist_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.assist_type },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "assist_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.assist_type))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(
+                                _vm.error.front_suspension_type
+                              ),
+                              attrs: { id: "front_suspension_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("前悬挂类型")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.front_suspension_type,
+                                      expression: "form.front_suspension_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: {
+                                    value: _vm.form.front_suspension_type
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "front_suspension_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.error.front_suspension_type)
+                                  )
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(
+                                _vm.error.back_suspension_type
+                              ),
+                              attrs: { id: "back_suspension_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("后悬挂类型")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.back_suspension_type,
+                                      expression: "form.back_suspension_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: {
+                                    value: _vm.form.back_suspension_type
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "back_suspension_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.back_suspension_type))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.front_brake_type),
+                              attrs: { id: "front_brake_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("前制动类型")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.front_brake_type,
+                                      expression: "form.front_brake_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: {
+                                    value: _vm.form.front_brake_type
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "front_brake_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.front_brake_type))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.back_brake_type),
+                              attrs: { id: "back_brake_type" }
+                            },
+                            [
+                              _c("td", [_vm._v("后制动类型")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.back_brake_type,
+                                      expression: "form.back_brake_type"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.back_brake_type },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "back_brake_type",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.back_brake_type))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.tire_desc),
+                              attrs: { id: "tire_desc" }
+                            },
+                            [
+                              _c("td", [_vm._v("轮胎描述")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.tire_desc,
+                                      expression: "form.tire_desc"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "text" },
+                                  domProps: { value: _vm.form.tire_desc },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "tire_desc",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.tire_desc))
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "tr",
+                            {
+                              class: _vm.getClass(_vm.error.weight),
+                              attrs: { id: "weight" }
+                            },
+                            [
+                              _c("td", [_vm._v("权重")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.weight,
+                                      expression: "form.weight"
+                                    }
+                                  ],
+                                  staticClass: "form-text",
+                                  attrs: { type: "number", step: "0" },
+                                  domProps: { value: _vm.form.weight },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "weight",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "necessary" }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "tip" }, [
+                                  _vm._v("默认：0，仅允许输入整数")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "msg" }, [
+                                  _vm._v(_vm._s(_vm.error.weight))
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "option configuration hide",
+                      attrs: { "data-id": "configuration" }
+                    },
+                    _vm._l(_vm.configuration, function(v) {
+                      return _c("div", { key: v.id, staticClass: "group" }, [
+                        _c("div", { staticClass: "run-title-3" }, [
+                          _c("div", { staticClass: "left" }, [
+                            _vm._v(_vm._s(v.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "right" })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "list" },
+                          _vm._l(v.data, function(v1) {
+                            return _c("div", { staticClass: "item" }, [
+                              _c("div", { staticClass: "left" }, [
+                                _vm._v(_vm._s(v1.name))
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "right" },
+                                [
+                                  _c(
+                                    "RadioGroup",
+                                    {
+                                      on: {
+                                        "on-change":
+                                          _vm.configurationChangeEvent
+                                      },
+                                      model: {
+                                        value: v1.checked,
+                                        callback: function($$v) {
+                                          _vm.$set(v1, "checked", $$v)
+                                        },
+                                        expression: "v1.checked"
+                                      }
+                                    },
+                                    _vm._l(
+                                      _vm.$store.state.business.bool_str,
+                                      function(v, k) {
+                                        return _c(
+                                          "Radio",
+                                          { key: k, attrs: { label: k } },
+                                          [_vm._v(_vm._s(v))]
+                                        )
+                                      }
+                                    ),
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("v-loading", { ref: "loading" })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "submit" }, [
+      _c(
+        "button",
+        {
+          staticClass: "run-button run-button-submit",
+          attrs: { type: "submit" }
+        },
+        [_vm._v("提交")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./source/vue/view/carModel/css/thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css&":
+/*!*********************************************************************************************************!*\
+  !*** ./source/vue/view/carModel/css/thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css& ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_thing_css_vue_type_style_index_3_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../../../node_modules/css-loader/dist/cjs.js??ref--1-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!./thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/carModel/css/thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_thing_css_vue_type_style_index_3_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_thing_css_vue_type_style_index_3_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_thing_css_vue_type_style_index_3_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_thing_css_vue_type_style_index_3_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_thing_css_vue_type_style_index_3_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./source/vue/view/carModel/js/thing.js?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./source/vue/view/carModel/js/thing.js?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_0_thing_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--0!./thing.js?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./source/vue/view/carModel/js/thing.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_0_thing_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./source/vue/view/carModel/thing.vue":
+/*!********************************************!*\
+  !*** ./source/vue/view/carModel/thing.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _thing_vue_vue_type_template_id_57dba74f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./thing.vue?vue&type=template&id=57dba74f&scoped=true& */ "./source/vue/view/carModel/thing.vue?vue&type=template&id=57dba74f&scoped=true&");
+/* harmony import */ var _js_thing_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/thing.js?vue&type=script&lang=js& */ "./source/vue/view/carModel/js/thing.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _public_css_global_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../public/css/global.css?vue&type=style&index=0&lang=css& */ "./source/vue/view/public/css/global.css?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _public_css_public_css_vue_type_style_index_1_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../public/css/public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css& */ "./source/vue/view/public/css/public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css&");
+/* harmony import */ var _public_css_form_css_vue_type_style_index_2_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../public/css/form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css& */ "./source/vue/view/public/css/form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css&");
+/* harmony import */ var _css_thing_css_vue_type_style_index_3_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./css/thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css& */ "./source/vue/view/carModel/css/thing.css?vue&type=style&index=3&id=57dba74f&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_6__["default"])(
+  _js_thing_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _thing_vue_vue_type_template_id_57dba74f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _thing_vue_vue_type_template_id_57dba74f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "57dba74f",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "source/vue/view/carModel/thing.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./source/vue/view/carModel/thing.vue?vue&type=template&id=57dba74f&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./source/vue/view/carModel/thing.vue?vue&type=template&id=57dba74f&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_thing_vue_vue_type_template_id_57dba74f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./thing.vue?vue&type=template&id=57dba74f&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./source/vue/view/carModel/thing.vue?vue&type=template&id=57dba74f&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_thing_vue_vue_type_template_id_57dba74f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_thing_vue_vue_type_template_id_57dba74f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./source/vue/view/public/css/form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css&":
+/*!******************************************************************************************************!*\
+  !*** ./source/vue/view/public/css/form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_form_css_vue_type_style_index_2_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../../../node_modules/css-loader/dist/cjs.js??ref--1-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!./form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/form.css?vue&type=style&index=2&id=57dba74f&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_form_css_vue_type_style_index_2_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_form_css_vue_type_style_index_2_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_form_css_vue_type_style_index_2_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_form_css_vue_type_style_index_2_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_form_css_vue_type_style_index_2_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./source/vue/view/public/css/global.css?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************!*\
+  !*** ./source/vue/view/public/css/global.css?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_global_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../../../node_modules/css-loader/dist/cjs.js??ref--1-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!./global.css?vue&type=style&index=0&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/global.css?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_global_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_global_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_global_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_global_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_global_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./source/vue/view/public/css/public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./source/vue/view/public/css/public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css& ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_public_css_vue_type_style_index_1_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../../../node_modules/css-loader/dist/cjs.js??ref--1-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!./public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css& */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./source/vue/view/public/css/public.css?vue&type=style&index=1&id=57dba74f&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_public_css_vue_type_style_index_1_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_public_css_vue_type_style_index_1_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_public_css_vue_type_style_index_1_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_public_css_vue_type_style_index_1_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ref_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_public_css_vue_type_style_index_1_id_57dba74f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ })
+
+}]);

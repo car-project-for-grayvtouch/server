@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-340706ae] {
+.module-container[data-v-8d7dd9f8] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-340706ae] {
+.module-container > *[data-v-8d7dd9f8] {
     padding: 0 20px;
 }
 
@@ -24,10 +24,10 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-340706ae] {
+.module-container > .module-content[data-v-8d7dd9f8] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-340706ae] {
+.module-container > .module-content > .in[data-v-8d7dd9f8] {
     padding: 20px;
     background-color: white;
 }
