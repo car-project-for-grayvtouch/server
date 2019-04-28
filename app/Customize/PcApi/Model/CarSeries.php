@@ -44,16 +44,20 @@ class CarSeries extends Model
 
     public static function getAll($brand_id = null)
     {
-        if (empty($brand_id)) {
-            throw new Exception('brand_id 尚未提供');
+        $where = [];
+        if (!empty($brand_id)) {
+            $where[] = ['brand_id' , '=' , $brand_id];
         }
-        $res = self::with('group')
-            ->where('brand_id' , $brand_id)
-            ->get()
-            ->each(function($m){
-                self::single($m);
-                CarSeriesGroup::single($m->group);
-            });
+        $build = self::with('group')
+            ->where('brand_id' , $brand_id);
+        if (empty($brand_id)) {
+            $build->limit(10);
+        }
+        $res = $build->get()
+                ->each(function($m){
+                    self::single($m);
+                    CarSeriesGroup::single($m->group);
+                });
         return $res;
     }
 }
