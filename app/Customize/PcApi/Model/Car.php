@@ -109,6 +109,7 @@ class Car extends Model
         $where = [];
         $where_in = [];
         $where_not_in = [];
+        $where_raw = [];
         if ($param['brand_id'] != '') {
             $where[] = ['c.brand_id' , '=' , $param['brand_id']];
         }
@@ -196,22 +197,22 @@ class Car extends Model
             switch ($param['age'])
             {
                 case 1:
-                    $where[] = ['age' , '<=' , 1];
+                    $where_raw[] = ['year(current_date()) - xq_cm.year <= ?' , [1]];
                     break;
                 case 2:
-                    $where[] = ['age' , '<=' , 3];
+                    $where_raw[] = ['year(current_date()) - xq_cm.year <= ?' , [3]];
                     break;
                 case 3:
-                    $where[] = ['age' , '<=' , 5];
+                    $where_raw[] = ['year(current_date()) - xq_cm.year <= ?' , [5]];
                     break;
                 case 4:
-                    $where[] = ['age' , '<=' , 6];
+                    $where_raw[] = ['year(current_date()) - xq_cm.year <= ?' , [6]];
                     break;
                 case 5:
-                    $where[] = ['age' , '<=' , 8];
+                    $where_raw[] = ['year(current_date()) - xq_cm.year <= ?' , [8]];
                     break;
                 case 6:
-                    $where[] = ['age' , '>' , 8];
+                    $where_raw[] = ['year(current_date()) - xq_cm.year > ?' , [8]];
                     break;
                 default:
                     throw new Exception('不支持的 age 值');
@@ -221,22 +222,23 @@ class Car extends Model
         $build = DB::table('car as c')
             ->join('car_model as cm' , 'c.car_model_id' , '=' , 'cm.id')
             ->where($where);
-        if (!empty($where_not_in)) {
-            foreach ($where_not_in as $k => $v)
-            {
-                $build->whereNotIn($k , $v);
-            }
+        foreach ($where_not_in as $k => $v)
+        {
+            $build = $build->whereNotIn($k , $v);
         }
-        if (empty($where_in)) {
-            foreach ($where_in as $k => $v)
-            {
-                $build->whereIn($k , $v);
-            }
+        foreach ($where_in as $k => $v)
+        {
+            $build = $build->whereIn($k , $v);
+        }
+        foreach ($where_raw as $v)
+        {
+            $build = $build->whereRaw($v[0] , $v[1]);
         }
         $res = $build
             ->orderBy(sprintf('c.%s' , $sort['field']) , $sort['value'])
             ->orderBy('c.id' , 'desc')
             ->select('c.*')
+            ->limit(10)
             ->paginate($limit);
         foreach ($res as $v)
         {
