@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\PcApi;
 
-use App\Customize\PcApi\Http\Action\CarAction;
+use App\Customize\PcApi\Http\Action\CarWithAuthAction;
 use Illuminate\Validation\Validator;
 use function PcApi\error;
 use function PcApi\form_error;
@@ -24,7 +24,7 @@ class CarWithAuth extends Auth
         $param['weixin'] = $param['weixin'] ?? '';
         $param['verify_code_key'] = $param['verify_code_key'] ?? '';
         $param['verify_code'] = $param['verify_code'] ?? '';
-        $res = CarAction::reservation($param);
+        $res = CarWithAuthAction::reservation($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);
@@ -47,7 +47,7 @@ class CarWithAuth extends Auth
         $param['interior_color'] = $param['interior_color'] ?? '';
         $param['verify_code_key'] = $param['verify_code_key'] ?? '';
         $param['verify_code'] = $param['verify_code'] ?? '';
-        $res = CarAction::saleApplication($param);
+        $res = CarWithAuthAction::saleApplication($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);
@@ -67,7 +67,7 @@ class CarWithAuth extends Auth
         $param['ssn'] = $param['ssn'] ?? '';
         $param['verify_code_key'] = $param['verify_code_key'] ?? '';
         $param['verify_code'] = $param['verify_code'] ?? '';
-        $res = CarAction::stagingBuyApplication($param);
+        $res = CarWithAuthAction::stagingBuyApplication($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);
@@ -88,7 +88,79 @@ class CarWithAuth extends Auth
         $param['remark'] = $param['remark'] ?? '';
         $param['verify_code_key'] = $param['verify_code_key'] ?? '';
         $param['verify_code'] = $param['verify_code'] ?? '';
-        $res = CarAction::recommendationApplication($param);
+        $res = CarWithAuthAction::recommendationApplication($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 卖车申请
+    public function saleApplicationList()
+    {
+        $param = $this->request->post();
+        $res = CarWithAuthAction::saleApplicationList($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // huma值购（求平台推荐车辆）
+    public function recommendationApplicationList()
+    {
+        $param = $this->request->post();
+        $res = CarWithAuthAction::recommendationApplicationList($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 分期购车申请
+    public function stagingBuyApplicationList()
+    {
+        $param = $this->request->post();
+        $res = CarWithAuthAction::stagingBuyApplicationList($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 收藏的车辆列表
+    public function collectionForCar()
+    {
+        $param = $this->request->post();
+        $res = CarWithAuthAction::collectionForCar($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 收藏车辆
+    public function collect()
+    {
+        $param = $this->request->post();
+        $param['car_id'] = $param['car_id'] ?? '';
+        $param['collected'] = $param['collected'] ?? '';
+        $res = CarWithAuthAction::collect($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

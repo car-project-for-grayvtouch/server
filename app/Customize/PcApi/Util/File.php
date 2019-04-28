@@ -6,7 +6,7 @@
  * Time: 16:57
  */
 
-namespace App\Customize\Admin\Util;
+namespace App\Customize\PcApi\Util;
 
 use function PcApi\res_path;
 use Core\Lib\UploadFile;

@@ -22,4 +22,22 @@ class CollectionForCar extends Model
             ])
             ->count();
     }
+
+    public static function findByUserIdAndCarId($user_id , $car_id)
+    {
+        return self::where([
+            ['user_id' , '=' , $user_id] ,
+            ['car_id' , '=' , $car_id] ,
+        ])
+            ->first();
+    }
+
+    public static function delByUserIdAndCarId($user_id , $car_id)
+    {
+        return self::where([
+                ['user_id' , '=' , $user_id] ,
+                ['car_id' , '=' , $car_id] ,
+            ])
+            ->delete();
+    }
 }

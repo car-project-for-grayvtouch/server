@@ -128,9 +128,9 @@ class Car extends Model
             $where[] = ['c.title' , 'like' , "%{$param['keyword']}%"];
         }
         if ($param['color'] != '') {
-            $car_filter = config('business.car_filter');
+            $color_for_car = config('business.color_for_car');
             if ($param['color'] == '其他') {
-                $range = $car_filter['color'];
+                $range = $color_for_car;
                 $where_not_in[] = [
                     'c.color' => $range
                 ];
@@ -312,4 +312,15 @@ class Car extends Model
         return $report;
     }
 
+    // 收藏的车辆
+    public static function collectionForCar($user_id , array $param = [] , $limit = 20)
+    {
+        $res = CollectionForCar::where('user_id' , $user_id)
+            ->paginate($limit);
+        foreach ($res as $v)
+        {
+            $v->car = self::findByIdForSimple($v->car_id);
+        }
+        return $res;
+    }
 }

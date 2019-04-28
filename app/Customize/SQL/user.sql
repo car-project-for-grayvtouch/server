@@ -110,6 +110,7 @@ create table if not exists `xq_product` (
   order_id int unsigned default 0 comment 'xq_order.id' ,
   type char(255) default '' comment '商品类型：car-车辆，可能后续会有新增商品类型，比如说配件等 ...' ,
   relation_id int unsigned default 0 comment '关联id，如果 type = car，那么即使 xq_car.id，如果是配件，那么就是配件表的 id' ,
+  quantity int unsigned default 0 comment '购买数量' ,
   status char(255) default 'wait' comment '商品状态：wait-待发货 shipped-已发货 pending-待收货 completed-已完成' ,
   create_time datetime default current_timestamp ,
   primary key id (id)

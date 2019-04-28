@@ -38,12 +38,18 @@ Route::prefix('pc')
         // 购车
         Route::post('/CarWithAuth/stagingBuyApplication' , 'CarWithAuth@stagingBuyApplication');
 
+        Route::post('/CarWithAuth/saleApplicationList' , 'CarWithAuth@saleApplicationList');
+        Route::post('/CarWithAuth/recommendationApplicationList' , 'CarWithAuth@recommendationApplicationList');
+        Route::post('/CarWithAuth/stagingBuyApplicationList' , 'CarWithAuth@stagingBuyApplicationList');
+        Route::post('/CarWithAuth/collectionForCar' , 'CarWithAuth@collectionForCar');
+        Route::post('/CarWithAuth/collect' , 'CarWithAuth@collect');
+
         // 用户
-        Route::post('Login/login' , 'Login@login');
-        Route::post('Login/register' , 'Login@register');
+        Route::post('/Login/login' , 'Login@login');
+        Route::post('/Login/register' , 'Login@register');
 
         // 文章
-        Route::post('Article/listForHome' , 'Article@listForHome');
+        Route::post('/Article/listForHome' , 'Article@listForHome');
         Route::post('/Article/detail' , 'Article@detail');
 
         // 车系
@@ -56,6 +62,14 @@ Route::prefix('pc')
         Route::post('/Misc/verifyCode' , 'Misc@verifyCode');
 
         // 用户
-        Route::post('User/info' , 'User@info');
+        Route::post('/User/info' , 'User@info');
+
+        // 订单
+        Route::post('/Order/list' , 'Order@list');
+        Route::post('/Order/commentForMain' , 'Order@commentForMain');
+
+        // 文件上传
+        Route::post('File/image' , 'File@image');
+        Route::post('File/file' , 'File@file');
     });
 
