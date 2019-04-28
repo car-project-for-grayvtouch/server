@@ -27,4 +27,18 @@ class Article extends Controller
         }
         return success($res['data']);
     }
+
+    public function detail()
+    {
+        $param = $this->request->post();
+        $param['id'] = $param['id'] ?? '';
+        $res = ArticleAction::detail($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
 }

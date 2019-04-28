@@ -387,4 +387,19 @@ class CarAction extends Action
         $res = RecommendationApplication::count();
         return self::success($res);
     }
+
+    // 某个日期下面的各个时间点的预约时间
+    public static function reservationCountForDay(array $param)
+    {
+        $validator = Validator::make($param , [
+            'day' => 'required' ,
+        ] , [
+            'day.required' => '必须' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error($validator);
+        }
+        $res = Reservation::countForDay($param['day']);
+        return self::success($res);
+    }
 }

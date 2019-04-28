@@ -42,4 +42,11 @@ class Article extends Model
         return $this->hasOne(ArticleContent::class , 'article_id' , 'id');
     }
 
+    public static function findById($id)
+    {
+        $res = self::with('content')
+            ->find($id);
+        self::single($res);
+        return $res;
+    }
 }

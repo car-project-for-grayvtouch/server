@@ -26,6 +26,8 @@ Route::prefix('pc')
         Route::post('/Car/list' , 'Car@list');
         Route::post('/Car/detail' , 'Car@detail');
         Route::post('/Car/countForRecommendationApplication' , 'Car@countForRecommendationApplication');
+        Route::post('/Car/reservationCountForDay' , 'Car@reservationCountForDay');
+
 
         // 车辆-需要用户认证的接口
         Route::post('/CarWithAuth/reservation' , 'CarWithAuth@reservation');
@@ -42,6 +44,7 @@ Route::prefix('pc')
 
         // 文章
         Route::post('Article/listForHome' , 'Article@listForHome');
+        Route::post('/Article/detail' , 'Article@detail');
 
         // 车系
         Route::post('/CarSeries/all' , 'CarSeries@all');
