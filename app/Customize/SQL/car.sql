@@ -135,6 +135,7 @@ create table if not exists `xq_car` (
   age tinyint default 0 comment '车龄' ,
   view_count int unsigned default 0 comment '浏览次数' ,
   sale_point enum('affordable' , 'new' , 'luxury' , 'none') default 'none' comment '销售亮点：affordable-经济实惠；new-准新车；luxury-豪华车' ,
+  stock int unsigned default 1 comment '库存' ,
   status char(255) default 'sale' comment '车辆状态：sale-销售中 sold-已销售，完整的车辆状态，后续可以再扩展' ,
   create_time datetime default current_timestamp ,
   update_time datetime default current_timestamp on update current_timestamp ,

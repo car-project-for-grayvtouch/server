@@ -9,7 +9,7 @@
 namespace App\Customize\PcApi\Http\Action;
 
 use App\Customize\PcApi\Model\Car;
-use App\Customize\PcApi\Model\CarComment;
+use App\Customize\PcApi\Model\ProductComment;
 use App\Customize\PcApi\Model\CarConfiguration;
 use App\Customize\PcApi\Model\CollectionForCar;
 use App\Customize\PcApi\Model\RecommendationApplication;
@@ -101,7 +101,7 @@ class CarAction extends Action
     {
         // 默认挑出来的评论数量
         $limit = 20;
-        $res = CarComment::featuredComment($limit);
+        $res = ProductComment::featuredComment($limit);
         return self::success($res);
     }
 

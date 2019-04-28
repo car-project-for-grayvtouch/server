@@ -12,9 +12,9 @@ namespace App\Customize\PcApi\Model;
 use Exception;
 use function PcApi\res_url;
 
-class CarCommentImage extends Model
+class ProductCommentImage extends Model
 {
-    protected $table = 'car_comment_image';
+    protected $table = 'product_comment_image';
     public $timestamps = false;
 
     public static function single($m = null)
@@ -27,4 +27,13 @@ class CarCommentImage extends Model
         }
         $m->url = res_url($m->path);
     }
+
+    public static function getByProductCommentId($product_comment_id)
+    {
+        $res = self::where('product_comment_id' , $product_comment_id)
+            ->get();
+        self::multiple($res);
+        return $res;
+    }
+
 }

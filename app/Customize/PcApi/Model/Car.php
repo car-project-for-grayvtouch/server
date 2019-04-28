@@ -278,6 +278,24 @@ class Car extends Model
         return $res;
     }
 
+    // 车辆信息（简略版）
+    public static function findByIdForSimple($id)
+    {
+        $res = self::with([
+                'brand' ,
+                'series' ,
+                'model' ,
+                'service' ,
+            ])
+            ->find($id);
+        self::single($res);
+        Brand::single($res->brand);
+        CarSeries::single($res->series);
+        CarModel::single($res->model);
+        Service::multiple($res->service);
+        return $res;
+    }
+
     // 获取检测报告
     public static function report($id)
     {
