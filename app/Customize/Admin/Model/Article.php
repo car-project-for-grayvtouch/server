@@ -36,4 +36,34 @@ class Article extends Model
     {
         return self::where('unique_id' , $unique_id)->count();
     }
+
+    public static function list(array $filter = [] , array $order = [] , int $limit = 20)
+    {
+        $filter['id'] = $filter['id'] ?? '';
+        $filter['p_id'] = $filter['p_id'] ?? '';
+        $filter['title'] = $filter['title'] ?? '';
+        $order['field'] = $filter['field'] ?? 'id';
+        $order['value'] = $filter['value'] ?? 'desc';
+        $where = [];
+        if ($filter['id'] != '') {
+            $where[] = ['id', '=', $filter['id']];
+        }
+        if ($filter['p_id'] != '') {
+            $where[] = ['p_id', '=', $filter['p_id']];
+        }
+        if ($filter['title'] != '') {
+            $where[] = ['title', 'like', "%{$filter['title']}%"];
+        }
+        $res = self::with(['articleType', 'content'])
+            ->where($where)
+            ->orderBy($order['field'], $order['value'])
+            ->paginate($limit);
+        foreach ($res as $v)
+        {
+            self::single($v);
+            ArticleContent::single($v->content);
+            ArticleType::single($v->articleType);
+        }
+        return $res;
+    }
 }

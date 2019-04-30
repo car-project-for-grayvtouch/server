@@ -9,9 +9,13 @@
 namespace App\Http\Controllers\Admin;
 
 
+use function Admin\error;
+use function Admin\success;
+
 use App\Customize\Admin\Util\File;
-use Validator;
 use App\Customize\Admin\Model\Image as ImageModel;
+
+
 
 
 class Image extends Controller
@@ -21,9 +25,9 @@ class Image extends Controller
     {
         $image = isset($_FILES['image']) ? $_FILES['image'] : null;
         $ins = new File();
-        $res = $ins->saveImage($image);
-        if (!$res['status']) {
-            return error($res['data']);
+        $res = $ins->image($image);
+        if (!$res['code'] != 200) {
+            return error($res['data'] , $res['code']);
         }
         return success($res['data']);
     }
@@ -33,9 +37,9 @@ class Image extends Controller
     {
         $image = isset($_FILES['image']) ? $_FILES['image'] : null;
         $ins = new File();
-        $res = $ins->saveImages($image);
-        if (!$res['status']) {
-            return error($res['data']);
+        $res = $ins->image($image);
+        if (!$res['code'] != 200) {
+            return error($res['data'] , $res['code']);
         }
         $res = $res['data'];
         $images = [];
@@ -43,10 +47,10 @@ class Image extends Controller
         {
             $images[] = $v['url'];
         }
-        return json([
+        return response()->json([
             'errno' => 0 ,
             'data' => $images
-        ])->header(config('app.cors'));
+        ] , 200);
     }
 
     public function list()

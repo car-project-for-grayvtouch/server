@@ -18,4 +18,16 @@ class ArticleContent extends Model
             return ;
         }
     }
+
+    public static function updateByArticleId($article_id , array $data = [])
+    {
+        return self::where('article_id' , $article_id)
+            ->update($data);
+    }
+
+    public static function delByArticleId($article_id)
+    {
+        return self::where('article_id' , $article_id)
+            ->delete();
+    }
 }

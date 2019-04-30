@@ -256,4 +256,27 @@ Route::prefix('admin')
         Route::get('car/rule' , 'Car@rule');
         Route::get('car/report' , 'Car@getReport');
         Route::post('car/report' , 'Car@report');
+
+        /**
+         * *********************
+         * 文章分类
+         * *********************
+         */
+        Route::get('articleType/articleType' , 'ArticleType@list');
+        Route::get('articleType/articleType/{id}' , 'ArticleType@detail');
+        Route::post('articleType/articleType' , 'ArticleType@add');
+        Route::put('articleType/articleType' , 'ArticleType@edit');
+        Route::delete('articleType/articleType' , 'ArticleType@del');
+
+        /**
+         * *********************
+         * 文章
+         * *********************
+         */
+        Route::get('article/article' , 'Article@list');
+        Route::get('article/article/{id}' , 'Article@detail');
+        Route::post('article/article' , 'Article@add');
+        Route::put('article/article' , 'Article@edit');
+        Route::delete('article/article' , 'Article@del');
+        Route::patch('article/image' , 'Article@image');
     });

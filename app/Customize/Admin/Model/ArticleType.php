@@ -23,4 +23,28 @@ class ArticleType extends Model
     {
         return self::where('name' , $name)->find();
     }
+
+    // 获取数据列表
+    public static function list(array $filter = [])
+    {
+        $filter['id']   = $filter['id'] ?? '';
+        $filter['p_id'] = $filter['p_id'] ?? '';
+        $filter['name'] = $filter['name'] ?? '';
+        $where = [];
+        if ($filter['id'] != '') {
+            $where[] = ['id' , '=' , $filter['id']];
+        }
+        if ($filter['p_id'] != '') {
+            $where[] = ['p_id' , '=' , $filter['p_id']];
+        }
+        if ($filter['name'] != '') {
+            $where[] = ['name' , 'like' , "%{$filter['name']}%"];
+        }
+        return self::where($where)
+            ->get()
+            ->each(function($v){
+                self::single($v);
+            })
+            ->toArray();
+    }
 }

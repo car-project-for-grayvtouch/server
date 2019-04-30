@@ -91,8 +91,8 @@ class CarAction extends Action
                     'service_id' => $v
                 ]);
             }
-            return self::success($id);
             DB::commit();
+            return self::success($id);
         } catch (Exception $e) {
             DB::rollback();
             throw $e;
