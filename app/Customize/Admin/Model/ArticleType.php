@@ -8,6 +8,9 @@
 
 namespace App\Customize\Admin\Model;
 
+use function Admin\get_value;
+use Exception;
+
 class ArticleType extends Model
 {
     protected $table = 'article_type';
@@ -17,6 +20,10 @@ class ArticleType extends Model
         if (empty($m)) {
             return ;
         }
+        if (!is_object($m)) {
+            throw new Exception('参数 1 类型错误');
+        }
+
     }
 
     public static function getTypeByName($name = '')
@@ -40,11 +47,17 @@ class ArticleType extends Model
         if ($filter['name'] != '') {
             $where[] = ['name' , 'like' , "%{$filter['name']}%"];
         }
-        return self::where($where)
+        $res = self::where($where)
             ->get()
             ->each(function($v){
                 self::single($v);
             })
             ->toArray();
+        foreach ($res as &$v)
+        {
+            // hidden 字段有问题，所以必须要转化成数组后再做修改
+            $v['hidden_explain'] = get_value('business.bool' , $v['hidden']);
+        }
+        return $res;
     }
 }

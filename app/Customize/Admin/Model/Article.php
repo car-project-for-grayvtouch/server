@@ -8,6 +8,10 @@
 
 namespace App\Customize\Admin\Model;
 
+use function Admin\get_value;
+use function Admin\res_url;
+use Exception;
+
 class Article extends Model
 {
     protected $table = 'article';
@@ -29,6 +33,11 @@ class Article extends Model
         if (empty($m)) {
             return ;
         }
+        if (!is_object($m)) {
+            throw new Exception('参数 1 类型错误');
+        }
+        // 封面
+        $m->thumb_explain = res_url($m->thumb);
     }
 
     // 聚合数据：检查聚合数据id是否已经存在
@@ -43,7 +52,7 @@ class Article extends Model
         $filter['p_id'] = $filter['p_id'] ?? '';
         $filter['title'] = $filter['title'] ?? '';
         $order['field'] = $filter['field'] ?? 'id';
-        $order['value'] = $filter['value'] ?? 'desc';
+        $order['valute'] = $filter['value'] ?? 'desc';
         $where = [];
         if ($filter['id'] != '') {
             $where[] = ['id', '=', $filter['id']];
@@ -61,9 +70,21 @@ class Article extends Model
         foreach ($res as $v)
         {
             self::single($v);
+            $v1 = json_decode(json_encode($v) , true);
+            // 是否隐藏
+            $v->hidden_explain = get_value('business.bool' , $v1['hidden']);
             ArticleContent::single($v->content);
             ArticleType::single($v->articleType);
         }
+        return $res;
+    }
+
+    public static function findById($id)
+    {
+        $res = self::with('content')
+            ->find($id);
+        self::single($res);
+        ArticleContent::single($res->content);
         return $res;
     }
 }

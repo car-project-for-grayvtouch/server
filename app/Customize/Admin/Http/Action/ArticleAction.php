@@ -43,11 +43,15 @@ class ArticleAction extends Action
     public static function edit(array $param)
     {
         $validator = Validator::make($param , [
-            'title' => 'require' ,
-            'article_type_id' => 'require' ,
+            'title' => 'required' ,
+            'article_type_id' => 'required' ,
+            'hidden' => 'required' ,
+            'is_link' => 'required' ,
         ] , [
-            'title.require' => '必须' ,
-            'article_type_id.require' => '必须' ,
+            'title.required' => '必须' ,
+            'article_type_id.required' => '必须' ,
+            'hidden.required' => '必须' ,
+            'is_link.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
@@ -56,9 +60,7 @@ class ArticleAction extends Action
         if (empty($m)) {
             return self::error('未找到id对应数据');
         }
-        $param['weight'] = empty($param['weight']) ? $param['weight'] : $m->weight;
-        $param['hidden'] = empty($param['hidden']) ? $param['hidden'] : $m->hidden;
-        $param['is_link'] = empty($param['is_link']) ? $param['is_link'] : $m->is_link;
+        $param['weight'] = !empty($param['weight']) ? $param['weight'] : $m->weight;
         try {
             DB::beginTransaction();
             Article::updateById($param['id'] , array_unit($param , [
@@ -85,25 +87,25 @@ class ArticleAction extends Action
     public static function add(array $param)
     {
         $validator = Validator::make($param , [
-            'title' => 'require' ,
-            'article_type_id' => 'require' ,
+            'title' => 'required' ,
+            'article_type_id' => 'required' ,
+            'hidden' => 'required' ,
+            'is_link' => 'required' ,
         ] , [
-            'title.require' => '必须' ,
-            'article_type_id.require' => '必须' ,
+            'title.required' => '必须' ,
+            'article_type_id.required' => '必须' ,
+            'hidden.required' => '必须' ,
+            'is_link.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
-        }
-        $m = Article::find($param['id']);
-        if (empty($m)) {
-            return self::error('未找到id对应数据');
         }
         $param['weight'] = empty($param['weight']) ? $param['weight'] : config('app.weight');
         $param['hidden'] = empty($param['hidden']) ? $param['hidden'] : 'n';
         $param['is_link'] = empty($param['is_link']) ? $param['is_link'] : 'n';
         try {
             DB::beginTransaction();
-            $id = Article::updateById($param['id'] , array_unit($param , [
+            $id = Article::insertGetId(array_unit($param , [
                 'title' ,
                 'source' ,
                 'weight' ,
@@ -128,9 +130,9 @@ class ArticleAction extends Action
     public static function del(array $param)
     {
         $validator = Validator::make($param , [
-            'id_list' => 'require' ,
+            'id_list' => 'required' ,
         ] , [
-            'id_list.require' => '待删除的记录尚未提供' ,
+            'id_list.required' => '待删除的记录尚未提供' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);

@@ -34,14 +34,16 @@ class ArticleTypeAction extends Action
     {
         $validator = Validator::make($param , [
             'name' => 'required' ,
+            'p_id' => 'required' ,
+            'hidden' => 'required' ,
         ] , [
             'name.required' => '必须' ,
+            'hidden.required' => '必须' ,
+            'p_id.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
         }
-        $param['hidden']    = !empty($param['hidden']) ? $param['hidden'] : 'n';
-        $param['p_id']      = !empty($param['p_id']) ? $param['hidden'] : 0;
         $param['weight']    = !empty($param['weight']) ? intval($param['weight']) : config('app.weight');
         $res = ArticleType::insertGetId(array_unit($param , [
             'name' ,
@@ -56,8 +58,12 @@ class ArticleTypeAction extends Action
     {
         $validator = Validator::make($param , [
             'name' => 'required' ,
+            'p_id' => 'required' ,
+            'hidden' => 'required' ,
         ] , [
-            'name.required' => 'name 尚未提供' ,
+            'name.required' => '必须' ,
+            'hidden.required' => '必须' ,
+            'p_id.required' => '必须' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
@@ -66,8 +72,6 @@ class ArticleTypeAction extends Action
         if (empty($m)) {
             return self::error('未找到id对应数据' , 460);
         }
-        $param['hidden']    = !empty($param['hidden']) ? $param['hidden'] : $m->hidden;
-        $param['p_id']      = !empty($param['p_id']) ? $param['hidden'] : $m->p_id;
         $param['weight']    = !empty($param['weight']) ? intval($param['weight']) : $m->weight;
         ArticleType::updateById($param['id'] , array_unit($param , [
             'name' ,

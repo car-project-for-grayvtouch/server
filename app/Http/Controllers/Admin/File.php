@@ -40,4 +40,17 @@ class File extends Controller
         }
         return success($res['data']);
     }
+
+    // 多张图片上传
+    public function imageForWangEditor()
+    {
+        $image = isset($_FILES['image']) ? $_FILES['image'] : [];
+        $file = new FileUtil();
+
+        $res = $file->image($image);
+        if ($res['code'] != 200) {
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
 }

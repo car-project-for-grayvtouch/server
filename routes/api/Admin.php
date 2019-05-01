@@ -37,6 +37,7 @@ Route::prefix('admin')
          */
         Route::post('file/image' , 'File@image');
         Route::post('file/file' , 'File@file');
+        Route::post('file/imageForWangEditor' , 'File@imageForWangEditor');
 
         /**
          * ******************************
