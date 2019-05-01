@@ -37,6 +37,11 @@ const listForCar = () => import('../view/car/list.vue');
 const thingForCar = () => import('../view/car/thing.vue');
 const reportForCar = () => import('../view/car/report.vue');
 
+const listForArticleType = () => import('../view/articleType/list.vue');
+const thingForArticleType = () => import('../view/articleType/thing.vue');
+const listForArticle = () => import('../view/article/list.vue');
+const thingForArticle = () => import('../view/article/thing.vue');
+
 export default [
     {
         name: 'home' ,
@@ -343,5 +348,40 @@ export default [
     {
         path: '/car/report' ,
         component: reportForCar
+    } ,
+
+    /**
+     * ***********************
+     * 文章分类
+     * ***********************
+     */
+    {
+        path: '/articleType/list' ,
+        component: listForArticleType
+    } ,
+    {
+        path: '/articleType/edit' ,
+        component: thingForArticleType
+    } ,
+    {
+        path: '/articleType/add' ,
+        component: thingForArticleType
+    } ,
+    /**
+     * ***********************
+     * 文章
+     * ***********************
+     */
+    {
+        path: '/article/list' ,
+        component: listForArticle
+    } ,
+    {
+        path: '/article/edit' ,
+        component: thingForArticle
+    } ,
+    {
+        path: '/article/add' ,
+        component: thingForArticle
     } ,
 ];

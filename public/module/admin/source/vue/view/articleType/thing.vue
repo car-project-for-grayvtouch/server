@@ -2,9 +2,10 @@
     <div class="module-container">
         <module-nav :topRoute="topRoute" :pos="pos"></module-nav>
         <div class="module-content">
-            <form @submit.prevent="submit">
-                <table class="input-tb">
-                    <tbody>
+            <div class="in">
+                <form @submit.prevent="submit">
+                    <table class="input-tb">
+                        <tbody>
                         <tr id="name" :class="getClass(error.name)">
                             <td>名称</td>
                             <td>
@@ -16,7 +17,7 @@
                         <tr id="p_id" :class="getClass(error.p_id)">
                             <td>上级分类</td>
                             <td>
-                                <v-select class="form-select" v-model="form.p_id" :data="type" :hasTop="true" ></v-select>
+                                <v-select class="form-select" v-model="form.p_id" :data="type"></v-select>
                                 <span class="necessary">*</span>
                                 <span class="tip">{{ error.p_id }}</span>
                             </td>
@@ -43,17 +44,18 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <button type="submit" class="btn-2">提交</button>
+                                <button type="submit" class="run-button run-button-submit">提交</button>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </form>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         </div>
         <v-loading ref="loading"></v-loading>
     </div>
 </template>
 
-<script src="./js/articleType.js"></script>
+<script src="./js/thing.js"></script>
 <style scoped src="../public/css/public.css"></style>
-<style scoped src="./css/articleType.css"></style>
+<style scoped src="./css/thing.css"></style>

@@ -1,228 +1,77 @@
+
+
 export default {
     name: "v-list" ,
     data () {
         return {
             form: {
-                id: '',
-                order: '',
-                page: 1
-            },
-            page: {
-                total: 1
+                id: '' ,
+                name: '' ,
+                order: '' ,
             } ,
-            // 数据列表
-            data: [],
-            ins: {} ,
-            idList: [] ,
-            api: articleApi ,
+            ins: {
+                loading: null ,
+            } ,
+            pending: {
+                del: null ,
+            } ,
+            ajax: {
+                list: null ,
+            } ,
             dom: {} ,
+            api: articleApi ,
+            data: [] ,
+            // 待删除的记录 id 列表
+            idList: [] ,
             type: ['头条' , '社会' , '国内' , '国际' , '娱乐' , '体育' , '军事' , '科技' , '财经' , '时尚'] ,
-            isRunning: false ,
-            captureRunning: false ,
+            page: {
+                page: 1 ,
+                per_page: 20
+            }
+
         };
     } ,
+
+    // 注意 mixins 换入的顺序
+    // 如果混入的顺序不对，将会报错
+    mixins: [
+        // 加载
+        mixins.loading ,
+        // 状态
+        mixins.state ,
+        // 获取层级数据
+        mixins.list.get.normal ,
+        // 数据过滤
+        mixins.list.filter ,
+        // 删除数据
+        mixins.list.del ,
+        // 分页数据
+        mixins.list.page ,
+    ] ,
+
+    created () {
+
+    } ,
+
     mounted () {
-        this.dom.tbody = G(this.$refs.tbody);
-        // 最高优先级：加载层
-        this.ins.loading = new Loading(this.$refs.loading.$el , {
-            status: 'hide' ,
-            type: 'line-scale'
-        });
-
-        this.initialize();
+        // 获取相关的 dom
+        this.initDom();
+        // 初始化必须的相关实例
+        this.initInstance();
+        // 获取当前数据
+        this.getData();
     } ,
+
     methods: {
-        initialize () {
-            this.getData();
-        } ,
-        getData () {
-            this.ins.loading.show();
-            // 用户列表
-            this.api.list(this.form , (res) => {
-                this.ins.loading.hide();
-                if (res.code != 200) {
-                    this.$msg(res.data);
-                }
-                let data = res.data;
-                this.data = data.data;
-                delete data.data;
-                this.page = data;
-                this.$nextTick(() => {
-                    // 定义剪贴板事件
-                    new ClipboardJS('.btn');
-                });
-            });
-        } ,
-        // 分页事件
-        pageEvent (page) {
-            this.form.page = page;
-            this.getData();
-        } ,
-        // 用户提交
-        submit () {
-            this.form.page = 1;
-            this.getData();
+        // 初始化 dom
+        initDom () {
+            this.dom.tbody = G(this.$refs.tbody);
         } ,
 
-        // 重置
-        reset () {
-            this.submit();
-        } ,
-        // 删除选中项
-        del (idList , fn) {
-            if (this.isRunning) {
-                layer.alert('请求中...请耐心等待');
-                return ;
-            }
-            this.ins.loading.show();
-            this.api.del({
-                id_list: G.jsonEncode(idList)
-            } , (res) => {
-                this.isRunning = false;
-                this.ins.loading.hide();
-                if (res.code != 200) {
-                    this.$error(res.data);
-                    return ;
-                }
-                this.$success('删除成功');
-                this.getData();
-                if (G.isFunction(fn)) {
-                    fn();
-                }
-            });
-        } ,
+        // 初始化必须的实例
+        initInstance () {
 
-        // 删除选中项
-        delTarget (id) {
-            this.del([id] , () => {
-                this.delId(id);
-            });
-        } ,
-
-        delSelected () {
-            if (this.idList.length < 1) {
-                this.$error('您尚未选择待删除的项！');
-                return ;
-            }
-            this.del(this.idList , () => {
-                this.idList = [];
-            });
-        } ,
-
-        // 选择事件
-        selectEvent (e) {
-            let tar = G(e.currentTarget);
-            let id = tar.data('id');
-            let cbox = G('.c-box' , tar.get(0));
-            let checked = cbox.native('checked');
-            if (checked) {
-                this.unselectedLine(id);
-            } else {
-                this.selectedLine(id);
-            }
-        } ,
-
-        // 选中所有
-        selectAllEvent (e) {
-            let tar = G(e.currentTarget);
-            let checked = tar.native('checked');
-            let trs = this.dom.tbody.children();
-            trs.each((dom) => {
-                dom = G(dom);
-                let id = dom.data('id');
-                if (checked) {
-                    this.selectedLine(id);
-                } else {
-                    this.unselectedLine(id);
-                }
-            });
-        } ,
-
-        // 选中行
-        selectedLine (id) {
-            let trs = this.dom.tbody.children({
-                tagName: 'tr'
-            });
-            for (let i = 0; i < trs.length; ++i)
-            {
-                let cur = trs.jump(i , true);
-                if (cur.data('id') == id) {
-                    cur.addClass('focus');
-                    let cbox = G('.c-box' , cur.get(0)).native('checked' , true);
-                    this.addId(id);
-                }
-            }
-        } ,
-
-        // 取消选中
-        unselectedLine (id) {
-            let trs = this.dom.tbody.children({
-                tagName: 'tr'
-            });
-            for (let i = 0; i < trs.length; ++i)
-            {
-                let cur = trs.jump(i , true);
-                if (cur.data('id') == id) {
-                    cur.removeClass('focus');
-                    let cbox = G('.c-box' , cur.get(0)).native('checked' , false);
-                    this.delId(id);
-                }
-            }
-        } ,
-
-        // 添加
-        addId (id) {
-            if (this.idList.indexOf(id) != -1) {
-                return ;
-            }
-            this.idList.push(id);
-        } ,
-
-        // 删除
-        delId (id) {
-            let index = -1;
-            if ((index = this.idList.indexOf(id)) == -1) {
-                return ;
-            }
-            this.idList.splice(index , 1);
-        } ,
-        // 抓取文章
-        capture () {
-            let option = {
-                btn: [...this.type , '取消'] ,
-            };
-            for (let i = 0; i < this.type.length; ++i)
-            {
-                let cur = this.type[i];
-                option['btn' + (i + 1)] = (index) => {
-                    layer.close(index);
-                    if (this.captureRunning) {
-                        layer.alert('请求中...请耐心等待');
-                        return ;
-                    }
-                    this.ins.loading.show();
-                    this.captureRunning = true;
-                    this.api.capture({
-                        type: cur
-                    } , (res) => {
-                        this.ins.loading.hide();
-                        this.captureRunning = false;
-                        if (res.code != 200) {
-                            this.$error(res.data);
-                            return ;
-                        }
-                        let data = res.data;
-                        let msg = `总记录数：${data.total}<br>成功记录数：${data.success}<br>失败记录数：${data.error}<br>重复记录数：${data.repeat}`;
-                        this.submit();
-                        this.$success(msg)
-                    });
-                };
-            }
-            option[this.type.length + 1] = (index) => {
-                layer.close(index);
-            };
-            layer.alert('请选择要抓取的文章类型' , option);
         } ,
     } ,
+};
 
-}

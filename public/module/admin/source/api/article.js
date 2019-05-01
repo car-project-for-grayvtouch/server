@@ -1,29 +1,23 @@
-const list = `${topContext.api}Article/list`;
-const detail = `${topContext.api}Article/detail`;
-const edit = `${topContext.api}Article/edit`;
-const add = `${topContext.api}Article/add`;
-const saveImage = `${topContext.api}Article/saveImage`;
-const capture = `${topContext.api}Article/captureForJHData`;
-const del = `${topContext.api}Article/del`;
+const main = `${topContext.api}article/article`;
+const detail = `${topContext.api}article/article/?`;
+const image = `${topContext.api}article/image`;
 
 export default {
-    // 文章分类列表
     list (data , success , error) {
         return G.ajax({
-            url: list ,
+            url: main ,
             data ,
-            method: 'post' ,
+            method: 'get' ,
             success ,
             error
         });
     } ,
 
     // 详情
-    detail (data , success , error) {
+    detail (id , success , error) {
         return G.ajax({
-            url: detail ,
-            data ,
-            method: 'post' ,
+            url: detail.replace('?' , id) ,
+            method: 'get' ,
             success ,
             error
         });
@@ -32,9 +26,9 @@ export default {
     // 修改
     edit (data , success , error) {
         return G.ajax({
-            url: edit ,
+            url: main ,
             data ,
-            method: 'post' ,
+            method: 'put' ,
             success ,
             error
         });
@@ -43,43 +37,31 @@ export default {
     // 添加
     add (data , success , error) {
         return G.ajax({
-            url: add ,
+            url: main ,
             data ,
             method: 'post' ,
             success ,
             error
         });
     } ,
-
-    // 删除
-    saveImage (data , success , error) {
-        return G.ajax({
-            url: saveImage ,
-            data ,
-            method: 'post' ,
-            success ,
-            error
-        });
-    } ,
-
-    // 抓取
-    capture (data , success , error) {
-        return G.ajax({
-            url: capture ,
-            data ,
-            method: 'post' ,
-            success ,
-            error
-        });
-    } ,
-
 
     // 删除
     del (data , success , error) {
         return G.ajax({
-            url: del ,
+            url: main ,
             data ,
-            method: 'post' ,
+            method: 'delete' ,
+            success ,
+            error
+        });
+    } ,
+
+    // 上传头像
+    image (data , success , error) {
+        return G.ajax({
+            url: image ,
+            data ,
+            method: 'patch' ,
             success ,
             error
         });

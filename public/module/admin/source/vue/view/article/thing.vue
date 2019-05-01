@@ -2,9 +2,10 @@
     <div class="module-container">
         <module-nav :topRoute="topRoute" :pos="pos"></module-nav>
         <div class="module-content">
-            <form @submit.prevent="submit">
-                <table class="input-tb">
-                    <tbody>
+            <div class="in">
+                <form @submit.prevent="submit">
+                    <table class="input-tb">
+                        <tbody>
                         <tr id="title" :class="getClass(error.title)">
                             <td>标题</td>
                             <td>
@@ -17,7 +18,7 @@
                         <tr id="article_type_id" :class="getClass(error.article_type_id)">
                             <td>文章分类</td>
                             <td>
-                                <v-select class="form-select" v-model="form.article_type_id" :data="type" :hasTop="false" ></v-select>
+                                <v-select class="form-select" v-model="form.article_type_id" :data="type" :has="false" ></v-select>
                                 <span class="necessary">*</span>
                                 <span class="tip"></span>
                                 <span class="msg">{{ error.article_type_id }}</span>
@@ -32,13 +33,13 @@
                                             <div class="image-line"><img src="" class="image upload-image-btn" /><span class="selected-count hide">10</span></div>
                                             <div class="text-line">请选择要上传的图片</div>
                                             <div class="clear-selected" title="清空已选择的图片"><img src="" class="image" /></div>
-                                            <input type='file' name='upload_images' multiple="multiple" class='upload-images-input'  />
+                                            <input type='file' name='upload_images' class='upload-images-input'  />
                                         </div>
                                         <div class="tip">这边是提示内容</div>
                                     </div>
                                     <!-- 预置显示图片 -->
                                     <div class="init-show-image-list">
-                                        <img :src="form.url" v-if="param.mode == 'edit' && form.url" class="init-show-image" />
+                                        <img :src="form.thumb_explain" v-if="param.mode == 'edit' && form.thumb_explain" class="init-show-image" />
                                     </div>
                                     <div class='preview-images hide'>
                                         <!-- 图片上传项目：旧 -->
@@ -73,10 +74,10 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr id="content" :class="getClass(error.content)">
+                        <tr id="content" :class="getClass(error.content)" v-if="form.is_link == 'n'">
                             <td>内容</td>
                             <td>
-                                <div ref="editor"></div>
+                                <div ref="editor" class="wang-editor"></div>
                                 <span class="necessary">*</span>
                                 <span class="tip"></span>
                                 <span class="msg">{{ error.content }}</span>
@@ -113,19 +114,43 @@
                                 <span class="msg">{{ error.weight }}</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="2">
-                                <button type="submit" class="btn-2">提交</button>
+                        <tr id="is_link">
+                            <td>是否链接</td>
+                            <td>
+                                <radio-group v-model="form.is_link">
+                                    <radio v-for="(v,k) in $store.state.business.bool_str" :label="k" :key="k">
+                                        <span>{{ v }}</span>
+                                    </radio>
+                                </radio-group>
+                                <span class="necessary"></span>
+                                <span class="tip">默认：否，如果选择：是，那么文章内容将无需填写（会自动隐藏）</span>
+                                <span class="msg">{{ error.is_link }}</span>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </form>
+                        <tr id="link" :class="getClass(error.link)">
+                            <td>链接</td>
+                            <td>
+                                <input type="text" class="form-text" v-model="form.link">
+                                <span class="necessary"></span>
+                                <span class="tip">链接地址，例如：https://www.baidu.com/</span>
+                                <span class="msg">{{ error.link }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="run-button run-button-submit">提交</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         </div>
         <v-loading ref="loading"></v-loading>
     </div>
 </template>
 
-<script src="./js/article.js"></script>
+<script src="./js/thing.js"></script>
+<style src="../../../asset/css/wangEditor.css"></style>
 <style scoped src="../public/css/public.css"></style>
-<style scoped src="./css/article.css"></style>
+<style scoped src="./css/thing.css"></style>

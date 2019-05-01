@@ -4,7 +4,6 @@ const image = `${topContext.api}brand/image`;
 const all = `${topContext.api}brand/all`;
 
 export default {
-    // 文章分类列表
     list (data , success , error) {
         return G.ajax({
             url: brand ,

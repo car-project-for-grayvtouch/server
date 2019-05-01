@@ -1,28 +1,22 @@
-const list = `${topContext.api}ArticleType/list`;
-const detail = `${topContext.api}ArticleType/detail`;
-const edit = `${topContext.api}ArticleType/edit`;
-const add = `${topContext.api}ArticleType/add`;
-const del = `${topContext.api}ArticleType/del`;
-const all = `${topContext.api}ArticleType/all`;
+const main = `${topContext.api}articleType/articleType`;
+const detail = `${topContext.api}articleType/articleType/?`;
 
 export default {
-    // 文章分类列表
     list (data , success , error) {
         return G.ajax({
-            url: list ,
+            url: main ,
             data ,
-            method: 'post' ,
+            method: 'get' ,
             success ,
             error
         });
     } ,
 
     // 详情
-    detail (data , success , error) {
+    detail (id , success , error) {
         return G.ajax({
-            url: detail ,
-            data ,
-            method: 'post' ,
+            url: detail.replace('?' , id) ,
+            method: 'get' ,
             success ,
             error
         });
@@ -31,9 +25,9 @@ export default {
     // 修改
     edit (data , success , error) {
         return G.ajax({
-            url: edit ,
+            url: main ,
             data ,
-            method: 'post' ,
+            method: 'put' ,
             success ,
             error
         });
@@ -42,35 +36,22 @@ export default {
     // 添加
     add (data , success , error) {
         return G.ajax({
-            url: add ,
+            url: main ,
             data ,
             method: 'post' ,
             success ,
             error
         });
     } ,
-
 
     // 删除
     del (data , success , error) {
         return G.ajax({
-            url: del ,
+            url: main ,
             data ,
-            method: 'post' ,
+            method: 'delete' ,
             success ,
             error
         });
     } ,
-
-    // 删除
-    all (success , error) {
-        return G.ajax({
-            url: all ,
-            method: 'post' ,
-            success ,
-            error
-        });
-    } ,
-
-
 };
