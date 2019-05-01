@@ -9,6 +9,8 @@
 namespace App\Customize\PcApi\Model;
 
 use DB;
+use Exception;
+use function PcApi\res_url;
 
 class CarModel extends Model
 {
@@ -26,5 +28,17 @@ class CarModel extends Model
                 $m->group = CarConfigurationGroup::findById($m->car_configuration_group_id);
                 self::single($m);
             });
+    }
+
+    public static function single($m = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
+        if (!is_object($m)) {
+            throw new Exception('不支持的类型');
+        }
+        // 封面
+        $m->image = res_url($m->image);
     }
 }

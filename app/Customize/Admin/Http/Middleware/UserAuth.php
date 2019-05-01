@@ -44,6 +44,10 @@ class UserAuth
             'method' => 'GET' ,
             'path'  => 'api/admin/misc/verifyCode' ,
         ] ,
+        [
+            'method' => 'POST' ,
+            'path'  => 'api/admin/file/imageForWangEditor' ,
+        ] ,
     ];
 
     public function handle($request , Closure $next)

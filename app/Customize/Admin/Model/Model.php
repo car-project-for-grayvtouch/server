@@ -42,7 +42,8 @@ class Model extends BaseModel implements ModelInterface
     public static function getAll()
     {
 
-        $res = static::all();
+        $res = static::orderBy('id' , 'desc')
+            ->get();
         static::multiple($res);
         return $res;
     }
@@ -51,6 +52,13 @@ class Model extends BaseModel implements ModelInterface
     {
         $res = static::find($id);
         static::single($res);
+        return $res;
+    }
+
+    public static function getByIds(array $id_list = [])
+    {
+        $res = static::whereIn('id' , $id_list)->get();
+        static::multiple($res);
         return $res;
     }
 }

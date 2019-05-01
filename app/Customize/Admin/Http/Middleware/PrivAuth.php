@@ -28,6 +28,10 @@ class PrivAuth
             'method' => 'PATCH' ,
             'path'  => 'api/admin/oauth/token' ,
         ] ,
+        [
+            'method' => 'POST' ,
+            'path'  => 'api/admin/file/imageForWangEditor' ,
+        ] ,
     ];
 
     public function handle($request , Closure $next)

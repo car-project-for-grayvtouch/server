@@ -9,11 +9,10 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Customize\Admin\Util\File as FileUtil;
+use App\Customize\Admin\Http\Action\FileAction;
 
 use function Admin\error;
 use function Admin\success;
-use function Admin\res_url;
 
 class File extends Controller
 {
@@ -21,8 +20,7 @@ class File extends Controller
     public function image()
     {
         $image = isset($_FILES['image']) ? $_FILES['image'] : [];
-        $file = new FileUtil();
-        $res = $file->image($image);
+        $res = FileAction::image($image);
         if ($res['code'] != 200) {
             return error($res['data'] , $res['code']);
         }
@@ -33,8 +31,7 @@ class File extends Controller
     public function file()
     {
         $file = isset($_FILES['file']) ? $_FILES['file'] : [];
-        $_file = new FileUtil();
-        $res = $_file->file($file);
+        $res = FileAction::file($file);
         if ($res['code'] != 200) {
             return error($res['data'] , $res['code']);
         }
@@ -45,12 +42,10 @@ class File extends Controller
     public function imageForWangEditor()
     {
         $image = isset($_FILES['image']) ? $_FILES['image'] : [];
-        $file = new FileUtil();
-
-        $res = $file->image($image);
+        $res = FileAction::imageForWangEditor($image);
         if ($res['code'] != 200) {
             return error($res['data'] , $res['code']);
         }
-        return success($res['data']);
+        return response()->json($res['data']);
     }
 }

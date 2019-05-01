@@ -44,8 +44,10 @@ class File
             return $this->response('不支持的文件类型，请上传图片' , 400);
         }
         $res = $this->image->saveAll($image);
-
-        $res['url'] = res_path($res['path']);
+        foreach ($res['success'] as &$v)
+        {
+            $v['url'] = res_path($v['path']);
+        }
         return $this->response($res);
     }
 

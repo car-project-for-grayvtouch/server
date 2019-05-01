@@ -280,4 +280,23 @@ Route::prefix('admin')
         Route::put('article/article' , 'Article@edit');
         Route::delete('article/article' , 'Article@del');
         Route::patch('article/image' , 'Article@image');
+
+        /**
+         * *********************
+         * 展示图片
+         * *********************
+         */
+        Route::get('showImage/image' , 'ShowImage@list');
+        Route::get('showImage/image/{id}' , 'ShowImage@detail');
+        Route::post('showImage/image' , 'ShowImage@add');
+        Route::put('showImage/image' , 'ShowImage@edit');
+        Route::patch('showImage/image' , 'ShowImage@image');
+        Route::delete('showImage/image' , 'ShowImage@del');
+
+        /**
+         * *********************
+         * 平台
+         * *********************
+         */
+        Route::get('platform/all' , 'Platform@all');
     });

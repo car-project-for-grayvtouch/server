@@ -17,6 +17,7 @@ create table if not exists `xq_show_image` (
   mime char(255) default '' comment '媒体类型' ,
   link varchar(255) default '' comment '链接' ,
   path varchar(500) default '' comment '路径' ,
+  weight smallint default 0 comment '权重' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '展示图片';
