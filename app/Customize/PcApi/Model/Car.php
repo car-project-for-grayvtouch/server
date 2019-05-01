@@ -105,7 +105,23 @@ class Car extends Model
         $param['gearbox']       = $param['gearbox'] ?? '';
         $param['age']           = $param['age'] ?? '';
         $param['color']         = $param['color'] ?? '';
+        $sort['field']         = $sort['field'] ?? 'update_time';
+        $sort['value']         = $sort['value'] ?? 'desc';
 
+        switch ($sort['field'])
+        {
+            case 'price':
+                $sort['field'] = sprintf('c.%s' , $sort['field']);
+                break;
+            case 'year':
+                $sort['field'] = sprintf('cm.%s' , $sort['field']);
+                break;
+            case 'mileage':
+                $sort['field'] = sprintf('c.%s' , $sort['field']);
+                break;
+            default:
+                $sort['field'] = sprintf('c.%s' , $sort['field']);
+        }
         $where = [];
         $where_in = [];
         $where_not_in = [];
@@ -133,7 +149,7 @@ class Car extends Model
             if ($param['color'] == '其他') {
                 $range = $color_for_car;
                 $where_not_in[] = [
-                    'c.color' => $range
+                    'c.Kcolor' => $range
                 ];
             } else {
                 $where[] = ['c.color' , '=' , $param['color']];
@@ -235,7 +251,7 @@ class Car extends Model
             $build = $build->whereRaw($v[0] , $v[1]);
         }
         $res = $build
-            ->orderBy(sprintf('c.%s' , $sort['field']) , $sort['value'])
+            ->orderBy($sort['field'] , $sort['value'])
             ->orderBy('c.id' , 'desc')
             ->select('c.*')
             ->limit(10)
