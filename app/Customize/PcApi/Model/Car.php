@@ -254,7 +254,6 @@ class Car extends Model
             ->orderBy($sort['field'] , $sort['value'])
             ->orderBy('c.id' , 'desc')
             ->select('c.*')
-            ->limit(10)
             ->paginate($limit);
         foreach ($res as $v)
         {
