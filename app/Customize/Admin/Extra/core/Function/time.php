@@ -559,7 +559,7 @@ function format_time($duration = 0 , $format = 'D天H时I分S秒' , $isZeroAdd =
 }
 
 // 获取指定月所在季度
-function get_quarterly($month){
+function get_quarter($month){
     $quarterly = [
         1 => [1 , 2 , 3] ,
         2 => [4 , 5 , 6] ,
@@ -578,7 +578,7 @@ function get_quarterly($month){
 }
 
 // 获取指定季度包含的月份
-function get_month_for_quarterly($quarterly = 1){
+function get_month_for_quarter($quarterly = 1){
     $range = [
         1 => [1 , 2 , 3] ,
         2 => [4 , 5 , 6] ,

@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-0e415cc8] {
+.module-container[data-v-10fcbcf0] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-0e415cc8] {
+.module-container > *[data-v-10fcbcf0] {
     padding: 0 20px;
 }
 
@@ -24,30 +24,85 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-0e415cc8] {
+.module-container > .module-content[data-v-10fcbcf0] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-0e415cc8] {
+.module-container > .module-content > .in[data-v-10fcbcf0] {
     padding: 20px;
     background-color: white;
 }
-.module-container > .module-content > .in > *[data-v-0e415cc8] {
+.module-container[data-v-10fcbcf0] {
+}
+.module-container .module-content[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in > form[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in > form > *[data-v-10fcbcf0] {
     margin-bottom: 12px;
 }
-.module-container > .module-content > .in > *[data-v-0e415cc8]:nth-last-of-type(1) {
+.module-container .module-content > .in > form > *[data-v-10fcbcf0]:nth-last-of-type(1) {
     margin-bottom: 0;
-}
-.module-container > .module-content > .in > .list[data-v-0e415cc8] {
-}
-.module-container > .module-content > .in > .list > *[data-v-0e415cc8] {
-    margin-bottom: 12px;
-}
-.module-container > .module-content > .in > .list > *[data-v-0e415cc8]:nth-last-of-type(1) {
-    margin-bottom: 0;
-}
-.module-container > .module-content > .in > .list > .page[data-v-0e415cc8] {
-    text-align: center;
 }
 
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vZ2xvYmFsLmNzcyIsIndlYnBhY2s6Ly8vcHVibGljLmNzcz83Y2M3Iiwid2VicGFjazovLy9saXN0LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztFQUlFO0FBQ0Y7SUFDSSxVQUFVO0FBQ2QsQztBQ1BBOzs7O0VBSUU7QUFDRjtJQUNJLGtCQUFrQjtJQUNsQixjQUFjO0FBQ2xCO0FBQ0E7SUFDSSxlQUFlO0FBQ25COztBQUVBOzs7O0VBSUU7QUFDRjtJQUNJLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksYUFBYTtJQUNiLHVCQUF1QjtBQUMzQixDO0FDeEJBO0lBQ0ksbUJBQW1CO0FBQ3ZCO0FBQ0E7SUFDSSxnQkFBZ0I7QUFDcEI7QUFDQTtBQUNBO0FBQ0E7SUFDSSxtQkFBbUI7QUFDdkI7QUFDQTtJQUNJLGdCQUFnQjtBQUNwQjtBQUNBO0lBQ0ksa0JBQWtCO0FBQ3RCLEMiLCJmaWxlIjoiMy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogKioqKioqKioqKioqKioqKioqKioqKlxyXG4gKiDoh6rliqjliqDovb3lsYLnuqforr7nva5cclxuICogKioqKioqKioqKioqKioqKioqKioqKlxyXG4gKi9cbi5tb2R1bGUtY29udGFpbmVyIC5Mb2FkaW5nIHtcclxuICAgIHotaW5kZXg6IDk7XG59IiwiLyoqXHJcbiAqICoqKioqKioqKioqKioqKioqKlxyXG4gKiDmqKHlnZflhajlsYDorr7nva5cclxuICogKioqKioqKioqKioqKioqKioqXHJcbiAqL1xuLm1vZHVsZS1jb250YWluZXJbZGF0YS12LTBlNDE1Y2M4XSB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBwYWRkaW5nLXRvcDogMDtcbn1cbi5tb2R1bGUtY29udGFpbmVyID4gKltkYXRhLXYtMGU0MTVjYzhdIHtcclxuICAgIHBhZGRpbmc6IDAgMjBweDtcbn1cclxuXHJcbi8qKlxyXG4gKiAqKioqKioqKioqKioqKioqKipcclxuICog5qih5Z2X5YaF5a65XHJcbiAqICoqKioqKioqKioqKioqKioqKlxyXG4gKi9cbi5tb2R1bGUtY29udGFpbmVyID4gLm1vZHVsZS1jb250ZW50W2RhdGEtdi0wZTQxNWNjOF0ge1xyXG4gICAgcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG4ubW9kdWxlLWNvbnRhaW5lciA+IC5tb2R1bGUtY29udGVudCA+IC5pbltkYXRhLXYtMGU0MTVjYzhdIHtcclxuICAgIHBhZGRpbmc6IDIwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbn0iLCIubW9kdWxlLWNvbnRhaW5lciA+IC5tb2R1bGUtY29udGVudCA+IC5pbiA+ICpbZGF0YS12LTBlNDE1Y2M4XSB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxMnB4O1xufVxuLm1vZHVsZS1jb250YWluZXIgPiAubW9kdWxlLWNvbnRlbnQgPiAuaW4gPiAqW2RhdGEtdi0wZTQxNWNjOF06bnRoLWxhc3Qtb2YtdHlwZSgxKSB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAwO1xufVxuLm1vZHVsZS1jb250YWluZXIgPiAubW9kdWxlLWNvbnRlbnQgPiAuaW4gPiAubGlzdFtkYXRhLXYtMGU0MTVjYzhdIHtcbn1cbi5tb2R1bGUtY29udGFpbmVyID4gLm1vZHVsZS1jb250ZW50ID4gLmluID4gLmxpc3QgPiAqW2RhdGEtdi0wZTQxNWNjOF0ge1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTJweDtcbn1cbi5tb2R1bGUtY29udGFpbmVyID4gLm1vZHVsZS1jb250ZW50ID4gLmluID4gLmxpc3QgPiAqW2RhdGEtdi0wZTQxNWNjOF06bnRoLWxhc3Qtb2YtdHlwZSgxKSB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAwO1xufVxuLm1vZHVsZS1jb250YWluZXIgPiAubW9kdWxlLWNvbnRlbnQgPiAuaW4gPiAubGlzdCA+IC5wYWdlW2RhdGEtdi0wZTQxNWNjOF0ge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufSJdLCJzb3VyY2VSb290IjoiIn0=*/
+/**
+ * ********************
+ * 选项切换中需要用到
+ * ********************
+ */
+.module-container .module-content > .in > form .options > *[data-v-10fcbcf0] {
+}
+.module-container .module-content > .in > form .options > * > *[data-v-10fcbcf0] {
+    margin-bottom: 20px;
+}
+.module-container .module-content > .in > form .options > * > *[data-v-10fcbcf0]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.option.service[data-v-10fcbcf0] {
+}
+.option.service[data-v-10fcbcf0] {
+}
+.option.service[data-v-10fcbcf0]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.option.service > .item[data-v-10fcbcf0] {
+    width: 320px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.option.service > .item[data-v-10fcbcf0]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.option.service > .item > *[data-v-10fcbcf0] {
+    float: left;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.option.service > .item > .left[data-v-10fcbcf0] {
+    width: 40px;
+    height: 100%;
+}
+.option.service > .item > .left .image[data-v-10fcbcf0] {
+    width: 100%;
+    max-height: 100%;
+}
+.option.service > .item > .right[data-v-10fcbcf0] {
+    padding-left: 12px;
+}

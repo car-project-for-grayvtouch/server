@@ -3,7 +3,7 @@ import mixins from './mixinOption.js';
 const host = '/';
 const plugin = `${host}plugin/`;
 const api = `${host}api/admin/`;
-const imageApiForwangEditor = `${api}Image/saveForWangEditor`;
+const imageApiForwangEditor = `${api}file/imageForWangEditor`;
 const imageApi = `${api}file/image`;
 const fileApi = `${api}file/file`;
 

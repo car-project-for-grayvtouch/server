@@ -1,0 +1,34 @@
+/**
+ * **********************
+ * 自动加载层级设置
+ * **********************
+ */
+.module-container .Loading {
+    z-index: 9;
+}
+/**
+ * ******************
+ * 模块全局设置
+ * ******************
+ */
+.module-container[data-v-340706ae] {
+    position: relative;
+    padding-top: 0;
+}
+.module-container > *[data-v-340706ae] {
+    padding: 0 20px;
+}
+
+/**
+ * ******************
+ * 模块内容
+ * ******************
+ */
+.module-container > .module-content[data-v-340706ae] {
+    padding-bottom: 20px;
+}
+.module-container > .module-content > .in[data-v-340706ae] {
+    padding: 20px;
+    background-color: white;
+}
+

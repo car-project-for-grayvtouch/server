@@ -21,8 +21,7 @@ window.business = {
             app: 'app公告'
         } ,
         image: {
-            news: '发现-焦点轮播图' ,
-            app: '发现-应用-焦点轮播图'
+            home: '首页-轮播图' ,
         }
     } ,
     // 请求方法

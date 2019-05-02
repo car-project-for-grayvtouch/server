@@ -124,7 +124,8 @@ export default {
                     // 获取数据
                     getData () {
                         this.ins.loading.show();
-                        this.ajax.list = this.api.list(this.form , (res , code) => {
+                        let dataAct = this.dataAct ? this.dataAct : 'list';
+                        this.ajax[dataAct] = this.api[dataAct](this.form , (res , code) => {
                             this.ins.loading.hide();
                             if (code != 200) {
                                 this.$error(res);
@@ -134,7 +135,7 @@ export default {
                             delete res.data;
                             this.page = res;
                         });
-                        this.ins.loading.setArgs(this.ajax.list);
+                        this.ins.loading.setArgs(this.ajax[dataAct]);
                     } ,
                 }
             } ,
@@ -196,7 +197,7 @@ export default {
                         resolve();
                     }).then(() => {
                         return new Promise((resolve , reject) => {
-                            this.$info('你确定要删除吗？' , {
+                            this.$info('你确定要批量删除吗？' , {
                                 btn: ['确定' , '取消'] ,
                                 btn1: resolve,
                                 btn2: reject

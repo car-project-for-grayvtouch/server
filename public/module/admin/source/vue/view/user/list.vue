@@ -17,7 +17,7 @@
                             </div>
                             <div class="option">
                                 <div class="field">名称：</div>
-                                <div class="value"><input type="text" v-model="form.name" class="form-text"></div>
+                                <div class="value"><input type="text" v-model="form.username" class="form-text"></div>
                             </div>
                             <div class="option">
                                 <div class="field"></div>
@@ -37,57 +37,51 @@
                     <div class="data">
                         <div class="run-title">
                             <div class="left">数据列表</div>
-                            <div class="right">
-                                <button type="button" class="run-button run-button-orange" @click="delSelected">
-                                    <i class="run-iconfont run-delete"></i>
-                                    删除选中项
-                                </button>
-                                <button type="button" class="run-button run-button-blue" @click="location('/role/add' , {mode: 'add'})">
-                                    <i class="run-iconfont run-add"></i>
-                                    添加
-                                </button>
-                            </div>
+                            <div class="right"></div>
                         </div>
                         <table class="line-tb">
                             <thead>
                             <tr>
-                                <th class="w-20">
-                                    <input type="checkbox" @click="selectAllEvent">
-                                </th>
-                                <th class="w-40">ID</th>
-                                <th class="w-130">名称</th>
-                                <th class="w-30">
-                                    权重
+                                <!--<th class="w-20">-->
+                                    <!--<input type="checkbox" @click="selectAllEvent">-->
+                                <!--</th>-->
+                                <th class="w-40">
+                                    ID
                                     <span class="arrow">
-                                    <i class="run-iconfont run-arrow top" data-order="weight|asc" @click="order"></i>
-                                    <i class="run-iconfont run-arrow btm" data-order="weight|desc" @click="order"></i>
+                                    <i class="run-iconfont run-arrow top" data-order="id|asc" @click="order"></i>
+                                    <i class="run-iconfont run-arrow btm" data-order="id|desc" @click="order"></i>
                                 </span>
                                 </th>
-                                <th class="w-100">创建时间</th>
-                                <th class="w-100">操作</th>
+                                <th class="w-130">用户</th>
+                                <th class="w-130">足迹</th>
+                                <th class="w-100">
+                                    创建时间
+                                    <span class="arrow">
+                                    <i class="run-iconfont run-arrow top" data-order="create_time|asc" @click="order"></i>
+                                    <i class="run-iconfont run-arrow btm" data-order="create_time|desc" @click="order"></i>
+                                </span>
+                                </th>
                             </tr>
                             </thead>
                             <tbody ref="tbody">
                             <tr v-for="v in data" :key="v.id" :data-id="v.id" @click="selectEvent">
-                                <td><input type="checkbox" class="c-box"></td>
-                                <td>{{ v.id }}</td>
-                                <td>{{ v.name }}</td>
-                                <td>{{ v.weight }}</td>
-                                <td>{{ v.create_time }}</td>
-                                <td>
-                                    <button type="button" class="run-button run-button-blue" @click.stop="location('/role/edit' , {id: v.id , mode: 'edit'})">
-                                        <i class="run-iconfont run-edit"></i>编辑
-                                    </button>
-                                    <button type="button" class="run-button run-button-yellow" @click="location('/role/priv' , {id: v.id})">
-                                        <i class="run-iconfont run-privilege"></i>权限分配
-                                    </button>
-                                    <button type="button" class="run-button run-button-orange" @click="delTarget(v.id)">
-                                        <i class="run-iconfont run-delete"></i>删除
-                                    </button>
+                                <!--<td><input type="checkbox" class="c-box"></td>-->
+                                <td class="multiple-rows">
+                                    <div class="row">【ID】<b>{{ v.id }}</b></div>
+                                    <div class="row"><img :src="v.avatar_explain" class="image"></div>
                                 </td>
+                                <td class="multiple-rows">
+                                    <div class="row">【用户名】<b>{{ v.username }}</b></div>
+                                    <div class="row">【手机号码】<b>{{ v.phone }}</b></div>
+                                </td>
+                                <td class="multiple-rows">
+                                    <div class="row"><b>【最近一次登录ip】</b>{{ v.last_ip }}</div>
+                                    <div class="row"><b>【最近一次登录时间】</b>{{ v.last_time }}</div>
+                                </td>
+                                <td>{{ v.create_time }}</td>
                             </tr>
                             <tr v-if="data.length == 0">
-                                <td colspan="7">没有相关数据</td>
+                                <td colspan="4">没有相关数据</td>
                             </tr>
                             </tbody>
                         </table>

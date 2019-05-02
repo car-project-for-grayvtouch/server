@@ -4,7 +4,7 @@ export default {
         return {
             form: {
                 id: '' ,
-                name: '' ,
+                username: '' ,
                 order: '' ,
             } ,
             ins: {
@@ -34,6 +34,8 @@ export default {
     mixins: [
         // 加载
         mixins.loading ,
+        // 状态
+        mixins.state ,
         // 获取层级数据
         mixins.list.get.normal ,
         // 数据过滤

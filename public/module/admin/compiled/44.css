@@ -1,0 +1,46 @@
+/**
+ * ******************
+ * 模块全局设置
+ * ******************
+ */
+.module-container[data-v-05ac092c] {
+    position: relative;
+    padding-top: 0;
+}
+.module-container > *[data-v-05ac092c] {
+    padding: 0 20px;
+}
+
+/**
+ * ******************
+ * 模块内容
+ * ******************
+ */
+.module-container > .module-content[data-v-05ac092c] {
+    padding-bottom: 20px;
+}
+.module-container > .module-content > .in[data-v-05ac092c] {
+    padding: 20px;
+    background-color: white;
+}
+.module-container > .module-content > .in > *[data-v-05ac092c] {
+    margin-bottom: 12px;
+}
+.module-container > .module-content > .in > *[data-v-05ac092c]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.module-container > .module-content > .in > .list[data-v-05ac092c] {
+}
+.module-container > .module-content > .in > .list > *[data-v-05ac092c] {
+    margin-bottom: 12px;
+}
+.module-container > .module-content > .in > .list > *[data-v-05ac092c]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.module-container > .module-content > .in > .list > .page[data-v-05ac092c] {
+    text-align: center;
+}
+
+.line-tb thead tr .th-opr[data-v-05ac092c] {
+    width: 100px;
+}

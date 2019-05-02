@@ -36,11 +36,19 @@ const thingForService = () => import('../view/service/thing.vue');
 const listForCar = () => import('../view/car/list.vue');
 const thingForCar = () => import('../view/car/thing.vue');
 const reportForCar = () => import('../view/car/report.vue');
-
 const listForArticleType = () => import('../view/articleType/list.vue');
 const thingForArticleType = () => import('../view/articleType/thing.vue');
 const listForArticle = () => import('../view/article/list.vue');
 const thingForArticle = () => import('../view/article/thing.vue');
+const listForShowImage  = () => import('../view/showImage/list.vue');
+const thingForShowImage = () => import('../view/showImage/thing.vue');
+const listForSaleApplication = () => import('../view/saleApplication/list.vue');
+const listForRecommendationApplication = () => import('../view/recommendationApplication/list.vue');
+const listForStagingBuyApplication = () => import('../view/stagingBuyApplication/list.vue');
+const listForReservation = () => import('../view/reservation/list.vue');
+const listForUser = () => import('../view/user/list.vue');
+// 控制面板
+const pannel = () => import('../view/pannel/pannel.vue');
 
 export default [
     {
@@ -53,7 +61,11 @@ export default [
         path: '/login' ,
         component: login
     } ,
-
+    // 控制面板
+    {
+        path: '/pannel' ,
+        component: pannel
+    } ,
     /**
      * ********************
      * 模块：路由
@@ -110,6 +122,16 @@ export default [
     {
         path: '/admin/add' ,
         component: admin
+    } ,
+
+    /**
+     * ***********************
+     * 平台用户
+     * ***********************
+     */
+    {
+        path: '/user/list' ,
+        component: listForUser
     } ,
 
     /**
@@ -383,5 +405,45 @@ export default [
     {
         path: '/article/add' ,
         component: thingForArticle
+    } ,
+
+    /**
+     * ***********************
+     * 展示图片
+     * ***********************
+     */
+    {
+        path: '/showImage/list' ,
+        component: listForShowImage
+    } ,
+    {
+        path: '/showImage/edit' ,
+        component: thingForShowImage
+    } ,
+    {
+        path: '/showImage/add' ,
+        component: thingForShowImage
+    } ,
+
+    /**
+     * ***********************
+     * 卖车申请
+     * ***********************
+     */
+    {
+        path: '/saleApplication/list' ,
+        component: listForSaleApplication
+    } ,
+    {
+        path: '/recommendationApplication/list' ,
+        component: listForRecommendationApplication
+    } ,
+    {
+        path: '/stagingBuyApplication/list' ,
+        component: listForStagingBuyApplication
+    } ,
+    {
+        path: '/reservation/list' ,
+        component: listForReservation
     } ,
 ];

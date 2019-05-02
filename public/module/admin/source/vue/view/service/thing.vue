@@ -79,4 +79,4 @@
 <script src="./js/thing.js"></script>
 <style src="../public/css/global.css"></style>
 <style scoped src="../public/css/public.css"></style>
-<style scoped src="./css/brand.css"></style>
+<style scoped src="./css/thing.css"></style>
