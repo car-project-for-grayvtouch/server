@@ -41,7 +41,7 @@ Route::prefix('admin')
 
         /**
          * ******************************
-         * 用户
+         * 后台用户
          * ******************************
          */
         Route::get('test/index' , 'Test@index');
@@ -63,6 +63,13 @@ Route::prefix('admin')
         Route::post('admin/user' , 'AdminUser@add');
         Route::put('admin/image' , 'AdminUser@avatar');
         Route::get('admin/user/{id}' , 'AdminUser@detail');
+
+        /**
+         * ******************************
+         * 前台用户
+         * ******************************
+         */
+        Route::get('user/user' , 'User@list');
 
         /**
          * ***********************
@@ -299,4 +306,36 @@ Route::prefix('admin')
          * *********************
          */
         Route::get('platform/all' , 'Platform@all');
+
+        /**
+         * *******************************
+         * 卖车申请
+         * *******************************
+         */
+        Route::get('saleApplication/saleApplication' , 'SaleApplication@list');
+        Route::patch('saleApplication/saleApplication' , 'SaleApplication@updateStatus');
+
+        /**
+         * *******************************
+         * 值购申请
+         * *******************************
+         */
+        Route::get('recommendationApplication/recommendationApplication' , 'RecommendationApplication@list');
+        Route::patch('recommendationApplication/recommendationApplication' , 'RecommendationApplication@updateStatus');
+
+        /**
+         * *******************************
+         * 分期购车申请
+         * *******************************
+         */
+        Route::get('stagingBuyApplication/stagingBuyApplication' , 'StagingBuyApplication@list');
+        Route::patch('stagingBuyApplication/stagingBuyApplication' , 'StagingBuyApplication@updateStatus');
+
+        /**
+         * *******************************
+         * 预约看车
+         * *******************************
+         */
+        Route::get('reservation/reservation' , 'Reservation@list');
+        Route::patch('reservation/reservation' , 'Reservation@updateStatus');
     });

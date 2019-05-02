@@ -39,6 +39,12 @@ class Model extends BaseModel implements ModelInterface
             ->update($param);
     }
 
+    public static function updateByIds(array $id_list = [] , array $param = [])
+    {
+        return static::whereIn('id' , $id_list)
+            ->update($param);
+    }
+
     public static function getAll()
     {
 

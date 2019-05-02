@@ -87,6 +87,7 @@ create table if not exists `xq_reservation` (
   appointment datetime default current_timestamp comment '预约时间' ,
   phone char(32) default '' comment '手机号码' ,
   weixin char(100) default '' comment '微信号' ,
+  status char(255) default 'wait' comment '状态：wait-等待处理 ing-处理中 cancel-已取消 completed-已完成' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '预约车辆';

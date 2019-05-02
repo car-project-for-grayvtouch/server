@@ -317,6 +317,9 @@ class Car extends Model
     public static function report($id)
     {
         $report = Report::findByCarId($id);
+        if (empty($report)) {
+            return ;
+        }
         $report->module = ReportForModule::getByReportId($report->id);
         foreach ($report->module as $v)
         {

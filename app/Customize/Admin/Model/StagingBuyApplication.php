@@ -9,24 +9,13 @@
 namespace App\Customize\Admin\Model;
 
 
-use Exception;
 use function Admin\get_value;
+use Exception;
 
-class SaleApplication extends Model
+class StagingBuyApplication extends Model
 {
-    protected $table = 'sale_application';
+    protected $table = 'staging_buy_application';
     public $timestamps = false;
-
-    public static function single($m = null)
-    {
-        if (empty($m)) {
-            return ;
-        }
-        if (!is_object($m)) {
-            throw new Exception('参数 1 类型错误');
-        }
-        $m->status_explain = get_value('business.sale_application_status' , $m->status);
-    }
 
     public static function list(array $filter = [] , array $order = [] , int $limit = 20)
     {
@@ -56,5 +45,18 @@ class SaleApplication extends Model
     public function user()
     {
         return $this->belongsTo(User::class , 'user_id' , 'id');
+    }
+
+    public static function single($m = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
+        if (!is_object($m)) {
+            throw new Exception('参数 1 类型错误');
+        }
+        $m->profession_explain = get_value('business.profession' , $m->profession);
+        $m->ssn_explain = get_value('business.bool' , $m->ssn);
+        $m->status_explain = get_value('business.staging_buy_application_status' , $m->status);
     }
 }
