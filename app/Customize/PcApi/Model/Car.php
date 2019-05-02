@@ -343,4 +343,11 @@ class Car extends Model
         }
         return $res;
     }
+
+    public static function countByDate($date)
+    {
+        return self::whereRaw('date_format(create_time , "%Y-%m-%d") = :date', [
+            'date' => $date
+        ])->count();
+    }
 }

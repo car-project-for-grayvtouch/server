@@ -41,6 +41,16 @@ Route::prefix('admin')
 
         /**
          * ******************************
+         * 控制面板
+         * ******************************
+         */
+        Route::get('pannel/info' , 'Pannel@info');
+        Route::get('pannel/month' , 'Pannel@month');
+        Route::get('pannel/quarter' , 'Pannel@quarter');
+        Route::get('pannel/year' , 'Pannel@year');
+
+        /**
+         * ******************************
          * 后台用户
          * ******************************
          */

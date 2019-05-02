@@ -57,4 +57,11 @@ class SaleApplication extends Model
     {
         return $this->belongsTo(User::class , 'user_id' , 'id');
     }
+
+    public static function countByDate($date)
+    {
+        return self::whereRaw('date_format(create_time , "%Y-%m-%d") = :date', [
+            'date' => $date
+        ])->count();
+    }
 }

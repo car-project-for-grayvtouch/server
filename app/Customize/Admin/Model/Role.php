@@ -41,6 +41,8 @@ class Role extends Model
         ])
             ->where('id' , $id)
             ->first();
+        self::single($role);
+        Route::multiple($role->route);
         $priv = $role->route->toArray();
         if ($struct) {
             // 如果想要保留结构

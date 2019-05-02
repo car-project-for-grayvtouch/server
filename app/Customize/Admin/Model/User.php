@@ -44,4 +44,18 @@ class User extends Model
         // 用户头像
         $m->avatar_explain = empty($m->avatar) ? config('app.avatar') : res_url($m->avatar);
     }
+
+    public static function countByDate($date)
+    {
+        return self::whereRaw('date_format(create_time , "%Y-%m-%d") = :date', [
+            'date' => $date
+        ])->count();
+    }
+
+    public static function countByForMonth($date)
+    {
+        return self::whereRaw('date_format(create_time , "%Y-%m-%d") = :date', [
+            'date' => $date
+        ])->count();
+    }
 }

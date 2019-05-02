@@ -67,4 +67,18 @@ class Model extends BaseModel implements ModelInterface
         static::multiple($res);
         return $res;
     }
+
+    public static function countByDate($date)
+    {
+        return static::whereRaw('date_format(create_time , "%Y-%m-%d") = :date', [
+            'date' => $date
+        ])->count();
+    }
+
+    public static function countByMonth($date)
+    {
+        return static::whereRaw('date_format(create_time , "%Y-%m") = :date', [
+            'date' => $date
+        ])->count();
+    }
 }

@@ -57,4 +57,11 @@ class RecommendationApplication extends Model
         }
         $m->status_explain = get_value('business.recommendation_application_status' , $m->status);
     }
+
+    public static function countByDate($date)
+    {
+        return self::whereRaw('date_format(create_time , "%Y-%m-%d") = :date', [
+            'date' => $date
+        ])->count();
+    }
 }
