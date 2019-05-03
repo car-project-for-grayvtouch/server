@@ -28,6 +28,7 @@ export default {
             } ,
             status: {
                 wait: '等待处理' ,
+                ing: '处理中' ,
                 ignore: '已忽略' ,
                 completed: '已完成' ,
             } ,

@@ -105,23 +105,26 @@ return [
 
     // 卖车申请状态
     'sale_application_status' => [
-        'wait'      => '等待处理' ,
-        'ing'       => '处理中' ,
-        'cancel'    => '已取消' ,
+        'wait' => '等待处理' ,
+        'ing'   => '处理中' ,
+        'ignore' => '已忽略' ,
+        'cancel' => '已取消' ,
         'completed' => '已完成' ,
     ] ,
     // 求推荐车辆申请状态
     'recommendation_application_status' => [
-        'wait'      => '等待处理' ,
-        'ing'       => '处理中' ,
-        'cancel'    => '已取消' ,
+        'wait' => '等待处理' ,
+        'ing'   => '处理中' ,
+        'ignore' => '已忽略' ,
+        'cancel' => '已取消' ,
         'completed' => '已完成' ,
     ] ,
     // 卖车申请状态
     'staging_buy_application_status' => [
-        'wait'      => '等待处理' ,
-        'ing'       => '处理中' ,
-        'cancel'    => '已取消' ,
+        'wait' => '等待处理' ,
+        'ing'   => '处理中' ,
+        'ignore' => '已忽略' ,
+        'cancel' => '已取消' ,
         'completed' => '已完成' ,
     ] ,
 ];
