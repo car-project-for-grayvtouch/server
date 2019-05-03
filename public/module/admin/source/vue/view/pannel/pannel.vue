@@ -15,7 +15,7 @@
                     <div class="list">
 
                         <div class="card">
-                            <div class="left"><img src="./image/user.png" class="image"></div>
+                            <div class="left"><img src="./image/user1.png" class="image"></div>
                             <div class="right">
                                 <div class="top">新增用户</div>
                                 <div class="btm">
@@ -144,7 +144,7 @@
                     <div class="list">
 
                         <div class="card-for-total">
-                            <div class="left"><img src="./image/user.png" class="image"></div>
+                            <div class="left"><img src="./image/user1.png" class="image"></div>
                             <div class="right">
                                 <div class="top">用户数</div>
                                 <div class="btm">{{ info.user.total }}</div>
