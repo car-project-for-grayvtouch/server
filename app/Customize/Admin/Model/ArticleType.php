@@ -28,7 +28,12 @@ class ArticleType extends Model
 
     public static function getTypeByName($name = '')
     {
-        return self::where('name' , $name)->find();
+        $res = self::where('name' , $name)->first();
+        if (empty($res)) {
+            return ;
+        }
+        self::single($res);
+        return $res;
     }
 
     // 获取数据列表

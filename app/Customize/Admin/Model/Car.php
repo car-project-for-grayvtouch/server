@@ -89,6 +89,9 @@ class Car extends Model
     {
         $res = self::with(['image' , 'service'])
             ->find($id);
+        if (empty($res)) {
+            return ;
+        }
         self::single($res);
         CarImage::multiple($res->image);
         Service::multiple($res->service);

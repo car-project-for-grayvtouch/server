@@ -18,6 +18,9 @@ class Report extends Model
     public static function findByCarId($car_id)
     {
         $res = self::where('car_id' , $car_id)->first();
+        if (empty($res)) {
+            return ;
+        }
         self::single($res);
         return $res;
     }

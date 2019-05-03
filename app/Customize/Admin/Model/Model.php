@@ -57,6 +57,9 @@ class Model extends BaseModel implements ModelInterface
     public static function findById($id)
     {
         $res = static::find($id);
+        if (empty($res)) {
+            return ;
+        }
         static::single($res);
         return $res;
     }

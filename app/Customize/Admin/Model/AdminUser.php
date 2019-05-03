@@ -39,6 +39,9 @@ class AdminUser extends Model
     {
         $m = self::where('username' , $username)
                 ->first();
+        if (empty($m)) {
+            return ;
+        }
         self::single($m);
         return $m;
     }
@@ -48,6 +51,9 @@ class AdminUser extends Model
     {
         $m = self::with('role')
             ->find($id);
+        if (empty($m)) {
+            return ;
+        }
         self::single($m);
         Role::single($m->role);
         return $m;

@@ -83,6 +83,9 @@ class Article extends Model
     {
         $res = self::with('content')
             ->find($id);
+        if (empty($res)) {
+            return ;
+        }
         self::single($res);
         ArticleContent::single($res->content);
         return $res;

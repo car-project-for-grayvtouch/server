@@ -68,7 +68,7 @@ class CarSeries extends Model
         if ($param['brand_id'] != '') {
             $where[] = ['brand_id' , '=' , $param['brand_id']];
         }
-        $res = static::where($where)->get();
+        $res = self::where($where)->get();
         self::multiple($res);
         return $res;
     }

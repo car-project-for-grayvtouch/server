@@ -41,6 +41,9 @@ class Role extends Model
         ])
             ->where('id' , $id)
             ->first();
+        if (empty($role)) {
+            return ;
+        }
         self::single($role);
         Route::multiple($role->route);
         $priv = $role->route->toArray();

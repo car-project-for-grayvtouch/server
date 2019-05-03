@@ -60,8 +60,12 @@ class CarModel extends Model
 
     public static function findById($id)
     {
-        $res = self::with('configuration')->find($id);
-        static::single($res);
+        $res = self::with('configuration')
+            ->find($id);
+        if (empty($res)) {
+            return ;
+        }
+        self::single($res);
         return $res;
     }
 
@@ -73,7 +77,7 @@ class CarModel extends Model
             $where[] = ['car_series_id' , '=' , $param['car_series_id']];
         }
         $res = self::where($where)->get();
-        static::multiple($res);
+        self::multiple($res);
         return $res;
     }
 }
