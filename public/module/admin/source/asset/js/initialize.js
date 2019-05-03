@@ -25,7 +25,14 @@ let refreshToken = (resolve) => {
         refresh_token: token.refresh_token
     } , (res , code) => {
         if (code != 200) {
-            forceLogout();
+            $info('登录状态已过期！请点击 <b>确定</b> 按钮退出到登录页面!' , {
+                closeBtn: false ,
+                btn: ['确定'] ,
+                btn1 (index) {
+                    layer.close(index);
+                    forceLogout();
+                }
+            });
             return ;
         }
         // 更新 token

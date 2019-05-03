@@ -3,11 +3,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-6bc2405c] {
+.module-container[data-v-f7fb1e86] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-6bc2405c] {
+.module-container > *[data-v-f7fb1e86] {
     padding: 0 20px;
 }
 
@@ -16,13 +16,35 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-6bc2405c] {
+.module-container > .module-content[data-v-f7fb1e86] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-6bc2405c] {
+.module-container > .module-content > .in[data-v-f7fb1e86] {
     padding: 20px;
     background-color: white;
 }
-
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vcHVibGljLmNzcz8yYWY0Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7O0VBSUU7QUFDRjtJQUNJLGtCQUFrQjtJQUNsQixjQUFjO0FBQ2xCO0FBQ0E7SUFDSSxlQUFlO0FBQ25COztBQUVBOzs7O0VBSUU7QUFDRjtJQUNJLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksYUFBYTtJQUNiLHVCQUF1QjtBQUMzQixDIiwiZmlsZSI6IjQ3LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiAqKioqKioqKioqKioqKioqKipcclxuICog5qih5Z2X5YWo5bGA6K6+572uXHJcbiAqICoqKioqKioqKioqKioqKioqKlxyXG4gKi9cbi5tb2R1bGUtY29udGFpbmVyW2RhdGEtdi02YmMyNDA1Y10ge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgcGFkZGluZy10b3A6IDA7XG59XG4ubW9kdWxlLWNvbnRhaW5lciA+ICpbZGF0YS12LTZiYzI0MDVjXSB7XHJcbiAgICBwYWRkaW5nOiAwIDIwcHg7XG59XHJcblxyXG4vKipcclxuICogKioqKioqKioqKioqKioqKioqXHJcbiAqIOaooeWdl+WGheWuuVxyXG4gKiAqKioqKioqKioqKioqKioqKipcclxuICovXG4ubW9kdWxlLWNvbnRhaW5lciA+IC5tb2R1bGUtY29udGVudFtkYXRhLXYtNmJjMjQwNWNdIHtcclxuICAgIHBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuLm1vZHVsZS1jb250YWluZXIgPiAubW9kdWxlLWNvbnRlbnQgPiAuaW5bZGF0YS12LTZiYzI0MDVjXSB7XHJcbiAgICBwYWRkaW5nOiAyMHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59Il0sInNvdXJjZVJvb3QiOiIifQ==*/
+.module-container > .module-content > .in > *[data-v-f7fb1e86] {
+    margin-bottom: 12px;
+}
+.module-container > .module-content > .in > *[data-v-f7fb1e86]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.module-container > .module-content > .in > .list[data-v-f7fb1e86] {
+}
+.module-container > .module-content > .in > .list > *[data-v-f7fb1e86] {
+    margin-bottom: 12px;
+}
+.module-container > .module-content > .in > .list > *[data-v-f7fb1e86]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.module-container > .module-content > .in > .list > .page[data-v-f7fb1e86] {
+    text-align: center;
+}
+.module-container[data-v-f7fb1e86] {
+}
+.module-container .module-content[data-v-f7fb1e86] {
+}
+.module-container .module-content .content[data-v-f7fb1e86] {
+    padding: 20px;
+    border: 1px solid #ccc;
+}

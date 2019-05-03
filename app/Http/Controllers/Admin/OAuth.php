@@ -21,7 +21,6 @@ class OAuth extends Controller
     {
         $param = $this->request->post();
         $param['refresh_token'] = $param['refresh_token'] ?? '';
-
         $res = OAuthAction::refreshToken($param);
         if ($res['code'] != 200) {
             return error($res['data'] , $res['code']);
