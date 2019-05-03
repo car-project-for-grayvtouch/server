@@ -247,6 +247,7 @@ export default {
                         this.initialState('loading' , 'submit' , 'submit');
                         if (code == 400) {
                             this.error = res;
+                            this.ins.menuSwitch.switch('base');
                             vScroll(G.firstKey(res));
                             return ;
                         }
