@@ -1,34 +1,465 @@
 /**
- * 专门针对 WangEditor 做处理的 css
- */
-.wang-editor {
-}
-.wang-editor * {
-    z-index: 0 !important;
-}
-/**
  * ******************
- * 模块全局设置
+ * 模块导航
  * ******************
  */
-.module-container[data-v-cfd934ac] {
+.module-nav[data-v-0e2540ec] {
+    height: 60px;
+    line-height: 60px;
     position: relative;
-    padding-top: 0;
 }
-.module-container > *[data-v-cfd934ac] {
-    padding: 0 20px;
+.module-nav[data-v-0e2540ec]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.module-nav > *[data-v-0e2540ec] {
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.module-nav-fix[data-v-0e2540ec] {
+    background-color: #8e95a5;
+    z-index: 8;
+}
+.module-nav-fix[data-v-0e2540ec]:before {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background-color: red;
+    left: 0;
+    bottom: 0;
+    box-shadow: 0 0 5px 0 red;
+    transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+}
+.module-nav > .left[data-v-0e2540ec] {
+    float: left;
+    font-size: 20px;
+}
+.module-nav > .right[data-v-0e2540ec] {
+    float: right;
+}
+.module-nav > .left > .image[data-v-0e2540ec] {
+    width: 40px;
+    height: 40px;
+}
+.module-nav > .left > .cn[data-v-0e2540ec] {
+    color: white;
+}
+.module-nav > .left .delimiter[data-v-0e2540ec] {
+    color: white;
+}
+.module-nav > .left > .en[data-v-0e2540ec] {
+    color: white;
+}
+.module-nav > .right[data-v-0e2540ec] {
+    color: #e4e4e4;
+    font-size: 14px;
+}
+.module-nav > .right > *[data-v-0e2540ec] {
+}
+.module-nav > .right > .text[data-v-0e2540ec] {
+    cursor: pointer;
+}
+.module-nav > .right > .delimiter[data-v-0e2540ec] {
+    padding: 0 8px;
+}
+.module-nav > .right > *[data-v-0e2540ec]:nth-last-of-type(1) {
+    font-weight: bold;
+}
+.container[data-v-189b68ac] {
+}
+.container > *[data-v-189b68ac] {
+    height: 100%;
+    min-height: 600px;
+}
+.container > .left[data-v-189b68ac] {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #464b56;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 2;
+}
+.container > .left > .in[data-v-189b68ac] {
+    width: 220px;
+}
+.container > .right[data-v-189b68ac] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding-left: 220px;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.container > .right > .top[data-v-189b68ac] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 80px;
+    padding-left: 220px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.container > .right > .btm[data-v-189b68ac] {
+    min-width: 1080px;
+    min-height: 100%;
+    background-color: #777d8a;
+}
+.container > .right > .btm[data-v-189b68ac]:before {
+    display: block;
+    visibility: visible;
+    content: '';
+    height: 80px;
+}
+
+
+/*
+ * ****************
+ * 文档左边: top
+ * ****************
+ */
+.container > .left > .in > .top[data-v-189b68ac] {
+}
+.container > .left > .in > .top .logo[data-v-189b68ac] {
+    height: 50px;
+    line-height: 50px;
+    background-color: #525865;
+}
+.container > .left > .in > .top .logo .left[data-v-189b68ac] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    text-align: center;
+}
+.container > .left > .in > .top .logo .left .image[data-v-189b68ac] {
+    width: 28px;
+    height: 28px;
+}
+.container > .left > .in > .top .logo .right[data-v-189b68ac] {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    margin-left: 50px;
+}
+.container > .left > .in > .top .user[data-v-189b68ac] {
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.container > .left > .in > .top .user .top[data-v-189b68ac] {
+    height: 150px;
+    text-align: center;
+    line-height: 150px;
+}
+.container > .left > .in > .top .user .top .image-container[data-v-189b68ac] {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.container > .left > .in > .top .user .top .image-container .image[data-v-189b68ac] {
+    width: 100%;
+    min-height: 100%;
+    vertical-align: top;
+}
+.container > .left > .in > .top .user .btm[data-v-189b68ac] {
+    font-size: 14px;
+    color: white;
+    text-align: center;
 }
 
 /**
- * ******************
- * 模块内容
- * ******************
+ * *************
+ * 滑块
+ * *************
  */
-.module-container > .module-content[data-v-cfd934ac] {
-    padding-bottom: 20px;
+.container > .left > .in > .top .block[data-v-189b68ac] {
+    background-color:#3e4448;
 }
-.module-container > .module-content > .in[data-v-cfd934ac] {
-    padding: 20px;
-    background-color: white;
+.container > .left > .in > .top .block:hover .horizontal .in .line[data-v-189b68ac], .container > .left > .in > .top .block:hover .vertical .in .line[data-v-189b68ac] {
+    background-color:#e7e7e7;
+}
+.container > .left > .in > .top .block>*[data-v-189b68ac]  {
+    height:30px;
+    position:relative;
+    cursor:pointer;
+}
+.container > .left > .in > .top .block .horizontal[data-v-189b68ac] {
+}
+.container > .left > .in > .top .block .vertical[data-v-189b68ac] {
+}
+.container > .left > .in > .top .block .horizontal .in[data-v-189b68ac], .container > .left > .in > .top .block .vertical .in[data-v-189b68ac] {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate3d(-50% , -50% , 0px);
+    -webkit-transform:translate3d(-50% , -50% , 0px);
+    -moz-transform:translate3d(-50% , -50% , 0px);
+    -ms-transform:translate3d(-50% , -50% , 0px);
+    -otransform:translate3d(-50% , -50% , 0px);
+}
+.container > .left > .in > .top .block .horizontal .in[data-v-189b68ac]:after {
+    display:block;
+    content:'';
+    clear:both;
+}
+.container > .left > .in > .top .block .horizontal .in .line[data-v-189b68ac] {
+    float:left;
+    width: 3px;
+    height: 12px;
+    margin-right:3px;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    background-color: #868686;
+}
+.container > .left > .in > .top .block .horizontal .in .line[data-v-189b68ac]:nth-last-of-type(1) {
+    margin-right: 0;
+}
+.container > .left > .in > .top .block .vertical[data-v-189b68ac] {
+    width:50px;
+    margin: 0;
+}
+.container > .left > .in > .top .block .vertical .in[data-v-189b68ac] {
+}
+.container > .left > .in > .top .block .vertical .in .line[data-v-189b68ac] {
+    background-color: #868686;
+    margin-bottom:3px;
+    width:12px;
+    height:2px;
+    transition:all 0.3s linear;
+    -webkit-transition:all 0.3s linear;
+    -moz-transition:all 0.3s linear;
+    -ms-transition:all 0.3s linear;
+    -o-transition:all 0.3s linear;
+}
+.container > .left > .in > .top .block .vertical .in .line[data-v-189b68ac]:nth-last-of-type(1) {
+    margin-bottom: 0;
 }
 
+/*
+ * ****************
+ * 文档左边: mid
+ * ****************
+ */
+.container > .left > .in > .mid[data-v-189b68ac] {
+    overflow: hidden;
+    overflow-y: auto;
+    min-height: 300px;
+}
+
+/*
+ * ****************
+ * 文档左边: btm
+ * ****************
+ */
+.container > .left > .in > .btm[data-v-189b68ac] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    background-color: #525865;
+}
+
+/**
+ * *****************
+ * 文档右边，全局设置
+ * *****************
+ */
+.container > .right[data-v-189b68ac] {
+}
+.container > .right > .top[data-v-189b68ac] {
+    height: 80px;
+}
+.container > .right > .top > .c-top[data-v-189b68ac] {
+    height: 50px;
+    background-color: #5c626d;
+}
+.container > .right > .top > .c-btm[data-v-189b68ac] {
+    height: 30px;
+}
+.container > .right > .btm[data-v-189b68ac] {
+}
+
+
+/**
+ * *********************
+ * 文档右边，顶部上边
+ * *********************
+ */
+.container > .right > .top > .c-top[data-v-189b68ac] {
+}
+.container > .right > .top > .c-top[data-v-189b68ac]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.container > .right > .top > .c-top > *[data-v-189b68ac] {
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.container > .right > .top > .c-top > .left[data-v-189b68ac] {
+    float: left;
+}
+.container > .right > .top > .c-top > .right[data-v-189b68ac] {
+    float: right;
+}
+.container > .right > .top > .c-top > .right[data-v-189b68ac] {
+}
+.container > .right > .top > .c-top > .right[data-v-189b68ac]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.container > .right > .top > .c-top > .right > *[data-v-189b68ac] {
+    float: right;
+}
+.container > .right > .top > .c-top > .right > .user[data-v-189b68ac] {
+    position: relative;
+}
+.container > .right > .top > .c-top > .right > .user:hover .ctrl[data-v-189b68ac] {
+    background-color: #797d84;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl[data-v-189b68ac] {
+    padding: 0 10px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl[data-v-189b68ac]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl > *[data-v-189b68ac] {
+    float: left;
+    height: 50px;
+    padding-right: 10px;
+    line-height: 50px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl > *[data-v-189b68ac]:nth-last-of-type(1) {
+    padding-right: 0;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl .avatar[data-v-189b68ac] {
+    text-align: center;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl .avatar .image-container[data-v-189b68ac] {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl .avatar .image[data-v-189b68ac] {
+    width: 100%;
+    min-height: 100%;
+    vertical-align: top;
+}
+.container > .right > .top > .c-top > .right > .user .ctrl .username[data-v-189b68ac] {
+    color: white;
+}
+.container > .right > .top > .c-top > .right > .user .functions[data-v-189b68ac] {
+    background-color: #484e58;
+    padding: 10px;
+    position: absolute;
+    bottom: -10px;
+    opacity: 0;
+    right: 0;
+    z-index: 10;
+    width: 160px;
+    transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+}
+.container > .right > .top > .c-top > .right > .user .functions .function[data-v-189b68ac] {
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+}
+.container > .right > .top > .c-top > .right > .user .functions .function[data-v-189b68ac]:hover {
+    background-color: #626a77;
+}
+.container > .right > .top > .c-top > .right > .user .functions .function[data-v-189b68ac]:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+.container > .right > .top > .c-top > .right > .user .functions .function > *[data-v-189b68ac] {
+    height: 100%;
+}
+.container > .right > .top > .c-top > .right > .user .functions .function .left[data-v-189b68ac] {
+    width: 50px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+}
+.container > .right > .top > .c-top > .right > .user .functions .function .left .image[data-v-189b68ac] {
+    width: 28px;
+    height: 28px;
+}
+.container > .right > .top > .c-top > .right > .user .functions .function .right[data-v-189b68ac] {
+    color: white;
+    margin-left: 50px;
+}
+
+/**
+ * **************************
+ * 文档右边：底部
+ * **************************
+ */
+.container > .right > .btm > .dynamic[data-v-189b68ac] {
+}
+.container > .right > .btm > .dynamic > .in[data-v-189b68ac] {
+}

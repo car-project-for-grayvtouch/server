@@ -12,6 +12,8 @@ use App\Customize\PcApi\Model\Car;
 use App\Customize\PcApi\Model\ProductComment;
 use App\Customize\PcApi\Model\CarConfiguration;
 use App\Customize\PcApi\Model\CollectionForCar;
+use App\Customize\PcApi\Model\RecommendationApplication;
+use App\Customize\PcApi\Model\Reservation;
 use App\Customize\PcApi\Model\SearchLog;
 use Exception;
 use function PcApi\get_form_error;
@@ -150,5 +152,57 @@ class CarAction extends Action
         $car->collected = self::u_collected($car->id);
         $configuration = CarConfiguration::groupData();
         return self::success(compact('car' , 'configuration'));
+    }
+
+    // 增加车辆的浏览次数
+    public static function incrementViewCount(array $param)
+    {
+        $validator = Validator::make($param , [
+            'id' => 'required' ,
+        ] , [
+            'id.required' => 'id 必须提供' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        $car = Car::findById($param['id']);
+        if (empty($car)) {
+            return self::error('未找到 id = ' . $param['id'] . '对应车辆');
+        }
+        Car::incrementViewCount($param['id']);
+        return self::success();
+    }
+
+    // 用户累计向平台申请推荐车辆的总数
+    public static function countForRecommendationApplication()
+    {
+        $res = RecommendationApplication::count();
+        return self::success($res);
+    }
+
+    // 某个日期下面的各个时间点的预约时间
+    public static function reservationCountForDay(array $param)
+    {
+        $validator = Validator::make($param , [
+            'day' => 'required' ,
+        ] , [
+            'day.required' => '必须' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error($validator);
+        }
+        $res = Reservation::countForDay($param['day']);
+        return self::success($res);
+    }
+
+    // 猜你喜欢
+    public static function recommendation()
+    {
+        $res = Car::recommendation(5);
+        foreach ($res as $v)
+        {
+            $v->collected = self::u_collected($v->id);
+        }
+        return self::success($res);
     }
 }

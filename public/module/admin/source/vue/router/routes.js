@@ -50,6 +50,9 @@ const listForUser = () => import('../view/user/list.vue');
 // 控制面板
 const pannel = () => import('../view/pannel/pannel.vue');
 
+const listForStory = () => import('../view/story/list.vue');
+const thingForStory = () => import('../view/story/thing.vue');
+
 export default [
     {
         name: 'home' ,
@@ -445,5 +448,23 @@ export default [
     {
         path: '/reservation/list' ,
         component: listForReservation
+    } ,
+
+    /**
+     * ***********************
+     * 买车故事
+     * ***********************
+     */
+    {
+        path: '/story/list' ,
+        component: listForStory
+    } ,
+    {
+        path: '/story/edit' ,
+        component: thingForStory
+    } ,
+    {
+        path: '/story/add' ,
+        component: thingForStory
     } ,
 ];

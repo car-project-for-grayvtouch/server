@@ -348,4 +348,16 @@ Route::prefix('admin')
          */
         Route::get('reservation/reservation' , 'Reservation@list');
         Route::patch('reservation/reservation' , 'Reservation@updateStatus');
+
+        /**
+         * ******************************
+         * 买车故事
+         * ******************************
+         */
+        Route::get('story/story/{id}' , 'Story@detail');
+        Route::get('story/story' , 'Story@list');
+        Route::post('story/story' , 'Story@add');
+        Route::put('story/story' , 'Story@edit');
+        Route::delete('story/story' , 'Story@del');
+        Route::patch('story/image' , 'Story@image');
     });

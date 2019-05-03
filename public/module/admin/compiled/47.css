@@ -3,11 +3,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-5dc70f04] {
+.module-container[data-v-f7fb1e86] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-5dc70f04] {
+.module-container > *[data-v-f7fb1e86] {
     padding: 0 20px;
 }
 
@@ -16,11 +16,35 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-5dc70f04] {
+.module-container > .module-content[data-v-f7fb1e86] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-5dc70f04] {
+.module-container > .module-content > .in[data-v-f7fb1e86] {
     padding: 20px;
     background-color: white;
 }
-
+.module-container > .module-content > .in > *[data-v-f7fb1e86] {
+    margin-bottom: 12px;
+}
+.module-container > .module-content > .in > *[data-v-f7fb1e86]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.module-container > .module-content > .in > .list[data-v-f7fb1e86] {
+}
+.module-container > .module-content > .in > .list > *[data-v-f7fb1e86] {
+    margin-bottom: 12px;
+}
+.module-container > .module-content > .in > .list > *[data-v-f7fb1e86]:nth-last-of-type(1) {
+    margin-bottom: 0;
+}
+.module-container > .module-content > .in > .list > .page[data-v-f7fb1e86] {
+    text-align: center;
+}
+.module-container[data-v-f7fb1e86] {
+}
+.module-container .module-content[data-v-f7fb1e86] {
+}
+.module-container .module-content .content[data-v-f7fb1e86] {
+    padding: 20px;
+    border: 1px solid #ccc;
+}

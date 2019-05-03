@@ -113,4 +113,32 @@ class Car extends Controller
         }
         return success($res['data']);
     }
+
+    // 增加车辆的浏览次数
+    public function incrementViewCount()
+    {
+        $param = $this->request->post();
+        $param['id'] = $param['id'] ?? '';
+        $res = CarAction::incrementViewCount($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 猜你喜欢（推荐车辆）
+    public function recommendation()
+    {
+        $res = CarAction::recommendation();
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
 }

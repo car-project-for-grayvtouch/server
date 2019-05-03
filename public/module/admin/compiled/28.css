@@ -1,21 +1,21 @@
 /**
- * **********************
- * 自动加载层级设置
- * **********************
+ * 专门针对 WangEditor 做处理的 css
  */
-.module-container .Loading {
-    z-index: 9;
+.wang-editor {
+}
+.wang-editor * {
+    z-index: 0 !important;
 }
 /**
  * ******************
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-4818ab98] {
+.module-container[data-v-cfd934ac] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-4818ab98] {
+.module-container > *[data-v-cfd934ac] {
     padding: 0 20px;
 }
 
@@ -24,10 +24,10 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-4818ab98] {
+.module-container > .module-content[data-v-cfd934ac] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-4818ab98] {
+.module-container > .module-content > .in[data-v-cfd934ac] {
     padding: 20px;
     background-color: white;
 }

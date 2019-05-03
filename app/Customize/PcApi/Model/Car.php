@@ -350,4 +350,31 @@ class Car extends Model
             'date' => $date
         ])->count();
     }
+
+    public static function incrementViewCount($id)
+    {
+        return self::where('id' , $id)
+            ->increment('view_count' , 1);
+    }
+
+    public static function recommendation($limit)
+    {
+        $res = self::with([
+                'brand' ,
+                'series' ,
+                'model' ,
+            ])
+            ->orderBy('view_count' , 'desc')
+            ->orderBy('update_time' , 'desc')
+            ->orderBy('id' , 'desc')
+            ->limit($limit)
+            ->get()
+            ->each(function ($m){
+                self::single($m);
+                Brand::single($m->brand);
+                CarSeries::single($m->series);
+                CarModel::single($m->model);
+            });
+        return $res;
+    }
 }

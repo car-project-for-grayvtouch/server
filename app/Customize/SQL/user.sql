@@ -149,3 +149,19 @@ create table if not exists `xq_product_comment_image` (
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '商品评论图片';
+
+
+drop table if exists `xq_story`;
+create table if not exists `xq_story` (
+  id int unsigned not null auto_increment ,
+  title char(255) comment '' ,
+  image varchar(500) default '' comment '图片' ,
+  content varchar(1000) default '' comment '内容' ,
+  username char(255) default '' comment '用户名，例如：陈先生' ,
+  score decimal(13,2) default 0 comment '评分' ,
+  hidden enum('y' , 'n') default 'n' comment '是否隐藏：y-是 n-否' ,
+  weight smallint default 0 comment '权重' ,
+  create_time datetime default current_timestamp ,
+  primary key id (id)
+) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '购车故事';
+

@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-a67bc1ba] {
+.module-container[data-v-96cd8b9a] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-a67bc1ba] {
+.module-container > *[data-v-96cd8b9a] {
     padding: 0 20px;
 }
 
@@ -24,28 +24,28 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-a67bc1ba] {
+.module-container > .module-content[data-v-96cd8b9a] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-a67bc1ba] {
+.module-container > .module-content > .in[data-v-96cd8b9a] {
     padding: 20px;
     background-color: white;
 }
-.module-container > .module-content > .in > *[data-v-a67bc1ba] {
+.module-container > .module-content > .in > *[data-v-96cd8b9a] {
     margin-bottom: 12px;
 }
-.module-container > .module-content > .in > *[data-v-a67bc1ba]:nth-last-of-type(1) {
+.module-container > .module-content > .in > *[data-v-96cd8b9a]:nth-last-of-type(1) {
     margin-bottom: 0;
 }
-.module-container > .module-content > .in > .list[data-v-a67bc1ba] {
+.module-container > .module-content > .in > .list[data-v-96cd8b9a] {
 }
-.module-container > .module-content > .in > .list > *[data-v-a67bc1ba] {
+.module-container > .module-content > .in > .list > *[data-v-96cd8b9a] {
     margin-bottom: 12px;
 }
-.module-container > .module-content > .in > .list > *[data-v-a67bc1ba]:nth-last-of-type(1) {
+.module-container > .module-content > .in > .list > *[data-v-96cd8b9a]:nth-last-of-type(1) {
     margin-bottom: 0;
 }
-.module-container > .module-content > .in > .list > .page[data-v-a67bc1ba] {
+.module-container > .module-content > .in > .list > .page[data-v-96cd8b9a] {
     text-align: center;
 }
 

@@ -11,11 +11,11 @@
  * 模块全局设置
  * ******************
  */
-.module-container[data-v-75dfdd0a] {
+.module-container[data-v-a67bc1ba] {
     position: relative;
     padding-top: 0;
 }
-.module-container > *[data-v-75dfdd0a] {
+.module-container > *[data-v-a67bc1ba] {
     padding: 0 20px;
 }
 
@@ -24,137 +24,28 @@
  * 模块内容
  * ******************
  */
-.module-container > .module-content[data-v-75dfdd0a] {
+.module-container > .module-content[data-v-a67bc1ba] {
     padding-bottom: 20px;
 }
-.module-container > .module-content > .in[data-v-75dfdd0a] {
+.module-container > .module-content > .in[data-v-a67bc1ba] {
     padding: 20px;
     background-color: white;
 }
-.module[data-v-75dfdd0a] {
-    position: relative;
-}
-.module > .content[data-v-75dfdd0a] {
-}
-.module > .preview[data-v-75dfdd0a] {
-    position: fixed;
-    right: 0;
-    top: 50%;
-    z-index: 1;
-    border: 2px solid #ccc;
-    padding: 10px;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-}
-.module > .preview .function[data-v-75dfdd0a] {
-    padding-bottom: 15px;
-}
-.module > .preview .con[data-v-75dfdd0a] {
-    width: 500px;
-    max-height: 400px;
-    overflow: hidden;
-    overflow-y: auto;
-    background-color: white;
-    transition: all 0.3s linear;
-}
-.module > .preview .con .image[data-v-75dfdd0a] {
-    width: 100%;
-    height: auto;
-}
-.module > .content > *[data-v-75dfdd0a] {
+.module-container > .module-content > .in > *[data-v-a67bc1ba] {
     margin-bottom: 12px;
 }
-.module > .content > *[data-v-75dfdd0a]:nth-last-of-type(1) {
+.module-container > .module-content > .in > *[data-v-a67bc1ba]:nth-last-of-type(1) {
     margin-bottom: 0;
 }
-.module > .content > .top[data-v-75dfdd0a] {
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+.module-container > .module-content > .in > .list[data-v-a67bc1ba] {
 }
-.module > .content > .top[data-v-75dfdd0a]:after {
-    display: block;
-    content: '';
-    clear: both;
+.module-container > .module-content > .in > .list > *[data-v-a67bc1ba] {
+    margin-bottom: 12px;
 }
-.module > .content > .top > *[data-v-75dfdd0a] {
-    float: left;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-}
-.module > .content > .top .left[data-v-75dfdd0a] {
-    padding-right: 20px;
-    font-weight: bold;
-}
-.module > .content > .btm[data-v-75dfdd0a]{
-}
-.module > .content > .btm> .item[data-v-75dfdd0a] {
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-.module > .content > .btm> .item[data-v-75dfdd0a]:nth-last-of-type(1) {
+.module-container > .module-content > .in > .list > *[data-v-a67bc1ba]:nth-last-of-type(1) {
     margin-bottom: 0;
-    border-bottom: none;
 }
-.module > .content > .btm> .item > .pos[data-v-75dfdd0a] {
-    height: 40px;
-    line-height: 40px;
-    font-weight: bold;
-}
-.module > .content > .btm> .item .list[data-v-75dfdd0a] {
-}
-.module > .content > .btm> .item .list .line[data-v-75dfdd0a] {
-    border-bottom: 1px solid #ccc;
-    height: 35px;
-    line-height: 34px;
-}
-.module > .content > .btm> .item .list .line[data-v-75dfdd0a]:nth-last-of-type(1) {
-    margin-bottom: 0;
-    border-bottom: none;
-}
-.module > .content > .btm> .item .list .line[data-v-75dfdd0a]:after {
-    display: block;
-    content: '';
-    clear: both;
-}
-.module > .content > .btm> .item .list .line > *[data-v-75dfdd0a] {
-    float: left;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-}
-.module > .content > .btm> .item .list .line > *[data-v-75dfdd0a]:nth-last-of-type(1) {
-    margin-bottom: 0;
-    border-bottom: none;
-}
-.module > .content > .btm> .item .list .line .name[data-v-75dfdd0a] {
-    width: 160px;
-}
-.module > .content > .btm> .item .list .line .value[data-v-75dfdd0a] {
-    padding-right: 30px;
+.module-container > .module-content > .in > .list > .page[data-v-a67bc1ba] {
+    text-align: center;
 }
 
-/**
- * ***************
- * 模块检测结果
- * ***************
- */
-.form-textarea[data-v-75dfdd0a] {
-    width: 400px;
-    height: 80px;
-    padding: 8px;
-}
-.form-text[data-v-75dfdd0a] {
-    width: 400px;
-    box-sizing: border-box;
-    height: 30px;
-}

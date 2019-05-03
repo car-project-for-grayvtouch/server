@@ -1,0 +1,26 @@
+/**
+ * ******************
+ * 模块全局设置
+ * ******************
+ */
+.module-container[data-v-5dc70f04] {
+    position: relative;
+    padding-top: 0;
+}
+.module-container > *[data-v-5dc70f04] {
+    padding: 0 20px;
+}
+
+/**
+ * ******************
+ * 模块内容
+ * ******************
+ */
+.module-container > .module-content[data-v-5dc70f04] {
+    padding-bottom: 20px;
+}
+.module-container > .module-content > .in[data-v-5dc70f04] {
+    padding: 20px;
+    background-color: white;
+}
+

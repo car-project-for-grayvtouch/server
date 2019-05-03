@@ -64,7 +64,7 @@
                                             <div class="image-line"><img src="" class="image upload-image-btn" /><span class="selected-count hide">10</span></div>
                                             <div class="text-line">请选择要上传的图片</div>
                                             <div class="clear-selected" title="清空已选择的图片"><img src="" class="image" /></div>
-                                            <input type='file' name='upload_images' multiple="multiple" class='upload-images-input'  />
+                                            <input type='file' name='upload_images' class='upload-images-input'  />
                                         </div>
                                         <div class="tip">这边是提示内容</div>
                                     </div>
@@ -102,7 +102,7 @@
                                             <div class="image-line"><img src="" class="image upload-image-btn" /><span class="selected-count hide">10</span></div>
                                             <div class="text-line">请选择要上传的图片</div>
                                             <div class="clear-selected" title="清空已选择的图片"><img src="" class="image" /></div>
-                                            <input type='file' name='upload_images' multiple="multiple" class='upload-images-input'  />
+                                            <input type='file' name='upload_images' class='upload-images-input'  />
                                         </div>
                                         <div class="tip">这边是提示内容</div>
                                     </div>

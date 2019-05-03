@@ -27,6 +27,8 @@ Route::prefix('pc')
         Route::post('/Car/detail' , 'Car@detail');
         Route::post('/Car/countForRecommendationApplication' , 'Car@countForRecommendationApplication');
         Route::post('/Car/reservationCountForDay' , 'Car@reservationCountForDay');
+        Route::post('/Car/incrementViewCount' , 'Car@incrementViewCount');
+        Route::post('/Car/recommendation' , 'Car@recommendation');
 
 
         // 车辆-需要用户认证的接口
@@ -71,5 +73,8 @@ Route::prefix('pc')
         // 文件上传
         Route::post('File/image' , 'File@image');
         Route::post('File/file' , 'File@file');
+
+        // huma故事
+        Route::post('Story/listForHome' , 'Story@listForHome');
     });
 
