@@ -62,12 +62,16 @@
             brand: {
                 immediate: true ,
                 handler (nv) {
-                    this.letter = [];
+                    let letter = [];
                     nv.forEach((v) => {
                         if (this.letter.indexOf(v.letter) == -1) {
-                            this.letter.push(v.letter);
+                            letter.push(v.letter);
                         }
                     });
+                    letter.sort((a , b) => {
+                        return a > b ? 1 : -1;
+                    });
+                    this.letter = letter;
                 } ,
             }
         } ,
