@@ -32,11 +32,11 @@ class CarSeriesAction extends Action
         $validator = Validator::make($param , [
             'name' => 'required' ,
             'brand_id' => 'required' ,
-            'car_series_group_id' => 'required' ,
+//            'car_series_group_id' => 'required' ,
         ] , [
             'name.required' => 'name 尚未提供' ,
             'brand_id.required' => 'brand_id 尚未提供' ,
-            'car_series_group_id.required' => 'car_series_group_id 尚未提供' ,
+//            'car_series_group_id.required' => 'car_series_group_id 尚未提供' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
@@ -56,11 +56,11 @@ class CarSeriesAction extends Action
         $validator = Validator::make($param , [
             'name' => 'required' ,
             'brand_id' => 'required' ,
-            'car_series_group_id' => 'required' ,
+//            'car_series_group_id' => 'required' ,
         ] , [
             'name.required' => 'name 尚未提供' ,
             'brand_id.required' => 'brand_id 尚未提供' ,
-            'car_series_group_id.required' => 'car_series_group_id 尚未提供' ,
+//            'car_series_group_id.required' => 'car_series_group_id 尚未提供' ,
         ]);
         if ($validator->fails()) {
             return self::error($validator);
