@@ -149,8 +149,12 @@ class PannelAction extends Action
             $ratio = bcmul($today , 100 , 2);
         } else {
             $ratio = bcmul(bcdiv(bcsub($today  , $yesterday) , $yesterday) , 100 , 2);
+            var_dump($today);
+            var_dump($yesterday);
+            var_dump($ratio);
         }
         $ratio = abs($ratio);
+        var_dump($ratio);
         return sprintf('%s%%' , $ratio);
     }
 
