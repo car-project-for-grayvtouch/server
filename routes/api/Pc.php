@@ -53,6 +53,7 @@ Route::prefix('pc')
         // 文章
         Route::post('/Article/listForHome' , 'Article@listForHome');
         Route::post('/Article/detail' , 'Article@detail');
+        Route::post('/Article/listForMedia' , 'Article@listForMedia');
 
         // 车系
         Route::post('/CarSeries/all' , 'CarSeries@all');

@@ -29,6 +29,19 @@ class Article extends Model
         return $res;
     }
 
+    public static function listForMedia($article_type_id , int $limit = 20)
+    {
+        $res = self::with('content')
+            ->where('article_type_id' , $article_type_id)
+            ->paginate($limit);
+        foreach ($res as $v)
+        {
+            self::single($v);
+            ArticleContent::single($v->content);
+        }
+        return $res;
+    }
+
     public static function single($m = null)
     {
         if (empty($m)) {

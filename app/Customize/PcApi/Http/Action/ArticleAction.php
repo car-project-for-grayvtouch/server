@@ -19,7 +19,15 @@ class ArticleAction extends Action
     {
         $article_type = 1;
         $limit = config('app.limit');
-        $res = Article::listForHome($article_type , $limit);
+        $res = Article::listForHome($article_type , 8);
+        return self::success($res);
+    }
+
+    public static function listForMedia()
+    {
+        $article_type = 1;
+        $limit = config('app.limit');
+        $res = Article::listForMedia($article_type , $limit);
         return self::success($res);
     }
 
