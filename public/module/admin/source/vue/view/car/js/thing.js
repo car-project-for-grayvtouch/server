@@ -352,6 +352,7 @@ export default {
                 this.getService();
                 this.pending.submit = true;
                 this.ins.loading.show();
+                this.ins.menuSwitch.switch('base');
                 this.ajax.submit = this.api[this.param.mode](this.form , (res , code) => {
                     this.error = {};
                     if (code != 200) {
