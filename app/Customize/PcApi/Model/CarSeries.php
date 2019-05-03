@@ -9,6 +9,7 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function core\obj_to_array;
 use Exception;
 
 class CarSeries extends Model
@@ -38,6 +39,7 @@ class CarSeries extends Model
         $res = self::with('brand')
             ->find($id);
         self::single($res);
+        print_r(obj_to_array($res));
         Brand::single($res->brand);
         return $res;
     }
