@@ -146,9 +146,12 @@ class PannelAction extends Action
     private static function util_ratio(int $today , int $yesterday)
     {
         if ($yesterday == 0) {
-            return sprintf('%s%%' , bcmul($today , 100 , 2));
+            $ratio = bcmul($today , 100 , 2);
+        } else {
+            $ratio = bcmul(bcdiv(bcsub($today  , $yesterday) , $yesterday) , 100 , 2);
         }
-        return sprintf('%s%%' , bcmul(bcdiv(bcsub($today  , $yesterday) , $yesterday) , 100 , 2));
+        $ratio = abs($ratio);
+        return sprintf('%s%%' , $ratio);
     }
 
     private static function util_flag($today , $yesterday)
