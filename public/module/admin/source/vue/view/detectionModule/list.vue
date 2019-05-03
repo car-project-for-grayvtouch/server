@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="page">
-                        <Page :total="page.total" :page-size="page.per_page" size="small" show-total show-elevator @on-change="pageEvent" />
+                        <Page :total="page.total" :current="form.page" :page-size="page.per_page" size="small" show-total show-elevator @on-change="pageEvent" />
                     </div>
                 </div>
             </div>
