@@ -64,7 +64,7 @@
                 handler (nv) {
                     let letter = [];
                     nv.forEach((v) => {
-                        if (this.letter.indexOf(v.letter) == -1) {
+                        if (letter.indexOf(v.letter) == -1) {
                             letter.push(v.letter);
                         }
                     });
