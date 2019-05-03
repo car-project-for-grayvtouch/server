@@ -148,21 +148,9 @@ class PannelAction extends Action
         if ($yesterday == 0) {
             $ratio = bcmul($today , 100 , 2);
         } else {
-            if ($today == 2 && $yesterday == 6) {
-
-            }
             $amount = bcsub($today  , $yesterday);
-            if ($today == 2 && $yesterday == 6) {
-                var_dump($amount);
-            }
-            $ratio = bcdiv($amount , $yesterday);
-            if ($today == 2 && $yesterday == 6) {
-                var_dump($ratio);
-            }
+            $ratio = bcdiv($amount , $yesterday , 4);
             $ratio = bcmul($ratio , 100 , 2);
-            if ($today == 2 && $yesterday == 6) {
-                var_dump($ratio);
-            }
         }
         $ratio = abs($ratio);
         return sprintf('%s%%' , $ratio);
