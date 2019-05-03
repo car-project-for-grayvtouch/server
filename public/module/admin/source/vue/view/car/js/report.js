@@ -122,21 +122,42 @@ export default {
                                 return ;
                             }
                             this.report = res;
+                            let rule = [...this.rule];
+                            let find = (value , key , list) => {
+                                for (let i = 0; i < list.length; ++i)
+                                {
+                                    let cur = list[i];
+                                    if (cur[key] == value) {
+                                        return cur;
+                                    }
+                                }
+                                return null;
+                            };
                             // todo 稍作处理
-                            this.rule.forEach((module,k) => {
-                                const _module = res[k] ? res[k] : {};
-                                module.result = res[k] ? _module.result : '';
-                                module.position.forEach((position , k1) => {
+                            rule.forEach((module) => {
+                                let _module = find(module.id , 'detection_module_id' , res);
+                                    _module = _module ? _module : {};
+                                module.result = _module.result ? _module.result : '';
+                                if (!G.isArray(module.position)) {
+                                    return ;
+                                }
+                                module.position.forEach((position) => {
                                     const positions = _module.position ? _module.position : [];
-                                    const _position = positions[k1] ? positions[k1] : {};
-                                    position.item.forEach((item , k2) => {
+                                    let _position = find(position.id , 'detection_pos_id' , positions);
+                                        _position = _position ? _position : {};
+                                    if (!G.isArray(position.item)) {
+                                        return ;
+                                    }
+                                    position.item.forEach((item) => {
                                         const items = _position.item ? _position.item : [];
-                                        const _item = items[k2] ? items[k2] : {};
+                                        let _item = find(item.id , 'detection_item_id' , items);
+                                            _item = _item ? _item : {};
                                         item.value = _item.value ? _item.value : item.value;
                                         item.desc = _item.desc ? _item.desc : item.desc;
                                     });
                                 });
                             });
+                            this.rule = rule;
                         });
                     });
                 });
