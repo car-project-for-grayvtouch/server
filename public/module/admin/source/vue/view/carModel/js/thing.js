@@ -155,7 +155,11 @@ export default {
                     // 数据获取之后初始化
                     this.initInstance();
                     this.getData(() => {
-                        this.form._configuration = [...this.form.configuration];
+                        if (this.param.mode == 'edit') {
+                            this.form._configuration = [...this.form.configuration];
+                        } else {
+                            this.form._configuration = [];
+                        }
                         // 车辆配置处理
                         this.configuration.forEach((v) => {
                             v.data.forEach((v1) => {
