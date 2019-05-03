@@ -234,14 +234,10 @@ class Car extends Model
                     throw new Exception('不支持的 age 值');
             }
         }
-//        print_r($where);
-//        print_r($where_not_in);
-//        print_r($where_in);
-//        print_r($where_raw);
-        DB::enableQueryLog();
+//        DB::enableQueryLog();
         // 获取车辆列表
         $build = DB::table('car as c')
-            ->join('car_model as cm' , 'c.car_model_id' , '=' , 'cm.id');
+            ->leftJoin('car_model as cm' , 'c.car_model_id' , '=' , 'cm.id');
         if (!empty($where)) {
             $build = $build->where($where);
         }
@@ -262,7 +258,7 @@ class Car extends Model
             ->orderBy('c.id' , 'desc')
             ->select('c.*')
             ->paginate($limit);
-        print_r(DB::getQueryLog());
+//        print_r(DB::getQueryLog());
         foreach ($res as $v)
         {
             self::single($v);
