@@ -20,7 +20,7 @@ class CarModel extends Model
     public static function getConfiguration($car_model_id)
     {
         return DB::table('car_model_with_configuration as cmwc')
-            ->join('car_configuration as cc' , 'cc.id' , '=' , 'cmwc.car_configuration_id')
+            ->rightJoin('car_configuration as cc' , 'cc.id' , '=' , 'cmwc.car_configuration_id')
             ->where('car_model_id' , $car_model_id)
             ->select('cc.*')
             ->get()
