@@ -21,7 +21,7 @@ class Car extends Model
     public $timestamps = false;
 
     // 首页-车辆列表
-    public static function listForHome(array $param = [])
+    public static function listForHome(array $param = [] , int $limit = 20)
     {
 
         $where = [];
@@ -40,6 +40,7 @@ class Car extends Model
             ->orderBy('view_count' , 'desc')
             ->orderBy('update_time' , 'desc')
             ->orderBy('id' , 'desc')
+            ->limit($limit)
             ->get()
             ->each(function($m){
                 self::single($m);

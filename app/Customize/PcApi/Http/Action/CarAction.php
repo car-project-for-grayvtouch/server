@@ -72,7 +72,7 @@ class CarAction extends Action
         try {
             DB::beginTransaction();
             // 获取数据
-            $res = Car::listForHome($param);
+            $res = Car::listForHome($param , 8);
             foreach ($res as $v)
             {
                 $v->collected = self::u_collected($v->id);
