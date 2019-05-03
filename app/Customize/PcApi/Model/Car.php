@@ -305,6 +305,9 @@ class Car extends Model
                 'service' ,
             ])
             ->find($id);
+        if (empty($res)) {
+            return ;
+        }
         self::single($res);
         Brand::single($res->brand);
         CarSeries::single($res->series);
@@ -321,9 +324,15 @@ class Car extends Model
             return ;
         }
         $report->module = ReportForModule::getByReportId($report->id);
+        if (empty($report->module)) {
+            return $report;
+        }
         foreach ($report->module as $v)
         {
             $v->position = ReportForPos::getByReportForModuleId($v->id);
+            if (empty($v->position)) {
+                continue ;
+            }
             foreach ($v->position as $v1)
             {
                 $v1->item = ReportForItem::getByReportForPosId($v1->id);

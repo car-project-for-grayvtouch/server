@@ -57,6 +57,9 @@ class SearchLog extends Model
             ['type' , '=' , $type] ,
             ['value' , '=' , $value]
         ])->first();
+        if (empty($res)) {
+            return ;
+        }
         self::single($res);
         return $res;
     }
@@ -70,6 +73,9 @@ class SearchLog extends Model
             ])
             ->lockForUpdate()
             ->first();
+        if (empty($res)) {
+            return ;
+        }
         self::single($res);
         return $res;
     }

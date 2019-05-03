@@ -38,8 +38,9 @@ class CarSeries extends Model
     {
         $res = self::with('brand')
             ->find($id);
-        self::single($res);
-        print_r(obj_to_array($res));
+        if (empty($res)) {
+            return ;
+        }
         Brand::single($res->brand);
         return $res;
     }

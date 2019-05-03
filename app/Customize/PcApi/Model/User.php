@@ -29,6 +29,9 @@ class User extends Model
     {
         $m = self::where('username' , $username)
                 ->first();
+        if (empty($m)) {
+            return ;
+        }
         self::single($m);
         return $m;
     }
@@ -37,6 +40,9 @@ class User extends Model
     public static function findById($id = '')
     {
         $m = self::find($id);
+        if (empty($m)) {
+            return ;
+        }
         self::single($m);
         return $m;
     }

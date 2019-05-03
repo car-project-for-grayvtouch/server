@@ -18,6 +18,9 @@ class Report extends Model
     {
         $res = self::where('car_id' , $car_id)
             ->first();
+        if (empty($res)) {
+            return ;
+        }
         self::single($res);
         return $res;
     }
