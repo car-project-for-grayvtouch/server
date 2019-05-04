@@ -26,7 +26,7 @@ class CarModel extends Model
         $res = convert_obj($res);
         foreach ($res as &$m)
         {
-            $m = self::single($m , $language);
+            $m = CarConfiguration::single($m , $language);
             $m->group = CarConfigurationGroup::findById($m->car_configuration_group_id , $language);
         }
         return $res;
