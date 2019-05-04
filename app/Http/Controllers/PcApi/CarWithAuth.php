@@ -13,6 +13,7 @@ use Illuminate\Validation\Validator;
 use function PcApi\error;
 use function PcApi\form_error;
 use function PcApi\success;
+use function PcApi\config;
 
 class CarWithAuth extends Auth
 {
@@ -102,6 +103,8 @@ class CarWithAuth extends Auth
     public function saleApplicationList()
     {
         $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
         $res = CarWithAuthAction::saleApplicationList($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -116,6 +119,8 @@ class CarWithAuth extends Auth
     public function recommendationApplicationList()
     {
         $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
         $res = CarWithAuthAction::recommendationApplicationList($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -130,6 +135,8 @@ class CarWithAuth extends Auth
     public function stagingBuyApplicationList()
     {
         $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
         $res = CarWithAuthAction::stagingBuyApplicationList($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -144,6 +151,8 @@ class CarWithAuth extends Auth
     public function collectionForCar()
     {
         $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
         $res = CarWithAuthAction::collectionForCar($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {

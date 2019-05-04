@@ -9,8 +9,9 @@
 namespace App\Customize\PcApi\Http\Action;
 
 use App\Customize\PcApi\Model\CarSeries;
+use App\Customize\PcApi\Util\YouDaoTranslation;
+use function core\convert_obj;
 use Exception;
-use function PcApi\get_form_error;
 use Validator;
 use DB;
 
@@ -21,7 +22,7 @@ class CarSeriesAction extends Action
     // 车辆列表
     public static function all(array $param)
     {
-        $res = CarSeries::getAll($param['brand_id']);
+        $res = CarSeries::getAll($param['brand_id'] , $param['language']);
         return self::success($res);
     }
 }

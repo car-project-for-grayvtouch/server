@@ -13,9 +13,9 @@ use App\Customize\PcApi\Model\SearchLog;
 
 class SearchLogAction extends Action
 {
-    public static function hot()
+    public static function hot(array $param)
     {
-        $res = SearchLog::hot(10);
+        $res = SearchLog::hot($param['limit'] , $param['language']);
         return self::success($res);
     }
 }

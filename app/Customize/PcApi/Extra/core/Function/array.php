@@ -32,3 +32,17 @@ function chunk(array $data = [] , $size = 10){
 function obj_to_array($obj){
     return json_decode(json_encode($obj) , true);
 }
+
+// 获取给定数组中给定键名对应单元
+function array_unit(array $arr = [] , array $keys = [])
+{
+    $res = [];
+    foreach ($keys as $v)
+    {
+        if (!isset($arr[$v])) {
+            continue ;
+        }
+        $res[$v] = $arr[$v];
+    }
+    return $res;
+}

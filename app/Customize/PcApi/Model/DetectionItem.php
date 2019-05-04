@@ -13,11 +13,11 @@ class DetectionItem extends Model
     protected $table = 'detection_item';
     public $timestamps = false;
 
-    public static function getByPosId($detection_pos_id)
+    public static function getByPosId($detection_pos_id , $language = null)
     {
         $res = self::where('detection_pos_id' , $detection_pos_id)
             ->get();
-        self::multiple($res);
+        $res = self::multiple($res , $language);
         return $res;
     }
 }

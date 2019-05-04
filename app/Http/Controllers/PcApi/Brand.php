@@ -20,7 +20,9 @@ class Brand extends Controller
     // 品牌列表
     public function all()
     {
-        $res = BrandAction::all();
+        $param = $this->request->post();
+        $param['language'] = $param['language'] ?? 'cn';
+        $res = BrandAction::all($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

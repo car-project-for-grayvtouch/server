@@ -15,11 +15,12 @@ class DetectionModule extends Model
     protected $table = 'detection_module';
     public $timestamps = false;
 
-    public static function single($m = null)
+    public static function single($m = null , $language = null)
     {
         if (empty($m)) {
             return ;
         }
         $m->image = res_url($m->image);
+        return self::translate($m , $language);
     }
 }

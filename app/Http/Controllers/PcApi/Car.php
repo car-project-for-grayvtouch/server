@@ -13,6 +13,7 @@ use Illuminate\Validation\Validator;
 use function PcApi\error;
 use function PcApi\form_error;
 use function PcApi\success;
+use function PcApi\config;
 
 
 class Car extends Controller
@@ -24,6 +25,8 @@ class Car extends Controller
         // affordable-经济实惠；new-准新车；luxury-豪华车 newAndHot
         // 默认：最新最热
         $param['type'] = $param['type'] ?? 'newAndHot';
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
         $res = CarAction::listForHome($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -37,7 +40,10 @@ class Car extends Controller
     // 首页-车辆精选评论
     public function featuredComment()
     {
-        $res = CarAction::featuredComment();
+        $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
+        $res = CarAction::featuredComment($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);
@@ -62,6 +68,8 @@ class Car extends Controller
         $param['gearbox']       = $param['gearbox'] ?? '';
         $param['color']         = $param['color'] ?? '';
         $param['sort']          = $param['sort'] ?? '';
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
         $res = CarAction::list($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -76,6 +84,7 @@ class Car extends Controller
     {
         $param = $this->request->post();
         $param['id'] = $param['id'] ?? '';
+        $param['language'] = $param['language'] ?? null;
         $res = CarAction::detail($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
@@ -99,7 +108,7 @@ class Car extends Controller
         return success($res['data']);
     }
 
-    // 用户累计向我们平台提交的推荐车辆的申请数
+    // 用户累计向我们平台提交的预约看车的申请数
     public function reservationCountForDay()
     {
         $param = $this->request->post();
@@ -132,7 +141,10 @@ class Car extends Controller
     // 猜你喜欢（推荐车辆）
     public function recommendation()
     {
-        $res = CarAction::recommendation();
+        $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
+        $res = CarAction::recommendation($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

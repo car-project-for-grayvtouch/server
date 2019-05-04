@@ -17,7 +17,7 @@ class Story extends Model
     protected $table = 'story';
     public $timestamps = false;
 
-    public static function listForHome(int $limit =20)
+    public static function listForHome(int $limit =20 , $language = null)
     {
         $res = self::where([
                 ['hidden' , '<>' , 'y'] ,
@@ -25,11 +25,11 @@ class Story extends Model
             ->orderBy('score' , 'desc')
             ->limit($limit)
             ->get();
-        self::multiple($res);
+        $res = self::multiple($res , $language);
         return $res;
     }
 
-    public static function single($m = null)
+    public static function single($m = null , $language = null)
     {
         if (empty($m)) {
             return ;
@@ -38,5 +38,6 @@ class Story extends Model
             throw new Exception('不支持的类型');
         }
         $m->image = res_url($m->image);
+        return self::translate($m , $language);
     }
 }

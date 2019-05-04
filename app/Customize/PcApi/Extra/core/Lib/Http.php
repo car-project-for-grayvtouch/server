@@ -25,6 +25,8 @@ class Http {
         'header' => [] ,
         // cookie
         'cookie' => '' ,
+        // timeout
+        'timeout' => 0 ,
     ];
 
     // 发送 post 请求
@@ -54,6 +56,7 @@ class Http {
         $option['method'] = strtolower($option['method']);
         $option['header'] = $option['header'] ?? self::$default['header'];
         $option['cookie'] = $option['cookie'] ?? self::$default['cookie'];
+        $option['timeout'] = $option['timeout'] ?? self::$default['timeout'];
 
         $res = curl_init();
         curl_setopt_array($res , [
@@ -71,6 +74,7 @@ class Http {
             CURLOPT_SSL_VERIFYPEER => false ,
             CURLOPT_FOLLOWLOCATION  => true ,
             CURLOPT_MAXREDIRS  => 3 ,
+            CURLOPT_TIMEOUT => $option['timeout'] ,
             /*
              * todo 支持代理
             // 启用 http 代理隧道

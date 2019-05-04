@@ -30,6 +30,7 @@ $autoload->register([
         __DIR__ . '/core/Function/time.php' ,
         __DIR__ . '/core/Function/url.php' ,
         __DIR__ . '/core/Function/http.php' ,
+        __DIR__ . '/core/Function/object.php' ,
 
         // 项目文件
         __DIR__ . '/common/lib.php' ,

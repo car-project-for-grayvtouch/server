@@ -10,12 +10,13 @@ namespace App\Customize\PcApi\Http\Action;
 
 
 use App\Customize\PcApi\Model\Brand;
+use App\Customize\PcApi\Util\YouDaoTranslation;
 
 class BrandAction extends Action
 {
-    public static function all()
+    public static function all(array $param)
     {
-        $res = Brand::getAll();
+        $res = Brand::getAll($param['language']);
         return self::success($res);
     }
 }

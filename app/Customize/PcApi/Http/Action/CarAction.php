@@ -60,8 +60,12 @@ class CarAction extends Action
     {
         $validator = Validator::make($param , [
             'type' => 'required' ,
+            'limit' => 'required' ,
+            'language' => 'required' ,
         ] , [
-            'type.required' => '类型错误' ,
+            'type.required' => ' type 必须' ,
+            'limit.required' => 'limit 必须' ,
+            'language.required' => 'language 必须' ,
         ]);
         if ($validator->fails()) {
             return self::error(get_form_error($validator));
@@ -72,7 +76,7 @@ class CarAction extends Action
         try {
             DB::beginTransaction();
             // 获取数据
-            $res = Car::listForHome($param , 8);
+            $res = Car::listForHome($param , $param['limit'] , $param['language']);
             foreach ($res as $v)
             {
                 $v->collected = self::u_collected($v->id);
@@ -90,11 +94,10 @@ class CarAction extends Action
     }
 
     // 车辆-优质评论
-    public static function featuredComment()
+    public static function featuredComment(array $param)
     {
         // 默认挑出来的评论数量
-        $limit = 20;
-        $res = ProductComment::featuredComment($limit);
+        $res = ProductComment::featuredComment($param['limit'] , $param['language']);
         return self::success($res);
     }
 
@@ -103,11 +106,10 @@ class CarAction extends Action
     {
         $sort = $param['sort'] == '' ? 'update_time|desc' : $param['sort'];
         $sort = parse_order($sort , '|');
-        $limit = config('app.limit');
         try {
             DB::beginTransaction();
-            $res = Car::list($param , $sort , $limit);
-            foreach ($res as $v)
+            $res = Car::list($param , $sort , $param['limit'] , $param['language']);
+            foreach ($res->data as $v)
             {
                 // 是否收藏
                 $v->collected = self::u_collected($v->id);
@@ -144,13 +146,13 @@ class CarAction extends Action
         if ($validator->fails()) {
             return self::error(get_form_error($validator));
         }
-        $car = Car::findById($param['id']);
+        $car = Car::findById($param['id'] , $param['language']);
         if (empty($car)) {
             return self::error('未找到 id = ' . $param['id'] . '对应车辆');
         }
         // 用户是否收藏
         $car->collected = self::u_collected($car->id);
-        $configuration = CarConfiguration::groupData();
+        $configuration = CarConfiguration::groupData($param['language']);
         return self::success(compact('car' , 'configuration'));
     }
 
@@ -196,9 +198,9 @@ class CarAction extends Action
     }
 
     // 猜你喜欢
-    public static function recommendation()
+    public static function recommendation(array $param)
     {
-        $res = Car::recommendation(5);
+        $res = Car::recommendation($param['limit'] , $param['language']);
         foreach ($res as $v)
         {
             $v->collected = self::u_collected($v->id);

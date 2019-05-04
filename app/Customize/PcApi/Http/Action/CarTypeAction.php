@@ -10,12 +10,13 @@ namespace App\Customize\PcApi\Http\Action;
 
 
 use App\Customize\PcApi\Model\CarType;
+use App\Customize\PcApi\Util\YouDaoTranslation;
 
 class CarTypeAction extends Action
 {
-    public static function all()
+    public static function all(array $param)
     {
-        $res = CarType::getAll();
+        $res = CarType::getAll($param['language']);
         return self::success($res);
     }
 }

@@ -15,11 +15,15 @@ use function PcApi\error;
 use function PcApi\form_error;
 use function PcApi\success;
 
+use function PcApi\config;
+
 class CarType extends Controller
 {
     public function all()
     {
-        $res = CarTypeAction::all();
+        $param = $this->request->post();
+        $param['language'] = $param['language'] ?? null;
+        $res = CarTypeAction::all($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

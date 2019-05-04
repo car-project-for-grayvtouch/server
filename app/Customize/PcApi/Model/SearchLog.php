@@ -14,7 +14,7 @@ class SearchLog extends Model
     protected $table = 'search_log';
     public $timestamps = false;
 
-    public static function single($m = null)
+    public static function single($m = null , $language = null)
     {
         if (empty($m)) {
             return ;
@@ -22,22 +22,23 @@ class SearchLog extends Model
         switch ($m->type)
         {
             case 'brand':
-                $m->brand = Brand::findById($m->value);
+                $m->brand = Brand::findById($m->value , $language);
                 break;
             case 'series':
-                $m->series = CarSeries::findById($m->value);
+                $m->series = CarSeries::findById($m->value , $language);
                 break;
             default:
                 break;
         }
+        return self::translate($m , $language);
     }
 
-    public static function hot($limit = 10)
+    public static function hot($limit = 10 , $language = null)
     {
         $res = self::orderBy('count' , 'desc')
             ->limit($limit)
             ->get();
-        self::multiple($res);
+        $res = self::multiple($res , $language);
         return $res;
     }
 
@@ -51,7 +52,7 @@ class SearchLog extends Model
     }
 
     // 获取记录：不加锁
-    public static function findByTypeAndValue($type , $value)
+    public static function findByTypeAndValue($type , $value , $language = null)
     {
         $res = self::where([
             ['type' , '=' , $type] ,
@@ -60,12 +61,12 @@ class SearchLog extends Model
         if (empty($res)) {
             return ;
         }
-        self::single($res);
+        $res = self::single($res , $language);
         return $res;
     }
 
     // 获取记录：加锁
-    public static function findWithLockByTypeAndValue($type , $value)
+    public static function findWithLockByTypeAndValue($type , $value , $language = null)
     {
         $res = self::where([
                 ['type' , '=' , $type] ,
@@ -76,7 +77,7 @@ class SearchLog extends Model
         if (empty($res)) {
             return ;
         }
-        self::single($res);
+        $res = self::single($res , $language);
         return $res;
     }
 }

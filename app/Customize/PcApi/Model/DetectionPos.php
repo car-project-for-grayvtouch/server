@@ -8,6 +8,8 @@
 
 namespace App\Customize\PcApi\Model;
 
+use function core\convert_obj;
+
 class DetectionPos extends Model
 {
     protected $table = 'detection_pos';
@@ -19,26 +21,30 @@ class DetectionPos extends Model
     }
 
     // 获取给定模块下的检测位置
-    public static function getByModuleId($detection_module_id)
+    public static function getByModuleId($detection_module_id , $language = null)
     {
         $res = self::with('group')
             ->where('detection_module_id' , $detection_module_id)
-            ->get()
-            ->each(function($v){
-                self::single($v);
-                DetectionGroup::single($v->group);
-            });
+            ->get();
+        $res = convert_obj($res);
+        foreach ($res as &$v)
+        {
+            $v = self::single($v , $language);
+            $v->group = DetectionGroup::single($v->group , $language);
+        }
         return $res;
     }
 
-    public static function getAll()
+    public static function getAll($language = null)
     {
         $res = self::with('group')
-            ->get()
-            ->each(function($m){
-                self::single($m);
-                DetectionGroup::single($m->group);
-            });
+            ->get();
+        $res = convert_obj($res);
+        foreach ($res as &$v)
+        {
+            $v = self::single($v , $language);
+            $v->group = DetectionGroup::single($v->group , $language);
+        }
         return $res;
     }
 

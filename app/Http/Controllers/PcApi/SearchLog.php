@@ -14,13 +14,17 @@ use Illuminate\Validation\Validator;
 use function PcApi\error;
 use function PcApi\form_error;
 use function PcApi\success;
+use function PcApi\config;
 
 class SearchLog extends Controller
 {
     // 品牌列表
     public function hot()
     {
-        $res = SearchLogAction::hot();
+        $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
+        $res = SearchLogAction::hot($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

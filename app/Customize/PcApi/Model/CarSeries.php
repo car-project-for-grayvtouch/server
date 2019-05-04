@@ -9,20 +9,13 @@
 namespace App\Customize\PcApi\Model;
 
 
-use function core\obj_to_array;
+use function core\convert_obj;
 use Exception;
 
 class CarSeries extends Model
 {
     protected $table = 'car_series';
     public $timestamps = false;
-
-    public static function single($m = null)
-    {
-        if (empty($m)) {
-            return ;
-        }
-    }
 
     public function brand()
     {
@@ -34,18 +27,19 @@ class CarSeries extends Model
         return $this->belongsTo(CarSeriesGroup::class , 'car_series_group_id' , 'id');
     }
 
-    public static function findById($id)
+    public static function findById($id , $language = null)
     {
         $res = self::with('brand')
             ->find($id);
         if (empty($res)) {
             return ;
         }
-        Brand::single($res->brand);
+        $res = self::single($res , $language);
+        $res->brand = Brand::single($res->brand , $language);
         return $res;
     }
 
-    public static function getAll($brand_id = null)
+    public static function getAll($brand_id = null , $language = null)
     {
         $where = [];
         if (!empty($brand_id)) {
@@ -54,13 +48,15 @@ class CarSeries extends Model
         $build = self::with('group')
             ->where($where);
         if (empty($brand_id)) {
-            $build->limit(10);
+            $build = $build->limit(10);
         }
-        $res = $build->get()
-                ->each(function($m){
-                    self::single($m);
-                    CarSeriesGroup::single($m->group);
-                });
+        $res = $build->get();
+        $res = convert_obj($res);
+        foreach ($res as &$v)
+        {
+            $v = self::single($v , $language);
+            $v->group = CarSeriesGroup::single($v->group , $language);
+        }
         return $res;
     }
 }

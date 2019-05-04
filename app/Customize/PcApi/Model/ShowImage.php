@@ -22,15 +22,16 @@ class ShowImage extends Model
                 ['position' , '=' , $position] ,
             ])
             ->get();
-        self::multiple($res);
+        $res = self::multiple($res);
         return $res;
     }
 
-    public static function single($m = null)
+    public static function single($m = null , $language = null)
     {
         if (empty($m)) {
             return ;
         }
         $m->path = res_url($m->path);
+        return $m;
     }
 }

@@ -14,13 +14,17 @@ use Illuminate\Validation\Validator;
 use function PcApi\error;
 use function PcApi\form_error;
 use function PcApi\success;
+use function PcApi\config;
 
 class Story extends Controller
 {
     // 优质
     public function listForHome()
     {
-        $res = StoryAction::listForHome();
+        $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
+        $res = StoryAction::listForHome($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

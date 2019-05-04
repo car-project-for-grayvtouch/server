@@ -14,14 +14,14 @@ class Report extends Model
     protected $table = 'report';
     public $timestamps = false;
 
-    public static function findByCarId($car_id)
+    public static function findByCarId($car_id , $language = null)
     {
         $res = self::where('car_id' , $car_id)
             ->first();
         if (empty($res)) {
             return ;
         }
-        self::single($res);
+        $res = self::single($res , $language);
         return $res;
     }
 }

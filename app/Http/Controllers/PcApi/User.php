@@ -20,7 +20,9 @@ class User extends Auth
     // 1. 用户信息
     public function info()
     {
-        $res = UserAction::info();
+        $param = $this->request->post();
+        $param['language'] = $param['language'] ?? null;
+        $res = UserAction::info($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

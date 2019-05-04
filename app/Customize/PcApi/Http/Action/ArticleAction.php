@@ -15,19 +15,17 @@ use Validator;
 
 class ArticleAction extends Action
 {
-    public static function listForHome()
+    public static function listForHome(array $param)
     {
         $article_type = 1;
-        $limit = config('app.limit');
-        $res = Article::listForHome($article_type , 8);
+        $res = Article::listForHome($article_type , $param['limit'] , $param['language']);
         return self::success($res);
     }
 
-    public static function listForMedia()
+    public static function listForMedia(array $param)
     {
         $article_type = 1;
-        $limit = config('app.limit');
-        $res = Article::listForMedia($article_type , $limit);
+        $res = Article::listForMedia($article_type , $param['limit'] , $param['language']);
         return self::success($res);
     }
 
@@ -41,7 +39,7 @@ class ArticleAction extends Action
         if ($validator->fails()) {
             return self::error($validator);
         }
-        $res = Article::findById($param['id']);
+        $res = Article::findById($param['id'] , $param['language']);
         if (empty($res)) {
             return self::error('未找到 id 对应项');
         }

@@ -21,6 +21,7 @@ class CarSeries extends Controller
     {
         $param = $this->request->post();
         $param['brand_id'] = $param['brand_id'] ?? '';
+        $param['language'] = $param['language'] ?? 'cn';
         $res = CarSeriesAction::all($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {

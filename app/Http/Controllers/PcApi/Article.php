@@ -13,12 +13,17 @@ use App\Customize\PcApi\Http\Action\ArticleAction;
 use function PcApi\error;
 use function PcApi\form_error;
 use function PcApi\success;
+use function PcApi\config;
+
 
 class Article extends Controller
 {
     public function listForHome()
     {
-        $res = ArticleAction::listForHome();
+        $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
+        $res = ArticleAction::listForHome($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);
@@ -31,7 +36,10 @@ class Article extends Controller
     // 媒体声音
     public function listForMedia()
     {
-        $res = ArticleAction::listForMedia();
+        $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
+        $res = ArticleAction::listForMedia($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);
@@ -45,6 +53,7 @@ class Article extends Controller
     {
         $param = $this->request->post();
         $param['id'] = $param['id'] ?? '';
+        $param['language'] = $param['language'] ?? null;
         $res = ArticleAction::detail($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {

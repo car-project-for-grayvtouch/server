@@ -102,3 +102,21 @@ function array_unit(array $arr = [] , array $keys = [])
     }
     return $res;
 }
+
+function is_http($str = '')
+{
+    $reg = '/^https?:\/\//';
+    return (bool) preg_match($reg , $str);
+}
+
+function has_cn($str = '')
+{
+    $reg = '/[\x{4e00}-\x{9fa5}]/u';
+    return (bool) preg_match($reg , $str);
+}
+
+// 是否全部中文
+function all_cn($str = '')
+{
+    return (bool) preg_match('/^[\x{4e00}-\x{9fa5}]+$/u', $str);
+}

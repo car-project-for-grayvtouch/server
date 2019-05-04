@@ -14,10 +14,10 @@ class ReportForModule extends Model
     protected $table = 'report_for_module';
     public $timestamps = false;
 
-    public static function getByReportId($report_id)
+    public static function getByReportId($report_id , $language = null)
     {
         $res = self::where('report_id' , $report_id)->get();
-        self::multiple($res);
+        $res = self::multiple($res , $language);
         return $res;
     }
 }

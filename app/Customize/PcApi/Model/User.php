@@ -17,33 +17,26 @@ class User extends Model
     protected $table = 'user';
     public $timestamps = false;
 
-    public static function single($m = null)
-    {
-        if (empty($m)) {
-            return ;
-        }
-    }
-
     // 获取用户
-    public static function findByUsername($username = '')
+    public static function findByUsername($username = '' , $language = null)
     {
         $m = self::where('username' , $username)
                 ->first();
         if (empty($m)) {
             return ;
         }
-        self::single($m);
+        $m = self::single($m , $language);
         return $m;
     }
 
     // 获取用户
-    public static function findById($id = '')
+    public static function findById($id = '' , $language = null)
     {
         $m = self::find($id);
         if (empty($m)) {
             return ;
         }
-        self::single($m);
+        $m = self::single($m , $language);
         return $m;
     }
 

@@ -14,10 +14,10 @@ class ReportForItem extends Model
     protected $table = 'report_for_item';
     public $timestamps = false;
 
-    public static function getByReportForPosId($report_for_pos_id)
+    public static function getByReportForPosId($report_for_pos_id , $language = null)
     {
         $res = self::where('report_for_pos_id' , $report_for_pos_id)->get();
-        self::multiple($res);
+        $res = self::multiple($res , $language);
         return $res;
     }
 }

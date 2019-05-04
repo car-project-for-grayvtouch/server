@@ -8,6 +8,7 @@
 
 namespace App\Customize\PcApi\Model;
 
+use function core\convert_obj;
 use function PcApi\res_url;
 
 class CarConfiguration extends Model
@@ -20,23 +21,30 @@ class CarConfiguration extends Model
         return $this->belongsTo(CarConfigurationGroup::class , 'car_configuration_group_id' , 'id');
     }
 
-    public static function single($m = null)
+    public static function single($m = null , $language = null)
     {
         if (empty($m)) {
             return ;
         }
         $m->image = res_url($m->image);
+        return self::translate($m , $language);
     }
 
     
 
     // 获取分组后的数据
-    public static function groupData()
+    public static function groupData($language = null)
     {
         $res = self::with('group')
             ->orderBy('weight' , 'desc')
             ->orderBy('id' , 'asc')
             ->get();
+        $res = convert_obj($res);
+        foreach ($res as &$v)
+        {
+            $v = self::single($v , $language);
+            $v->group = CarConfigurationGroup::single($v->group , $language);
+        }
         $group = [];
         $exists = function($group_id) use(&$group){
             foreach ($group as $v)

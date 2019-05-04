@@ -9,12 +9,14 @@
 namespace App\Customize\PcApi\Http\Action;
 
 
+use App\Customize\PcApi\Model\User;
 use function PcApi\user;
 
 class UserAction extends Action
 {
-    public static function info()
+    public static function info(array $param)
     {
-        return self::success(user());
+        $res = User::findById(user()->id , $param['language']);
+        return self::success($res);
     }
 }

@@ -252,28 +252,28 @@ class CarWithAuthAction extends Action
     // 购车申请列表
     public static function saleApplicationList(array $param)
     {
-        $res = SaleApplication::list($param , config('app.limit'));
+        $res = SaleApplication::list($param , $param['limit'] , $param['language']);
         return self::success($res);
     }
 
     // 购车申请列表
     public static function recommendationApplicationList(array $param)
     {
-        $res = RecommendationApplication::list($param , config('app.limit'));
+        $res = RecommendationApplication::list($param , $param['limit'] , $param['language']);
         return self::success($res);
     }
 
     // 购车申请列表
     public static function stagingBuyApplicationList(array $param)
     {
-        $res = StagingBuyApplication::list($param , config('app.limit'));
+        $res = StagingBuyApplication::list($param , $param['limit'] , $param['language']);
         return self::success($res);
     }
 
     // 收藏的车辆列表
     public static function collectionForCar(array $param)
     {
-        $res = Car::collectionForCar(user()->id , $param , config('app.limit'));
+        $res = Car::collectionForCar(user()->id , $param , $param['limit'] , $param['language']);
         return self::success($res);
     }
 

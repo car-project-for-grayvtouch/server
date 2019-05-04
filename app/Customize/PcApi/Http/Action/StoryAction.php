@@ -13,9 +13,9 @@ use App\Customize\PcApi\Model\Story;
 
 class StoryAction extends Action
 {
-    public static function listForHome()
+    public static function listForHome(array $param)
     {
-        $res = Story::listForHome(16);
+        $res = Story::listForHome($param['limit'] , $param['language']);
         return self::success($res);
     }
 }
