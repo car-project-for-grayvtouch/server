@@ -60,12 +60,8 @@ class CarAction extends Action
     {
         $validator = Validator::make($param , [
             'type' => 'required' ,
-            'limit' => 'required' ,
-            'language' => 'required' ,
         ] , [
             'type.required' => ' type 必须' ,
-            'limit.required' => 'limit 必须' ,
-            'language.required' => 'language 必须' ,
         ]);
         if ($validator->fails()) {
             return self::error(get_form_error($validator));
