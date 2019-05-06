@@ -422,7 +422,7 @@ class CarWithAuthAction extends Action
             'reservation_id' => 'required' ,
             'status' => 'required' ,
         ] , [
-            'reservation_id.required' => 'sale_application_id 必须' ,
+            'reservation_id.required' => 'reservation_id 必须' ,
             'status.required' => 'status 必须' ,
         ]);
         if ($validator->fails()) {
