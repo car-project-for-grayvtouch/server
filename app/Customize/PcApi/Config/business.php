@@ -15,6 +15,11 @@ return [
     // 搜索类型
     // affordable-经济实惠；new-准新车；luxury-豪华车 newAndHot
     'search_type' => ['newAndHot' , 'affordable' , 'new' , 'luxury'] ,
+    'sale_point' => [
+        'affordable'    => '经济实惠' ,
+        'new'           => '准新车' ,
+        'luxury'        => '豪华车' ,
+    ] ,
     // 搜索记录类型
     'search_log' => [
         // 品牌
@@ -127,4 +132,10 @@ return [
         'cancel' => '已取消' ,
         'completed' => '已完成' ,
     ] ,
+
+    // 卖车申请，支持修改的状态
+    'sale_application_support_status' => ['cancel'] ,
+    'recommendation_application_support_status' => ['cancel'] ,
+    'staging_buy_application_support_status' => ['cancel'] ,
+    'reservation_support_status' => ['cancel'] ,
 ];

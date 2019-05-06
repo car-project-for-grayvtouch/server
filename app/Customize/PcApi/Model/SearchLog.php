@@ -9,6 +9,8 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function PcApi\get_value;
+
 class SearchLog extends Model
 {
     protected $table = 'search_log';
@@ -26,6 +28,9 @@ class SearchLog extends Model
                 break;
             case 'series':
                 $m->series = CarSeries::findById($m->value , $language);
+                break;
+            case 'sale_point':
+                $m->sale_point = get_value('business.sale_point' , $m->value);
                 break;
             default:
                 break;

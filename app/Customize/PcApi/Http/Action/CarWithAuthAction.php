@@ -9,6 +9,7 @@
 namespace App\Customize\PcApi\Http\Action;
 
 
+use function PcApi\get_form_error;
 use App\Customize\PcApi\Model\Car;
 use App\Customize\PcApi\Model\CollectionForCar;
 use App\Customize\PcApi\Model\RecommendationApplication;
@@ -33,12 +34,14 @@ class CarWithAuthAction extends Action
     public static function reservation(array $param)
     {
         $validator = Validator::make($param , [
+            'car_id' => 'required' ,
             'phone' => 'required' ,
             'weixin' => 'required' ,
             'appointment' => 'required' ,
             'verify_code_key' => 'required' ,
             'verify_code' => 'required' ,
         ] , [
+            'car_id.required' => '必须' ,
             'phone.required' => '必须' ,
             'weixin.required' => '必须' ,
             'appointment.required' => '必须' ,
@@ -59,9 +62,15 @@ class CarWithAuthAction extends Action
                 'verify_code' => '验证码错误' ,
             ]);
         }
+        // 检查车辆是否存在
+        $m = Car::find($param['car_id']);
+        if (empty($m)) {
+            return self::error('未找到 car_id 对应车辆' , 404);
+        }
         $param['user_id'] = user()->id;
         $id = Reservation::insertGetId(array_unit($param , [
             'user_id' ,
+            'car_id' ,
             'phone' ,
             'weixin' ,
             'appointment' ,
@@ -311,6 +320,130 @@ class CarWithAuthAction extends Action
                 CollectionForCar::delByUserIdAndCarId($param['user_id'] , $param['car_id']);
             }
         }
+        return self::success();
+    }
+
+    public static function setStatusForSaleApplication(array $param)
+    {
+        $validator = Validator::make($param , [
+            'sale_application_id' => 'required' ,
+            'status' => 'required' ,
+        ] , [
+            'sale_application_id.required' => 'sale_application_id 必须' ,
+            'status.required' => 'status 必须' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        if (!in_array($param['status'] , config('business.sale_application_support_status'))) {
+            return self::error('不支持的 status 值');
+        }
+        $m = SaleApplication::find($param['sale_application_id']);
+        if (empty($m)) {
+            return self::error('未找到 sale_application_id 对应记录' , 404);
+        }
+        if ($m->user_id != user()->id) {
+            return self::error('你无法更改他人数据' , 403);
+        }
+        if (!in_array($m->status , ['wait'])) {
+            return self::error('状态已经发生变化，您不能再次操作' , 403);
+        }
+        SaleApplication::updateById($param['sale_application_id'] , array_unit($param , [
+            'status'
+        ]));
+        return self::success();
+    }
+
+    public static function setStatusForRecommendationApplication(array $param)
+    {
+        $validator = Validator::make($param , [
+            'recommendation_application_id' => 'required' ,
+            'status' => 'required' ,
+        ] , [
+            'recommendation_application_id.required' => 'recommendation_application_id 必须' ,
+            'status.required' => 'status 必须' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        if (!in_array($param['status'] , config('business.recommendation_application_support_status'))) {
+            return self::error('不支持的 status 值');
+        }
+        $m = RecommendationApplication::find($param['recommendation_application_id']);
+        if (empty($m)) {
+            return self::error('未找到 recommendation_application_id 对应记录' , 404);
+        }
+        if ($m->user_id != user()->id) {
+            return self::error('你无法更改他人数据' , 403);
+        }
+        if (!in_array($m->status , ['wait'])) {
+            return self::error('状态已经发生变化，您不能再次操作' , 403);
+        }
+        RecommendationApplication::updateById($param['recommendation_application_id'] , array_unit($param , [
+            'status'
+        ]));
+        return self::success();
+    }
+
+    public static function setStatusForStagingBuyApplication(array $param)
+    {
+        $validator = Validator::make($param , [
+            'staging_buy_application_id' => 'required' ,
+            'status' => 'required' ,
+        ] , [
+            'staging_buy_application_id.required' => 'staging_buy_application_id 必须' ,
+            'status.required' => 'status 必须' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        if (!in_array($param['status'] , config('business.staging_buy_application_support_status'))) {
+            return self::error('不支持的 status 值');
+        }
+        $m = StagingBuyApplication::find($param['staging_buy_application_id']);
+        if (empty($m)) {
+            return self::error('未找到 staging_buy_application_id 对应记录' , 404);
+        }
+        if ($m->user_id != user()->id) {
+            return self::error('你无法更改他人数据' , 403);
+        }
+        if (!in_array($m->status , ['wait'])) {
+            return self::error('状态已经发生变化，您不能再次操作' , 403);
+        }
+        StagingBuyApplication::updateById($param['staging_buy_application_id'] , array_unit($param , [
+            'status'
+        ]));
+        return self::success();
+    }
+
+    public static function setStatusForReservation(array $param)
+    {
+        $validator = Validator::make($param , [
+            'reservation_id' => 'required' ,
+            'status' => 'required' ,
+        ] , [
+            'reservation_id.required' => 'sale_application_id 必须' ,
+            'status.required' => 'status 必须' ,
+        ]);
+        if ($validator->fails()) {
+            return self::error(get_form_error($validator));
+        }
+        if (!in_array($param['status'] , config('business.reservation_support_status'))) {
+            return self::error('不支持的 status 值');
+        }
+        $m = Reservation::find($param['reservation_id']);
+        if (empty($m)) {
+            return self::error('未找到 reservation_id 对应记录' , 404);
+        }
+        if ($m->user_id != user()->id) {
+            return self::error('你无法更改他人数据' , 403);
+        }
+        if (!in_array($m->status , ['wait'])) {
+            return self::error('状态已经发生变化，您不能再次操作' , 403);
+        }
+        Reservation::updateById($param['reservation_id'] , array_unit($param , [
+            'status'
+        ]));
         return self::success();
     }
 }

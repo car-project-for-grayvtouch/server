@@ -17,6 +17,11 @@ class Reservation extends Model
     protected $table = 'reservation';
     public $timestamps = false;
 
+    public function car()
+    {
+        return $this->belongsTo(Car::class , 'car_id' , 'id');
+    }
+
     public static function list(array $filter = [] , array $order = [] , int $limit = 20)
     {
         $filter['id'] = $filter['id'] ?? '';
@@ -30,7 +35,10 @@ class Reservation extends Model
         if ($filter['user_id'] != '') {
             $where[] = ['user_id' , '=' , $filter['user_id']];
         }
-        $res = self::with(['user'])
+        $res = self::with([
+                'user' ,
+                'car'
+            ])
             ->where($where)
             ->orderBy($order['field'] , $order['value'])
             ->paginate($limit);
@@ -38,6 +46,7 @@ class Reservation extends Model
         {
             self::single($v);
             User::single($v->user);
+            Car::single($v->car);
         }
         return $res;
     }

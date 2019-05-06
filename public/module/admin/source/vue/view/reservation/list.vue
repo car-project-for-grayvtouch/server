@@ -53,6 +53,7 @@
                                 </th>
                                 <th class="w-40">ID</th>
                                 <th class="w-100">用户【ID】</th>
+                                <th class="w-100">车辆【ID】</th>
                                 <th class="w-80">电话</th>
                                 <th class="w-80">微信</th>
                                 <th class="w-130">预约时间</th>
@@ -65,8 +66,8 @@
                             <tr v-for="v in data" :key="v.id" :data-id="v.id" @click="selectEvent">
                                 <td><input type="checkbox" class="c-box"></td>
                                 <td>{{ v.id }}</td>
-
                                 <td>{{ v.user ? `${v.user.username}【${v.user.id}】` : ''}}</td>
+                                <td>{{ v.car ? `${v.car.title}【${v.car.id}】` : '' }}</td>
                                 <td>{{ v.phone }}</td>
                                 <td>{{ v.weixin }}</td>
                                 <td>{{ v.appointment }}</td>

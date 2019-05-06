@@ -20,6 +20,7 @@ class CarWithAuth extends Auth
     public function reservation()
     {
         $param = $this->request->post();
+        $param['car_id'] = $param['car_id'] ?? '';
         $param['appointment'] = $param['appointment'] ?? '';
         $param['phone'] = $param['phone'] ?? '';
         $param['weixin'] = $param['weixin'] ?? '';
@@ -170,6 +171,70 @@ class CarWithAuth extends Auth
         $param['car_id'] = $param['car_id'] ?? '';
         $param['collected'] = $param['collected'] ?? '';
         $res = CarWithAuthAction::collect($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 卖车申请：修改状态
+    public function setStatusForSaleApplication()
+    {
+        $param = $this->request->post();
+        $param['sale_application_id'] = $param['sale_application_id'] ?? '';
+        $param['status'] = $param['status'] ?? '';
+        $res = CarWithAuthAction::setStatusForSaleApplication($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 值购申请：修改状态
+    public function setStatusForRecommendationApplication()
+    {
+        $param = $this->request->post();
+        $param['recommendation_application_id'] = $param['recommendation_application_id'] ?? '';
+        $param['status'] = $param['status'] ?? '';
+        $res = CarWithAuthAction::setStatusForRecommendationApplication($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 分期购车申请：修改状态
+    public function setStatusForStagingBuyApplication()
+    {
+        $param = $this->request->post();
+        $param['staging_buy_application_id'] = $param['staging_buy_application_id'] ?? '';
+        $param['status'] = $param['status'] ?? '';
+        $res = CarWithAuthAction::setStatusForStagingBuyApplication($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
+    // 预约看车：修改状态
+    public function setStatusForReservation()
+    {
+        $param = $this->request->post();
+        $param['reservation_id'] = $param['reservation_id'] ?? '';
+        $param['status'] = $param['status'] ?? '';
+        $res = CarWithAuthAction::setStatusForReservation($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {
                 return form_error($res['data']);

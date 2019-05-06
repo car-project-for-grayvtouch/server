@@ -9,7 +9,6 @@
 namespace App\Customize\PcApi\Model;
 
 
-use App\Customize\PcApi\Util\YouDaoTranslation;
 use function core\convert_obj;
 use Exception;
 use function PcApi\res_url;

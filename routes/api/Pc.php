@@ -45,6 +45,10 @@ Route::prefix('pc')
         Route::post('/CarWithAuth/stagingBuyApplicationList' , 'CarWithAuth@stagingBuyApplicationList');
         Route::post('/CarWithAuth/collectionForCar' , 'CarWithAuth@collectionForCar');
         Route::post('/CarWithAuth/collect' , 'CarWithAuth@collect');
+        Route::post('/CarWithAuth/setStatusForSaleApplication' , 'CarWithAuth@setStatusForSaleApplication');
+        Route::post('/CarWithAuth/setStatusForRecommendationApplication' , 'CarWithAuth@setStatusForRecommendationApplication');
+        Route::post('/CarWithAuth/setStatusForStagingBuyApplication' , 'CarWithAuth@setStatusForStagingBuyApplication');
+        Route::post('/CarWithAuth/setStatusForReservation' , 'CarWithAuth@setStatusForReservation');
 
         // 用户
         Route::post('/Login/login' , 'Login@login');
@@ -66,6 +70,9 @@ Route::prefix('pc')
 
         // 用户
         Route::post('/User/info' , 'User@info');
+        Route::post('/User/edit' , 'User@edit');
+        Route::post('/User/image' , 'User@image');
+        Route::post('/User/updatePassword' , 'User@updatePassword');
 
         // 订单
         Route::post('/Order/list' , 'Order@list');

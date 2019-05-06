@@ -8,8 +8,7 @@
 
 namespace App\Customize\PcApi\Model;
 
-use function PcApi\config;
-use function PcApi\get_value;
+use Exception;
 use function PcApi\res_url;
 
 class User extends Model
@@ -22,17 +21,6 @@ class User extends Model
     {
         $m = self::where('username' , $username)
                 ->first();
-        if (empty($m)) {
-            return ;
-        }
-        $m = self::single($m , $language);
-        return $m;
-    }
-
-    // 获取用户
-    public static function findById($id = '' , $language = null)
-    {
-        $m = self::find($id);
         if (empty($m)) {
             return ;
         }
@@ -57,5 +45,17 @@ class User extends Model
     public static function existsByUsername($username = '')
     {
         return self::where('username' , $username)->count() > 0;
+    }
+
+    public static function single($m = null , $language = null)
+    {
+        if (empty($m)) {
+            return ;
+        }
+        if (!is_object($m)) {
+            throw new Exception('不支持的类型');
+        }
+        $m->avatar_explain = res_url($m->avatar);
+        return self::translate($m , $language);
     }
 }

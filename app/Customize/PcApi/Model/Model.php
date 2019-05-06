@@ -54,11 +54,11 @@ class Model extends BaseModel implements ModelInterface
 
     public static function findById($id , $language = null)
     {
-        $res = self::find($id);
+        $res = static::find($id);
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
+        $res = static::single($res , $language);
         return $res;
     }
 

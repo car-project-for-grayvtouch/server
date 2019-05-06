@@ -2,6 +2,7 @@ drop table if exists `xq_user`;
 create table if not exists `xq_user` (
   id int unsigned not null auto_increment ,
   username char(255) default '' comment '用户名' ,
+  nickname char(255) default '' comment '昵称' ,
   password char(255) default '' comment '密码' ,
   sex char(255) default 'unknow' comment '性别：male-男；female-女；shemale-人妖；both-两性；unknow-未知' ,
   birthday date default null comment '生日: YYYY-MM-DD' ,
@@ -84,6 +85,7 @@ drop table if exists `xq_reservation`;
 create table if not exists `xq_reservation` (
   id int unsigned not null auto_increment ,
   user_id int unsigned default 0 comment 'xq_user.id' ,
+  car_id int unsigned default 0 comment 'xq_car.id' ,
   appointment datetime default current_timestamp comment '预约时间' ,
   phone char(32) default '' comment '手机号码' ,
   weixin char(100) default '' comment '微信号' ,
