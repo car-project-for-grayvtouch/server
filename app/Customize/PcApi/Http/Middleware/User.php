@@ -34,7 +34,7 @@ class User
         $user = UserModel::findById($token->user_id);
         if (empty($user)) {
             return ;
-        }
+
         $user->token = $token;
         app()->instance('user' , $user);
     }

@@ -33,7 +33,7 @@ class UserAuth
             return true;
         }
         $datetime = date('Y-m-d H:i:s' , time());
-        if ($datetime > user()->token_expire) {
+        if ($datetime > user()->token->token_expire) {
             return false;
         }
         return true;
