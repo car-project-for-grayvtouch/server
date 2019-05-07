@@ -33,8 +33,8 @@ class User
         // 获取用户信息
         $user = UserModel::findById($token->user_id);
         if (empty($user)) {
-            return ;
-
+            return;
+        }
         $user->token = $token;
         app()->instance('user' , $user);
     }
