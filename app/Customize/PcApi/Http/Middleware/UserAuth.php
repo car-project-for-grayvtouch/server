@@ -11,11 +11,10 @@
 namespace App\Customize\PcApi\Http\Middleware;
 
 use Closure;
-use App\Customize\PcApi\Model\UserToken;
-use App\Customize\PcApi\Model\User;
 
 use function PcApi\error;
 use function PcApi\config;
+use function PcApi\user;
 
 class UserAuth
 {
@@ -33,22 +32,10 @@ class UserAuth
         if ($q->input('debug') == config('app.debug')) {
             return true;
         }
-        $authorization = $q->header('Authorization');
-        if (empty($authorization)) {
-            return false;
-        }
-        $token = UserToken::findByToken($authorization);
-        if (empty($token)) {
-            return false;
-        }
         $datetime = date('Y-m-d H:i:s' , time());
-        if ($datetime > $token->token_expire) {
+        if ($datetime > user()->token_expire) {
             return false;
         }
-        // 获取用户信息
-        $user = User::findById($token->user_id);
-        $user->token = $token;
-        app()->instance('user' , $user);
         return true;
     }
 }

@@ -11,6 +11,7 @@ namespace App\Http\Controllers\PcApi;
 use App\Customize\PcApi\Http\Middleware\Customize;
 use App\Customize\PcApi\Http\Middleware\Throwable;
 use App\Customize\PcApi\Http\Middleware\Loader;
+use App\Customize\PcApi\Http\Middleware\User;
 
 use App\Http\Controllers\Controller as BaseController;
 
@@ -35,5 +36,6 @@ class Controller extends BaseController
         $this->middleware(Customize::class);
         $this->middleware(Throwable::class);
         $this->middleware(Loader::class);
+        $this->middleware(User::class);
     }
 }
