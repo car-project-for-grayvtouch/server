@@ -32,8 +32,15 @@ class UserAuth
         if ($q->input('debug') == config('app.debug')) {
             return true;
         }
+        $user = user();
+        if (empty($user)) {
+            return false;
+        }
+        if (empty($user->token)) {
+            return false;
+        }
         $datetime = date('Y-m-d H:i:s' , time());
-        if ($datetime > user()->token->token_expire) {
+        if ($datetime > $user->token->token_expire) {
             return false;
         }
         return true;
