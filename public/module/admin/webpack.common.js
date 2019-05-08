@@ -10,7 +10,7 @@ module.exports = {
 	// 入口
 	entry: {
 		// 单一入口
-		app_v6: ['babel-polyfill' , './source/app.js']
+		app_v7: ['babel-polyfill' , './source/app.js']
 	} ,
 	plugins: [
 		new CleanWebpackPlugin([outputDir]),

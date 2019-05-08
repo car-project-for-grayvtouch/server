@@ -79,46 +79,4 @@ class YouDaoTranslation
         }
         return empty($res['translation']) ? '' : ($res['translation'][0] ?? '');
     }
-
-    // 中文-》英文：多条数据
-    public static function utilCnToEns(Traversable $list)
-    {
-        $list = convert_obj($list);
-        foreach ($list as &$v)
-        {
-            // todo 这个例子需要再仔细看下
-            $v = self::utilCnToEn($v);
-        }
-        return array_to_obj($list);
-    }
-
-    public static function utilCnToEn($obj = null)
-    {
-        if (empty($obj)) {
-            return ;
-        }
-        if (!is_object($obj)) {
-            throw new Exception('参数 1 类型错误');
-        }
-        $obj = convert_obj($obj);
-        foreach ($obj as &$v)
-        {
-
-            if (!is_scalar($v)) {
-                continue ;
-            }
-            if (is_numeric($v)) {
-                continue ;
-            }
-            if (is_http($v)) {
-                continue ;
-            }
-            if (!has_cn($v)) {
-                continue ;
-            }
-            // 有道云笔记
-            $v = YouDaoTranslation::cnToEn($v);
-        }
-        return $obj;
-    }
 }

@@ -262,6 +262,7 @@
 
 .container > .right > .top > .c-top {
     height: 50px;
+    line-height: 50px;
     background-color: #5c626d;
 }
 
@@ -304,6 +305,51 @@
 
 .container > .right > .top > .c-top > .right {
     float: right;
+}
+
+.container > .right > .top > .c-top > .left:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.container > .right > .top > .c-top > .left > * {
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 50px;
+    height: 100%;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+.container > .right > .top > .c-top > .left > * .image {
+    width: 28px;
+    height: 28px;
+}
+
+.container > .right > .top > .c-top > .left > *:after {
+    display: block;
+    content: '';
+    width: 1px;
+    height: 40%;
+    background-color: #757f90;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.container > .right > .top > .c-top > .left > *:nth-last-of-type(1)::after {
+    display: none;
 }
 
 .container > .right > .top > .c-top > .right {

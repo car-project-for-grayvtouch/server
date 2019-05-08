@@ -30,6 +30,7 @@ export default {
     } ,
     mixins: [
         mixins.loading ,
+        mixins.state ,
     ] ,
     mounted () {
         this.initDom();
@@ -515,6 +516,35 @@ export default {
                 this.forceLogout();
             });
             this.ins.loading.setArgs(this.ins.loading , 'logout');
+        } ,
+
+        // 翻译
+        translate () {
+            new Promise((resolve) => {
+                if (this.pending.translate) {
+                    this.$info('正在生成生成字典...请耐心等待');
+                    return ;
+                }
+                this.pendingState('loading' , 'translate');
+                this.ajax.translate = miscApi.translate((res , code) => {
+                    if (code != 200) {
+                        this.eNotice(res);
+                        resolve(false);
+                    }
+                    resolve(true);
+                });
+                this.ins.loading.setArgs('translate' , 'translate');
+            }).then((next) => {
+                if (!next) {
+                    return ;
+                }
+                this.$success('成功生成常用中英文对照翻译字典' , {
+                    btn: ['确定'] ,
+                    closeBtn: false ,
+                });
+            }).finally(() => {
+                this.initialState('loading' , 'translate' , 'translate');
+            });
         } ,
     } ,
 }

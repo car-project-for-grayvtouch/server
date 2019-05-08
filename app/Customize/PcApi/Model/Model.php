@@ -11,6 +11,8 @@ namespace App\Customize\PcApi\Model;
 use App\Customize\PcApi\Util\YouDaoTranslation;
 use function core\convert_obj;
 use Exception;
+use function extra\has_cn;
+use function extra\is_http;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Traversable;
 
@@ -73,8 +75,54 @@ class Model extends BaseModel implements ModelInterface
         switch ($language)
         {
             case 'en':
-                $obj = YouDaoTranslation::utilCnToEn($obj);
+                $obj = self::utilCnToEn($obj);
                 break;
+        }
+        return $obj;
+    }
+
+    public static function utilCnToEn($obj = null)
+    {
+        if (empty($obj)) {
+            return ;
+        }
+        if (!is_object($obj)) {
+            throw new Exception('参数 1 类型错误');
+        }
+        $obj = convert_obj($obj);
+        $source_language = 'cn';
+        $target_language = 'en';
+        foreach ($obj as &$v)
+        {
+            if (!is_scalar($v)) {
+                continue ;
+            }
+            if (is_numeric($v)) {
+                continue ;
+            }
+            if (is_http($v)) {
+                continue ;
+            }
+            if (!has_cn($v)) {
+                continue ;
+            }
+            $original = $v;
+            $m = Translation::findByOriginalForCnToEn($original);
+            // 检查是否存在
+            if (!empty($m)) {
+                $v = $m->translation;
+                continue;
+            }
+            $translation = YouDaoTranslation::cnToEn($v);
+            $v = $translation;
+            // 保存到翻译表
+            $data = [
+                'source_language' => $source_language ,
+                'target_language' => $target_language ,
+                'original' => $original ,
+                'translation' => $translation
+            ];
+            Translation::insert($data);
         }
         return $obj;
     }

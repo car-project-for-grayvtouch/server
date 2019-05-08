@@ -90,3 +90,15 @@ insert into `xq_show_image` (platform_id , position , name , mime , path) values
 
 insert into `xq_article_type` (id , name , p_id) values
 (1 , '媒体声音' , 0);
+
+
+drop table if exists `xq_translation`;
+create table if not exists `xq_translation` (
+  id int unsigned not null auto_increment ,
+  `source_language` char(255) default 'cn' comment '源语言' ,
+  `target_language` char(255) default 'cn' comment '目标语言' ,
+  original char(255) default '' comment '原文' ,
+  `translation` char(255) default '' comment '译文' ,
+  create_time datetime default current_timestamp comment '创建时间' ,
+  primary key `id` (`id`)
+) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '翻译表';

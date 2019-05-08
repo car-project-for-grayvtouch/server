@@ -360,4 +360,11 @@ Route::prefix('admin')
         Route::put('story/story' , 'Story@edit');
         Route::delete('story/story' , 'Story@del');
         Route::patch('story/image' , 'Story@image');
+
+        /**
+         * ***************
+         * 翻译
+         * ***************
+         */
+        Route::post('translation/translation' , 'translation@translate');
     });

@@ -84,4 +84,10 @@ class Model extends BaseModel implements ModelInterface
             'date' => $date
         ])->count();
     }
+
+    // 从数据库里面获取仅一条数据
+    public static function findOne()
+    {
+        return static::first();
+    }
 }
