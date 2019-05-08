@@ -366,5 +366,5 @@ Route::prefix('admin')
          * 翻译
          * ***************
          */
-        Route::post('translation/translation' , 'translation@translate');
+        Route::post('translation/translation' , 'Translation@translate');
     });
