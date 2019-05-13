@@ -21,7 +21,7 @@ class Car extends Model
     public $timestamps = false;
 
     // 首页-车辆列表
-    public static function listForHome(array $param = [] , int $limit = 20 , $language = null)
+    public static function listForHome(array $param = [] , int $limit = 20)
     {
 
         $where = [];
@@ -45,15 +45,15 @@ class Car extends Model
         $res = convert_obj($res);
         foreach ($res as &$m)
         {
-            $m = self::single($m , $language);
-            $m->brand = Brand::single($m->brand , $language);
-            $m->series = CarSeries::single($m->series , $language);
-            $m->model = CarModel::single($m->model , $language);
+            self::single($m);
+            Brand::single($m->brand);
+            CarSeries::single($m->series);
+            CarModel::single($m->model);
         }
         return $res;
     }
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
@@ -63,7 +63,7 @@ class Car extends Model
         }
         // 封面
         $m->thumb = res_url($m->thumb);
-        return self::translate($m , $language);
+
     }
 
     // 车辆图片
@@ -97,7 +97,7 @@ class Car extends Model
     }
 
     // 车辆列表
-    public static function list(array $param = [] , array $sort = ['field' => 'update_time' , 'value' => 'desc'] , int $limit = 20 , $language = null)
+    public static function list(array $param = [] , array $sort = ['field' => 'update_time' , 'value' => 'desc'] , int $limit = 20)
     {
         $param['keyword']       = $param['keyword'] ?? '';
         $param['sale_point']    = $param['sale_point'] ?? '';
@@ -264,17 +264,17 @@ class Car extends Model
             ->paginate($limit);
 //        print_r(DB::getQueryLog());
         $res = convert_obj($res);
-        foreach ($res->data as &$v)
+        foreach ($res->data as $v)
         {
-            $v = self::single($v , $language);
-            $v->brand = Brand::findById($v->brand_id , $language);
-            $v->series = CarSeries::findById($v->car_series_id , $language);
-            $v->model = CarModel::findById($v->car_model_id , $language);
+            self::single($v);
+            $v->brand = Brand::findById($v->brand_id);
+            $v->series = CarSeries::findById($v->car_series_id);
+            $v->model = CarModel::findById($v->car_model_id);
         }
         return $res;
     }
 
-    public static function findById($id , $language = null)
+    public static function findById($id)
     {
         $res = self::with([
                 'brand' ,
@@ -287,25 +287,26 @@ class Car extends Model
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
+        $res = convert_obj($res);
+        self::single($res);
         if (!empty($res->model)) {
             // 车辆类型
-            $res->model->car_type = CarType::findById($res->model->car_type_id , $language);
+            $res->model->car_type = CarType::findById($res->model->car_type_id);
             // 车辆配置
-            $res->model->configuration = CarModel::getConfiguration($res->model->id , $language);
+            $res->model->configuration = CarModel::getConfiguration($res->model->id);
         }
         // 检测报告
-        $res->report = self::report($res->id , $language);
-        $res->brand = Brand::single($res->brand , $language);
-        $res->series = CarSeries::single($res->series , $language);
-        $res->model = CarModel::single($res->model , $language);
-        $res->image = CarImage::multiple($res->image);
-        $res->service = Service::multiple($res->service , $language);
+        $res->report = self::report($res->id);
+        Brand::single($res->brand);
+        CarSeries::single($res->series);
+        CarModel::single($res->model);
+        CarImage::multiple($res->image);
+        Service::multiple($res->service);
         return $res;
     }
 
     // 车辆信息（简略版）
-    public static function findByIdForSimple($id , $language = null)
+    public static function findByIdForSimple($id)
     {
         $res = self::with([
                 'brand' ,
@@ -317,42 +318,43 @@ class Car extends Model
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
-        $res->brand = Brand::single($res->brand , $language);
-        $res->series = CarSeries::single($res->series , $language);
-        $res->model = CarModel::single($res->model , $language);
-        $res->service = Service::multiple($res->service , $language);
+        $res = convert_obj($res);
+        self::single($res);
+        Brand::single($res->brand);
+        CarSeries::single($res->series);
+        CarModel::single($res->model);
+        Service::multiple($res->service);
         return $res;
     }
 
     // 获取检测报告
-    public static function report($id , $language = null)
+    public static function report($id)
     {
-        $report = Report::findByCarId($id , $language);
+        $report = Report::findByCarId($id);
         if (empty($report)) {
             return ;
         }
-        $report->module = ReportForModule::getByReportId($report->id , $language);
+        $report->module = ReportForModule::getByReportId($report->id);
         foreach ($report->module as $v)
         {
-            $v->position = ReportForPos::getByReportForModuleId($v->id , $language);
+            $v->position = ReportForPos::getByReportForModuleId($v->id);
             foreach ($v->position as $v1)
             {
-                $v1->item = ReportForItem::getByReportForPosId($v1->id , $language);
+                $v1->item = ReportForItem::getByReportForPosId($v1->id);
             }
         }
         return $report;
     }
 
     // 收藏的车辆
-    public static function collectionForCar($user_id , array $param = [] , $limit = 20 , $language = null)
+    public static function collectionForCar($user_id , array $param = [] , $limit = 20)
     {
         $res = CollectionForCar::where('user_id' , $user_id)
             ->paginate($limit);
         $res = convert_obj($res);
         foreach ($res->data as &$v)
         {
-            $v->car = self::findByIdForSimple($v->car_id , $language);
+            $v->car = self::findByIdForSimple($v->car_id);
         }
         return $res;
     }
@@ -370,7 +372,7 @@ class Car extends Model
             ->increment('view_count' , 1);
     }
 
-    public static function recommendation($limit = 10 , $language = null)
+    public static function recommendation($limit = 10)
     {
         $res = self::with([
                 'brand' ,
@@ -385,10 +387,10 @@ class Car extends Model
         $res = convert_obj($res);
         foreach ($res as &$m)
         {
-            $m = self::single($m , $language);
-            $m->brand = Brand::single($m->brand , $language);
-            $m->series = CarSeries::single($m->series , $language);
-            $m->model = CarModel::single($m->model , $language);
+            self::single($m);
+            Brand::single($m->brand);
+            CarSeries::single($m->series);
+            CarModel::single($m->model);
         }
         return $res;
     }

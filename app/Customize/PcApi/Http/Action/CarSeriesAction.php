@@ -22,7 +22,7 @@ class CarSeriesAction extends Action
     // 车辆列表
     public static function all(array $param)
     {
-        $res = CarSeries::getAll($param['brand_id'] , $param['language']);
+        $res = CarSeries::getAll($param['brand_id']);
         return self::success($res);
     }
 }

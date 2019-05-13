@@ -8,6 +8,7 @@
 
 namespace PcApi;
 
+use App\Customize\PcApi\Util\Translation;
 use function core\format_path;
 use function extra\config as config_function;
 use ReflectionException;
@@ -50,6 +51,9 @@ function error($data = '' , $code = 400)
 // 响应
 function response($data , $code)
 {
+    $language = request()->post('language');
+    $language = $language ?? 'cn';
+    $data = Translation::translate($data , 'cn' , $language);
     return response_function()
     ->json(compact('code' , 'data'));
 }

@@ -18,17 +18,17 @@ class SaleApplication extends Model
     protected $table = 'sale_application';
     public $timestamps = false;
 
-    public static function list(array $param = [] , $limit = 20 , $language = null)
+    public static function list(array $param = [] , $limit = 20)
     {
         $where = [];
         $res = self::where($where)
             ->paginate($limit);
         $res = convert_obj($res);
-        $res->data = self::multiple($res->data , $language);
+        self::multiple($res->data);
         return $res;
     }
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
@@ -37,6 +37,6 @@ class SaleApplication extends Model
             throw new Exception('参数 1 类型错误');
         }
         $m->status_explain = get_value('business.sale_application_status' , $m->status);
-        return self::translate($m , $language);
+
     }
 }

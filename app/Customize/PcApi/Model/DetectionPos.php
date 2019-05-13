@@ -21,16 +21,16 @@ class DetectionPos extends Model
     }
 
     // 获取给定模块下的检测位置
-    public static function getByModuleId($detection_module_id , $language = null)
+    public static function getByModuleId($detection_module_id)
     {
         $res = self::with('group')
             ->where('detection_module_id' , $detection_module_id)
             ->get();
         $res = convert_obj($res);
-        foreach ($res as &$v)
+        foreach ($res as $v)
         {
-            $v = self::single($v , $language);
-            $v->group = DetectionGroup::single($v->group , $language);
+            self::single($v);
+            DetectionGroup::single($v->group);
         }
         return $res;
     }
@@ -42,8 +42,8 @@ class DetectionPos extends Model
         $res = convert_obj($res);
         foreach ($res as &$v)
         {
-            $v = self::single($v , $language);
-            $v->group = DetectionGroup::single($v->group , $language);
+            self::single($v);
+            DetectionGroup::single($v->group);
         }
         return $res;
     }

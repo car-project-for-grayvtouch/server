@@ -17,7 +17,7 @@ class CarImage extends Model
     protected $table = 'car_image';
     public $timestamps = false;
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
@@ -27,7 +27,7 @@ class CarImage extends Model
         }
         unset($m->path);
         $m->url = res_url($m->url);
-        return self::translate($m , $language);
+
     }
 
 }

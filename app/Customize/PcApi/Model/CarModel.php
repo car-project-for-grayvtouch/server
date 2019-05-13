@@ -16,7 +16,7 @@ class CarModel extends Model
     protected $table = 'car_model';
     public $timestamps = false;
 
-    public static function getConfiguration($car_model_id , $language = null)
+    public static function getConfiguration($car_model_id)
     {
         $res = DB::table('car_model_with_configuration as cmwc')
             ->rightJoin('car_configuration as cc' , 'cc.id' , '=' , 'cmwc.car_configuration_id')
@@ -26,8 +26,8 @@ class CarModel extends Model
         $res = convert_obj($res);
         foreach ($res as &$m)
         {
-            $m = CarConfiguration::single($m , $language);
-            $m->group = CarConfigurationGroup::findById($m->car_configuration_group_id , $language);
+            CarConfiguration::single($m);
+            $m->group = CarConfigurationGroup::findById($m->car_configuration_group_id);
         }
         return $res;
     }

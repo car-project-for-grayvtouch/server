@@ -18,17 +18,15 @@ use Traversable;
 
 class Model extends BaseModel implements ModelInterface
 {
-    public static function multiple($list , $language = null)
+    public static function multiple($list)
     {
-        $list = convert_obj($list);
         foreach ($list as &$v)
         {
-            $v = static::single($v , $language);
+            $v = static::single($v);
         }
-        return $list;
     }
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
@@ -36,7 +34,6 @@ class Model extends BaseModel implements ModelInterface
         if (!is_object($m)) {
             throw new Exception('不支持的类型');
         }
-        return self::translate($m , $language);
     }
 
     // 更新
@@ -46,84 +43,23 @@ class Model extends BaseModel implements ModelInterface
             ->update($param);
     }
 
-    public static function getAll($language = null)
+    public static function getAll()
     {
 
         $res = static::all();
-        $res = static::multiple($res , $language);
+        $res = convert_obj($res);
+        static::multiple($res);
         return $res;
     }
 
-    public static function findById($id , $language = null)
+    public static function findById($id)
     {
         $res = static::find($id);
         if (empty($res)) {
             return ;
         }
-        $res = static::single($res , $language);
+        $res = convert_obj($res);
+        static::single($res);
         return $res;
-    }
-
-    // 翻译
-    public static function translate($obj = null , $language = 'cn')
-    {
-        if (empty($obj)) {
-            return ;
-        }
-        $obj = convert_obj($obj);
-        // 多语言切换
-        switch ($language)
-        {
-            case 'en':
-                $obj = self::utilCnToEn($obj);
-                break;
-        }
-        return $obj;
-    }
-
-    public static function utilCnToEn($obj = null)
-    {
-        if (empty($obj)) {
-            return ;
-        }
-        if (!is_object($obj)) {
-            throw new Exception('参数 1 类型错误');
-        }
-        $obj = convert_obj($obj);
-        $source_language = 'cn';
-        $target_language = 'en';
-        foreach ($obj as &$v)
-        {
-            if (!is_scalar($v)) {
-                continue ;
-            }
-            if (is_numeric($v)) {
-                continue ;
-            }
-            if (is_http($v)) {
-                continue ;
-            }
-            if (!has_cn($v)) {
-                continue ;
-            }
-            $original = $v;
-            $m = Translation::findByOriginalForCnToEn($original);
-            // 检查是否存在
-            if (!empty($m)) {
-                $v = $m->translation;
-                continue;
-            }
-            $translation = YouDaoTranslation::cnToEn($v);
-            $v = $translation;
-            // 保存到翻译表
-            $data = [
-                'source_language' => $source_language ,
-                'target_language' => $target_language ,
-                'original' => $original ,
-                'translation' => $translation
-            ];
-            Translation::insert($data);
-        }
-        return $obj;
     }
 }

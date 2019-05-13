@@ -27,19 +27,20 @@ class CarSeries extends Model
         return $this->belongsTo(CarSeriesGroup::class , 'car_series_group_id' , 'id');
     }
 
-    public static function findById($id , $language = null)
+    public static function findById($id)
     {
         $res = self::with('brand')
             ->find($id);
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
-        $res->brand = Brand::single($res->brand , $language);
+        $res = convert_obj($res);
+        self::single($res);
+        Brand::single($res->brand);
         return $res;
     }
 
-    public static function getAll($brand_id = null , $language = null)
+    public static function getAll($brand_id = null)
     {
         $where = [];
         if (!empty($brand_id)) {
@@ -54,8 +55,8 @@ class CarSeries extends Model
         $res = convert_obj($res);
         foreach ($res as &$v)
         {
-            $v = self::single($v , $language);
-            $v->group = CarSeriesGroup::single($v->group , $language);
+            self::single($v);
+            CarSeriesGroup::single($v->group);
         }
         return $res;
     }

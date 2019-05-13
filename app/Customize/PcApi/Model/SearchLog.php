@@ -9,6 +9,7 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function core\convert_obj;
 use function PcApi\get_value;
 
 class SearchLog extends Model
@@ -16,7 +17,7 @@ class SearchLog extends Model
     protected $table = 'search_log';
     public $timestamps = false;
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
@@ -24,10 +25,10 @@ class SearchLog extends Model
         switch ($m->type)
         {
             case 'brand':
-                $m->brand = Brand::findById($m->value , $language);
+                $m->brand = Brand::findById($m->value);
                 break;
             case 'series':
-                $m->series = CarSeries::findById($m->value , $language);
+                $m->series = CarSeries::findById($m->value);
                 break;
             case 'sale_point':
                 $m->sale_point = get_value('business.sale_point' , $m->value);
@@ -35,15 +36,16 @@ class SearchLog extends Model
             default:
                 break;
         }
-        return self::translate($m , $language);
+
     }
 
-    public static function hot($limit = 10 , $language = null)
+    public static function hot($limit = 10)
     {
         $res = self::orderBy('count' , 'desc')
             ->limit($limit)
             ->get();
-        $res = self::multiple($res , $language);
+        $res = convert_obj($res);
+        self::multiple($res);
         return $res;
     }
 
@@ -57,7 +59,7 @@ class SearchLog extends Model
     }
 
     // 获取记录：不加锁
-    public static function findByTypeAndValue($type , $value , $language = null)
+    public static function findByTypeAndValue($type , $value)
     {
         $res = self::where([
             ['type' , '=' , $type] ,
@@ -66,12 +68,13 @@ class SearchLog extends Model
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
+        $res = convert_obj($res);
+        self::single($res);
         return $res;
     }
 
     // 获取记录：加锁
-    public static function findWithLockByTypeAndValue($type , $value , $language = null)
+    public static function findWithLockByTypeAndValue($type , $value)
     {
         $res = self::where([
                 ['type' , '=' , $type] ,
@@ -82,7 +85,8 @@ class SearchLog extends Model
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
+        $res = convert_obj($res);
+        self::single($res);
         return $res;
     }
 }

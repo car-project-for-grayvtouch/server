@@ -15,7 +15,7 @@ class SearchLogAction extends Action
 {
     public static function hot(array $param)
     {
-        $res = SearchLog::hot($param['limit'] , $param['language']);
+        $res = SearchLog::hot($param['limit']);
         return self::success($res);
     }
 }

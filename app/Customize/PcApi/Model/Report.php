@@ -9,19 +9,22 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function core\convert_obj;
+
 class Report extends Model
 {
     protected $table = 'report';
     public $timestamps = false;
 
-    public static function findByCarId($car_id , $language = null)
+    public static function findByCarId($car_id)
     {
         $res = self::where('car_id' , $car_id)
             ->first();
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
+        $res = convert_obj($res);
+        self::single($res);
         return $res;
     }
 }

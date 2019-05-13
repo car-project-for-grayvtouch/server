@@ -22,7 +22,6 @@ class Article extends Controller
     {
         $param = $this->request->post();
         $param['limit'] = $param['limit'] ?? config('app.limit');
-        $param['language'] = $param['language'] ?? null;
         $res = ArticleAction::listForHome($param);
         if ($res['code'] != 200) {
             if ($res['data'] instanceof Validator) {

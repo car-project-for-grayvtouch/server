@@ -16,12 +16,12 @@ class Brand extends Model
     protected $table = 'brand';
     public $timestamps = false;
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
         }
         $m->logo = res_url($m->logo);
-        return self::translate($m , $language);
+
     }
 }

@@ -9,6 +9,8 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function core\convert_obj;
+
 class Translation extends Model
 {
     protected $table = 'translation';
@@ -16,10 +18,16 @@ class Translation extends Model
 
     public static function findByOriginalForCnToEn($original = '')
     {
-        return self::where([
+        $res = self::where([
             ['source_language' , '=' , 'cn'] ,
             ['target_language' , '=' , 'en'] ,
             ['original' , '=' , $original] ,
         ])->first();
+        if (empty($res)) {
+            return ;
+        }
+        $res = convert_obj($res);
+        self::single($res);
+        return $res;
     }
 }

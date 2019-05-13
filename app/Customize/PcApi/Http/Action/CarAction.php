@@ -72,7 +72,7 @@ class CarAction extends Action
         try {
             DB::beginTransaction();
             // 获取数据
-            $res = Car::listForHome($param , $param['limit'] , $param['language']);
+            $res = Car::listForHome($param , $param['limit']);
             foreach ($res as $v)
             {
                 $v->collected = self::u_collected($v->id);
@@ -93,7 +93,7 @@ class CarAction extends Action
     public static function featuredComment(array $param)
     {
         // 默认挑出来的评论数量
-        $res = ProductComment::featuredComment($param['limit'] , $param['language']);
+        $res = ProductComment::featuredComment($param['limit']);
         return self::success($res);
     }
 
@@ -104,7 +104,7 @@ class CarAction extends Action
         $sort = parse_order($sort , '|');
         try {
             DB::beginTransaction();
-            $res = Car::list($param , $sort , $param['limit'] , $param['language']);
+            $res = Car::list($param , $sort , $param['limit']);
             foreach ($res->data as $v)
             {
                 // 是否收藏
@@ -142,7 +142,7 @@ class CarAction extends Action
         if ($validator->fails()) {
             return self::error(get_form_error($validator));
         }
-        $car = Car::findById($param['id'] , $param['language']);
+        $car = Car::findById($param['id']);
         if (empty($car)) {
             return self::error('未找到 id = ' . $param['id'] . '对应车辆');
         }
@@ -196,7 +196,7 @@ class CarAction extends Action
     // 猜你喜欢
     public static function recommendation(array $param)
     {
-        $res = Car::recommendation($param['limit'] , $param['language']);
+        $res = Car::recommendation($param['limit']);
         foreach ($res as $v)
         {
             $v->collected = self::u_collected($v->id);

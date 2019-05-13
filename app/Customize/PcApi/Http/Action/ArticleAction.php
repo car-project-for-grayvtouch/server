@@ -18,14 +18,14 @@ class ArticleAction extends Action
     public static function listForHome(array $param)
     {
         $article_type = 1;
-        $res = Article::listForHome($article_type , $param['limit'] , $param['language']);
+        $res = Article::listForHome($article_type , $param['limit']);
         return self::success($res);
     }
 
     public static function listForMedia(array $param)
     {
         $article_type = 1;
-        $res = Article::listForMedia($article_type , $param['limit'] , $param['language']);
+        $res = Article::listForMedia($article_type , $param['limit']);
         return self::success($res);
     }
 
@@ -39,7 +39,7 @@ class ArticleAction extends Action
         if ($validator->fails()) {
             return self::error($validator);
         }
-        $res = Article::findById($param['id'] , $param['language']);
+        $res = Article::findById($param['id']);
         if (empty($res)) {
             return self::error('未找到 id 对应项');
         }

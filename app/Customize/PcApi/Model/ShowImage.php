@@ -8,6 +8,7 @@
 
 namespace App\Customize\PcApi\Model;
 
+use function core\convert_obj;
 use function PcApi\res_url;
 
 class ShowImage extends Model
@@ -22,16 +23,16 @@ class ShowImage extends Model
                 ['position' , '=' , $position] ,
             ])
             ->get();
-        $res = self::multiple($res);
+        $res = convert_obj($res);
+        self::multiple($res);
         return $res;
     }
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
         }
         $m->path = res_url($m->path);
-        return $m;
     }
 }

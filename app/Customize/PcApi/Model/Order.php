@@ -9,6 +9,7 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function core\convert_obj;
 use Exception;
 use function PcApi\get_value;
 
@@ -25,7 +26,8 @@ class Order extends Model
         $res = self::with(['product'])
             ->where($where)
             ->paginate($limit);
-        foreach ($res as $v)
+        $res = convert_obj($res);
+        foreach ($res->data as $v)
         {
             self::single($v);
             // 检查当前用户是否评价过了

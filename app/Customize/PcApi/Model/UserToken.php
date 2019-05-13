@@ -8,6 +8,8 @@
 
 namespace App\Customize\PcApi\Model;
 
+use function core\convert_obj;
+
 class UserToken extends Model
 {
     protected $table = 'user_token';
@@ -15,11 +17,23 @@ class UserToken extends Model
 
     public static function findByToken($token = '')
     {
-        return self::where('token' , $token)->first();
+        $res = self::where('token' , $token)->first();
+        if (empty($res)) {
+            return ;
+        }
+        $res = convert_obj($res);
+        self::single($res);
+        return $res;
     }
 
     public static function findByRefreshToken($refresh_token)
     {
-        return self::where('refresh_token' , $refresh_token)->first();
+        $res = self::where('refresh_token' , $refresh_token)->first();
+        if (empty($res)) {
+            return ;
+        }
+        $res = convert_obj($res);
+        self::single($res);
+        return $res;
     }
 }

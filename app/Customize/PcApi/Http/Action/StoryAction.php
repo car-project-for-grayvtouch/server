@@ -15,7 +15,7 @@ class StoryAction extends Action
 {
     public static function listForHome(array $param)
     {
-        $res = Story::listForHome($param['limit'] , $param['language']);
+        $res = Story::listForHome($param['limit']);
         return self::success($res);
     }
 }

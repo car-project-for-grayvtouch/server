@@ -8,6 +8,7 @@
 
 namespace App\Customize\PcApi\Model;
 
+use function core\convert_obj;
 use Exception;
 use function PcApi\res_url;
 
@@ -17,14 +18,15 @@ class User extends Model
     public $timestamps = false;
 
     // 获取用户
-    public static function findByUsername($username = '' , $language = null)
+    public static function findByUsername($username = '')
     {
         $m = self::where('username' , $username)
                 ->first();
         if (empty($m)) {
             return ;
         }
-        $m = self::single($m , $language);
+        $m = convert_obj($m);
+        self::single($m);
         return $m;
     }
 
@@ -47,7 +49,7 @@ class User extends Model
         return self::where('username' , $username)->count() > 0;
     }
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
@@ -56,6 +58,6 @@ class User extends Model
             throw new Exception('不支持的类型');
         }
         $m->avatar_explain = res_url($m->avatar);
-        return self::translate($m , $language);
+
     }
 }

@@ -9,15 +9,18 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function core\convert_obj;
+
 class ReportForPos extends Model
 {
     protected $table = 'report_for_pos';
     public $timestamps = false;
 
-    public static function getByReportForModuleId($report_for_module_id , $language = null)
+    public static function getByReportForModuleId($report_for_module_id)
     {
         $res = self::where('report_for_module_id' , $report_for_module_id)->get();
-        $res = self::multiple($res , $language);
+        $res = convert_obj($res);
+        self::multiple($res);
         return $res;
     }
 }

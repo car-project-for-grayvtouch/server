@@ -8,7 +8,6 @@
 
 namespace App\Customize\PcApi\Http\Action;
 
-
 class Action
 {
     public static function success($data = '' , $code = 200)

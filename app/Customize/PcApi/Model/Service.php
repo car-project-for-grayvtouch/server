@@ -17,7 +17,7 @@ class Service extends Model
     protected $table = 'service';
     public $timestamps = false;
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
@@ -26,6 +26,6 @@ class Service extends Model
             throw new Exception('参数 1 错误');
         }
         $m->image = res_url($m->image);
-        return self::translate($m , $language);
+
     }
 }

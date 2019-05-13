@@ -10,6 +10,7 @@ namespace App\Customize\PcApi\Model;
 
 
 use function core\convert_obj;
+use Exception;
 use function PcApi\res_url;
 
 class Article extends Model
@@ -17,7 +18,7 @@ class Article extends Model
     protected $table = 'article';
     public $timestamps = false;
 
-    public static function listForHome($article_type_id , $limit = 20 , $language = null)
+    public static function listForHome($article_type_id , $limit = 20)
     {
         $res = self::with('content')
             ->where('article_type_id' , $article_type_id)
@@ -26,13 +27,13 @@ class Article extends Model
         $res = convert_obj($res);
         foreach ($res as &$v)
         {
-            $v = self::single($v , $language);
-            $v->content = ArticleContent::single($v->content , $language);
+            self::single($v);
+            ArticleContent::single($v->content);
         }
         return $res;
     }
 
-    public static function listForMedia($article_type_id , int $limit = 20 , $language = null)
+    public static function listForMedia($article_type_id , int $limit = 20)
     {
         $res = self::with('content')
             ->where('article_type_id' , $article_type_id)
@@ -40,19 +41,22 @@ class Article extends Model
         $res = convert_obj($res);
         foreach ($res->data as &$v)
         {
-            $v = self::single($v , $language);
-            $v->content = ArticleContent::single($v->content , $language);
+            self::single($v);
+            ArticleContent::single($v->content);
         }
         return $res;
     }
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
         }
+        if (!is_object($m)) {
+            throw new Exception('参数 1 错误');
+        }
         $m->thumb = res_url($m->thumb);
-        return self::translate($m , $language);
+
     }
 
     public function content()
@@ -60,15 +64,15 @@ class Article extends Model
         return $this->hasOne(ArticleContent::class , 'article_id' , 'id');
     }
 
-    public static function findById($id , $language = null)
+    public static function findById($id)
     {
         $res = self::with('content')
             ->find($id);
         if (empty($res)) {
             return ;
         }
-        $res = self::single($res , $language);
-        $res->content = ArticleContent::single($res->content , $language);
+        self::single($res);
+        ArticleContent::single($res->content);
         return $res;
     }
 }

@@ -8,16 +8,19 @@
 
 namespace App\Customize\PcApi\Model;
 
+use function core\convert_obj;
+
 class DetectionItem extends Model
 {
     protected $table = 'detection_item';
     public $timestamps = false;
 
-    public static function getByPosId($detection_pos_id , $language = null)
+    public static function getByPosId($detection_pos_id)
     {
         $res = self::where('detection_pos_id' , $detection_pos_id)
             ->get();
-        $res = self::multiple($res , $language);
+        $res = convert_obj($res);
+        self::multiple($res);
         return $res;
     }
 }

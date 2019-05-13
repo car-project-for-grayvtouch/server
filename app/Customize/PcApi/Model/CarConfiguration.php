@@ -21,13 +21,13 @@ class CarConfiguration extends Model
         return $this->belongsTo(CarConfigurationGroup::class , 'car_configuration_group_id' , 'id');
     }
 
-    public static function single($m = null , $language = null)
+    public static function single($m = null)
     {
         if (empty($m)) {
             return ;
         }
         $m->image = res_url($m->image);
-        return self::translate($m , $language);
+
     }
 
     
@@ -42,8 +42,8 @@ class CarConfiguration extends Model
         $res = convert_obj($res);
         foreach ($res as &$v)
         {
-            $v = self::single($v , $language);
-            $v->group = CarConfigurationGroup::single($v->group , $language);
+            self::single($v);
+            CarConfigurationGroup::single($v->group);
         }
         $group = [];
         $exists = function($group_id) use(&$group){
