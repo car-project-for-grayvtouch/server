@@ -13,3 +13,4 @@
 
 require_once __DIR__ . '/api/Admin.php';
 require_once __DIR__ . '/api/Pc.php';
+require_once __DIR__ . '/api/Mobile.php';
