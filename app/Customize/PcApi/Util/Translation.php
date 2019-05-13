@@ -22,7 +22,7 @@ class Translation
     public static function translate($value = null , string $source = 'cn' , string $language = 'cn')
     {
         if (empty($value)) {
-            return ;
+            return $value;
         }
         $scalar = is_scalar($value);
         if ($source == 'cn' && $language == 'en') {
