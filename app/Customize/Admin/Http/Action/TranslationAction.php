@@ -121,6 +121,10 @@ class TranslationAction extends Action
                     continue;
                 }
                 $translation = YouDaoTranslation::cnToEn($original);
+                if (empty($translation)) {
+                    // 没有翻译结果
+                    continue ;
+                }
                 // 保存到翻译表
                 $data = [
                     'source_language' => $source_language ,
