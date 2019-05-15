@@ -10,7 +10,7 @@ export default {
                 seat_count: 0 ,
                 high_speed_fuel_consumption: 0 ,
                 city_fuel_consumption: 0 ,
-                displacement: '0.00' ,
+                displacement: '0.0' ,
                 cylinder_count: 0 ,
                 weight: 0,
                 maximum_horsepower: '0.00' ,

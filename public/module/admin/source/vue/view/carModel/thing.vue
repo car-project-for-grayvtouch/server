@@ -175,7 +175,7 @@
                                     <td>
                                         <input type="number" step="0.01" class="form-text" v-model="form.displacement">
                                         <span class="necessary"></span>
-                                        <span class="tip">默认：0.00；单位：L；仅允许最多两位小数</span>
+                                        <span class="tip">默认：0.0；单位：L；仅允许最多1位小数</span>
                                         <span class="msg">{{ error.displacement }}</span>
                                     </td>
                                 </tr>
