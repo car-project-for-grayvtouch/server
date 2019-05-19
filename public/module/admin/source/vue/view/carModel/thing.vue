@@ -117,7 +117,7 @@
                                     </td>
                                 </tr>
                                 <tr id="high_speed_fuel_consumption" :class="getClass(error.high_speed_fuel_consumption)">
-                                    <td>高速油耗（GL）</td>
+                                    <td>高速（GL）</td>
                                     <td>
                                         <input type="number" step="0" class="form-text" v-model="form.high_speed_fuel_consumption">
                                         <span class="necessary"></span>
@@ -126,7 +126,7 @@
                                     </td>
                                 </tr>
                                 <tr id="city_fuel_consumption" :class="getClass(error.city_fuel_consumption)">
-                                    <td>城市油耗（GL）</td>
+                                    <td>城市（GL）</td>
                                     <td>
                                         <input type="number" step="0" class="form-text" v-model="form.city_fuel_consumption">
                                         <span class="necessary"></span>

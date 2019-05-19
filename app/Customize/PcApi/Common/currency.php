@@ -94,6 +94,7 @@ function get_form_error($validator)
     }
     return $error[0];
 }
+
 // 生成 url
 function res_url($path = '')
 {
