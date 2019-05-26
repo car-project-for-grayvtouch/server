@@ -15,6 +15,7 @@ use App\Customize\Mobile\Model\CollectionForCar;
 use App\Customize\Mobile\Model\RecommendationApplication;
 use App\Customize\Mobile\Model\Reservation;
 use App\Customize\Mobile\Model\SearchLog;
+use App\Customize\Mobile\Util\Translation;
 use Exception;
 use function Mobile\get_form_error;
 use function Mobile\parse_order;
@@ -100,6 +101,12 @@ class CarAction extends Action
     // 车辆-买车页面
     public static function list(array $param)
     {
+        // 对 keyword 做一下处理
+        $language = $param['language'] ?? 'cn';
+        if ($language == 'en') {
+            // 获取英文数据的情况下，将 keyword 翻译成中文后进行搜索
+            $param['keyword'] = Translation::translate($param['keyword'] , 'en' , 'cn');
+        }
         $sort = $param['sort'] == '' ? 'update_time|desc' : $param['sort'];
         $sort = parse_order($sort , '|');
         try {

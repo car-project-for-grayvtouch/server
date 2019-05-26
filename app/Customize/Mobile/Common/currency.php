@@ -55,7 +55,7 @@ function response($data , $code)
     $language = $language ?? 'cn';
     $data = Translation::translate($data , 'cn' , $language);
     return response_function()
-    ->json(compact('code' , 'data'));
+        ->json(compact('code' , 'data'));
 }
 
 // 当前登录用户

@@ -21,9 +21,13 @@ class Autoload
     // 类自动加载
     public function classLoader($namespace , $dir)
     {
+        $dir = str_replace('\\' , '/' , $dir);
+        $dir = rtrim($dir , '/');
+        $dir .= '/';
         spl_autoload_register(function($class) use($namespace , $dir){
             $class = preg_replace("/(\\\\)?{$namespace}\/" , '' , $class);
-            $file  = str_replace('\\' , '/' , $dir . $class);
+            $file = $dir . $class;
+            $file  = str_replace('\\' , '/' , $file);
             $file .= $this->suffix;
             if (file_exists($file) && !is_dir($file)) {
                 require_once $file;

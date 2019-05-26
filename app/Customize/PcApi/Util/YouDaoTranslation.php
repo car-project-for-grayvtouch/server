@@ -23,8 +23,6 @@ class YouDaoTranslation
     protected static $apiUrl = 'https://openapi.youdao.com/api';
     protected static $appKey = '411dbdd9f06b42a8';
     protected static $appSecret = 'Os09Glb6D8L1q6YmPPAHnCGHAgQXp294';
-    protected static $sourceLanguage = 'zh-CHS';
-    protected static $targetLanguage = 'en';
     protected static $signType = 'v3';
     protected static $timeout = 3;
 
@@ -53,16 +51,36 @@ class YouDaoTranslation
         return hash('sha256' , self::$appKey . $input . $salt . $time . self::$appSecret);
     }
 
-    // 中文 => 英文
-    public static function cnToEn($str = '')
+    /**
+     * 支持的语言包列表
+     *
+     *  中文	zh-CHS
+        英文	en
+        日文	ja
+        韩文	ko
+        法文	fr
+        西班牙文	es
+        葡萄牙文	pt
+        意大利文	it
+        俄文	ru
+        越南文	vi
+        德文	de
+        阿拉伯文	ar
+        印尼文	id
+        自动识别	auto
+     */
+    public static function translate($str = '' , string $source = 'zh-CHS' , string $target = 'en')
     {
+        if ($source == $target) {
+            return $str;
+        }
         $salt = self::salt();
         $time = time();
         $sign = self::sign($str , $salt , $time);
         $post_data = [
             'q'         => $str ,
-            'from'      => self::$sourceLanguage ,
-            'to'        => self::$targetLanguage ,
+            'from'      => $source ,
+            'to'        => $target ,
             'appKey'    => self::$appKey ,
             'salt'      => $salt ,
             'sign'      => $sign ,
@@ -75,7 +93,8 @@ class YouDaoTranslation
         ]);
         $res = json_decode($res , true);
         if ($res['errorCode'] != 0) {
-            return '有道智云翻译失败';
+            // 翻译失败
+            return '';
         }
         return empty($res['translation']) ? '' : ($res['translation'][0] ?? '');
     }
