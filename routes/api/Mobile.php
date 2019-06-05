@@ -49,6 +49,7 @@ Route::prefix('mobile')
         Route::post('/CarWithAuth/setStatusForRecommendationApplication' , 'CarWithAuth@setStatusForRecommendationApplication');
         Route::post('/CarWithAuth/setStatusForStagingBuyApplication' , 'CarWithAuth@setStatusForStagingBuyApplication');
         Route::post('/CarWithAuth/setStatusForReservation' , 'CarWithAuth@setStatusForReservation');
+        Route::post('/CarWithAuth/reservationList' , 'CarWithAuth@reservationList');
 
         // 用户
         Route::post('/Login/login' , 'Login@login');
