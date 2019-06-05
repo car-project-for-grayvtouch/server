@@ -22,4 +22,5 @@ return [
     'debug' => 'abc123' ,
     // 上传文件路径
     'upload_dir' => realpath(__DIR__ . '/../../../../public/upload/') ,
+    //
 ];

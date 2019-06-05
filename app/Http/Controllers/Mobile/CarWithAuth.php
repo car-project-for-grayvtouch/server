@@ -116,6 +116,22 @@ class CarWithAuth extends Auth
         return success($res['data']);
     }
 
+    // 预约看车申请列表
+    public function reservationList()
+    {
+        $param = $this->request->post();
+        $param['limit'] = $param['limit'] ?? config('app.limit');
+        $param['language'] = $param['language'] ?? null;
+        $res = CarWithAuthAction::reservationList($param);
+        if ($res['code'] != 200) {
+            if ($res['data'] instanceof Validator) {
+                return form_error($res['data']);
+            }
+            return error($res['data'] , $res['code']);
+        }
+        return success($res['data']);
+    }
+
     // huma值购（求平台推荐车辆）
     public function recommendationApplicationList()
     {

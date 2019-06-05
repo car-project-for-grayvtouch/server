@@ -9,6 +9,8 @@
 namespace App\Customize\PcApi\Model;
 
 
+use function core\convert_obj;
+
 class Reservation extends Model
 {
     protected $table = 'reservation';
@@ -49,4 +51,16 @@ class Reservation extends Model
             ])
             ->count();
     }
+
+    public static function list(array $param = [] , $limit = 20)
+    {
+        $where = [];
+        $res = self::where($where)
+            ->paginate($limit);
+        $res = convert_obj($res);
+        self::multiple($res->data);
+        return $res;
+    }
+
+
 }

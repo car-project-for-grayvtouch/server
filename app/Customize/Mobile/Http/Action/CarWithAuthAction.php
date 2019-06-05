@@ -272,6 +272,13 @@ class CarWithAuthAction extends Action
         return self::success($res);
     }
 
+    // 预约看车申请列表
+    public static function reservationList(array $param)
+    {
+        $res = Reservation::list($param , $param['limit']);
+        return self::success($res);
+    }
+
     // 购车申请列表
     public static function stagingBuyApplicationList(array $param)
     {
