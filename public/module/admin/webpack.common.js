@@ -5,7 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // 编译后文件输出路径
 const outputDir = 'compiled';
-const version = '1.0.0';
+const version = '1.0.1';
 
 module.exports = {
 	// 入口
