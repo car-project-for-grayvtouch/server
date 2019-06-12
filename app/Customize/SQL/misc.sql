@@ -102,3 +102,24 @@ create table if not exists `xq_translation` (
   create_time datetime default current_timestamp comment '创建时间' ,
   primary key `id` (`id`)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '翻译表';
+
+
+drop table if exists `xq_admin_push`;
+create table if not exists `xq_admin_push` (
+  id int unsigned not null auto_increment ,
+  user_id int unsigned default 0 comment 'xq_admin_user.id' ,
+  `type` char(255) default '' comment '推送类型' ,
+  `data` text comment '推送的数据' ,
+  create_time datetime default current_timestamp comment '创建时间' ,
+  primary key `id` (`id`)
+) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '后台用户-推送表';
+
+drop table if exists `xq_user_push`;
+create table if not exists `xq_user_push` (
+  id int unsigned not null auto_increment ,
+  user_id int unsigned default 0 comment 'xq_admin_user.id' ,
+  `type` char(255) default '' comment '推送类型' ,
+  `data` text comment '推送的数据' ,
+  create_time datetime default current_timestamp comment '创建时间' ,
+  primary key `id` (`id`)
+) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '平台用户-推送表';

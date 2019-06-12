@@ -9,6 +9,7 @@
 namespace App\Customize\PcApi\Http\Action;
 
 
+use App\Customize\PcApi\Util\RTC;
 use function PcApi\get_form_error;
 use App\Customize\PcApi\Model\Car;
 use App\Customize\PcApi\Model\CollectionForCar;
@@ -30,7 +31,7 @@ use Validator;
 
 class CarWithAuthAction extends Action
 {
-// 预约看车
+    // 预约看车
     public static function reservation(array $param)
     {
         $validator = Validator::make($param , [
@@ -67,7 +68,18 @@ class CarWithAuthAction extends Action
         if (empty($m)) {
             return self::error('未找到 car_id 对应车辆' , 404);
         }
-        $param['user_id'] = user()->id;
+        $user = user();
+        $param['user_id'] = $user->id;
+        $res = RTC::login($user->unique_code);
+        if ($res['code'] != 200) {
+            return self::error($res['data'], $res['code']);
+        }
+        $token = $res['data'];
+        RTC::setToken($token);
+        $res = RTC::multiple('admin' , 'system' , [] , "{$user->username}【{$user->id}】 申请预约在 {$param['appointment']} 看车，请尽快处理");
+        if ($res['code'] != 200) {
+            return self::error($res['data'] , $res['code']);
+        }
         $id = Reservation::insertGetId(array_unit($param , [
             'user_id' ,
             'car_id' ,
@@ -75,8 +87,6 @@ class CarWithAuthAction extends Action
             'weixin' ,
             'appointment' ,
         ]));
-        // todo 通知 swoole 服务器有新的申请产生
-        // todo swoole 服务器推送消息给后台，通知工作人员及时处理该申请
         return self::success($id);
     }
 
@@ -132,7 +142,18 @@ class CarWithAuthAction extends Action
                 'verify_code' => '验证码错误' ,
             ]);
         }
-        $param['user_id'] = user()->id;
+        $user = user();
+        $param['user_id'] = $user->id;
+        $res = RTC::login($user->unique_code);
+        if ($res['code'] != 200) {
+            return self::error($res['data'], $res['code']);
+        }
+        $token = $res['data'];
+        RTC::setToken($token);
+        $res = RTC::multiple('admin' , 'system' , [] , "{$user->username}【{$user->id}】 申请了买车 ，请尽快处理");
+        if ($res['code'] != 200) {
+            return self::error($res['data'] , $res['code']);
+        }
         $id = SaleApplication::insertGetId(array_unit($param , [
             'user_id' ,
             'address' ,
@@ -186,7 +207,18 @@ class CarWithAuthAction extends Action
                 'verify_code' => '验证码错误' ,
             ]);
         }
-        $param['user_id'] = user()->id;
+        $user = user();
+        $param['user_id'] = $user->id;
+        $res = RTC::login($user->unique_code);
+        if ($res['code'] != 200) {
+            return self::error($res['data'], $res['code']);
+        }
+        $token = $res['data'];
+        RTC::setToken($token);
+        $res = RTC::multiple('admin' , 'system' , [] , "{$user->username}【{$user->id}】 向平台申请了车辆推荐 ，请尽快处理");
+        if ($res['code'] != 200) {
+            return self::error($res['data'] , $res['code']);
+        }
         $id = RecommendationApplication::insertGetId(array_unit($param , [
             'user_id' ,
             'name' ,
@@ -245,7 +277,18 @@ class CarWithAuthAction extends Action
                 'ssn' => '不支持的值，当前受支持的值有 ' . implode(' , ' , $bool_range)
             ]);
         }
-        $param['user_id'] = user()->id;
+        $user = user();
+        $param['user_id'] = $user->id;
+        $res = RTC::login($user->unique_code);
+        if ($res['code'] != 200) {
+            return self::error($res['data'], $res['code']);
+        }
+        $token = $res['data'];
+        RTC::setToken($token);
+        $res = RTC::multiple('admin' , 'system' , [] , "{$user->username}【{$user->id}】 申请了分期购车 ，请尽快处理");
+        if ($res['code'] != 200) {
+            return self::error($res['data'] , $res['code']);
+        }
         $id = StagingBuyApplication::insertGetId(array_unit($param , [
             'user_id' ,
             'phone' ,

@@ -11,6 +11,7 @@ namespace App\Customize\PcApi\Http\Action;
 use App\Customize\PcApi\Model\User;
 use App\Customize\PcApi\Model\UserToken;
 use App\Customize\PcApi\Util\OAuth;
+use App\Customize\PcApi\Util\RTC;
 use function core\ssl_random;
 use function extra\array_unit;
 use Validator;
@@ -108,10 +109,24 @@ class LoginAction extends Action
             ]);
         }
         $password = Hash::make($param['password']);
-        $id = User::insertGetId([
-            'username' => $param['username'] ,
-            'password' => $password
-        ]);
-        return self::success($id);
+        try {
+            DB::beginTransaction();
+            $res = RTC::register($param['username']);
+            if ($res['code'] != 200) {
+                DB::rollBack();
+                return self::error($res['data'] , $res['code']);
+            }
+            $unique_code = $res['data'];
+            $id = User::insertGetId([
+                'username' => $param['username'] ,
+                'password' => $password ,
+                'unique_code' => $unique_code
+            ]);
+            DB::commit();
+            return self::success($id);
+        } catch(Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 }

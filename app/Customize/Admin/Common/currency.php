@@ -96,6 +96,7 @@ function res_url($path = '')
         return $path;
     }
     $res = config('app.res_host');
+    $res = format_path($res);
     return sprintf('%s%s' , $res , $path);
 }
 

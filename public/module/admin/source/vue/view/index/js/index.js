@@ -1,5 +1,6 @@
 import menu from '../../public/menu.vue';
 import moduleNav from '../../public/moduleNav.vue';
+import communication from '../../public/communication.vue';
 import routeForVue from '../../../router/routes.js';
 
 let once = null;
@@ -17,15 +18,22 @@ export default {
                 p_id: 'p_id'
             } ,
             ajax: {
-                logout: null
+                logout: null ,
+                push: null ,
             } ,
             pending: {
                 logout: false ,
+                push: false ,
             } ,
             render: '' ,
             value: {
                 leftMinW: 50 ,
+                loadedPush: false ,
             } ,
+            push: [] ,
+            socket: null ,
+            unread: 0 ,
+            isLogged: false ,
         };
     } ,
     mixins: [
@@ -39,10 +47,12 @@ export default {
         this.getData();
     } ,
     components: {
-        'v-menu': menu
+        'v-menu': menu ,
+        'v-communication': communication ,
     } ,
     methods: {
         initDom () {
+            this.dom.container = G(this.$el);
             this.dom.functions = G(this.$refs['functions-for-user']);
             this.dom.con = G(this.$refs.con);
             this.dom.left = G(this.$refs.left);
@@ -57,10 +67,12 @@ export default {
             this.dom.user = G(this.$refs.user);
             this.dom.block = G(this.$refs.block);
             this.dom.rightTop = G(this.$refs['right-top']);
+            this.dom.slidebar = G(this.$refs.slidebar);
+            this.dom.push = G(this.$refs.push);
         } ,
 
         initInstance () {
-
+            this.ins.communication = this.$refs.communication;
         } ,
 
         // 初始化
@@ -76,11 +88,88 @@ export default {
 
         initialize () {
             this.initValue();
+            this.initSlidebar();
             // DOM 渲染完成
             this.initTab();
             this.initMenu();
             this.initStyle();
-            this.initSlidebar();
+            this.initLeftSlidebar();
+            this.defineEvent();
+            // 子组件开始运行
+            this.ins.communication.run();
+            this.initSocket();
+        } ,
+
+        initSocket () {
+            var self = this;
+            this.socket = new Socket({
+                // 基本数据
+                identifier: topContext.websocketIdentifier ,
+                unique_code: this.$store.state.user.unique_code ,
+                platform: 'pc' ,
+                websocket: topContext.websocket ,
+                login () {
+                    self.isLogged = true;
+                    self.getUnreadCount();
+                } ,
+            });
+
+            this.socket.on('system' , function(res){
+                self.getUnreadCount();
+            });
+        } ,
+
+        // 获取未读消息数量
+        getUnreadCount () {
+            if (!this.isLogged) {
+                return ;
+            }
+            this.socket.unreadCountForPush((res) => {
+                if (res.code != 200) {
+                    this.$error(res.data);
+                    return ;
+                }
+                res = res.data;
+                this.unread = res;
+                if (res > 0) {
+                    // todo 存在未读消息数量
+                    // todo 拉取最小消息进行弹窗提示
+                    this.socket.unreadForPush((res) => {
+                        if (res.code != 200) {
+                            this.$error(res.data);
+                            return ;
+                        }
+                        res = res.data;
+                        // 递归消费数据
+                        let tip = () => {
+                            if (res.length == 0) {
+                                // 消费完成，刷新
+                                this.getUnreadCount();
+                                return ;
+                            }
+                            let push = res.pop();
+                            this.iNotice('系统通知' , push.data ? push.data : '');
+                            pushApi.add({
+                                type: push.type ,
+                                data: push.data
+                            } , (res , code) => {
+                                if (code != 200) {
+                                    this.eNotice(res);
+                                }
+                                // 成功的话继续消费
+                                // 更改远程接口的消息读取状态
+                                this.socket.readStatusForPush(push.id , 'y' , (res) => {
+                                    if (res.code != 200) {
+                                        this.eNotice(res.data);
+                                    }
+                                    tip();
+                                });
+                            });
+                        };
+                        tip();
+                    });
+                }
+            });
         } ,
 
         initValue () {
@@ -100,7 +189,7 @@ export default {
             this.dom.win.on('resize' , this.initLeftMidH.bind(this) , true , false);
         } ,
 
-        initSlidebar () {
+        initLeftSlidebar () {
             let slidebar = G.s.get('slidebar');
             if (G.isNull(slidebar)) {
                 return ;
@@ -109,6 +198,86 @@ export default {
                 return ;
             }
             this.vertical();
+        } ,
+
+        defineEvent () {
+            // 滚动事件
+            this.dom.push.on('scroll' , (e) => {
+                var clientH = this.dom.push.clientHeight();
+                var scrollH = this.dom.push.scrollHeight();
+                var maxScrollTop = scrollH - clientH;
+                var curScrollTop = this.dom.push.scrollTop();
+                if (curScrollTop != maxScrollTop) {
+                    return ;
+                }
+                this.loadPush();
+            });
+        } ,
+
+        loadPush (reload) {
+            if (!reload) {
+                if (this.value.loadedPush) {
+                    // 已经到底了
+                    return ;
+                }
+                if (this.pending.push) {
+                    this.$msg('加载中...请耐心等待');
+                    return ;
+                }
+            } else {
+                if (this.ajax.push instanceof G.ajax) {
+                    this.ajax.push.native('abort');
+                }
+                this.value.loadedPush = false;
+                this.push = [];
+            }
+            // 侧边栏打开时
+            let adminPushId = 0;
+            if (this.push.length > 0) {
+                adminPushId = this.push[this.push.length - 1].id;
+            }
+            this.pending.push = true;
+            this.ajax.push = pushApi.list({
+                admin_push_id: adminPushId
+            } , (res , code) => {
+                this.pending.push = false;
+                if (code != 200) {
+                    this.error(res);
+                    return ;
+                }
+                if (res.length == 0) {
+                    this.value.loadedPush = true;
+                }
+                this.push = this.push.concat(res);
+            });
+        } ,
+
+        // 初始化侧边栏
+        initSlidebar () {
+            var self = this;
+            this.ins.slidebar = new Slidebar(this.dom.slidebar.get(0) , {
+                // 动画时间
+                time: 300 ,
+                // 滑块宽度
+                width: '450px' ,
+                // 滑块遮罩层透明度
+                opacity: 0.3 ,
+                // 背景颜色
+                backgroundColor: '' ,
+                // 状态：show | hide
+                status: 'hide' ,
+                // 侧边栏方向: left , right
+                dir: 'right' ,
+                // 是否开启拖拽功能
+                enableDrag: false ,
+                open () {
+                    self.loadPush(true);
+                } ,
+            });
+        } ,
+
+        showSlidebar () {
+            this.ins.slidebar.show();
         } ,
 
         initLeftMidH () {
@@ -156,7 +325,7 @@ export default {
                 // 层级视觉显示效果
                 amount: 12 ,
                 // 同层级是否互斥
-                exclution: true ,
+                exclution: false ,
                 // 是否菜单也可被选中
                 menuFocus: true ,
                 // 点击项后是否选中

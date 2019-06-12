@@ -9,13 +9,17 @@
 namespace App\Customize\PcApi\Http\Action;
 
 
+use App\Customize\PcApi\Util\RTC;
+use Exception;
 use function PcApi\get_form_error;
 use App\Customize\PcApi\Model\User;
 use function core\array_unit;
+use function PcApi\res_url;
 use function PcApi\user;
 
 use Hash;
 use Validator;
+use DB;
 
 class UserAction extends Action
 {
@@ -86,6 +90,13 @@ class UserAction extends Action
             return self::error(get_form_error($validator));
         }
         $param['avatar'] = $param['image'];
+        $res = RTC::login(user()->unique_code);
+        if ($res['code'] != 200) {
+            return self::error($res['data'], $res['code']);
+        }
+        $token = $res['data'];
+        RTC::setToken($token);
+        RTC::editForUser('' , res_url($param['avatar']));
         User::updateById(user()->id , array_unit($param , [
             'avatar'
         ]));

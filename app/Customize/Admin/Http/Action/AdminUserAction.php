@@ -8,6 +8,8 @@
 
 namespace App\Customize\Admin\Http\Action;
 
+use function Admin\res_url;
+use App\Customize\Admin\Util\RTC;
 use function extra\array_unit;
 use function extra\check_phone;
 use Validator;
@@ -137,7 +139,7 @@ class AdminUserAction extends Action
     public static function edit(array $param)
     {
         $validator = Validator::make($param , [
-            'username' => 'required' ,
+//            'username' => 'required' ,
             'phone'    => 'required' ,
             'role_id'  => 'required' ,
         ] , [
@@ -178,7 +180,7 @@ class AdminUserAction extends Action
         }
         $param['password'] = empty($param['password']) ? $m->password : Hash::make($param['password']);
         AdminUser::updateById($param['id'] , array_unit($param , [
-            'username' ,
+//            'username' ,
             'password' ,
             'phone' ,
             'role_id' ,
@@ -225,11 +227,17 @@ class AdminUserAction extends Action
             ]);
         }
         $param['password'] = Hash::make($param['password']);
+        $res = RTC::register($param['username']);
+        if ($res['code'] != 200) {
+            return self::error($res['data'] , 420);
+        }
+        $param['unique_code'] = $res['data'];
         $id = AdminUser::insertGetId(array_unit($param , [
             'username' ,
             'password' ,
             'phone' ,
             'role_id' ,
+            'unique_code'
         ]));
         return self::success($id);
     }
@@ -251,6 +259,15 @@ class AdminUserAction extends Action
             return self::error('未找到 id 对应记录' , 404);
         }
         $param['avatar'] = $param['image'];
+        $res = RTC::login(user()->unique_code);
+        if ($res['code'] != 200) {
+            return self::error($res['data'] , 420);
+        }
+        RTC::setToken($res['data']);
+        $res = RTC::editForUser('' , res_url($param['avatar']));
+        if ($res['code'] != 200) {
+            return self::error($res['data'] , 420);
+        }
         AdminUser::updateById($param['id'] , array_unit($param , [
             'avatar'
         ]));

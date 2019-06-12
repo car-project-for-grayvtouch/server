@@ -9,6 +9,7 @@ create table if not exists `xq_admin_user` (
   last_time datetime default current_timestamp comment '最后一次登录时间' ,
   last_ip long comment '最近一次登录ip' ,
   is_root enum('y' , 'n') default 'n' comment '超级管理员：n-否 y-是' ,
+  unique_code char(255) default '' comment '即时通讯：唯一码' ,
   update_time datetime default current_timestamp on update current_timestamp comment '更新时间' ,
   create_time datetime default current_timestamp comment '创建时间' ,
   primary key `id` (`id`)

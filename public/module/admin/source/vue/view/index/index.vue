@@ -1,5 +1,5 @@
 <template>
-    <div class="container" ref="container">
+    <div class="container">
         <!-- 加载 -->
         <v-loading ref="loading"></v-loading>
         <!-- left -->
@@ -54,6 +54,16 @@
                     </div>
                     <div class="right">
 
+                        <!-- 通知栏 -->
+                        <div class="notification" @click="showSlidebar">
+                            <div class="in">
+                                <div class="image-container">
+                                    <img src="./image/notification.png" class="image">
+                                </div>
+                                <div class="text">{{ unread }}</div>
+                            </div>
+                        </div>
+
                         <!--用户控制-->
                         <div class="user" @mouseenter="showUserCtrl" @mouseleave="hideUserCtrl">
                             <div class="ctrl">
@@ -86,6 +96,36 @@
                 </div>
             </div>
         </div>
+
+        <!-- 抽屉 -->
+        <div class="slidebar-container" ref="slidebar">
+            <div class="slidebar hide">
+                <div class="mask"></div>
+                <div class="con">
+                    <div class="in" ref="push">
+                        <div class="lines">
+                            <!-- 这里添加内容 -->
+                            <div class="line" v-for="v in push" :key="v.id" @click="$info(v.data)">
+                                <div class="left">
+                                    <div class="ico">
+                                        <img src="./image/system.png" class="image" v-if="v.type == 'system'">
+                                    </div>
+                                    <div class="text">{{ v.data }}</div>
+                                </div>
+                                <div class="right">{{ v.format_time }}</div>
+                            </div>
+                        </div>
+
+                        <div class="loading" v-if="pending.push">加载中...</div>
+                        <div class="no-more" v-if="value.loadedPush">已经到底了</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 即时通讯 -->
+        <v-communication ref="communication"></v-communication>
     </div>
 </template>
 

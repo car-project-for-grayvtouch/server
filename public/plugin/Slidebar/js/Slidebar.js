@@ -34,10 +34,14 @@
             click: null ,
             // 侧边栏方向: left , right
             dir: 'left' ,
+            // 是否开启拖拽功能
+            enableDrag: true ,
             // 侧边栏展示时回调
             open: null ,
             // 侧边栏隐藏时回调
             close: null ,
+            // 内容的背景颜色
+            backgroundColor: 'green' ,
         };
 
         if (G.isUndefined(option)) {
@@ -54,6 +58,8 @@
         this._opacity   = G.isFloat(option.opacity) ? option.opacity : this._default.opacity;
         this._status    = G.contain(option.status , this._statusRange) ? option.status : this._default.status;
         this._dir = G.contain(option.dir , this._dirRange) ? option.dir : this._default.dir;
+        this._enableDrag = G.isBoolean(option.enableDrag) ? option.enableDrag : this._default.enableDrag;
+        this._backgroundColor = G.isString(option.backgroundColor) ? option.backgroundColor : this._default.backgroundColor;
         this._open  = option.open;
         this._close  = option._close;
 
@@ -99,7 +105,8 @@
 
         _initStatic: function(){
             this._con_.css({
-                width: this._width
+                width: this._width ,
+                backgroundColor: this._backgroundColor ,
             });
             this._slidebar.removeClass('hide');
             this._mask.css('opacity' , this._minOpacity);
@@ -286,9 +293,12 @@
         } ,
 
         _defineEvent: function(){
-            var win = G(window);
+            this._mask.on('click' , this.hide.bind(this) , true , false);
 
-            this._slidebar.on('click' , this.hide.bind(this) , true , false);
+            if (!this._enableDrag) {
+                return ;
+            }
+            var win = G(window);
             this._con_.on('click' , G.stop.bind(G) , true , false);
 
             var mousedown   = this._browser === 'mobile' ? 'touchstart' : 'mousedown';

@@ -8,7 +8,7 @@
 
 return [
     'host' => '' ,
-    // 域名切记不要带 /
+    // 资源域名
     'res_host' => '/upload' ,
     // refresh token 保存时常
     'refresh_token_duration_type' => 'short' ,

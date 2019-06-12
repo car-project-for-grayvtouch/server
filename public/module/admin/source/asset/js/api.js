@@ -31,6 +31,7 @@ import stagingBuyApplicationApi from '../../api/stagingBuyApplication.js';
 import reservationApi from '../../api/reservation.js';
 import pannelApi from '../../api/pannel.js';
 import storyApi from '../../api/story.js';
+import pushApi from '../../api/push.js';
 
 Object.assign(window , {
     adminApi ,
@@ -61,4 +62,5 @@ Object.assign(window , {
     userApi ,
     pannelApi ,
     storyApi ,
+    pushApi ,
 });

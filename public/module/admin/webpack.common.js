@@ -5,12 +5,13 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // 编译后文件输出路径
 const outputDir = 'compiled';
+const version = '1.0.0';
 
 module.exports = {
 	// 入口
 	entry: {
 		// 单一入口
-		app_v10: ['babel-polyfill' , './source/app.js']
+		app: ['babel-polyfill' , './source/app.js']
 	} ,
 	plugins: [
 		new CleanWebpackPlugin([outputDir]),
@@ -20,12 +21,12 @@ module.exports = {
 		}) , 
 		new VueLoaderPlugin() , 
 		new MiniCssExtractPlugin({
-			filename: "[name].css" ,
-			chunkFilename: "[id].css"
+			filename: "[name].css?version=" + version ,
+			chunkFilename: "[id].css?version=" + version ,
 		}) ,
 	] , 
 	output: {
-		filename: 'js/[name].js' , 
+		filename: 'js/[name].js?version=' + version ,
 		path: path.resolve(__dirname , outputDir)
 	} , 
 	module: {

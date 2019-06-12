@@ -84,7 +84,7 @@ class AdminUser extends Controller
     {
         $param = $this->request->post();
         $param['id']        = $param['id'] ?? '';
-        $param['username']  = $param['username'] ?? '';
+//        $param['username']  = $param['username'] ?? '';
         $param['password']  = $param['password'] ?? '';
         $param['phone']     = $param['phone'] ?? '';
         $param['role_id']     = $param['role_id'] ?? '';

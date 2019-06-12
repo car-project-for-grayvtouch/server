@@ -15,26 +15,28 @@ export default {
         firstLetter ,
         determine ,
         // 通知
-        notice (type , title , desc = '') {
+        notice (type , title , desc = '' , duration , onClose) {
             this.$Notice[type]({
                 title ,
                 desc ,
+                duration , 
+                onClose ,
             });
         } ,
-        sNotice (title , desc = '') {
-            this.notice('success' , title , desc);
+        sNotice (title , desc = '' , duration , close) {
+            this.notice('success' , title , desc , duration , close);
         } ,
 
-        wNotice (title , desc = '') {
-            this.notice('warning' , title , desc);
+        wNotice (title , desc = '' , duration , close) {
+            this.notice('warning' , title , desc , duration , close);
         } ,
 
-        iNotice (title , desc = '') {
-            this.notice('info' , title , desc);
+        iNotice (title , desc = '' , duration , close) {
+            this.notice('info' , title , desc , duration , close);
         } ,
 
-        eNotice (title , desc = '') {
-            this.notice('error' , title , desc);
+        eNotice (title , desc = '' , duration , close) {
+            this.notice('error' , title , desc , duration , close);
         } ,
         toLink (url) {
             window.open(url , '_blank');

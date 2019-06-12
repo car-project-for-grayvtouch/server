@@ -367,4 +367,12 @@ Route::prefix('admin')
          * ***************
          */
         Route::post('translation/translation' , 'Translation@translate');
+
+        /**
+         * *******************************
+         * 推送
+         * *******************************
+         */
+        Route::get('adminPush/push' , 'AdminPush@list');
+        Route::post('adminPush/push' , 'AdminPush@add');
     });

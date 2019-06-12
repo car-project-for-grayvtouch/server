@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Customize\Admin\Util\RTC;
 use Validator;
 use DB;
 use Hash;
@@ -98,6 +99,8 @@ class Root extends Controller
 
     public function test()
     {
-        var_dump('hello boys and girls');
+        $res = RTC::register('abc' , 'fuck' , 'ri');
+        var_dump($res);
+        print_r($res);
     }
 }

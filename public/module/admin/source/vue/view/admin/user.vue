@@ -6,7 +6,7 @@
                 <form @submit.prevent="submit">
                     <table class="input-tb">
                         <tbody>
-                        <tr id="username" :class="getClass(error.username)">
+                        <tr id="username" v-if="param.mode == 'add'" :class="getClass(error.username)">
                             <td>用户名</td>
                             <td>
                                 <input type="text" class="form-text" v-model="form.username">

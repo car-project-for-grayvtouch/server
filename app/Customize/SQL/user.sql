@@ -11,6 +11,7 @@ create table if not exists `xq_user` (
   avatar varchar(500) default '' comment '头像' ,
   last_ip char(32) default '' comment '用户最近一次登录 ip' ,
   last_time datetime default current_timestamp comment '用户最近一次登录时间' ,
+  unique_code char(255) default '' comment '即时通讯：唯一码' ,
   create_time datetime default current_timestamp ,
   primary key id (id)
 ) engine = innodb character set = utf8mb4 collate = utf8mb4_bin comment '用户表';
