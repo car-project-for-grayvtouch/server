@@ -258,7 +258,7 @@ export default {
         // 刷新未读消息数量
         refreshUnreadMessage: function(){
             var self = this;
-            this.conn.unreadCount(this.response.bind(this , function(res){
+            this.conn.unreadCountForCommunication(this.response.bind(this , function(res){
                 self.unread = res;
                 if (G.isFunction(self.unread)) {
                     self.unreadListener(res);
