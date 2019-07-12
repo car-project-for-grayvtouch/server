@@ -9,7 +9,7 @@
 return [
     'host' => 'http://car.com' ,
     // 域名切记不要带 /
-    'res_host' => 'http://admin.championcargroup.com/upload' ,
+    'res_host' => 'http://pc.api.championcargroup.com/upload' ,
     // refresh token 保存时常
     'refresh_token_duration_type' => 'short' ,
     // 默认头像
